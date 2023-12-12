@@ -18,6 +18,15 @@ Das Programm durchsucht die Webseite und speichert den Inhalt in Markdown-Dateie
 
 Am Schluss wird eine Datei `result.md` erstellt, in welcher sämtliche Inhalte zusammengefügt sind.
 
+## AI Verwendung
+
+Das Programm verwendet OpenAI GPT3.5, um unnötige Inhalte der Seiten wie Header, Footer, Menues zu entfernen.
+Dafür ist ein OpenAI API Key erforderlich in den Umgebungsvariablen.
+
+Die Umgebungsvariable kann folgendermassen gesetzt werden vor dem Aufruf des Programmes:
+
+`set OPENAI_API_KEY=sk-OAry...`
+
 ## Hinweise
 
 - Stelle sicher, dass du eine stabile Internetverbindung hast, um das Programm ordnungsgemäß auszuführen.
