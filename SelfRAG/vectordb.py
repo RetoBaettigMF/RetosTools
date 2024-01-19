@@ -16,11 +16,13 @@ def getFiles(path):
 def trainVectorDB(path):
     files = getFiles(path)
     vectors = []
-    for file in files:
+    for index, file in enumerate(files):
         text = readfile(file)
         vector = getVector(text)
-        print(file, ":", vector)
         vectors.append([vector, file])
+        progress="{:.1f}".format(index/len(files)*100)
+        print("Trained "+progress+"% of the vector database.", end="\r")
+    print()
     return vectors
 
 def saveVectorDB(filename, vectors):
@@ -28,7 +30,10 @@ def saveVectorDB(filename, vectors):
         json.dump(vectors, file)
 
 def loadVectorDB(filename):
-    with open(filename, 'r') as file:
-        vectors = json.load(file)
+    try:
+        with open(filename, 'r') as file:
+            vectors = json.load(file)  
+    except FileNotFoundError:
+        vectors = []
     return vectors
         

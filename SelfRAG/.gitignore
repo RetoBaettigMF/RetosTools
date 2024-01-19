@@ -1,5 +1,8 @@
 # data
 trainingdata/
+data/
+trainingdata - Kopie/
+prepareddata/
 setkey.bat
 
 # Byte-compiled / optimized / DLL files
