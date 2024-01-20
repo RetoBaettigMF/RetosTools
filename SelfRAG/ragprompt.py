@@ -1,5 +1,5 @@
 from gpt import get_completion
-from fileoperations import readfile
+from fileoperations import read_file
 
 PROMPT = "Answer the following prompt based on the texts following the prompt. \n"\
 "The texts are preceeded by a filename each. "\
@@ -12,7 +12,7 @@ def get_texts(texts):
     text = ""
     for entry in texts:
         filename = entry[0]
-        text = text + "Filename: "+filename+"\n"+readfile(filename)+"\n\n"
+        text = text + "Filename: "+filename+"\n"+read_file(filename)+"\n\n"
     return text
 
 def get_answer(question, matches):

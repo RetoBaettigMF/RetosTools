@@ -1,13 +1,13 @@
 from vectors import get_vector, get_nearest_neighbors
-from fileoperations import readfile, getFiles
+from fileoperations import read_file, get_files
 import json
 import os
 
 def train_vector_db(path):
-    files = getFiles(path)
+    files = get_files(path)
     vectors = []
     for index, file in enumerate(files):
-        text = readfile(file)
+        text = read_file(file)
         vector = get_vector(text)
         vectors.append([vector, file])
         progress="{:.1f}".format(index/len(files)*100)
