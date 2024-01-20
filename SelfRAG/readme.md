@@ -14,14 +14,16 @@ Das Programm greift direkt auf das API von OpenAI zu.
 
 1. Stelle sicher, dass Python auf deinem Computer installiert ist.
 2. Lade das Programm herunter und speichere es in einem Verzeichnis deiner Wahl.
+3. Öffne die Kommandozeile oder das Terminal.
+4. Navigiere zum Verzeichnis, in dem du das Programm gespeichert hast.
+5. Installiere alle Abhängigkeiten und das venv mit dem Befehl `install.bat`
+6. Kopiere die zu trainierenden Datein in das verzeichnis `\data`
+7. Setze den API Key (siehe nächstes Kapitel)
+
 
 ## Verwendung
-
-1. Öffne die Kommandozeile oder das Terminal.
-2. Navigiere zum Verzeichnis, in dem du das Programm gespeichert hast.
-3. Installiere alle Abhängigkeiten mit dem Befehl `install.bat`
-4. Kopiere die zu trainierenden Datein in das verzeichnis `\data`
-5. Führe das Programm mit dem Befehl `python main.py` 
+1. Aktiviere das virtuelle Environment mit `activate_venv.bat`
+2. Führe das Programm mit dem Befehl `python main.py` 
 
 
 ## API Key
