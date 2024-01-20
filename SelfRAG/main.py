@@ -1,7 +1,8 @@
 from gpt import GPT
-from vectors import getVector
-from vectordb import trainVectorDB, saveVectorDB, loadVectorDB
+from vectors import getVector, getNearestNeighbors
+from vectordb import trainVectorDB, saveVectorDB, loadVectorDB, getMatches
 from preparefiles import preparefiles
+import pandas as pd
 
 DBFILE = "./vectordb.json"
 DATAPATH = "./data"
@@ -30,6 +31,15 @@ def main():
     print("Welcome to SelfRAG")
     
     db = getVectorDB()
+
+    # read prompt from user
+    prompt = input("Enter a prompt: ")
+
+    vector = getVector(prompt)
+    matches = getMatches(db, vector)
+    df = pd.DataFrame(matches, columns=['filename', 'score'])
+    print(df)
+
 
 
 

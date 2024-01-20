@@ -1,15 +1,5 @@
 import os
-
-def readfile(filename):
-    with open(filename, 'r') as file:
-        text = file.read()
-    return text
-
-def getFiles(path):
-    files = []
-    for file in os.listdir(path):
-        files.append(os.path.join(path, file))
-    return files
+from fileoperations import readfile, getFiles
 
 def preparefiles(pathfrom, pathto, maxsize=4000, overlap=1000):
     files = getFiles(pathfrom)

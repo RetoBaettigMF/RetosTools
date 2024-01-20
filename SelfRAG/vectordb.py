@@ -1,4 +1,4 @@
-from vectors import getVector
+from vectors import getVector, getNearestNeighbors
 from fileoperations import readfile, getFiles
 import json
 import os
@@ -26,4 +26,13 @@ def loadVectorDB(filename):
     except FileNotFoundError:
         vectors = []
     return vectors
+
+
+def getMatches(db, vector):
+    result = []
+    vectors = [row[0] for row in db]
+    neighbors = getNearestNeighbors(vector, vectors, 5)
+    for neighbor in neighbors:
+        result.append((db[neighbor[1]][1], neighbor[0]))
+    return result
         
