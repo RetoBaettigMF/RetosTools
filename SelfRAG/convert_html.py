@@ -1,7 +1,5 @@
 from markdownify import markdownify as md
-from fileoperations import read_file, write_file, get_files, delete_directory, change_file_path, change_file_type
 from gpt import get_completion
-import os
 
 def ai_md_cleanup(md):
     prompt = "The following markdown text is from scraping a web page. Please clean it up and remove headers, footers, and other extraneous text. \n\n" + md
