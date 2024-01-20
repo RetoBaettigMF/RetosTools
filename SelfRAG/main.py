@@ -35,7 +35,6 @@ def get_feedback(prompt, matches, answer):
     ok = (ok.upper() == "Y")
     if not ok:
         answer_improved = input("Enter the correct answer: ")
-        ok = "N"
 
     feedback = {
         "prompt": prompt,
@@ -50,6 +49,7 @@ def main():
     # print(GPT("Write a funny sentence to welcome the user to the SelfRAG program."))
     print("Welcome to SelfRAG")
     rag_history = history("history.json")
+    rag_history.print_statistics()
     
     db = get_vector_db()
 
@@ -65,11 +65,12 @@ def main():
         print(df)
 
         answer = get_answer(prompt, matches)
-        print(answer)
+        print("\n",answer)
 
         feedback = get_feedback(prompt, matches, answer)
         rag_history.add(feedback)
         rag_history.save()
+        rag_history.print_statistics()
     
     
         
