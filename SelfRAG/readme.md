@@ -1,6 +1,14 @@
-# Web Scraper
+# SelfRAG
 
-Dieses Programm ist ein Web Scraper, der verwendet wird, um den Inhalt einer Webseite herunterzuladen und in Markdown-Dateien zu speichern. Es verwendet die Python-Bibliotheken `requests`, `BeautifulSoup`, `html2text` und `os`.
+Dieses Programm ist ein Demonstrator für RAG (Retrieval Augmented Generation), welches den folgenden Prozess durchführt
+1. (falls `vectordb.json` gefunden wird wird direkt bei Punkt 5 weitergefahren)
+2. Aufteilen der Daten in "verdaubare" chunks
+3. Berechnung der Embedding Vektoren für die chunks
+4. Speichern der Vektoren in `vectordb.json`
+5. Finden der nächsten Vektoren für einen bestimmten Prompt
+6. Erstellen eines RAG-Prompts und erstellen einer Antwort aufgrund der eingelernten Daten
+
+Das Programm greift direkt auf das API von OpenAI zu.
 
 ## Installation
 
@@ -12,32 +20,21 @@ Dieses Programm ist ein Web Scraper, der verwendet wird, um den Inhalt einer Web
 1. Öffne die Kommandozeile oder das Terminal.
 2. Navigiere zum Verzeichnis, in dem du das Programm gespeichert hast.
 3. Installiere alle Abhängigkeiten mit dem Befehl `install.bat`
-4. Führe das Programm mit dem Befehl `python scraper.py [URL]` aus, wobei `[URL]` die URL der Webseite ist, die du durchsuchen möchtest.
+4. Kopiere die zu trainierenden Datein in das verzeichnis `\data`
+5. Führe das Programm mit dem Befehl `python main.py` 
 
-Das Programm durchsucht die Webseite und speichert den Inhalt in Markdown-Dateien im Verzeichnis `results/`. Die Dateien werden numerisch nummeriert und enthalten den Titel der Webseite als Überschrift.
 
-Am Schluss wird eine Datei `result.md` erstellt, in welcher sämtliche Inhalte zusammengefügt sind.
+## API Key
 
-## AI Verwendung
-
-Das Programm verwendet OpenAI GPT3.5, um unnötige Inhalte der Seiten wie Header, Footer, Menues zu entfernen.
-Dafür ist ein OpenAI API Key erforderlich in den Umgebungsvariablen.
+Für das Programm ist ein API Key von OpenAI nötig.
 
 Die Umgebungsvariable kann folgendermassen gesetzt werden vor dem Aufruf des Programmes:
 
 `set OPENAI_API_KEY=sk-OAry...`
 
-## Hinweise
-
-- Stelle sicher, dass du eine stabile Internetverbindung hast, um das Programm ordnungsgemäß auszuführen.
-- Das Programm unterstützt nur Webseiten, die HTML als Antwort zurückgeben.
-- Das Programm ignoriert Links, die mit "#" beginnen, E-Mail-Links und JavaScript-Links.
-
-Viel Spaß beim Verwenden des Web Scrapers! Wenn du weitere Fragen hast, stehe ich gerne zur Verfügung.
-
 ## Lizenz
 
-Copyright (c) 2023 Reto Bättig (reto@baettig.org)
+Copyright (c) 2024 Reto Bättig (reto@baettig.org)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
