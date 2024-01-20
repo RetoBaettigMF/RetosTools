@@ -1,4 +1,4 @@
-from gpt import getCompletion
+from gpt import get_completion
 from fileoperations import readfile
 
 PROMPT = "Answer the following prompt based on the texts following the prompt. \n"\
@@ -8,16 +8,16 @@ PROMPT = "Answer the following prompt based on the texts following the prompt. \
 "\nPrompt: {}"\
 "\n\nTexts:\n {}"
 
-def getTexts(texts):
+def get_texts(texts):
     text = ""
     for entry in texts:
         filename = entry[0]
         text = text + "Filename: "+filename+"\n"+readfile(filename)+"\n\n"
     return text
 
-def getAnswer(question, matches):
-    text = getTexts(matches)
+def get_answer(question, matches):
+    text = get_texts(matches)
     prompt = PROMPT.format(question, text)
     print(prompt)
-    answer = getCompletion(prompt)
+    answer = get_completion(prompt)
     return answer

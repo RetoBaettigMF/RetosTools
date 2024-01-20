@@ -1,7 +1,7 @@
 import os
 from fileoperations import readfile, getFiles
 
-def preparefiles(pathfrom, pathto, maxsize=4000, overlap=1000):
+def prepare_files(pathfrom, pathto, maxsize=4000, overlap=1000):
     files = getFiles(pathfrom)
     os.makedirs(pathto, exist_ok=True)
     for file in files:

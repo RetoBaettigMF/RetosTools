@@ -1,7 +1,7 @@
 import openai
 import os
 
-def getCompletion(prompt):
+def get_completion(prompt):
     api_key = os.getenv('OPENAI_API_KEY')
     if api_key is None:
         print("Warning: OPENAI_API_KEY key not found in environment variables. Working without AI improvements.")

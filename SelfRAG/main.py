@@ -1,27 +1,27 @@
-from vectors import getVector
-from vectordb import trainVectorDB, saveVectorDB, loadVectorDB, getMatches
-from ragprompt import getAnswer
-from preparefiles import preparefiles
+from vectors import get_vector
+from vectordb import train_vector_db, save_vector_db, load_vector_db, getMatches
+from ragprompt import get_answer
+from preparefiles import prepare_files
 import pandas as pd
 
-DBFILE = "./vectordb.json"
-DATAPATH = "./data"
-PREPAREDDATAPATH = "./prepareddata"
+DB_FILE = "./vectordb.json"
+DATA_PATH = "./data"
+PREPARED_DATA_PATH = "./prepareddata"
 
-def createVectorDB():
+def create_vector_db():
     print("Preparing files...")
-    preparefiles(DATAPATH, PREPAREDDATAPATH)
+    prepare_files(DATA_PATH, PREPARED_DATA_PATH)
     print("Training vector database...")
-    db = trainVectorDB(PREPAREDDATAPATH)
+    db = train_vector_db(PREPARED_DATA_PATH)
     print("Saving vector database...")
-    saveVectorDB(DBFILE, db)
+    save_vector_db(DB_FILE, db)
     return db
 
-def getVectorDB():
-    db=loadVectorDB(DBFILE)
+def get_vector_db():
+    db=load_vector_db(DB_FILE)
     if len(db) == 0:
         print("No vector database found. Creating one...")
-        db = createVectorDB()
+        db = create_vector_db()
     
     assert(len(db) > 0)
     return db
@@ -31,7 +31,7 @@ def main():
     # print(GPT("Write a funny sentence to welcome the user to the SelfRAG program."))
     print("Welcome to SelfRAG")
     
-    db = getVectorDB()
+    db = get_vector_db()
 
     # read prompt from user
     while True:
@@ -39,12 +39,12 @@ def main():
         if prompt == "":
             break
 
-        vector = getVector(prompt)
+        vector = get_vector(prompt)
         matches = getMatches(db, vector)
         df = pd.DataFrame(matches, columns=['filename', 'score'])
         print(df)
 
-        answer = getAnswer(prompt, matches)
+        answer = get_answer(prompt, matches)
         print(answer)
 
 
