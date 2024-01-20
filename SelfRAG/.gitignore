@@ -6,6 +6,7 @@ prepareddata/
 setkey.bat
 vectordb.json
 history.json
+replay_history.json
 .vscode/
 
 

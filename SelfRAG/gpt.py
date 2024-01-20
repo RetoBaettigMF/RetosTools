@@ -2,10 +2,11 @@ import openai
 import os
 from settings import CHAT_MODEL
 
+
 def get_completion(prompt):
     api_key = os.getenv('OPENAI_API_KEY')
     if api_key is None:
-        print("Warning: OPENAI_API_KEY key not found in environment variables. Working without AI improvements.")
+        print("Error: OPENAI_API_KEY key not found in environment variables.")
         return None
     
     client = openai.OpenAI(

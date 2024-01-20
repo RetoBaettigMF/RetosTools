@@ -20,10 +20,28 @@ Das Programm greift direkt auf das API von OpenAI zu.
 6. Kopiere die zu trainierenden Datein in das verzeichnis `\data`
 7. Setze den API Key (siehe nächstes Kapitel)
 
+## Konfiguration
+
+Alle Parameter der Applikation können inder Datei `settings.py` eingestellt werden.
+
 
 ## Verwendung
+
+### Interaktive Abfrage der Daten
 1. Aktiviere das virtuelle Environment mit `activate_venv.bat`
 2. Führe das Programm mit dem Befehl `python main.py` 
+
+Die Abfragen, Ergebnisse und Bewertungen werden in der Datei `HISTORY_FILE` gespeichert
+
+### Replay der Abfragen
+Wenn das Modell oder etwas anderes Verändert wurde und man die Abfragen im `HISTORY_FILE` noch mal durchspielen will,
+um zu schauen, wie sich die Qualität verbessert, kann folgendes Programm ausgeführt werden:
+
+`python replay.py`
+
+es führt die Abfragen in `HISTORY_FILE` noch einmal automatisiert aus und versucht, die Antworten zu bewerten.
+Im Zweifelsfall wir der Benutzer gefragt, ob sich die Antwort verbessert hat.
+Die neuen Antworten werden in der Datei 
 
 
 ## API Key

@@ -22,6 +22,9 @@ class history:
     def get(self):
         return self.history
     
+    def clear(self):
+        self.history = []
+    
     def print_statistics(self):
         print("Number of entries in history: %d" % len(self.history))
         if len(self.history) == 0:
