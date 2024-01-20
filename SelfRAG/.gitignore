@@ -4,6 +4,7 @@ data/
 trainingdata - Kopie/
 prepareddata/
 setkey.bat
+vectordb.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
