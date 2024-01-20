@@ -2,10 +2,13 @@ DB_FILE = "./vectordb.json"
 HISTORY_FILE = "./history.json"
 REPLAY_HISTORY_FILE = "./replay_history.json"
 DATA_PATH = "./data"
+MD_DATA_PATH = "./md_data"
 PREPARED_DATA_PATH = "./prepareddata"
 CHAT_MODEL = "gpt-3.5-turbo-16k"
 #CHAT_MODEL = "gpt-4"
 EMBEDDINGS_MODEL = "text-embedding-ada-002"
+TEXT_CHUNK_MAXSIZE = 4000
+TEXT_CHUNK_OVERLAP = 1000
 
 ANSWER_DONT_KNOW = "I don't know"
 RAG_PROMPT = "Answer the following prompt based on the texts following the prompt. \n"\
