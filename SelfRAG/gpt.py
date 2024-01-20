@@ -1,5 +1,6 @@
 import openai
 import os
+from settings import CHAT_MODEL
 
 def get_completion(prompt):
     api_key = os.getenv('OPENAI_API_KEY')
@@ -14,7 +15,7 @@ def get_completion(prompt):
 
     chat_completion = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
-        model="gpt-4"
+        model=CHAT_MODEL
     )
     return chat_completion.choices[0].message.content
    

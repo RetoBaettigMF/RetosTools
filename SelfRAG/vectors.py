@@ -1,9 +1,10 @@
 from openai import OpenAI
+from settings import EMBEDDINGS_MODEL
 
 def get_vector(text):
     client = OpenAI()
     text = text.replace("\n", " ")
-    return client.embeddings.create(input = [text], model="text-embedding-ada-002").data[0].embedding
+    return client.embeddings.create(input = [text], model=EMBEDDINGS_MODEL).data[0].embedding
    
 def cosine_similarity(vec1, vec2):
     return sum([vec1[i] * vec2[i] for i in range(len(vec1))])

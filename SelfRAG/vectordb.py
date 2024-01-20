@@ -1,7 +1,8 @@
 from vectors import get_vector, get_nearest_neighbors
 from fileoperations import read_file, get_files
+from preparefiles import prepare_files
 import json
-import os
+from settings import DATA_PATH, PREPARED_DATA_PATH, DB_FILE
 
 def train_vector_db(path):
     files = get_files(path)
@@ -36,3 +37,20 @@ def getMatches(db, vector):
         result.append((db[neighbor[1]][1], neighbor[0]))
     return result
         
+def create_vector_db():
+    print("Preparing files...")
+    prepare_files(DATA_PATH, PREPARED_DATA_PATH)
+    print("Training vector database...")
+    db = train_vector_db(PREPARED_DATA_PATH)
+    print("Saving vector database...")
+    save_vector_db(DB_FILE, db)
+    return db
+
+def get_vector_db():
+    db=load_vector_db(DB_FILE)
+    if len(db) == 0:
+        print("No vector database found. Creating one...")
+        db = create_vector_db()
+    
+    assert(len(db) > 0)
+    return db
