@@ -1,6 +1,6 @@
-from gpt import GPT
-from vectors import getVector, getNearestNeighbors
+from vectors import getVector
 from vectordb import trainVectorDB, saveVectorDB, loadVectorDB, getMatches
+from ragprompt import getAnswer
 from preparefiles import preparefiles
 import pandas as pd
 
@@ -26,6 +26,7 @@ def getVectorDB():
     assert(len(db) > 0)
     return db
 
+
 def main():
     # print(GPT("Write a funny sentence to welcome the user to the SelfRAG program."))
     print("Welcome to SelfRAG")
@@ -33,19 +34,19 @@ def main():
     db = getVectorDB()
 
     # read prompt from user
-    prompt = input("Enter a prompt: ")
+    while True:
+        prompt = input("Enter a prompt: ")
+        if prompt == "":
+            break
 
-    vector = getVector(prompt)
-    matches = getMatches(db, vector)
-    df = pd.DataFrame(matches, columns=['filename', 'score'])
-    print(df)
+        vector = getVector(prompt)
+        matches = getMatches(db, vector)
+        df = pd.DataFrame(matches, columns=['filename', 'score'])
+        print(df)
 
+        answer = getAnswer(prompt, matches)
+        print(answer)
 
-
-
-
-    
-    
 
 if __name__ == "__main__":
     main()

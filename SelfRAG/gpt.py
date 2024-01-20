@@ -14,13 +14,9 @@ def getCompletion(prompt):
 
     chat_completion = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
-        model="gpt-3.5-turbo-1106",
-        temperature=0
+        model="gpt-4"
     )
     return chat_completion.choices[0].message.content
    
-
-def GPT(prompt):
-    return getCompletion(prompt)
     
     
