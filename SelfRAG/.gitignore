@@ -5,6 +5,7 @@ trainingdata - Kopie/
 prepareddata/
 setkey.bat
 vectordb.json
+history.json
 .vscode/
 
 

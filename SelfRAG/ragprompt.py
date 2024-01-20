@@ -18,6 +18,5 @@ def get_texts(texts):
 def get_answer(question, matches):
     text = get_texts(matches)
     prompt = PROMPT.format(question, text)
-    print(prompt)
     answer = get_completion(prompt)
     return answer

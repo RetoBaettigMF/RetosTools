@@ -10,6 +10,10 @@ def write_file(filename, text):
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(text)
 
+def append_file(filename, text):
+    with open(filename, 'a', encoding='utf-8') as file:
+        file.write(text)
+
 def get_files(path):
     files = []
     for file in os.listdir(path):
