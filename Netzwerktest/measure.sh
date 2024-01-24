@@ -1,0 +1,1 @@
+ping -D -O 8.8.8.8 >/mnt/c/temp/Netzwerktest/pingoutput.lan.txt
