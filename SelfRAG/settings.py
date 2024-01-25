@@ -17,7 +17,7 @@ CHAT_MODEL = "gpt-3.5-turbo-16k" #CHAT_MODEL = "gpt-4"
 AZURE_OPENAI_ENDPOINT = "https://mf-openai.openai.azure.com/"
 AZURE_API_TYPE = 'azure'
 AZURE_API_VERSION = '2023-05-15'
-AZURE_API_DEPLOYMENT_NAME = 'gpt-35-turbo-16k'
+AZURE_API_DEPLOYMENT_NAME = 'gpt4' # 'gpt-35-turbo-16k'
 AZURE_API_EMBEDDING_DEPLOYMENT_NAME = 'text-embedding-ada-002'
 
 
@@ -28,9 +28,19 @@ TEXT_CHUNK_MAXSIZE = 4000
 TEXT_CHUNK_OVERLAP = 1000
 
 ANSWER_DONT_KNOW = "I don't know"
-RAG_PROMPT = "Answer the following prompt based on the texts following the prompt. \n"\
-"The texts are preceeded by a filename each. "\
-"Include the filename in your answer in curly brackets like {{filename}}. \n"\
-"If you can't answer the question based on the texts, return '"+ANSWER_DONT_KNOW+"'\n\n"\
+
+"""
+    RAG_PROMPT = "Answer the following prompt based on the texts following the prompt. \n"\
+    "The texts are preceeded by a filename each. "\
+    "Include the filename in your answer in curly brackets like {{filename}}. \n"\
+    "If you can't answer the question based on the texts, return '"+ANSWER_DONT_KNOW+"'\n\n"\
+    "\nPrompt: {}"\
+    "\n\nTexts:\n {}"
+"""
+
+RAG_PROMPT = "Beantworte die folgende Aufgabe basierend auf den Texten, die der Aufgabe folgen. \n"\
+"Den Texten geht jeweils eine Dateiname voraus. "\
+"Füge den Dateinamen in deiner Antwort in geschweiften Klammern ein, wie {{Dateiname}}. \n"\
+"Wenn du die Frage nicht anhand der Texte beantworten kannst, gib '"+ANSWER_DONT_KNOW+"' zurück.\n\n"\
 "\nPrompt: {}"\
 "\n\nTexts:\n {}"
