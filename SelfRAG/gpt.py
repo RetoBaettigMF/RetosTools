@@ -1,24 +1,17 @@
-import openai
-import os
-from settings import CHAT_MODEL
-
+from gpt_openai import get_completion_openai, get_vector_openai
+from gpt_azure import get_completion_azure, get_vector_azure
+from settings import USE_AZURE
 
 def get_completion(prompt):
-    api_key = os.getenv('OPENAI_API_KEY')
-    if api_key is None:
-        print("Error: OPENAI_API_KEY key not found in environment variables.")
-        return None
-    
-    client = openai.OpenAI(
-        # This is the default and can be omitted
-        api_key=os.environ.get("OPENAI_API_KEY"),
-    )
+    if USE_AZURE:
+        return get_completion_azure(prompt)
+    else:
+        return get_completion_openai(prompt)
 
-    chat_completion = client.chat.completions.create(
-        messages=[{"role": "user", "content": prompt}],
-        model=CHAT_MODEL
-    )
-    return chat_completion.choices[0].message.content
-   
-    
+def get_vector(text):
+    text = text.replace("\n", " ")
+    if USE_AZURE:
+        return get_vector_azure(text)
+    else:
+        return get_vector_openai(text)
     

@@ -4,8 +4,25 @@ REPLAY_HISTORY_FILE = "./replay_history.json"
 DATA_PATH = "./data"
 MD_DATA_PATH = "./md_data"
 PREPARED_DATA_PATH = "./prepareddata"
-CHAT_MODEL = "gpt-3.5-turbo-16k"
-#CHAT_MODEL = "gpt-4"
+
+USE_AZURE = True
+
+#OpenAI Settings
+#(API-KEY is set in environment variable OPENAI_API_KEY)
+CHAT_MODEL = "gpt-3.5-turbo-16k" #CHAT_MODEL = "gpt-4"
+
+
+#Azure OpenAI Settings
+#(API-KEY is set in environment variable AZURE_OPENAI_KEY)
+AZURE_OPENAI_ENDPOINT = "https://mf-openai.openai.azure.com/"
+AZURE_API_TYPE = 'azure'
+AZURE_API_VERSION = '2023-05-15'
+AZURE_API_DEPLOYMENT_NAME = 'gpt-35-turbo-16k'
+AZURE_API_EMBEDDING_DEPLOYMENT_NAME = 'text-embedding-ada-002'
+
+
+deployment_name='REPLACE_WITH_YOUR_DEPLOYMENT_NAME' #This will correspond to the custom name you chose for your deployment when you deployed a model. 
+
 EMBEDDINGS_MODEL = "text-embedding-ada-002"
 TEXT_CHUNK_MAXSIZE = 4000
 TEXT_CHUNK_OVERLAP = 1000

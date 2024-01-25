@@ -1,4 +1,5 @@
-from vectors import get_vector, get_nearest_neighbors
+from vectors import get_nearest_neighbors
+from gpt import get_vector
 from fileoperations import read_file, get_files
 from preparefiles import prepare_files
 import json
