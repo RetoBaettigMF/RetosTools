@@ -1,14 +1,8 @@
-# SelfRAG
+# GPT-Tools
 
-Dieses Programm ist ein Demonstrator für RAG (Retrieval Augmented Generation), welches den folgenden Prozess durchführt
-1. (falls `vectordb.json` gefunden wird wird direkt bei Punkt 5 weitergefahren)
-2. Aufteilen der Daten in "verdaubare" chunks
-3. Berechnung der Embedding Vektoren für die chunks
-4. Speichern der Vektoren in `vectordb.json`
-5. Finden der nächsten Vektoren für einen bestimmten Prompt
-6. Erstellen eines RAG-Prompts und erstellen einer Antwort aufgrund der eingelernten Daten
+Dieses Programm ist ein Demonstrator für GPT Funktionalität
 
-Das Programm greift direkt auf das API von OpenAI zu.
+Das Programm greift direkt auf das API von OpenAI bzw. Azure OpenAI zu.
 
 ## Installation
 
@@ -17,32 +11,13 @@ Das Programm greift direkt auf das API von OpenAI zu.
 3. Öffne die Kommandozeile oder das Terminal.
 4. Navigiere zum Verzeichnis, in dem du das Programm gespeichert hast.
 5. Installiere alle Abhängigkeiten und das venv mit dem Befehl `install.bat`
-6. Kopiere die zu trainierenden Datein in das verzeichnis `\data`
 7. Setze den API Key (siehe nächstes Kapitel)
 
 ## Konfiguration
 
 Alle Parameter der Applikation können inder Datei `settings.py` eingestellt werden.
 
-
 ## Verwendung
-
-### Interaktive Abfrage der Daten
-1. Aktiviere das virtuelle Environment mit `activate_venv.bat`
-2. Führe das Programm mit dem Befehl `python main.py` 
-
-Die Abfragen, Ergebnisse und Bewertungen werden in der Datei `HISTORY_FILE` gespeichert
-
-### Replay der Abfragen
-Wenn das Modell oder etwas anderes Verändert wurde und man die Abfragen im `HISTORY_FILE` noch mal durchspielen will,
-um zu schauen, wie sich die Qualität verbessert, kann folgendes Programm ausgeführt werden:
-
-`python replay.py`
-
-es führt die Abfragen in `HISTORY_FILE` noch einmal automatisiert aus und versucht, die Antworten zu bewerten.
-Im Zweifelsfall wir der Benutzer gefragt, ob sich die Antwort verbessert hat.
-Die neuen Antworten werden in der Datei 
-
 
 ## API Key
 
@@ -55,6 +30,7 @@ Die Umgebungsvariable kann folgendermassen gesetzt werden vor dem Aufruf des Pro
 Für Azure AI muss ein Key von Azure AI gesetzt werden:
 
 `set AZURE_OPENAI_KEY=88..`
+
 
 ## Lizenz
 
