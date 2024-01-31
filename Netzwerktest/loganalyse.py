@@ -45,10 +45,10 @@ def read_log(logfile):
     print("Anzahl der Antworten, die länger als 100ms gedauert haben:", interruptions)
     print("Längste Antwortzeit:", max(ping_times), "ms")
     print("Testdauer:", time_difference, "s")
-    if len(non_answers) > 0:
-        print("Anzahl der verlorenen Pakete: {}, entspricht {:.1f}% oder ein Fehler alle {:.0f}s".format(len(non_answers), 100*len(non_answers)/(len(timestamps)), time_difference/len(non_answers) ))
+    if len(non_answers)== 0:
+        print("Keine verlorenen Pakete")
     else:
-        print("Keine Pakete verloren")
+        print("Anzahl der verlorenen Pakete: {}, entspricht {:.1f}% oder ein Fehler alle {:.0f}s".format(len(non_answers), 100*len(non_answers)/(len(timestamps)), time_difference/len(non_answers) ))
 
     # Erstellen Sie ein Histogramm der Ping-Zeiten
     plt.hist(long_pings, bins=10)
@@ -61,6 +61,7 @@ def main():
     if len(sys.argv) < 2:
         print("Bitte gib den Namen des Logfiles ein.")
         print("Logfile erzeugen mit 'ping -D -O www.google.com > pingoutput.txt'")
+        #read_log("pingoutput.txt")
         sys.exit(1)
 
     read_log(sys.argv[1])

@@ -1,4 +1,4 @@
-from vectors import get_vector
+from gpt import get_vector
 from vectordb import getMatches
 from ragprompt import get_answer
 import pandas as pd
