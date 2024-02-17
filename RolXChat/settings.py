@@ -15,4 +15,5 @@ AZURE_API_DEPLOYMENT_NAME = 'gpt4' # 'gpt-35-turbo-16k'
 AZURE_API_EMBEDDING_DEPLOYMENT_NAME = 'text-embedding-ada-002'
 
 #Database
-DATABASE="rolx-export.xlsx"
+DATABASE="rolx-export-2401.xlsx"
+
