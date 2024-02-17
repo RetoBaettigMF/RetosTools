@@ -4,7 +4,7 @@ from pandasql import sqldf
 import datetime
 import json
 
-data = pd.read_excel("rolx-export-small.xlsx")
+data = pd.read_excel("rolx-export.xlsx")
 
 def get_data(sql_query):
     try:
@@ -73,8 +73,7 @@ def query_llm(messages, tools):
 def main():    
     messages = [
         {"role": "system", "content": "You are a project management assistant and you answer questions about the time tracking data of the company."\
-         "You can answer questions about the actual date and time and you can call SQL queries on the data."},
-        {"role": "user", "content": "Wieviel Zeit wurde auf Projekt 8810 gebucht?"}
+         "You can answer questions about the actual date and time and you can call SQL queries on the data."}
     ]
     tools = [
         {
