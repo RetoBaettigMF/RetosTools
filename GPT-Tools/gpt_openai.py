@@ -15,14 +15,17 @@ def get_vector_openai(text):
     client = OpenAI()
     return client.embeddings.create(input = [text], model=EMBEDDINGS_MODEL).data[0].embedding
 
-def get_single_completion_openai(prompt):
+def get_completion_openai(**args):
     if not check_key():
         return None 
     
     client = OpenAI()
+    args["model"] = CHAT_MODEL
 
-    chat_completion = client.chat.completions.create(
-        messages=[{"role": "user", "content": prompt}],
-        model=CHAT_MODEL
-    )
+    chat_completion = client.chat.completions.create(**args)
+     
+    return chat_completion
+
+def get_single_completion_openai(prompt):
+    chat_completion = get_completion_openai(messages=[{"role": "user", "content": prompt}])
     return chat_completion.choices[0].message.content

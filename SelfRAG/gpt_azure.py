@@ -21,7 +21,7 @@ def get_vector_azure(text):
 
     return client.embeddings.create(input = [text], model=AZURE_API_EMBEDDING_DEPLOYMENT_NAME).data[0].embedding
 
-def get_completion_azure(prompt):
+def get_completion_azure(**args):
     if not check_key():
         return None 
     
@@ -30,9 +30,13 @@ def get_completion_azure(prompt):
         api_version=AZURE_API_VERSION,
         azure_endpoint = AZURE_OPENAI_ENDPOINT
     )
+
+    args["model"] = AZURE_API_DEPLOYMENT_NAME
     
-    chat_completion = client.chat.completions.create(
-        messages=[{"role": "user", "content": prompt}],
-        model=AZURE_API_DEPLOYMENT_NAME
-    )
+    chat_completion = client.chat.completions.create(**args)
+     
+    return chat_completion
+
+def get_single_completion_azure(prompt):
+    chat_completion = get_completion_azure(messages=[{"role": "user", "content": prompt}])
     return chat_completion.choices[0].message.content
