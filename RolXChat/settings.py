@@ -1,4 +1,4 @@
-USE_AZURE = False
+USE_AZURE = True
 
 #OpenAI Settings
 #(API-KEY is set in environment variable OPENAI_API_KEY)
