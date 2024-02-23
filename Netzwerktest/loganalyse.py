@@ -1,7 +1,17 @@
 import re
 import sys
+import datetime
 import matplotlib.pyplot as plt
+import datetime
 
+def convert_timestamp_to_string(unix_timestamp):
+    # Konvertieren Sie den Unix-Timestamp in ein datetime-Objekt
+    dt_object = datetime.datetime.fromtimestamp(unix_timestamp)
+
+    # Konvertieren Sie das datetime-Objekt in einen String
+    string_timestamp = dt_object.strftime("%Y-%m-%d %H:%M:%S")
+
+    return string_timestamp
 
 def read_log(logfile):
     ping_times = []
@@ -42,6 +52,8 @@ def read_log(logfile):
     # Berechnen Sie die Differenz zwischen dem frühesten und dem neuesten Zeitstempel
     time_difference = latest_timestamp - earliest_timestamp
     print()
+    print("Start des Tests:", convert_timestamp_to_string(earliest_timestamp))
+    print("Ende des Tests:", convert_timestamp_to_string(latest_timestamp))
     print("Anzahl der Antworten, die länger als 100ms gedauert haben:", interruptions)
     print("Längste Antwortzeit:", max(ping_times), "ms")
     print("Testdauer:", time_difference, "s")
