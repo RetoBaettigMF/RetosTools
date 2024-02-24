@@ -8,6 +8,9 @@ class WordFiller:
     df = None
 
     def getAIData2(self, challenge, angebot, referenzen):
+        print("Generiere Texte für folgende Challenge: "+challenge)
+        if not isinstance(referenzen, str):
+            referenzen = ""
         prompt = "Du bist ein Marketing-Experte und musst für die Webseite des Software-Dienslteisters CUDOS ihr Angebot beschreiben."\
         "CUDOS bietet Individualsoftwareentwicklung, Beratung und Personalverleih für Unternehmen (B2B) an."\
         "Du kriegst kurz zusammengefasst ein Kundenbedürfnis, ein mögliches Angebot dazu und Referenzbeispiele"\
@@ -31,10 +34,12 @@ class WordFiller:
         self.doc.render(context)
         
         # Word-Dokument speichern
+        print("Speichere Angebot in Word-Dokument "+context.get("Filename")+"...")
         self.doc.save(context.get("Filename"))
 
     def fill_words(self):
         for index, row in self.df.iterrows():
+            print("Generiere "+str(index+1)+". Angebot...")
             self.fill_word(row)
 
     def __init__(self, exceldata):
