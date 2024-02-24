@@ -1,7 +1,6 @@
-# RolXChat
+# DocFiller
 
-Dieses Programm ist ein Demonstrator für FunctionCalling.
-Es kann RolX-Zeiterfassungsdaten per Sprache abfragen
+Dieses Programm ist ein Demonstrator, wie Dokumente automatisch ausgefüllt werden können
 
 Das Programm greift direkt auf das API von OpenAI bzw. Azure OpenAI zu.
 
