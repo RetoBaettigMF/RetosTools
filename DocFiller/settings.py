@@ -13,3 +13,8 @@ AZURE_API_TYPE = 'azure'
 AZURE_API_VERSION = '2023-09-01-preview'
 AZURE_API_DEPLOYMENT_NAME = 'gpt4' # 'gpt-35-turbo-16k'
 AZURE_API_EMBEDDING_DEPLOYMENT_NAME = 'text-embedding-ada-002'
+
+
+#Application Settings
+EXCELDATA = "Angebot M&F.xlsx"
+WORDTEMPLATE = "Vorlage.docx"
