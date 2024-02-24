@@ -1,8 +1,8 @@
-USE_AZURE = True
+USE_AZURE = False
 
 #OpenAI Settings
 #(API-KEY is set in environment variable OPENAI_API_KEY)
-CHAT_MODEL = "gpt-3.5-turbo-16k" #CHAT_MODEL = "gpt-4"
+CHAT_MODEL = "gpt-4-1106-preview" #"gpt-4" "gpt-3.5-turbo-16k" 
 EMBEDDINGS_MODEL = "text-embedding-ada-002"
 
 

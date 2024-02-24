@@ -1,4 +1,4 @@
-from gpt import get_completion, get_single_completion
+from gpt import get_completion, get_json_completion
 import json
 
 def get_current_weather(location, unit="celsius"):
@@ -81,6 +81,15 @@ def chat():
         messages.append(message)
         print("AI: " + message.content)
 
+def chat_json():
+    while True:
+        user_input = input("You: ")
+        if user_input == "":
+            break
+        if user_input.lower().find("json")==-1:
+            user_input = user_input+" \nReturn the answer in json format { \"answer\": ...}"
+        print("AI: " + get_json_completion(user_input))
+
 
 if __name__ == "__main__":
-    chat()
+    chat_json()
