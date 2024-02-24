@@ -29,3 +29,7 @@ def get_completion_openai(**args):
 def get_single_completion_openai(prompt):
     chat_completion = get_completion_openai(messages=[{"role": "user", "content": prompt}])
     return chat_completion.choices[0].message.content
+
+def get_json_completion_openai(prompt):
+    chat_completion = get_completion_openai(messages=[{"role": "user", "content": prompt}], response_format={"type": "json_object"})
+    return chat_completion.choices[0].message.content

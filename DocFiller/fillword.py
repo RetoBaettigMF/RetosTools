@@ -1,6 +1,6 @@
 from docxtpl import DocxTemplate
 from settings import WORDTEMPLATE
-from gpt import get_single_completion
+from gpt import get_json_completion
 import json
 
 class WordFiller:
@@ -21,7 +21,7 @@ class WordFiller:
         "Challenge:"+challenge+"\n"\
         "Angebot:"+angebot+"\n"\
         "Referenzen:"+referenzen+"\n---"
-        answer = get_single_completion(prompt)
+        answer = get_json_completion(prompt)
         return json.loads(answer)
 
     def getAIData(self, row):
