@@ -61,12 +61,12 @@ def get_base_url(url):
 
 def get_selenium_driver():
     options = Options()
-    options.add_argument('--headless')  # Führt den Browser im Hintergrund aus
+    #options.add_argument('--headless')  # Führt den Browser im Hintergrund aus
     options.add_argument('--disable-gpu')  # Deaktiviert die GPU-Beschleunigung, um Ressourcen zu sparen
     driver = webdriver.Chrome(options=options)  # Verwenden Sie hier den Pfad zum heruntergeladenen Webdriver
     return driver
 
-def scrape(driver, url, base_url):
+def scrape(driver, url, base_url, recursive=True):
     global done_urls
 
     if url in done_urls:
@@ -101,7 +101,7 @@ def scrape(driver, url, base_url):
         if href.startswith('/'):
             href = get_base_url(base_url)+"/"+href[1:]
         
-        if base_url in href:
+        if base_url in href and recursive:
             # Rufen Sie die Funktion rekursiv auf, um die verlinkte Seite zu durchsuchen
             scrape(driver, href, base_url)
 
@@ -122,6 +122,10 @@ def main():
         exit()
 
     driver=get_selenium_driver()
+    #Erster Aufruf manuell machen, um einzuloggen und Cookies zu akzeptieren
+    #scrape(driver, MainURL, MainURL, False);
+    #ok = input("Please accept cookies and login if necessary. Then press enter to continue")
+    #Dann den eigentlichen rekursiven Scraping-Aufruf machen
     scrape(driver, MainURL, MainURL)
     concatenateFiles(resultdir, 'result.md')
     driver.quit()
