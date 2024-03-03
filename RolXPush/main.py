@@ -1,4 +1,5 @@
 import mysql.connector
+import pandas as pd
 import os
 
 def get_tables(db):
@@ -26,13 +27,43 @@ def get_headers(db, table):
     results = mycursor.fetchall()
     return results
 
+def get_month(db):
+    mycursor = db.cursor()
+
+    query = """
+SELECT re.*, (re.DurationSeconds - COALESCE(re.PauseSeconds, 0)) AS Duration, a.Name, sp.ProjectNumber
+FROM recordentries re
+JOIN activities a ON re.ActivityId = a.Id
+JOIN subprojects sp ON a.SubprojectId = sp.Id
+JOIN records r ON re.RecordId = r.Id
+WHERE r.Date >= '2024-01-01' AND r.Date <= '2024-01-31';
+"""
+    query = """
+SELECT re.*, (re.DurationSeconds - COALESCE(re.PauseSeconds, 0)) AS Duration, a.Name, sp.ProjectNumber
+FROM recordentries re
+JOIN activities a ON re.ActivityId = a.Id
+JOIN subprojects sp ON a.SubprojectId = sp.Id
+JOIN records r ON re.RecordId = r.Id
+WHERE r.Date >= '2024-01-01' AND r.Date <= '2024-01-31';
+"""
+    mycursor.execute(query)
+    df = pd.DataFrame(mycursor.fetchall(), columns=mycursor.column_names)
+    return df
+
 def get_table_info(db, table):
     headers=get_headers(db, table)
-    result = "Table: " + table + "\n"
+    result = "## Table: " + table + "\n"
+    result += "| Field | Type     |\n"
+    result += "|-------|----------|\n"
     for x in headers:
-        result += "   Field: "+x[0] + ":" + x[1] + "\n"
+        result += "| "+x[0] + " | " + x[1] + "|\n"
     print(result)
     return result
+
+def print_database_schema(db):
+    tables = get_tables(db)
+    for table in tables:
+        get_table_info(db, table)
 
 def main():
     password = os.getenv('ROLX_PASSWORD')
@@ -45,9 +76,12 @@ def main():
         password=password,
         database="rolx_production"
     )
-    tables = get_tables(mydb)
-    for table in tables:
-        get_table_info(mydb, table)
+
+    #print_database_schema(mydb)
+    
+    df = get_month(mydb)
+    print(df.head().to_string())
+    df.to_excel('output.xlsx', index=False)
     
     mydb.close()
 
