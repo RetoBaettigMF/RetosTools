@@ -31,19 +31,13 @@ def get_month(db):
     mycursor = db.cursor()
 
     query = """
-SELECT re.*, (re.DurationSeconds - COALESCE(re.PauseSeconds, 0)) AS Duration, a.Name, sp.ProjectNumber
+SELECT r.Date, u.Email, sp.Projectnumber, sp.Number AS Subprojectnumber, a.Number, sp.CustomerName, sp.ProjectName, sp.Name, a.Name, (re.DurationSeconds - COALESCE(re.PauseSeconds, 0)) AS Duration, b.Name, re.Comment
 FROM recordentries re
 JOIN activities a ON re.ActivityId = a.Id
 JOIN subprojects sp ON a.SubprojectId = sp.Id
 JOIN records r ON re.RecordId = r.Id
-WHERE r.Date >= '2024-01-01' AND r.Date <= '2024-01-31';
-"""
-    query = """
-SELECT re.*, (re.DurationSeconds - COALESCE(re.PauseSeconds, 0)) AS Duration, a.Name, sp.ProjectNumber
-FROM recordentries re
-JOIN activities a ON re.ActivityId = a.Id
-JOIN subprojects sp ON a.SubprojectId = sp.Id
-JOIN records r ON re.RecordId = r.Id
+JOIN users u ON r.UserId = u.Id
+JOIN billabilities b ON a.BillabilityId = b.Id
 WHERE r.Date >= '2024-01-01' AND r.Date <= '2024-01-31';
 """
     mycursor.execute(query)
