@@ -51,9 +51,9 @@ def get_month(db, year, month):
     df = pd.DataFrame(mycursor.fetchall(), columns=mycursor.column_names)
     return df
 
-def get_last_30_days(db):
+def get_last_num_days(db, days):
     mycursor = db.cursor()
-    query = BASEQUERY + "WHERE r.Date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)"
+    query = BASEQUERY + "WHERE r.Date >= DATE_SUB(CURDATE(), INTERVAL " + str(days) + " DAY)"
     mycursor.execute(query)
     df = pd.DataFrame(mycursor.fetchall(), columns=mycursor.column_names)
     return df
@@ -87,7 +87,7 @@ def main():
 
     #print_database_schema(mydb)
     #df = get_month(mydb, 2024, 2)
-    df = get_last_30_days(mydb)
+    df = get_last_num_days(mydb, 10)
     print(df.head().to_string())
     df.to_excel('output.xlsx', index=False)
     
