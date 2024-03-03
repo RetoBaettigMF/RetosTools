@@ -3,31 +3,40 @@ from pandasql import sqldf
 from teams_push import send_teams_message
 
 QUERY_VERRECHENBAR = """
- SELECT FirstName as Vorname, LastName as Nachname, SUM(Duration) as Total, 
+ SELECT d.FirstName as Vorname, d.LastName as Nachname, SUM(Duration) as Total, 
  SUM(CASE WHEN ActivityIsBillable = TRUE THEN Duration ELSE 0 END) as Verrechenbar, 
- (SUM(CASE WHEN ActivityIsBillable = TRUE THEN Duration ELSE 0 END) / SUM(Duration)) * 100 as Verrechenbarkeit 
- FROM data GROUP BY FirstName, LastName ORDER BY Verrechenbarkeit DESC
+ (SUM(CASE WHEN ActivityIsBillable = TRUE THEN Duration ELSE 0 END) / SUM(Duration)) * 100 as Verrechenbarkeit, 
+ COALESCE(u.Factor*100, 100) as Anstellungsgrad, (SUM(Duration) / COALESCE(u.Factor, 1) / 42 * 100) as Stundenbuchungsgrad
+ FROM data d 
+ LEFT JOIN users u ON d.FirstName = u.FirstName AND d.LastName = u.LastName
+ GROUP BY d.FirstName, d.LastName ORDER BY Verrechenbarkeit DESC
  """
 
-def get_billability(data):
+
+def get_billability(data, users):
     result = sqldf(QUERY_VERRECHENBAR, locals())
     result["Total"] = result["Total"].astype(int)
     result["Verrechenbar"] = result["Verrechenbar"].astype(int)
     result["Verrechenbarkeit"] = result["Verrechenbarkeit"].astype(int)
+    result["Anstellungsgrad"] = result["Anstellungsgrad"].astype(int)
+    result["Stundenbuchungsgrad"] = result["Stundenbuchungsgrad"].astype(int)
     
     print(result.to_string())
-    send_teams_message("Verrechenbarkeit in den letzten 7 Tagen:", result.to_html(index=False))
-    
+    return result
 
-
-
+def generate_statistics(data, users):
+    billability = get_billability(data, users)
+    send_teams_message("Verrechenbarkeit in den letzten 7 Tagen:", billability.to_html(index=False))
+    notbooked = sqldf("SELECT * FROM billability WHERE (Stundenbuchungsgrad < 80)", locals())
+    send_teams_message("Diese User haben wahrscheinlich noch nicht alles gebucht:", notbooked.to_html(index=False))
 
 def main():
     rolx = rolX()
-    data = rolx.get_last_num_days(10)
-    get_billability(data)
+    data = rolx.get_last_num_days(7)
+    data.to_excel('output.xlsx', index=False)
     users = rolx.get_users()
-    print(users)
+    generate_statistics(data, users)
+    
     
         
 if __name__ == "__main__":

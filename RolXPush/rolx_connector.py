@@ -17,7 +17,7 @@ JOIN billabilities b ON a.BillabilityId = b.Id
 """
 
 USERQUERY ="""
-SELECT u.Id, u.FirstName, u.LastName, u.Email, ups.Factor
+SELECT u.FirstName, u.LastName, u.Email, ups.Factor
 FROM users u
 JOIN userparttimesettings ups ON u.Id = ups.UserId
 WHERE (ups.UserId, ups.StartDate) IN (
@@ -95,7 +95,8 @@ class rolX:
         return df
 
     def get_last_num_days(self, days):
-        query = BASEQUERY + "WHERE r.Date >= DATE_SUB(CURDATE(), INTERVAL " + str(days) + " DAY)"
+        query = BASEQUERY + "WHERE (r.Date >= DATE_SUB(CURDATE(), INTERVAL " + str(days) + " DAY) AND" 
+        query = query + " r.Date < CURDATE())"
         df = self.__query(query)
         return df
     
