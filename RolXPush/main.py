@@ -23,23 +23,32 @@ def get_tables(db):
     string_list = [item[0] for item in results]
     return string_list
 
+def get_headers(db, table):
+    mycursor = db.cursor()
+    mycursor.execute("SHOW COLUMNS FROM " + table)
+    results = mycursor.fetchall()
+    return results
+
 def get_users(db):
     mycursor = db.cursor()
     mycursor.execute("SELECT * FROM users")
     results = mycursor.fetchall()
     return results
 
-def get_activities(db, num):
-    mycursor = db.cursor()
-    mycursor.execute("SELECT * FROM activities LIMIT " + str(num))
-    results = mycursor.fetchall()
-    return mycursor
+def get_table_info(db, table):
+    headers=get_headers(db, table)
+    result = "## Table: " + table + "\n"
+    result += "| Field | Type     |\n"
+    result += "|-------|----------|\n"
+    for x in headers:
+        result += "| "+x[0] + " | " + x[1] + "|\n"
+    print(result)
+    return result
 
-def get_headers(db, table):
-    mycursor = db.cursor()
-    mycursor.execute("SHOW COLUMNS FROM " + table)
-    results = mycursor.fetchall()
-    return results
+def print_database_schema(db):
+    tables = get_tables(db)
+    for table in tables:
+        get_table_info(db, table)
 
 def get_month(db, year, month):
     mycursor = db.cursor()
@@ -57,21 +66,6 @@ def get_last_num_days(db, days):
     mycursor.execute(query)
     df = pd.DataFrame(mycursor.fetchall(), columns=mycursor.column_names)
     return df
-
-def get_table_info(db, table):
-    headers=get_headers(db, table)
-    result = "## Table: " + table + "\n"
-    result += "| Field | Type     |\n"
-    result += "|-------|----------|\n"
-    for x in headers:
-        result += "| "+x[0] + " | " + x[1] + "|\n"
-    print(result)
-    return result
-
-def print_database_schema(db):
-    tables = get_tables(db)
-    for table in tables:
-        get_table_info(db, table)
 
 def main():
     password = os.getenv('ROLX_PASSWORD')
