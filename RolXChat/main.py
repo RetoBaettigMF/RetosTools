@@ -1,5 +1,6 @@
 from gpt import get_completion
 from tools import Tools
+from rolx_connector import rolX
 
 def query_llm(messages, tools):
     completion = get_completion(messages=messages, tools=tools.get_tools())

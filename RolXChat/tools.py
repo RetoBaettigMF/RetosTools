@@ -2,11 +2,21 @@ import pandas as pd
 from pandasql import sqldf
 import datetime
 import json
-from settings import DATABASE
+from rolx_connector import rolX
 
 class Tools:
     def __init__(self):
-        self.data = pd.read_excel(DATABASE)
+        try:
+            rolx = rolX()
+            self.data = rolx.get_last_num_days(60)
+        except Exception as e:
+            print("Could not connect to rolX database: ", str(e))
+            print("Using example data instead.")
+            self.data = pd.read_excel("rolx_example.xlsx")
+        
+        print(self.data.head().to_string())
+        self.data.to_excel('rolx_example.xlsx', index=False)
+    
 
     def get_data(self, sql_query):
         try:
@@ -38,8 +48,7 @@ class Tools:
                     "name": "get_data",
                     "description": "Calls a SQL query on the data and returns the result as JSON\n"\
                         "The header and first line of table=\"data\" looks like this:\n"\
-                        "Datum;	Projekt Nr;	Kunde;	Projekt;	Subprojekt Nr;	Subprojekt;	Aktivität Nr;	Aktivität;	Verrechenbarkeit;	Mitarbeiter;	Zeit [h]\n"\
-                        "02.01.2020;	8900;	M&F;	Allgemein;	1;	Bezahlte Abwesenheiten;	1;	Ferien; Abwesenheit;	Max Barthel;	8.4",
+                        + self.data.head(1).to_string() + "\n",
                     "parameters": {
                         "type": "object",
                         "properties": {
