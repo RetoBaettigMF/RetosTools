@@ -86,3 +86,4 @@ class rolX:
         df = self.__query(query)
         return df
     
+    

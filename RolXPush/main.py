@@ -1,16 +1,19 @@
-import mysql.connector
-import pandas as pd
-import os
 from rolx_connector import rolX
+from pandasql import sqldf
+
+QUERY_VERRECHENBAR = """
+ SELECT FirstName as Vorname, LastName as Nachname, SUM(Duration) as Total, 
+ SUM(CASE WHEN ActivityIsBillable = TRUE THEN Duration ELSE 0 END) as Verrechenbar, 
+ (SUM(CASE WHEN ActivityIsBillable = TRUE THEN Duration ELSE 0 END) / SUM(Duration)) * 100 as Verrechenbarkeit 
+ FROM data GROUP BY FirstName, LastName ORDER BY Verrechenbarkeit DESC
+ """
 
 def main():
     rolx = rolX()
-    schema = rolx.get_database_schema()
-    print(schema)
+    data = rolx.get_last_num_days(10)
+    result = sqldf(QUERY_VERRECHENBAR, locals())
+    print(result)
     
-    df = rolx.get_last_num_days(10)
-    print(df.head().to_string())
-    df.to_excel('output.xlsx', index=False)
         
 if __name__ == "__main__":
     main()
