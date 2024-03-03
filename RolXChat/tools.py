@@ -8,14 +8,12 @@ class Tools:
     def __init__(self):
         try:
             rolx = rolX()
-            self.data = rolx.get_last_num_days(60)
+            self.data = rolx.get_last_num_days(7)
+            self.data.to_excel('rolx_example.xlsx', index=False)
         except Exception as e:
             print("Could not connect to rolX database: ", str(e))
             print("Using example data instead.")
             self.data = pd.read_excel("rolx_example.xlsx")
-        
-        print(self.data.head().to_string())
-        self.data.to_excel('rolx_example.xlsx', index=False)
     
 
     def get_data(self, sql_query):

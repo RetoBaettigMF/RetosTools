@@ -7,7 +7,7 @@ SELECT r.Date, u.FirstName, u.LastName, sp.Projectnumber, sp.Number AS Subprojec
     CONCAT('#', LPAD(sp.ProjectNumber, 4, '0'), '.', LPAD(sp.Number, 3, '0')) AS OrderNumber,
     sp.CustomerName AS Customer, sp.ProjectName AS Project, sp.Name AS Subproject, 
     a.Name AS Activity, ((re.DurationSeconds - COALESCE(re.PauseSeconds, 0)) / 3600) AS Duration, 
-    b.Name AS Billability, b.IsBillable, re.Comment
+    b.Name AS Billability, b.IsBillable as ActivityIsBillable, re.Comment
 FROM recordentries re
 JOIN activities a ON re.ActivityId = a.Id
 JOIN subprojects sp ON a.SubprojectId = sp.Id
@@ -36,11 +36,11 @@ class rolX:
         if self.__mydb is not None:
             self.__mydb.close()
 
-
     def __query(self, query):
         self.__cursor.execute(query)
         df = pd.DataFrame(self.__cursor.fetchall(), columns=self.__cursor.column_names)
         df['Duration'] = df['Duration'].astype(float)
+        df['ActivityIsBillable'] = df['ActivityIsBillable'].astype(bool)
         return df
 
     def get_users(self):
