@@ -9,12 +9,25 @@ QUERY_VERRECHENBAR = """
  FROM data GROUP BY FirstName, LastName ORDER BY Verrechenbarkeit DESC
  """
 
+def get_billability(data):
+    result = sqldf(QUERY_VERRECHENBAR, locals())
+    result["Total"] = result["Total"].astype(int)
+    result["Verrechenbar"] = result["Verrechenbar"].astype(int)
+    result["Verrechenbarkeit"] = result["Verrechenbarkeit"].astype(int)
+    
+    print(result.to_string())
+    send_teams_message("Verrechenbarkeit in den letzten 7 Tagen:", result.to_html(index=False))
+    
+
+
+
+
 def main():
     rolx = rolX()
     data = rolx.get_last_num_days(10)
-    result = sqldf(QUERY_VERRECHENBAR, locals())
-    print(result.to_string())
-    send_teams_message("Verrechenbarkeit in den letzten 7 Tagen:", result.to_html(index=False))
+    get_billability(data)
+    users = rolx.get_users()
+    print(users)
     
         
 if __name__ == "__main__":

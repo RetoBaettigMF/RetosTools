@@ -16,6 +16,17 @@ JOIN users u ON r.UserId = u.Id
 JOIN billabilities b ON a.BillabilityId = b.Id
 """
 
+USERQUERY ="""
+SELECT u.Id, u.FirstName, u.LastName, u.Email, ups.Factor
+FROM users u
+JOIN userparttimesettings ups ON u.Id = ups.UserId
+WHERE (ups.UserId, ups.StartDate) IN (
+    SELECT UserId, MAX(StartDate)
+    FROM userparttimesettings
+    GROUP BY UserId
+)
+"""
+
 class rolX:
     __cursor = None
 
@@ -44,7 +55,9 @@ class rolX:
         return df
 
     def get_users(self):
-        df = self.__query("SELECT * FROM users")
+        #self.__cursor.execute("SELECT * FROM users")
+        self.__cursor.execute(USERQUERY)
+        df = pd.DataFrame(self.__cursor.fetchall(), columns=self.__cursor.column_names)
         return df
     
     def get_tables(self):
