@@ -27,19 +27,26 @@ def get_headers(db, table):
     results = mycursor.fetchall()
     return results
 
-def get_month(db):
+def get_month(db, year, month):
     mycursor = db.cursor()
+    datestart = str(year) + '-' + str(month) + '-1'
+    dateend =str(year) + '-' + str(month) + '-31'
+    where = "WHERE r.Date >= '" + datestart + "' AND r.Date <= '" + dateend + "'"
 
     query = """
-SELECT r.Date, u.Email, sp.Projectnumber, sp.Number AS Subprojectnumber, a.Number, sp.CustomerName, sp.ProjectName, sp.Name, a.Name, (re.DurationSeconds - COALESCE(re.PauseSeconds, 0)) AS Duration, b.Name, re.Comment
+SELECT r.Date, u.Email, sp.Projectnumber, sp.Number AS Subprojectnumber, a.Number AS ActivityNumber, 
+    CONCAT('#', LPAD(sp.ProjectNumber, 4, '0'), '.', LPAD(sp.Number, 3, '0')) AS OrderNumber,
+    sp.CustomerName AS Customer, sp.ProjectName AS Project, sp.Name AS Subproject, 
+    a.Name AS Activity, (re.DurationSeconds - COALESCE(re.PauseSeconds, 0)) AS Duration, 
+    b.Name AS Billability, re.Comment
 FROM recordentries re
 JOIN activities a ON re.ActivityId = a.Id
 JOIN subprojects sp ON a.SubprojectId = sp.Id
 JOIN records r ON re.RecordId = r.Id
 JOIN users u ON r.UserId = u.Id
 JOIN billabilities b ON a.BillabilityId = b.Id
-WHERE r.Date >= '2024-01-01' AND r.Date <= '2024-01-31';
 """
+    query += where
     mycursor.execute(query)
     df = pd.DataFrame(mycursor.fetchall(), columns=mycursor.column_names)
     return df
@@ -73,7 +80,7 @@ def main():
 
     #print_database_schema(mydb)
     
-    df = get_month(mydb)
+    df = get_month(mydb, 2024, 2)
     print(df.head().to_string())
     df.to_excel('output.xlsx', index=False)
     
