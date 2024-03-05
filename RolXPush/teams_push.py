@@ -1,7 +1,7 @@
 import requests
 import json
 
-TEAMS_HOOK = "https://mfeng.webhook.office.com/webhookb2/dc1e3b78-9986-4199-b0a2-48aa375a0424@7e35793e-43c3-40a6-abde-65b56160d26a/IncomingWebhook/171a968ce0674c4c9136fc558ab015bd/a5c82cf7-fad1-42e5-97bc-baaf2b0a1f81"
+TEAMS_HOOK = "https://mfeng.webhook.office.com/webhookb2/dc1e3b78-9986-4199-b0a2-48aa375a0424@7e35793e-43c3-40a6-abde-65b56160d26a/IncomingWebhook/ff6a964c47004123bd4dc74c6206d8e6/a5c82cf7-fad1-42e5-97bc-baaf2b0a1f81"
 
 def send_teams_message(title, message):
     headers = {
