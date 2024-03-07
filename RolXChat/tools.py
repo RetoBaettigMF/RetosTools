@@ -8,7 +8,8 @@ class Tools:
     def __init__(self):
         try:
             rolx = rolX()
-            self.data = rolx.get_last_num_days(7)
+            self.data = rolx.get_last_num_days(90)
+            #self.data = rolx.get_month(2024, 2)           
             self.data.to_excel('rolx_example.xlsx', index=False)
         except Exception as e:
             print("Could not connect to rolX database: ", str(e))
