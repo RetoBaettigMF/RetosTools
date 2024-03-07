@@ -45,6 +45,7 @@ class Tools:
                 "function": {
                     "name": "get_data",
                     "description": "Calls a SQL query on the data and returns the result as JSON\n"\
+                        "For dates, use the format 'YYYY-MM-DD\n"\
                         "The header and first line of table=\"data\" looks like this:\n"\
                         + self.data.head(1).to_string() + "\n",
                     "parameters": {
