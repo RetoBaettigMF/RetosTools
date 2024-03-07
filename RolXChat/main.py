@@ -1,6 +1,6 @@
 from gpt import get_completion
 from tools import Tools
-from rolx_connector import rolX
+from datetime import datetime
 
 def query_llm(messages, tools):
     completion = get_completion(messages=messages, tools=tools.get_tools())
@@ -23,7 +23,8 @@ def main():
     
     messages = [
         {"role": "system", "content": "You are a project management assistant and you answer questions about the time tracking data of the company."\
-         "You can answer questions about the actual date and time and you can call SQL queries on the data. Show the data in tables if possible."}
+         "You can answer questions about the actual date and time and you can call SQL queries on the data. Show the data in tables if possible. The actual year is "+
+        str(datetime.now().year)+"."}
     ]
 
     while True:
