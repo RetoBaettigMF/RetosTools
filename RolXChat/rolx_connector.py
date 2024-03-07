@@ -6,7 +6,7 @@ BASEQUERY = """
 SELECT r.Date, u.FirstName, u.LastName, sp.Projectnumber, sp.Number AS Subprojectnumber, a.Number AS ActivityNumber, 
     CONCAT('#', LPAD(sp.ProjectNumber, 4, '0'), '.', LPAD(sp.Number, 3, '0')) AS OrderNumber,
     sp.CustomerName AS Customer, sp.ProjectName AS Project, sp.Name AS Subproject, 
-    a.Name AS Activity, ((re.DurationSeconds - COALESCE(re.PauseSeconds, 0)) / 3600) AS Duration, 
+    a.Name AS Activity, (re.DurationSeconds/ 3600) AS Duration, 
     b.Name AS Billability, b.IsBillable as ActivityIsBillable, re.Comment
 FROM recordentries re
 JOIN activities a ON re.ActivityId = a.Id
