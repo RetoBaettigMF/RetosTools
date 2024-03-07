@@ -37,7 +37,7 @@ class rolX:
             return
         self.__mydb = mysql.connector.connect(
             host="rolx-database.mariadb.database.azure.com",
-            user="rolx_prod@rolx-database",
+            user="rolx_prod_readonly@rolx-database",
             password=password,
             database="rolx_production"
         )

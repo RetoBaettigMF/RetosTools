@@ -1,4 +1,5 @@
 from rolx_connector import rolX
+import argparse
 from pandasql import sqldf
 from teams_push import send_teams_message
 
@@ -24,11 +25,22 @@ def get_billability(data, users):
     print(result.to_string())
     return result
 
+def handle_arguments():
+    parser = argparse.ArgumentParser(description='Generate statistics for rolX')
+    parser.add_argument('--sendteams', action='store_true',
+                        help='sends the statistics to the teams channel')
+    return parser.parse_args()
+
 def generate_statistics(data, users):
+    args = handle_arguments()
     billability = get_billability(data, users)
-    send_teams_message("Verrechenbarkeit in den letzten 7 Tagen:", billability.to_html(index=False))
     notbooked = sqldf("SELECT * FROM billability WHERE (Stundenbuchungsgrad < 80)", locals())
-    send_teams_message("Diese User haben wahrscheinlich noch nicht alles gebucht:", notbooked.to_html(index=False))
+    if args.sendteams:
+        send_teams_message("Verrechenbarkeit in den letzten 7 Tagen:", billability.to_html(index=False))
+        send_teams_message("Diese User haben wahrscheinlich noch nicht alles gebucht:", notbooked.to_html(index=False))
+    else:
+        print(billability.to_string())
+        print(notbooked.to_string())
 
 def main():
     rolx = rolX()
