@@ -18,6 +18,19 @@ def query_llm(messages, tools):
 
     return message.content
 
+def get_multiline_input(prompt):
+    inp = input(prompt)
+    result = inp
+    if inp.startswith("\"\"\""):
+        while True:
+            inp = input("")
+            result+=inp
+            if inp.endswith("\"\"\""):
+                break
+        
+    return result
+
+
 def main():    
     tools = Tools()
     
@@ -28,7 +41,7 @@ def main():
     ]
 
     while True:
-        user_input = input("You: ")
+        user_input = get_multiline_input("You: ")
         if user_input == "":
             break
         messages.append({"role": "user", "content": user_input})
@@ -36,19 +49,5 @@ def main():
         print("\nYOU:" + user_input)
         print("AI: " + reply)
     
-
-def chat():
-    messages = []
-    while True:
-        user_input = input("You: ")
-        if user_input == "":
-            break
-        messages.append({"role": "user", "content": user_input})
-        completion = get_completion(messages=messages)
-        message=completion.choices[0].message
-        messages.append(message)
-        print("AI: " + message.content)
-
-
 if __name__ == "__main__":
     main()
