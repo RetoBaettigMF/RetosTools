@@ -33,6 +33,7 @@ def main():
             break
         messages.append({"role": "user", "content": user_input})
         reply = query_llm(messages, tools)
+        print("\nYOU:" + user_input)
         print("AI: " + reply)
     
 
