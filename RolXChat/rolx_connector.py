@@ -18,6 +18,7 @@ JOIN billabilities b ON a.BillabilityId = b.Id
 
 class rolX:
     __cursor = None
+    __mydb = None
 
     def __init__(self):
         password = os.getenv('ROLX_PASSWORD')
