@@ -1,3 +1,4 @@
+BUs = [ 'BLR', 'GUR', 'KOA', 'HEC' ]
 employees = [
     {'Vorname': 'Marcel', 'Name': 'Albl', 'BU': 'BLR'},
     {'Vorname': 'Simon', 'Name': 'Alther', 'BU': 'GUR'},

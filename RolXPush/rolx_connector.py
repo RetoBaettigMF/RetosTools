@@ -27,6 +27,12 @@ WHERE (ups.UserId, ups.StartDate) IN (
 )
 """
 
+BASELEAVEQUERY ="""
+SELECT Date, u.FirstName, u.LastName, PaidLeaveType, PaidLeaveReason
+FROM records r
+JOIN users u ON r.UserId = u.Id
+"""
+
 class rolX:
     __cursor = None
 
@@ -99,5 +105,11 @@ class rolX:
         query = query + " r.Date < CURDATE())"
         df = self.__query(query)
         return df
-    
+
+    def get_last_num_days_levae(self, days):
+        query = BASELEAVEQUERY + "WHERE (r.Date >= DATE_SUB(CURDATE(), INTERVAL " + str(days) + " DAY) AND" 
+        query = query + " r.Date < CURDATE() AND PaidLeaveType IS NOT NULL)"
+        self.__cursor.execute(query)
+        df = pd.DataFrame(self.__cursor.fetchall(), columns=self.__cursor.column_names)
+        return df  
     

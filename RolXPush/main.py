@@ -2,7 +2,7 @@ from rolx_connector import rolX
 import argparse
 from pandasql import sqldf
 from teams_push import send_teams_message
-from employees import employees
+from employees import employees, BUs
 
 QUERY_VERRECHENBAR = """
  SELECT d.FirstName as Vorname, d.LastName as Nachname, SUM(Duration) as Total, 
@@ -30,9 +30,24 @@ def add_bu(df):
     df= df.sort_values(by=['BU', 'Nachname'])
     return df
 
-def get_billability(data, users):
+def add_leave(df, leave):
+    # Eine neue Spalte "PaidLeave" zur Tabelle hinzufügen
+    df['PaidLeave'] = ''
+
+    # Die BU-Werte aus der Liste in die neue Spalte eintragen
+    for i, row in df.iterrows():
+        name = row['Nachname']
+        vorname = row['Vorname']
+        for j, leaveentry in leave.iterrows():
+            if leaveentry['LastName'] == name and leaveentry['FirstName'] == vorname:
+                df.at[i, 'PaidLeave'] = "TRUE"
+                break
+    return df
+
+def get_billability(data, users, leave):
     result = sqldf(QUERY_VERRECHENBAR, locals())
     result = add_bu(result)
+    result = add_leave(result, leave)
     result["Total"] = result["Total"].astype(int)
     result["Verrechenbar"] = result["Verrechenbar"].astype(int)
     result["Verrechenbarkeit"] = result["Verrechenbarkeit"].astype(int)
@@ -71,16 +86,30 @@ def format_billabilities_and_get_html(billability):
         file.write(html)
     return html
 
-def generate_statistics(data, users):
+def get_billabilties_per_bu(billability):
+    # Get an array of billabilities per BU
+    billabilities = []
+    #for bu in billability['BU'].unique():
+    for bu in BUs:
+        part = billability[billability['BU'] == bu].copy()
+        print(part.to_string())
+        billabilities.append(part)
+    return billabilities
+
+def generate_statistics(data, users, leave):
     args = handle_arguments()
-    billability = get_billability(data, users)
+    billability = get_billability(data, users, leave)
+    billabilities = get_billabilties_per_bu(billability)
     notbooked = sqldf("SELECT * FROM billability WHERE (Stundenbuchungsgrad < 80)", locals())
     
     if args.sendteams:
-        send_teams_message("Verrechenbarkeit in den letzten 7 Tagen:", format_billabilities_and_get_html(billability))
-        send_teams_message("Diese User haben wahrscheinlich noch nicht alles gebucht:", notbooked.to_html(index=False))
+        for bu, df in billabilities:
+            send_teams_message(bu.iloc[0]['BU']+": Verrechenbarkeit in den letzten 7 Tagen:", format_billabilities_and_get_html(df))
+        send_teams_message("Diese User haben ev. bezahlte Abwesenheiten gehabt oder noch nicht alles gebucht:", notbooked.to_html(index=False))
     else:
-        print(billability.to_string())
+        for bu in billabilities:
+            print(bu.iloc[0]['BU']+": Verrechenbarkeit in den letzten 7 Tagen:\n", bu.to_string())
+        print("\nDiese User haben ev. bezahlte Abwesenheiten gehabt oder noch nicht alles gebucht:\n")
         print(notbooked.to_string())
 
 def main():
@@ -88,7 +117,8 @@ def main():
     data = rolx.get_last_num_days(7)
     data.to_excel('output.xlsx', index=False)
     users = rolx.get_users()
-    generate_statistics(data, users)
+    leave = rolx.get_last_num_days_levae(7)
+    generate_statistics(data, users, leave)
     
     
         
