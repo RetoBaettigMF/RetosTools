@@ -103,8 +103,8 @@ def generate_statistics(data, users, leave):
     notbooked = sqldf("SELECT * FROM billability WHERE (Stundenbuchungsgrad < 80)", locals())
     
     if args.sendteams:
-        for bu, df in billabilities:
-            send_teams_message(bu.iloc[0]['BU']+": Verrechenbarkeit in den letzten 7 Tagen:", format_billabilities_and_get_html(df))
+        for bu in billabilities:
+            send_teams_message(bu.iloc[0]['BU']+": Verrechenbarkeit in den letzten 7 Tagen:", format_billabilities_and_get_html(bu))
         send_teams_message("Diese User haben ev. bezahlte Abwesenheiten gehabt oder noch nicht alles gebucht:", notbooked.to_html(index=False))
     else:
         for bu in billabilities:
