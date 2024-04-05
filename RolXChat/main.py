@@ -43,7 +43,10 @@ def main():
     while True:
         user_input = get_multiline_input("You: ")
         if user_input == "":
-            break
+            if input("Wirklich beenden (y/n)?").lower() == "y":
+                break
+            else:
+                continue
         messages.append({"role": "user", "content": user_input})
         reply = query_llm(messages, tools)
         print("\nYOU:" + user_input)
