@@ -117,16 +117,28 @@ def concatenateFiles(input_dir, output_filename):
 
 def main():
     MainURL = sys.argv[1]
+    recursive = False
+    if len(sys.argv) > 2:
+        if sys.argv[2] == '--recursive':
+            recursive = True
+        else:
+            print("Unknown parameter: ", sys.argv[2])
+            exit()
     if (MainURL == None):
         print("Please provide a URL as command line parameter")
+        print("Usage: python scrape.py <URL> [--recursive]")
+        print("Example: python scrape.py https://example.com")
+        print("Example: python scrape.py https://example.com --recursive")
+        print("The optional parameter --recursive is used to scrape all subpages of the main URL recursively.")
         exit()
+
 
     driver=get_selenium_driver()
     #Erster Aufruf manuell machen, um einzuloggen und Cookies zu akzeptieren
     #scrape(driver, MainURL, MainURL, False);
     #ok = input("Please accept cookies and login if necessary. Then press enter to continue")
     #Dann den eigentlichen rekursiven Scraping-Aufruf machen
-    scrape(driver, MainURL, MainURL)
+    scrape(driver, MainURL, MainURL, recursive)
     concatenateFiles(resultdir, 'result.md')
     driver.quit()
 

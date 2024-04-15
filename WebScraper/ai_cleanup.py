@@ -14,7 +14,8 @@ def getCompletion(prompt):
 
     chat_completion = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
-        model="gpt-3.5-turbo-1106",
+        #model="gpt-3.5-turbo-1106",
+        model="gpt-4-turbo",
         temperature=0
     )
     return chat_completion.choices[0].message.content
@@ -27,7 +28,10 @@ def aiCleanup(webpage):
     "I also want you to remove any links that are not relevant to the content. " \
     "I want you to remove any images, videos and ads that are not relevant to the content. " \
     "Here is the webpage I want you to clean up: \n+___+\n" + webpage
-
-    return getCompletion(prompt)
+    try:
+        return getCompletion(prompt)
+    except Exception as e:
+        print("Error: ", e)
+        return None
     
     
