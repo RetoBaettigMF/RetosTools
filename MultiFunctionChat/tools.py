@@ -3,12 +3,14 @@ from pandasql import sqldf
 import datetime
 import json
 from rolx_connector import rolX
+import sys
+import io
 
 class Tools:
     def __init__(self):
         try:
             rolx = rolX()
-            self.data = rolx.get_last_num_days(90)
+            self.data = rolx.get_last_num_days(60)
             #self.data = rolx.get_month(2024, 2)           
             self.data.to_excel('rolx_example.xlsx', index=False)
         except Exception as e:
@@ -30,6 +32,31 @@ class Tools:
         now = datetime.datetime.now()
         str = now.strftime("%d.%m.%Y %H:%M:%S")
         return json.dumps({"datetime": str})
+    
+    def execute_python_code(self, code):
+        
+        try:
+            print("Executing code: ", code)
+            print("\nIs this ok? (y/n)")
+            if input() != "y":
+                return json.dumps({"error": "Code execution aborted"})
+            
+            for file in code:
+                with open("run\\"+file["filename"], "w") as f:
+                    f.write(file["content"])
+        
+            
+            original_stdout = sys.stdout  # Save a reference to the original standard output
+            captured_output = io.StringIO()  # Create a StringIO object to capture output
+            sys.stdout = captured_output  # Redirect stdout to the StringIO object
+            exec(code)
+            sys.stdout = original_stdout  # Reset redirection
+            print("Captured:", captured_output.getvalue())  # Display captured output
+            return json.dumps({"output": captured_output.getvalue()})
+            
+        except Exception as e:
+            return json.dumps({"error": str(e)})
+        return json.dumps({"result": "Code executed successfully"})
 
     def get_tools(self):
         tools = [
@@ -60,6 +87,25 @@ class Tools:
                         "required": ["query"]
                     },
                 }
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "execute_python_code",
+                    "description": "Executes the given python code and returns the output",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "program_files": {
+                                "type": "string",
+                                "description": "A JSON list of files in the format [{\"filename\":\"main.py\", \"content\":\"print('hello world')\"}, ...}\n"\
+                                    "The files will be written do a directory and main.py will be executed.\n"\
+                                    "The console output will be returned.\n",
+                            }
+                        },
+                        "required": ["code"]
+                    },
+                }
             }]
         return tools
     
@@ -69,7 +115,8 @@ class Tools:
         
         available_functions = {
             "get_now": self.get_now,
-            "get_data": self.get_data
+            "get_data": self.get_data,
+            "execute_python_code": self.execute_python_code
         }  
 
         function_name = tool_call.function.name
@@ -83,6 +130,10 @@ class Tools:
         elif function_name == "get_data":
             function_response = function_to_call(
                 sql_query=function_args.get("query")
+            )
+        elif function_name == "execute_python_code":
+            function_response = function_to_call(
+                code=function_args.get("program_files")
             )
 
         messages.append(
