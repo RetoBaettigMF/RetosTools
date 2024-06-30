@@ -71,8 +71,8 @@ class Tools:
             {
                 "type": "function",
                 "function": {
-                    "name": "get_data",
-                    "description": "Calls a SQL query on the data and returns the result as JSON\n"\
+                    "name": "get_timesheet_entries",
+                    "description": "Calls a SQL query on the timesheet entries and returns the result as JSON\n"\
                         "For dates, use the format 'YYYY-MM-DD\n"\
                         "The header and first line of table=\"data\" looks like this:\n"\
                         + self.data.head(1).to_string() + "\n",
@@ -92,7 +92,8 @@ class Tools:
                 "type": "function",
                 "function": {
                     "name": "execute_python_code",
-                    "description": "Executes a given batch script on a windows PC and the given python code and returns the output",
+                    "description": "Executes a given batch script on a windows PC and the given python code and returns the output"\
+                       "The files and installed libraries remain in the project folder for subsequent calls and run.bat will be executed after each call.",
                     "parameters": {
                         "type": "object",
                         "properties": {
@@ -116,7 +117,7 @@ class Tools:
         
         available_functions = {
             "get_now": self.get_now,
-            "get_data": self.get_data,
+            "get_timesheet_entries": self.get_data,
             "execute_python_code": self.execute_python_code
         }  
 
@@ -128,7 +129,7 @@ class Tools:
 
         if function_name == "get_now":
             function_response = function_to_call()
-        elif function_name == "get_data":
+        elif function_name == "get_timesheet_entries":
             function_response = function_to_call(
                 sql_query=function_args.get("query")
             )

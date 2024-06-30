@@ -35,9 +35,12 @@ def main():
     tools = Tools()
     
     messages = [
-        {"role": "system", "content": "You are a project management assistant and you answer questions about the time tracking data of the company."\
-         "You can answer questions about the actual date and time and you can call SQL queries on the data. Show the data in tables if possible. The actual year is "+
-        str(datetime.now().year)+"."}
+        {"role": "system", "content": "You are a helpful assistant and you try to execute the wishes of the user by using all your abilities."\
+         "You can make multiple tool calls to support the user. Use the tools \n"\
+         "- get_now: to get current date and time\n"\
+         "- execute_python_code: to execute programs\n"\
+         "- get_timesheet_entries: to get timesheet and project data\n"            
+        }
     ]
 
     while True:
