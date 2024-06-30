@@ -5,12 +5,13 @@ import json
 from rolx_connector import rolX
 import sys
 import io
+import subprocess
 
 class Tools:
     def __init__(self):
         try:
             rolx = rolX()
-            self.data = rolx.get_last_num_days(60)
+            self.data = rolx.get_last_num_days(2)
             #self.data = rolx.get_month(2024, 2)           
             self.data.to_excel('rolx_example.xlsx', index=False)
         except Exception as e:
@@ -44,19 +45,18 @@ class Tools:
             for file in code:
                 with open("run\\"+file["filename"], "w") as f:
                     f.write(file["content"])
-        
             
-            original_stdout = sys.stdout  # Save a reference to the original standard output
-            captured_output = io.StringIO()  # Create a StringIO object to capture output
-            sys.stdout = captured_output  # Redirect stdout to the StringIO object
-            exec(code)
-            sys.stdout = original_stdout  # Reset redirection
-            print("Captured:", captured_output.getvalue())  # Display captured output
-            return json.dumps({"output": captured_output.getvalue()})
-            
+            # Run a simple shell command
+            result = subprocess.run('runsafe.bat', shell=True, capture_output=True, text=True, check=True, timeout=60)
+            print("stdout:",result.stdout)
+            print("stderr:",result.stderr)
+            return json.dumps({"stdout": result.stdout, "stderr": result.stderr})
+        except subprocess.TimeoutExpired:
+            print("Das Programm wurde abgebrochen, da es länger als 1 Minute gedauert hat.")
+            return json.dumps({"error": "Timeout > 1 Minute"})
         except Exception as e:
-            return json.dumps({"error": str(e)})
-        return json.dumps({"result": "Code executed successfully"})
+            print("Exception: ", str(e))
+            return json.dumps({"Exception": str(e)})
 
     def get_tools(self):
         tools = [
@@ -92,15 +92,16 @@ class Tools:
                 "type": "function",
                 "function": {
                     "name": "execute_python_code",
-                    "description": "Executes the given python code and returns the output",
+                    "description": "Executes a given batch script on a windows PC and the given python code and returns the output",
                     "parameters": {
                         "type": "object",
                         "properties": {
                             "program_files": {
                                 "type": "string",
-                                "description": "A JSON list of files in the format [{\"filename\":\"main.py\", \"content\":\"print('hello world')\"}, ...}\n"\
-                                    "The files will be written do a directory and main.py will be executed.\n"\
-                                    "The console output will be returned.\n",
+                                "description": "A JSON list of files in the format [{\"filename\":\"main.py\", \"content\":\"print('hello world')\"}, "\
+                                     "\"filename\":\"run.bat\", \"content\":\"pip install requests \npython main.py\",  ...}\n"\
+                                    "The files will be written do a directory and run.bat will be executed.\n"\
+                                    "The stdout and stderr output will be returned.\n",
                             }
                         },
                         "required": ["code"]
