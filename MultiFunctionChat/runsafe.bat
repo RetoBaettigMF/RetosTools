@@ -6,7 +6,6 @@ set PROJECT_PATH=%cd%
 echo Project Path = %PROJECT_PATH%
 
 if exist "venv" (
-    echo Projekt scheint schon installiert zu sein.
     goto :continue 
 )
 
