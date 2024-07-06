@@ -3,9 +3,8 @@ from pandasql import sqldf
 import datetime
 import json
 from rolx_connector import rolX
-import sys
-import io
 import subprocess
+from scrape import scrape
 
 class Tools:
     def __init__(self):
@@ -33,6 +32,10 @@ class Tools:
         now = datetime.datetime.now()
         str = now.strftime("%d.%m.%Y %H:%M:%S")
         return json.dumps({"datetime": str})
+    
+    def scrape(self, url):
+        str = scrape(url)
+        return json.dumps({"result": str})
     
     def execute_python_code(self, code):
         
@@ -91,6 +94,23 @@ class Tools:
             {
                 "type": "function",
                 "function": {
+                    "name": "scrape",
+                    "description": "Scrapes a website and returns the contents as markup\n",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "url": {
+                                "type": "string",
+                                "description": "The url to scrape",
+                            }
+                        },
+                        "required": ["url"]
+                    },
+                }
+            },
+            {
+                "type": "function",
+                "function": {
                     "name": "execute_python_code",
                     "description": "Executes a given batch script on a windows PC and the given python code and returns the output"\
                        "The files and installed libraries remain in the project folder for subsequent calls and run.bat will be executed after each call.",
@@ -118,7 +138,8 @@ class Tools:
         available_functions = {
             "get_now": self.get_now,
             "get_timesheet_entries": self.get_data,
-            "execute_python_code": self.execute_python_code
+            "execute_python_code": self.execute_python_code,
+            "scrape": self.scrape
         }  
 
         function_name = tool_call.function.name
@@ -136,6 +157,10 @@ class Tools:
         elif function_name == "execute_python_code":
             function_response = function_to_call(
                 code=function_args.get("program_files")
+            )
+        elif function_name == "scrape":
+            function_response = function_to_call(
+                url=function_args.get("url")
             )
 
         messages.append(
