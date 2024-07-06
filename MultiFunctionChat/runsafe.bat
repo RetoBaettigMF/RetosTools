@@ -13,10 +13,16 @@ REM Erstelle das Virtual Environment
 echo Erstelle das Virtual Environment...
 python -m venv venv
 
+:continue
+
+IF NOT EXIST "run.bat" (
+    echo Error: The file 'run.bat' does not exist.
+    goto :end
+)
 REM Aktiviere das Virtual Environment
 echo Aktiviere das Virtual Environment...
 call venv\Scripts\activate.bat
-
-:continue
 call run.bat
 call venv\Scripts\deactivate.bat
+
+:end

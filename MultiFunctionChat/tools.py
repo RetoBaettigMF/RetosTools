@@ -49,7 +49,6 @@ class Tools:
                 with open("run\\"+file["filename"], "w") as f:
                     f.write(file["content"])
             
-            # Run a simple shell command
             result = subprocess.run('runsafe.bat', shell=True, capture_output=True, text=True, check=True, timeout=60)
             print("stdout:",result.stdout)
             print("stderr:",result.stderr)
