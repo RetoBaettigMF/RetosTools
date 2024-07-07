@@ -125,6 +125,31 @@ class Tools:
             }]
         return tools
     
+    def call_function(self, function_name, function_to_call, function_args):
+        if function_name == "get_now":
+            function_response = function_to_call()
+        elif function_name == "get_timesheet_entries":
+            function_response = function_to_call(
+                sql_query=function_args.get("query")
+            )
+        elif function_name == "execute_python_code":
+            function_response = function_to_call(
+                code=function_args.get("program_files")
+            )
+        elif function_name == "scrape":
+            function_response = function_to_call(
+                url=function_args.get("url")
+            )
+        elif function_name == "google_search":
+            function_response = function_to_call(
+                query=function_args.get("query")
+            )
+        else:
+            print("Function not found: ", function_name)
+            function_response = json.dumps({"error": "function not found: "+function_name})
+        return function_response
+
+    
     def handle_tool_call(self, tool_call, messages):
         error = False
         if not tool_call:
@@ -149,31 +174,8 @@ class Tools:
 
         print("Calling function: ", function_name, " with args: ", function_args)
 
-        if function_name == "get_now":
-            function_response = function_to_call()
-        elif function_name == "get_timesheet_entries":
-            function_response = function_to_call(
-                sql_query=function_args.get("query")
-            )
-        elif function_name == "execute_python_code":
-            function_response = function_to_call(
-                code=function_args.get("program_files")
-            )
-        elif function_name == "scrape":
-            function_response = function_to_call(
-                url=function_args.get("url")
-            )
-        elif function_name == "google_search":
-            function_response = function_to_call(
-                query=function_args.get("query")
-            )
-        else:
-            print("Function not found: ", function_name)
-            error = "Function not found"+function_name
-
-        if error:
-            function_response = json.dumps({"error": error})
-
+        function_response = self.call_function(function_name, function_to_call, function_args)
+        
         messages.append(
             {
                 "tool_call_id": tool_call.id,

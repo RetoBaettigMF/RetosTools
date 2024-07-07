@@ -7,8 +7,8 @@ import json
 def get_date_range():
     # Hier eine Beispiel-Funktion. Implementiere dies nach Bedarf.
     return {
-        "begin": "2024-01-01",
-        "end": "2024-01-31"
+        "begin": "2023-01-01",
+        "end": "2030-12-31"
     }
 
 def get_rolx_data():

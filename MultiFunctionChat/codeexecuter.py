@@ -1,17 +1,8 @@
 import json
 import subprocess
-import os
-import shutil
-
-first = True
 
 def execute_code(code):
-        global first
-        if first:
-             #delete all files in /run folder
-            shutil.rmtree("run\*")
-            first = False
-
+        
         try:
             print("Executing code: ", code)
             print("\nIs this ok? (y/n)")
