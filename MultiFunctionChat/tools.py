@@ -51,7 +51,7 @@ class Tools:
                 return json.dumps({"error": "Code execution aborted"})
             
             for file in code:
-                with open("run\\"+file["filename"], "w") as f:
+                with open("run\\"+file["filename"], "w", encoding="utf-8") as f:
                     f.write(file["content"])
             
             result = subprocess.run('runsafe.bat', shell=True, capture_output=True, text=True, check=True, timeout=60)
