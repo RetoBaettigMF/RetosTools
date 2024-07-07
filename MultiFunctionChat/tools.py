@@ -3,6 +3,7 @@ from pandasql import sqldf
 import datetime
 import json
 from rolx import get_rolx_data
+from codeexecuter import execute_code
 import subprocess
 from scrape import scrape
 from googlesearch import google_search
@@ -34,27 +35,8 @@ class Tools:
         return json.dumps({"result": str})
     
     def execute_python_code(self, code):
-        
-        try:
-            print("Executing code: ", code)
-            print("\nIs this ok? (y/n)")
-            if input() != "y":
-                return json.dumps({"error": "Code execution aborted"})
-            
-            for file in code:
-                with open("run\\"+file["filename"], "w", encoding="utf-8") as f:
-                    f.write(file["content"])
-            
-            result = subprocess.run('runsafe.bat', shell=True, capture_output=True, text=True, check=True, timeout=60)
-            print("stdout:",result.stdout)
-            print("stderr:",result.stderr)
-            return json.dumps({"stdout": result.stdout, "stderr": result.stderr})
-        except subprocess.TimeoutExpired:
-            print("Das Programm wurde abgebrochen, da es länger als 1 Minute gedauert hat.")
-            return json.dumps({"error": "Timeout > 1 Minute"})
-        except Exception as e:
-            print("Exception: ", str(e))
-            return json.dumps({"Exception": str(e)})
+        result = execute_code(code)
+        return result
 
     def get_tools(self):
         tools = [
@@ -144,6 +126,7 @@ class Tools:
         return tools
     
     def handle_tool_call(self, tool_call, messages):
+        error = False
         if not tool_call:
             return None
         
@@ -157,7 +140,12 @@ class Tools:
 
         function_name = tool_call.function.name
         function_to_call = available_functions[function_name]
-        function_args = json.loads(tool_call.function.arguments)
+        try:
+            function_args = json.loads(tool_call.function.arguments)
+        except Exception as e:
+            function_args = {}
+            error = str(e)
+            print("Error: ", e)
 
         print("Calling function: ", function_name, " with args: ", function_args)
 
@@ -179,6 +167,12 @@ class Tools:
             function_response = function_to_call(
                 query=function_args.get("query")
             )
+        else:
+            print("Function not found: ", function_name)
+            error = "Function not found"+function_name
+
+        if error:
+            function_response = json.dumps({"error": error})
 
         messages.append(
             {
