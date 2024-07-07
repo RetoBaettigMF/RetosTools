@@ -1,6 +1,7 @@
 from gpt import get_completion
 from tools import Tools
 from datetime import datetime
+from rolx import get_rolx_data
 
 def query_llm(messages, tools):
     completion = get_completion(messages=messages, tools=tools.get_tools())
@@ -32,6 +33,7 @@ def get_multiline_input(prompt):
 
 
 def main():    
+
     tools = Tools()
     
     messages = [

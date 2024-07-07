@@ -17,6 +17,7 @@ def get_selenium_driver():
     options = Options()
     options.add_argument('--headless')  # Führt den Browser im Hintergrund aus
     options.add_argument('--disable-gpu')  # Deaktiviert die GPU-Beschleunigung, um Ressourcen zu sparen
+    options.add_argument("--log-level=2")
     driver = webdriver.Chrome(options=options)  # Verwenden Sie hier den Pfad zum heruntergeladenen Webdriver
     return driver
 

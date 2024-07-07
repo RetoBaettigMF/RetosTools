@@ -2,23 +2,14 @@ import pandas as pd
 from pandasql import sqldf
 import datetime
 import json
-from rolx_connector import rolX
+from rolx import get_rolx_data
 import subprocess
 from scrape import scrape
 from googlesearch import google_search
 
 class Tools:
     def __init__(self):
-        try:
-            rolx = rolX()
-            self.data = rolx.get_last_num_days(2)
-            #self.data = rolx.get_month(2024, 2)           
-            self.data.to_excel('rolx_example.xlsx', index=False)
-        except Exception as e:
-            print("Could not connect to rolX database: ", str(e))
-            print("Using example data instead.")
-            self.data = pd.read_excel("rolx_example.xlsx")
-    
+        self.data = get_rolx_data()
 
     def get_data(self, sql_query):
         try:
