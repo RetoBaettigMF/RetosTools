@@ -5,6 +5,7 @@ import json
 from rolx_connector import rolX
 import subprocess
 from scrape import scrape
+from googlesearch import google_search
 
 class Tools:
     def __init__(self):
@@ -33,6 +34,10 @@ class Tools:
         str = now.strftime("%d.%m.%Y %H:%M:%S")
         return json.dumps({"datetime": str})
     
+    def search(self, query):
+        results = google_search(query)
+        return json.dumps({"results": results})
+
     def scrape(self, url):
         str = scrape(url)
         return json.dumps({"result": str})
@@ -110,6 +115,23 @@ class Tools:
             {
                 "type": "function",
                 "function": {
+                    "name": "google_search",
+                    "description": "Executes a google search and returns title, link and snippet of the top 10 results.\n",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "query": {
+                                "type": "string",
+                                "description": "The query to search for",
+                            }
+                        },
+                        "required": ["query"]
+                    },
+                }
+            },
+            {
+                "type": "function",
+                "function": {
                     "name": "execute_python_code",
                     "description": "Executes a given batch script on a windows PC and the given python code and returns the output"\
                        "The files and installed libraries remain in the project folder for subsequent calls and run.bat will be executed after each call.",
@@ -138,7 +160,8 @@ class Tools:
             "get_now": self.get_now,
             "get_timesheet_entries": self.get_data,
             "execute_python_code": self.execute_python_code,
-            "scrape": self.scrape
+            "scrape": self.scrape,
+            "google_search": self.search
         }  
 
         function_name = tool_call.function.name
@@ -160,6 +183,10 @@ class Tools:
         elif function_name == "scrape":
             function_response = function_to_call(
                 url=function_args.get("url")
+            )
+        elif function_name == "google_search":
+            function_response = function_to_call(
+                query=function_args.get("query")
             )
 
         messages.append(

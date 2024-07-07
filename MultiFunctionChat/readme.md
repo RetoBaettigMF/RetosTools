@@ -1,7 +1,8 @@
-# RolXChat
+# MultiFunctionChat
 
 Dieses Programm ist ein Demonstrator für FunctionCalling.
-Es kann RolX-Zeiterfassungsdaten per Sprache abfragen und Programme erstellen
+Es kann verschiedenste Tools verwenden, z.B. RolX Zeiterfassugsdaten abfragen,
+Programme erstellen, Googeln, Webseiten scrapen.
 
 Das Programm greift direkt auf das API von OpenAI bzw. Azure OpenAI zu.
 
