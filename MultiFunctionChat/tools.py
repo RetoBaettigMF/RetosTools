@@ -116,6 +116,7 @@ class Tools:
                                 "description": "A JSON list of files in the format [{\"filename\":\"main.py\", \"content\":\"print('hello world')\"}, "\
                                      "\"filename\":\"run.bat\", \"content\":\"pip install requests \npython main.py\",  ...}\n"\
                                     "The files will be written do a directory and run.bat will be executed.\n"\
+                                    "Always add a run.bat to the list of files!\n"\
                                     "The stdout and stderr output will be returned.\n",
                             }
                         },
