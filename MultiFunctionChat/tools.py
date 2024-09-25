@@ -4,9 +4,9 @@ import datetime
 import json
 from rolx import get_rolx_data
 from codeexecuter import execute_code
-import subprocess
 from scrape import scrape
 from googlesearch import google_search
+from gmail import gmail_search
 
 class Tools:
     def __init__(self):
@@ -28,6 +28,10 @@ class Tools:
     
     def search(self, query):
         results = google_search(query)
+        return json.dumps({"results": results})
+    
+    def gmail_search(self, query):
+        results = gmail_search(query)
         return json.dumps({"results": results})
 
     def scrape(self, url):
@@ -105,6 +109,23 @@ class Tools:
             {
                 "type": "function",
                 "function": {
+                    "name": "gmail_search",
+                    "description": "Executes a search in all my google mails and returns the emails\n",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "query": {
+                                "type": "string",
+                                "description": "The query to search for in gmail search format",
+                            }
+                        },
+                        "required": ["query"]
+                    },
+                }
+            },
+            {
+                "type": "function",
+                "function": {
                     "name": "execute_python_code",
                     "description": "Executes a given batch script on a windows PC and the given python code and returns the output"\
                        "The files and installed libraries remain in the project folder for subsequent calls and run.bat will be executed after each call.",
@@ -145,6 +166,10 @@ class Tools:
             function_response = function_to_call(
                 query=function_args.get("query")
             )
+        elif function_name == "gmail_search":
+            function_response = function_to_call(
+                query=function_args.get("query")
+            )
         else:
             print("Function not found: ", function_name)
             function_response = json.dumps({"error": "function not found: "+function_name})
@@ -161,7 +186,8 @@ class Tools:
             "get_timesheet_entries": self.get_data,
             "execute_python_code": self.execute_python_code,
             "scrape": self.scrape,
-            "google_search": self.search
+            "google_search": self.search,
+            "gmail_search" : self.gmail_search
         }  
 
         function_name = tool_call.function.name

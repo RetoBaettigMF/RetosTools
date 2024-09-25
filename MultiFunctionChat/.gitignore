@@ -9,6 +9,8 @@ vectordb.json
 history.json
 replay_history.json
 rolx_example.xlsx
+credentials.json
+token.json
 .vscode/
 
 
