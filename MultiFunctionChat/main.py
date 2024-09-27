@@ -1,7 +1,5 @@
 from gpt import get_completion
 from tools import Tools
-from datetime import datetime
-from rolx import get_rolx_data
 
 def query_llm(messages, tools):
     completion = get_completion(messages=messages, tools=tools.get_tools())
@@ -44,6 +42,7 @@ def main():
          "- get_timesheet_entries: to get timesheet and project data\n"            
          "- scrape: to scrape a website. Use it to get information from links you found via google_search\n"\
          "- google_search: to search google\n"\
+         "- gmail_search: to search my emails"
          "If the user asks a question, make a plan to solve the problem and execute the plan."
         }
     ]
