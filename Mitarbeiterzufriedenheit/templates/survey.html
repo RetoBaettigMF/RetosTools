@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Mitarbeiterumfrage</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th.question, td.question {
+            text-align: left;
+            width: 40%;
+        }
+        th.option {
+            width: 12%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mitarbeiterumfrage</h1>
+    <form method="post">
+        <h2>Allgemeine Fragen</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th class="question">Frage</th>
+                    {% for option in options %}
+                        <th class="option">{{ option }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for question in questions %}
+                    {% set q_index = loop.index0 %}
+                    <tr>
+                        <td class="question">{{ question }}</td>
+                        {% for option in options %}
+                            <td>
+                                <input type="radio" name="question_{{ q_index }}" value="{{ option }}" required>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Direkte Führungskraft und unmittelbarer Arbeitsbereich</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th class="question">Frage</th>
+                    {% for option in options %}
+                        <th class="option">{{ option }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for question in direct_leadership_questions %}
+                    {% set dl_index = loop.index0 %}
+                    <tr>
+                        <td class="question">{{ question }}</td>
+                        {% for option in options %}
+                            <td>
+                                <input type="radio" name="dl_question_{{ dl_index }}" value="{{ option }}" required>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+        <input type="submit" value="Absenden">
+    </form>
+</body>
+</html>
