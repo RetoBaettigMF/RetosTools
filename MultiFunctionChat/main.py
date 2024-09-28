@@ -2,20 +2,22 @@ from gpt import get_completion
 from tools import Tools
 
 def query_llm(messages, tools):
-    completion = get_completion(messages=messages, tools=tools.get_tools())
-    message = completion.choices[0].message
-    messages.append(message) # extend conversation with assistant's reply
-
-    tool_calls = message.tool_calls
-    while tool_calls:
-        for tool_call in tool_calls:
-            tools.handle_tool_call(tool_call, messages)
+    try:
         completion = get_completion(messages=messages, tools=tools.get_tools())
         message = completion.choices[0].message
-        tool_calls = message.tool_calls
         messages.append(message) # extend conversation with assistant's reply
 
-    return message.content
+        tool_calls = message.tool_calls
+        while tool_calls:
+            for tool_call in tool_calls:
+                tools.handle_tool_call(tool_call, messages)
+            completion = get_completion(messages=messages, tools=tools.get_tools())
+            message = completion.choices[0].message
+            tool_calls = message.tool_calls
+            messages.append(message) # extend conversation with assistant's reply
+        return message.content
+    except Exception as e:
+        return str(e)
 
 def get_multiline_input(prompt):
     inp = input(prompt)
