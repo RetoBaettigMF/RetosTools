@@ -4,14 +4,33 @@
     <meta charset="UTF-8">
     <title>Mitarbeiterumfrage</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        form {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed;
+        }
+        thead th {
+            position: sticky;
+            top: 0;
+            background-color: #f2f2f2;
+            z-index: 1;
         }
         th, td {
-            padding: 8px;
+            padding: 10px;
             text-align: center;
             border-bottom: 1px solid #ddd;
+            word-wrap: break-word;
         }
         th.question, td.question {
             text-align: left;
@@ -19,6 +38,16 @@
         }
         th.option {
             width: 12%;
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+        input[type="submit"] {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -75,7 +104,6 @@
             </tbody>
         </table>
 
-        <br>
         <input type="submit" value="Absenden">
     </form>
 </body>
