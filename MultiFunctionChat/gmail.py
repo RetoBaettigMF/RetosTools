@@ -119,9 +119,12 @@ def gmail_search(query):
             parts.append(part)
             results = []
 
-    print("Komprimiere Ergebnisse..."+str(len(parts)+1))
-    part = get_single_completion("Komprimiere die folgenden Daten, entferne unnötige Informationen und formatierungen und wandle sie in Markdown um: ----data----\n" + str_results)
-    parts.append(part)  
+    if results:
+        str_results = str(results)
+        print("Komprimiere Ergebnisse..."+str(len(parts)+1))
+        part = get_single_completion("Komprimiere die folgenden Daten, entferne unnötige Informationen und formatierungen und wandle sie in Markdown um: ----data----\n" + str_results)
+        parts.append(part)  
+
     retval = json.dumps(parts)      
     
     return retval
