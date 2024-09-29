@@ -110,13 +110,14 @@ class Tools:
                 "type": "function",
                 "function": {
                     "name": "gmail_search",
-                    "description": "Executes a search in all my google mails and returns the emails\n",
+                    "description": "Executes a search in all my google mails and returns the emails\n"\
+                        "The query must be in gmail search format\n",
                     "parameters": {
                         "type": "object",
                         "properties": {
                             "query": {
                                 "type": "string",
-                                "description": "The query to search for in gmail search format",
+                                "description": "The query to search for in gmail search format (e.g. in:sent from:reto@baettig.org)",
                             }
                         },
                         "required": ["query"]

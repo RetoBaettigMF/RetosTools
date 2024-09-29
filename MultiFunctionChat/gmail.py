@@ -9,6 +9,9 @@ import os
 import json
 from gpt import get_single_completion
 from settings import MAX_EMAILS
+from datetime import datetime
+from markdownify import markdownify as md
+
 
 # Anleitung für erstellen der Credentials siehe in credentials_anleitung.py
 # Die Credentials müssen heruntergeladen und als credentials.json gespeichert werden
@@ -58,27 +61,70 @@ def search_emails(service, query):
     except Exception as e:
         print(f"Nachrichtensuche fehlgeschlagen: {e}")
         return []
+    
+def get_shortend_email_info(msg_data):
+    """Gibt die Absender- und Betreffinformationen einer E-Mail zurück."""
+    def get_short_email_addr(email):
+        short = email.split('<')[0].strip()
+        short = short.replace('"', '') 
+        return short
+    
+    def get_short_time(time):
+        try:
+            datum = datetime.strptime(time, "%a, %d %b %Y %H:%M:%S %z") # Do, 01 Jan 1970 00:00:00 +0000
+            short = f"{datum.day}.{datum.month}.{datum.year % 100:02d} {datum.strftime('%H:%M')}"
+        except:     
+            short = time
+        return short
 
+    email_info = {}
+    for item in msg_data:
+        if item['name'] == 'From':
+            email_info['From'] = get_short_email_addr(item['value'])
+        elif item['name'] == 'To':
+            email_info['To'] = get_short_email_addr(item['value'])
+        elif item['name'] == 'Date':
+            email_info['Date'] = get_short_time(item['value'])
+        elif item['name'] == 'Subject':
+            email_info['Subject'] = item['value']
+        
+    txt = 'Date: '+email_info['Date']+' '
+    txt += 'From: '+email_info['From']+' '
+    txt += 'To:'+email_info['To']+' '
+    txt += 'Subject: '+email_info['Subject']
+
+    print(txt)
+
+    return txt
+    
 def get_email_content(service, msg_id):
     """Lädt den Inhalt einer E-Mail herunter."""
     message = service.users().messages().get(userId='me', id=msg_id, format='full').execute()
     msg_data = message['payload']['headers']
+    content = {
+        'header' : get_shortend_email_info(msg_data)
+    }
     
     # Den Haupttextkörper dekodieren
     parts = message['payload'].get('parts', [])
-    body = None
-    html_body = None
-
+    if not parts:
+        parts=[message['payload']]
+    
     def extract_parts(parts):
-        nonlocal body, html_body
         for part in parts:
             if part['mimeType'] == 'text/plain':
                 body = base64.urlsafe_b64decode(part['body']['data']).decode('utf-8')
-                msg_data.append({'name': 'Body', 'value': body})
+                content['body'] = body
+                s = body[:100].replace('\n', ' ').replace('\r', ' ')
+                print(r"Body: "+s)
                 break
             elif part['mimeType'] == 'text/html':
-                html_body = base64.urlsafe_b64decode(part['body']['data']).decode('utf-8')
-                msg_data.append({'name': 'HTML Body', 'value': html_body})
+                body = base64.urlsafe_b64decode(part['body']['data']).decode('utf-8')
+                body = md(body) # Umwandlung in Markdown
+                content['body'] = body
+                s = body[:100].replace('\n', ' ').replace('\r', ' ')
+                print(r"HTML Body: "+s)
+                break
             elif part['mimeType'] == 'multipart/mixed':
                 # Rekursiv die Teile von multipart/mixed extrahieren
                 extract_parts(part['parts'])
@@ -89,8 +135,7 @@ def get_email_content(service, msg_id):
     # Teile extrahieren
     extract_parts(parts)
 
-    msg= json.dumps(msg_data, indent=2)
-    return msg
+    return content
     
 
 def gmail_search(query):
@@ -109,22 +154,22 @@ def gmail_search(query):
         content = get_email_content(service, msg_id)
         if content:
             results.append(content)
+    
+    str_results = str(results)
+    size = len(str_results)
+
+    if size >= max_len:
+        print("Komprimiere Ergebnisse. Grösse vorher: "+str(size))
+        for msg in results:
+            if 'body' in msg:
+                msg['body'] = msg['body'][:1000]
+            else:
+                print("Kein body in message")   
+        
         str_results = str(results)
         size = len(str_results)
-        if size >= max_len:
-            print("Komprimiere Ergebnisse..."+str(len(parts)+1))
-            part = get_single_completion("Komprimiere die folgenden Daten, entferne unnötige Informationen und formatierungen und wandle sie in Markdown um: ----data----\n" + str_results)
-            sizenew = len(str(part))
-            print("   Komprimierungfaktor: "+str(sizenew/size))
-            parts.append(part)
-            results = []
+        print("  Größe nachher: "+str(size))    
 
-    if results:
-        str_results = str(results)
-        print("Komprimiere Ergebnisse..."+str(len(parts)+1))
-        part = get_single_completion("Komprimiere die folgenden Daten, entferne unnötige Informationen und formatierungen und wandle sie in Markdown um: ----data----\n" + str_results)
-        parts.append(part)  
-
-    retval = json.dumps(parts)      
+    retval = json.dumps(results)      
     
     return retval
