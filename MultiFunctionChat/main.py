@@ -1,5 +1,11 @@
 from gpt import get_completion
 from tools import Tools
+from webserver import start_webserver, stop_webserver   
+from settings import INITIAL_MESSAGE
+
+
+messages = INITIAL_MESSAGE
+tools = Tools()
 
 def query_llm(messages, tools):
     try:
@@ -31,24 +37,17 @@ def get_multiline_input(prompt):
         
     return result
 
+def get_answer(prompt):
+    messages.append({"role": "user", "content": prompt})
+    reply = query_llm(messages, tools)
+    s = "YOU: " + prompt + "\nAI: " + reply
+    print(s)
+    return s
 
 def main():    
-
-    tools = Tools()
+    global messages, initial_message
     
-    messages = [
-        {"role": "system", "content": "You are a helpful assistant and you try to execute the wishes of the user by using all your abilities."\
-         "You can make multiple tool calls to support the user. Use the following functions \n"\
-         "- get_now: to get current date and time\n"\
-         "- execute_python_code: to execute programs\n"\
-         "- get_timesheet_entries: to get timesheet and project data\n"            
-         "- scrape: to scrape a website. Use it to get information from links you found via google_search\n"\
-         "- google_search: to search google\n"\
-         "- gmail_search: to search my emails"
-         "If the user asks a question, make a plan to solve the problem and execute the plan."
-        }
-    ]
-
+    
     while True:
         user_input = get_multiline_input("You: ")
         if user_input == "":
@@ -56,10 +55,10 @@ def main():
                 break
             else:
                 continue
-        messages.append({"role": "user", "content": user_input})
-        reply = query_llm(messages, tools)
-        print("\nYOU:" + user_input)
-        print("AI: " + reply)
+        get_answer(user_input)
+
     
 if __name__ == "__main__":
+    start_webserver(get_answer)
     main()
+    stop_webserver()

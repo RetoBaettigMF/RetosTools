@@ -18,5 +18,19 @@ AZURE_API_EMBEDDING_DEPLOYMENT_NAME = 'text-embedding-ada-002'
 #GMAIL Reader Settings
 MAX_EMAILS = 50
 
+#Initial Message
+INITIAL_MESSAGE = [
+        {"role": "system", "content": "You are a helpful assistant and you try to execute the wishes of the user by using all your abilities."\
+         "You can make multiple tool calls to support the user. Use the following functions \n"\
+         "- get_now: to get current date and time\n"\
+         "- execute_python_code: to execute programs\n"\
+         "- get_timesheet_entries: to get timesheet and project data\n"            
+         "- scrape: to scrape a website. Use it to get information from links you found via google_search\n"\
+         "- google_search: to search google\n"\
+         "- gmail_search: to search my emails"
+         "If the user asks a question, make a plan to solve the problem and execute the plan."
+        }
+    ]
+
 
 
