@@ -7,29 +7,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
     <style>
         body { font-family: Arial, sans-serif; }
-        #messages { border: 1px solid #ccc; height: 300px; overflow-y: scroll; margin-bottom: 10px; }
-        #message-input { width: 80%; }
+        #input-container { display: flex; flex-direction: column; }
+        #message-input { width: 90%; left: 5%; resize: none; overflow: hidden; }
+        #send-button { width: 90%; left: 5%; margin-top: 5px; }
     </style>
 </head>
 <body>
     <h1>Multifunction Chat</h1>
-    <div id="messages"></div>
-    <input id="message-input" autocomplete="off" /><button id="send-button">Send</button>
+    <p id="chat"></p>
+    <div id="input-container">
+        <textarea id="message-input" rows="3" autocomplete="off"></textarea><br>
+        <button id="send-button">Send</button>
+    </div>
 
     <script>
         const socket = io();
+        const input = document.getElementById('message-input');
+        const chat = document.getElementById('chat');
+
+        // Funktion zum automatischen Anpassen der Höhe des Textfeldes
+        function autoResize() {
+            this.style.height = 'auto'; // Setze die Höhe zurück
+            this.style.height = (this.scrollHeight) + 'px'; // Setze die Höhe auf den Scroll-Höhenwert
+        }
+
+        input.addEventListener('input', autoResize);
 
         document.getElementById('send-button').onclick = function() {
-            const input = document.getElementById('message-input');
             const message = input.value;
-            socket.emit('message', message);
-            input.value = '';
+            if (message.trim() !== '') {
+                chat.innerHTML += 'Frage: ' + message + '<br>';
+                socket.emit('message', message);
+                input.value = '';
+                input.style.height = 'auto'; // Setze die Höhe zurück, nachdem die Nachricht gesendet wurde
+            }
         };
 
         socket.on('message', function(msg) {
-            const messagesDiv = document.getElementById('messages');
-            messagesDiv.innerHTML += '<div>' + msg + '</div>';
-            messagesDiv.scrollTop = messagesDiv.scrollHeight; // Scroll to the bottom
+            chat.innerHTML += msg + '<br>';
         });
     </script>
 </body>

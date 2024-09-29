@@ -1,6 +1,6 @@
 from gpt import get_completion
 from tools import Tools
-from webserver import start_webserver, stop_webserver   
+from webserver import start_webserver
 from settings import INITIAL_MESSAGE
 
 
@@ -40,7 +40,7 @@ def get_multiline_input(prompt):
 def get_answer(prompt):
     messages.append({"role": "user", "content": prompt})
     reply = query_llm(messages, tools)
-    s = "YOU: " + prompt + "\nAI: " + reply
+    s = "AI: " + reply
     print(s)
     return s
 
@@ -61,4 +61,3 @@ def main():
 if __name__ == "__main__":
     start_webserver(get_answer)
     main()
-    stop_webserver()
