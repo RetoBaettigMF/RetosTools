@@ -170,6 +170,9 @@ def gmail_search(query):
         size = len(str_results)
         print("  Größe nachher: "+str(size))    
 
-    retval = json.dumps(results)      
+    retval = json.dumps(results)
+    if (len(messages)>=MAX_EMAILS):
+        retval = f"Achtung: Es wurden mehr als {MAX_EMAILS} mails gefunden. Es weurden nicht alle ausgelesen!\n"+retval
+         
     
     return retval

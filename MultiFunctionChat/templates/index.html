@@ -3,19 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
+    <title>Reto's Chat</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; }
-        #input-container { display: flex; flex-direction: column; }
-        #message-input { width: 90%; left: 5%; resize: none; overflow: hidden; }
-        #send-button { width: 90%; left: 5%; margin-top: 5px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%; 
+            margin: 0 auto; 
+            box-sizing: border-box; 
+        }
+
+        .question, .answer {
+            padding: 20px; 
+        }
+
+        .question {
+            background-color: lightblue; 
+        }
+
+        .answer {
+            background-color: lightcoral; 
+            margin-left: 10%; 
+        }
+
+        #input-container, #message-input {
+            display: flex; 
+            flex-direction: column; 
+        }
+
+        #send-button { 
+            width: 100%; 
+            padding: 20px;
+            margin: 5px auto 0; 
+        }
     </style>
 </head>
 <body>
-    <h1>Multifunction Chat</h1>
-    <p id="chat"></p>
-    <div id="input-container">
+    <h1 class="container">Reto's Chat</h1><br>
+    <p class="container" id="chat"></p>
+    <br>
+    <div class="container" id="input-container">
         <textarea id="message-input" rows="3" autocomplete="off"></textarea><br>
         <button id="send-button">Send</button>
     </div>
@@ -36,7 +68,7 @@
         document.getElementById('send-button').onclick = function() {
             const message = input.value;
             if (message.trim() !== '') {
-                chat.innerHTML += 'Frage: ' + message + '<br>';
+                chat.innerHTML += '<div class="question" placeholder="Gib hier deine Frage ein...">' + message + '</div>';
                 socket.emit('message', message);
                 input.value = '';
                 input.style.height = 'auto'; // Setze die Höhe zurück, nachdem die Nachricht gesendet wurde
@@ -44,7 +76,7 @@
         };
 
         socket.on('message', function(msg) {
-            chat.innerHTML += msg + '<br>';
+            chat.innerHTML += '<div class="answer">' + msg + '</div><br>';
         });
     </script>
 </body>
