@@ -3,18 +3,25 @@ from gpt import get_vector
 from fileoperations import read_file, get_files
 from preparefiles import prepare_files
 import json
+import os
 from settings import DATA_PATH, PREPARED_DATA_PATH, DB_FILE
-
+    
 def train_vector_db(path):
-    files = get_files(path)
     vectors = []
+    # os.walk durchläuft alle Verzeichnisse und Unterverzeichnisse
+    files = []
+    for root, dirs, filenames in os.walk(path):
+        for filename in filenames:
+            files.append(os.path.join(root, filename))
+
     for index, file in enumerate(files):
         text = read_file(file)
         vector = get_vector(text)
         vectors.append([vector, file])
-        progress="{:.1f}".format(index/len(files)*100)
-        print("Trained "+progress+"% of the vector database.", end="\r")
-    print()
+        progress = "{:.1f}".format(index / len(files) * 100)
+        print("Trained " + progress + "% of the vector database.", end="\r")
+    
+    print()  # Zeilenumbruch nach dem Fortschrittsbalken
     return vectors
 
 def save_vector_db(filename, vectors):

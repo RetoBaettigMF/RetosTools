@@ -27,7 +27,7 @@ def is_html_file(filename):
     filename = filename.lower()
     return filename.endswith(".html") or filename.endswith(".htm") or filename.endswith(".xhtml") or filename.endswith(".xhtm") 
     
-def prepare_files(pathfrom, pathto, maxsize=TEXT_CHUNK_MAXSIZE, overlap=TEXT_CHUNK_OVERLAP):
+def prepare_files_old(pathfrom, pathto, maxsize=TEXT_CHUNK_MAXSIZE, overlap=TEXT_CHUNK_OVERLAP):
     files = get_files(pathfrom)
     delete_directory(pathto)
     os.makedirs(pathto, exist_ok=True)
@@ -49,3 +49,32 @@ def prepare_files(pathfrom, pathto, maxsize=TEXT_CHUNK_MAXSIZE, overlap=TEXT_CHU
             number = str(i).zfill(4)+"-"
             write_file(os.path.join(pathto, number+os.path.basename(file)), chunks[i])
 
+def prepare_files(pathfrom, pathto, maxsize=TEXT_CHUNK_MAXSIZE, overlap=TEXT_CHUNK_OVERLAP):
+    delete_directory(pathto)
+    os.makedirs(pathto, exist_ok=True)
+
+    for root, dirs, files in os.walk(pathfrom):
+        for file in files:
+            file_path = os.path.join(root, file)
+            print(file_path)
+            chunks = []
+            text = read_file(file_path)
+
+            if is_html_file(file):
+                text = convert_html_to_md(text)
+                file_path = change_file_type(file_path, ".md")
+
+            while len(text) > 0:
+                chunk = trimback(text[:maxsize])
+                text = trimfront(text[maxsize-overlap:])
+                chunks.append(chunk)
+
+            # Erstelle das entsprechende Ausgabeverzeichnis
+            relative_path = os.path.relpath(root, pathfrom)
+            output_dir = os.path.join(pathto, relative_path)
+            os.makedirs(output_dir, exist_ok=True)
+
+            for i in range(len(chunks)):
+                number = str(i).zfill(4) + "-"
+                output_file_path = os.path.join(output_dir, number + os.path.basename(file_path))
+                write_file(output_file_path, chunks[i])

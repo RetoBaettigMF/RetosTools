@@ -1,4 +1,5 @@
 import os
+import shutil
 import glob
 
 def read_file(filename):
@@ -39,7 +40,10 @@ def get_file_extension(filename):
     return extension
 
 def delete_directory(path):
-    file_list = glob.glob(path+"/*")
-    for file_path in file_list:
-        os.remove(file_path)
+    if os.path.exists(path):
+        # Verzeichnis und alle Unterverzeichnisse löschen
+        shutil.rmtree(path)
+        print(f"Das Verzeichnis '{path}' wurde erfolgreich gelöscht.")
+    else:
+        print(f"Das Verzeichnis '{path}' existiert nicht.")
     

@@ -17,8 +17,10 @@ CHAT_MODEL = "gpt-3.5-turbo-16k" #CHAT_MODEL = "gpt-4"
 AZURE_OPENAI_ENDPOINT = "https://mf-openai-sweden-central.openai.azure.com/"
 AZURE_API_TYPE = 'azure'
 AZURE_API_VERSION = '2024-05-01-preview'
-AZURE_API_DEPLOYMENT_NAME = 'gpt-4o' # 'gpt-35-turbo-16k'
+#AZURE_API_DEPLOYMENT_NAME = 'gpt-4o' # 'gpt-35-turbo-16k'
+AZURE_API_DEPLOYMENT_NAME = 'gpt-4o-mini' # 'gpt-35-turbo-16k'
 AZURE_API_EMBEDDING_DEPLOYMENT_NAME = 'text-embedding-ada-002'
+
 
 
 deployment_name='REPLACE_WITH_YOUR_DEPLOYMENT_NAME' #This will correspond to the custom name you chose for your deployment when you deployed a model. 
