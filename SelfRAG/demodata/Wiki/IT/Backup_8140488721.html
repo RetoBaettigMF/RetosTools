@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT : Backup</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="IT_4769087480.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="4784619738.html">IT Systemübersicht</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            IT : Backup
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Hans Zemp</span>, last modified by <span class='editor'> nizami.sevindi</span> on Aug. 26, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1728986078077 {padding: 0px;}
+div.rbtoc1728986078077 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1728986078077 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1728986078077'>
+<ul class='toc-indentation'>
+<li><a href='#Backup-Todo'>Todo</a></li>
+<li><a href='#Backup-Konzept'>Konzept</a></li>
+<li><a href='#Backup-Datenquellen'>Datenquellen</a>
+<ul class='toc-indentation'>
+<li><a href='#Backup-Bexio'>Bexio</a></li>
+<li><a href='#Backup-GoogleDrive'>Google Drive</a></li>
+<li><a href='#Backup-CudosWiki'>CudosWiki</a></li>
+<li><a href='#Backup-JIRA'>JIRA</a></li>
+<li><a href='#Backup-RolX'>RolX</a></li>
+<li><a href='#Backup-Telefonanlage'>Telefonanlage</a></li>
+<li><a href='#Backup-vTiger'>vTiger</a></li>
+<li><a href='#Backup-Webseite'>Webseite</a></li>
+<li><a href='#Backup-AzureDevops(CloudService)'>Azure Devops (Cloud Service)</a></li>
+</ul>
+</li>
+</ul>
+</div><h1 id="Backup-Todo">Todo</h1><ul class="inline-task-list" data-inline-tasks-content-id="8140488721"><li data-inline-task-id="10"><span class="placeholder-inline-tasks">Check GL/Secret durch BAR</span></li><li class="checked" data-inline-task-id="15"><span class="placeholder-inline-tasks">btrfs scrub crontab backup PC: Sollte gemacht sein, überprüfen</span></li><li class="checked" data-inline-task-id="16"><span class="placeholder-inline-tasks">Übergabe an weiteres IT-Team Mitglied</span></li><li class="checked" data-inline-task-id="18"><span class="placeholder-inline-tasks">Institutionalisieren der <a href="Backup-Tasks_8176369668.html" data-linked-resource-id="8176369668" data-linked-resource-version="8" data-linked-resource-type="page">Backup Tasks</a></span></li><li class="checked" data-inline-task-id="17"><span class="placeholder-inline-tasks">Manuelle Backups stoppen, Entfernen von Seite <a class="createlink" href="/wiki/pages/createpage.action?spaceKey=IT&amp;title=Backup%20von%20Google%20Drive&amp;linkCreation=true&amp;fromPageId=8140488721">Backup von Google Drive</a></span></li></ul><h1 id="Backup-Konzept">Konzept</h1><p>Alle Daten des Unternehmens werden auf Google Drive gespeichert. Die Daten werden entweder von anderen Services gepusht oder der Backup Script Server lädt sie von den anderen Servern herunter. Das Kopieren kann auch manuell geschehen. Bei automatischen Lösungen muss ein Monitoring eingebaut werden (automatisch oder Manuell).</p><div class="ap-container" id="ap-com.gliffy.integration.confluence__gliffy9210776889321339756">
+
+  <div class="ap-content " id="embedded-com.gliffy.integration.confluence__gliffy9210776889321339756"></div>
+  <script nonce="001fda14dfcdfb4e" class="ap-iframe-body-script">
+  (function(){
+    var data = {
+    "addon_key":"com.gliffy.integration.confluence",
+    "uniqueKey":"com.gliffy.integration.confluence__gliffy9210776889321339756",
+    "key":"gliffy",
+     "moduleType":"dynamicContentMacros",      "moduleLocation":"content",         "cp":"/wiki",
+            "general":"",
+    "w":"",
+    "h":"",
+    "url":"https://confluence-connect.gliffy.net/macro/render?space=IT&displayName=&container=8140488721&pageId=&name=Overview&attachmentId=att8146124803&pagePin=&imageAttachmentId=att8145928218&border=&chrome=&html5=&size=&ceoId=&macroId=24d81250-c90e-4f26-8ba5-38f50fa7e959&spaceKey=&version=&migration=&previewPageId=8140488721&outputType=html_export&xdm_e=https%3A%2F%2Fmfcloud.atlassian.net&xdm_c=channel-com.gliffy.integration.confluence__gliffy9210776889321339756&cp=%2Fwiki&xdm_deprecated_addon_key_do_not_use=com.gliffy.integration.confluence&lic=active&cv=1000.0.0-16609cb662a3&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1NTcwNTg6NjY5N2UzYjEtYjc4Yi00NmU5LThjZWMtNjliMmY1OTJjMTViIiwicXNoIjoiYjQ1M2E5MjM2NzYxZDE4ZDAwMzE2MmRlMzA1ZGQ0MDcwOGY1NDgxNGQ5YmI0ZjYwMjUyZTA3NzRjN2M2MTUwZCIsImlzcyI6IjE0N2ZkMWU3LTM4ZmYtM2Y1Yy1hMThiLTgzYjQ5ZTVlMWNmMiIsImNvbnRleHQiOnt9LCJleHAiOjE3Mjg5ODYyNTgsImlhdCI6MTcyODk4NjA3OH0.ZSoo6mtbuXR8SBaJJcxEmc0m_nuMk8WXsb8TvVzmWTA",
+     "contextJwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1NTcwNTg6NjY5N2UzYjEtYjc4Yi00NmU5LThjZWMtNjliMmY1OTJjMTViIiwicXNoIjoiY29udGV4dC1xc2giLCJpc3MiOiIxNDdmZDFlNy0zOGZmLTNmNWMtYTE4Yi04M2I0OWU1ZTFjZjIiLCJjb250ZXh0Ijp7ImxpY2Vuc2UiOnsiYWN0aXZlIjp0cnVlfSwiY29uZmx1ZW5jZSI6eyJlZGl0b3IiOnsidmVyc2lvbiI6IlwidjJcIiJ9LCJtYWNybyI6eyJvdXRwdXRUeXBlIjoiaHRtbF9leHBvcnQiLCJoYXNoIjoiMWU2NDJiZTgtMzUzNi00NTNkLWFlMGEtNWI3ZDQ4OWRlN2JhIiwiaWQiOiIxZTY0MmJlOC0zNTM2LTQ1M2QtYWUwYS01YjdkNDg5ZGU3YmEifSwiY29udGVudCI6eyJ0eXBlIjoicGFnZSIsInZlcnNpb24iOiI3NSIsImlkIjoiODE0MDQ4ODcyMSJ9LCJzcGFjZSI6eyJrZXkiOiJJVCIsImlkIjoiNDc2OTM0OTYxOCJ9fSwidXJsIjp7ImRpc3BsYXlVcmwiOiJodHRwczpcL1wvbWZjbG91ZC5hdGxhc3NpYW4ubmV0XC93aWtpIn19LCJleHAiOjE3Mjg5ODY5NzgsImlhdCI6MTcyODk4NjA3OH0.egYS0M8zfMLEkxWLGnsqlPT8ZmumkksG_K8KRo5EYTQ",    "structuredContext": "{\"license\":{\"active\":true},\"confluence\":{\"editor\":{\"version\":\"\\\"v2\\\"\"},\"macro\":{\"outputType\":\"html_export\",\"hash\":\"1e642be8-3536-453d-ae0a-5b7d489de7ba\",\"id\":\"1e642be8-3536-453d-ae0a-5b7d489de7ba\"},\"content\":{\"type\":\"page\",\"version\":\"75\",\"id\":\"8140488721\"},\"space\":{\"key\":\"IT\",\"id\":\"4769349618\"}},\"url\":{\"displayUrl\":\"https://mfcloud.atlassian.net/wiki\"}}",
+    "contentClassifier":"content",
+    "productCtx":"{\"page.id\":\"8140488721\",\"macro.hash\":\"1e642be8-3536-453d-ae0a-5b7d489de7ba\",\"page.type\":\"page\",\"macro.localId\":\"522ae261-9a18-48f2-8441-c8fa5d62e092\",\": = | RAW | = :\":\"imageAttachmentId=att8145928218|macroId=24d81250-c90e-4f26-8ba5-38f50fa7e959|baseUrl=https://mfcloud.atlassian.net/wiki|name=Overview|diagramAttachmentId=att8146124803|containerId=8140488721|timestamp=1662542604033\",\"space.id\":\"4769349618\",\"diagramAttachmentId\":\"att8146124803\",\"containerId\":\"8140488721\",\"user.isExternalCollaborator\":\"false\",\"timestamp\":\"1662542604033\",\"space.key\":\"IT\",\"content.version\":\"75\",\"page.title\":\"Backup\",\"macro.body\":\"\",\"macro.truncated\":\"false\",\"content.type\":\"page\",\"output.type\":\"html_export\",\"page.version\":\"75\",\"imageAttachmentId\":\"att8145928218\",\"macroId\":\"24d81250-c90e-4f26-8ba5-38f50fa7e959\",\"baseUrl\":\"https://mfcloud.atlassian.net/wiki\",\"macro.fragmentLocalId\":\"\",\"content.id\":\"8140488721\",\"name\":\"Overview\",\"macro.id\":\"1e642be8-3536-453d-ae0a-5b7d489de7ba\",\"editor.version\":\"\\\"v2\\\"\"}",
+    "timeZone":"Europe/Zurich",
+    "origin":"https://confluence-connect.gliffy.net",
+    "hostOrigin":"https://mfcloud.atlassian.net",
+    "sandbox":"allow-downloads allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-scripts allow-same-origin allow-top-navigation-by-user-activation allow-storage-access-by-user-activation",    "pearApp":"true",        "apiMigrations": {
+        "gdpr": true
+    }
+}
+;
+    if(window.AP && window.AP.subCreate) {
+      window._AP.appendConnectAddon(data);
+    } else {
+      require(['ac/create'], function(create){
+        create.appendConnectAddon(data);
+      });
+    }
+
+    // For Confluence App Analytics. This code works in conjunction with CFE's ConnectSupport.js.
+    // Here, we add a listener to the initial HTML page that stores events if the ConnectSupport component
+    // has not mounted yet. In CFE, we process the missed event data and disable this initial listener.
+    const __MAX_EVENT_ARRAY_SIZE__ = 20;
+    const connectAppAnalytics = "ecosystem.confluence.connect.analytics";
+    window.connectHost && window.connectHost.onIframeEstablished((eventData) => {
+      if (!window.__CONFLUENCE_CONNECT_SUPPORT_LOADED__) {
+        let events = JSON.parse(window.localStorage.getItem(connectAppAnalytics)) || [];
+        if (events.length >= __MAX_EVENT_ARRAY_SIZE__) {
+          events.shift();
+        }
+        events.push(eventData);
+        window.localStorage.setItem(connectAppAnalytics, JSON.stringify(events));
+      }
+    });
+
+  }());
+</script>
+
+</div>
+<p>Der Backup PC erzeugt periodisch (alle 1h, Minute '50) Snapshots auf Filesystem Ebene (btrfs). Diese sind jeweils mit einer Retention-Period versehen.</p><p>Der Backup PC  muss möglichst autonom sein:</p><ul><li><p>Keine automatischen Updates</p></li><li><p>Möglichst kein Zugriff von aussen</p></li><li><p>Firewall restriktiv einstellen</p></li></ul><p>Falls Remote Administration verwendet wird: (Z.Bsp. Backup Server in einem Rechenzentrum)</p><ul><li><p>Zugriff nur von dedizierten Rechnern, welche sonst nicht verwendet werden. Z.Bsp: Altes Notebook. </p></li><li><p>SSH mit Private Key. Key nur auf dediziertem Rechner und offline Speichermedium (z.Bsp. USB Stick)</p></li></ul><p><strong>Dadurch soll verhindert werden, dass bei einer Kompromittierung der Haupt-IT die Backup-Server mit betroffen sind.</strong></p><p>Das Backup wird mit Hilfe von Influx/Grafana überwacht. Dies läuft auf einem Hetzner Server. Alle Vorgänge/Scripts senden an InfluxDB wenn sie ausgeführt wurden, und Grafana Alerting-Rules überwachen, ob das auch stattgefunden hat.</p><p>Source Code, inkl Dokumentation zum Aufsetzen: <a class="external-link" href="https://dev.azure.com/MFEngineeringAG/_git/M_F%20Backup" rel="nofollow">https://dev.azure.com/MFEngineeringAG/_git/M_F Backup</a></p><p>Zugriff:</p><ul><li><p>Backup Monitoring und Scripts</p><ul><li><p>Influx: <a class="external-link" data-card-appearance="inline" href="https://backup.m-f.ch" rel="nofollow">https://backup.m-f.ch</a> </p></li><li><p>Grafana: <a class="external-link" href="https://backup.m-f.ch/grafana" rel="nofollow">Grafana</a></p></li><li><p>Unix user: root</p></li><li><p>Influx/Grafana: user: admin pwd: IT-Passwoerter</p></li><li><p>SSH-Key: it</p></li></ul></li><li><p>Backup PC</p><ul><li><p>Steht beim Cudos Buero im Keller</p></li><li><p>user: user</p></li><li><p>pwd: user</p></li><li><p>Zugriff via lokalem Bildschirm/Tastatur</p></li></ul></li></ul><h1 id="Backup-Datenquellen">Datenquellen</h1><h2 id="Backup-Bexio">Bexio</h2><ul><li><p>Cloud Service, kein direktes Backup möglich</p><ul><li><p>Die Daten werden täglich sichergestellt</p></li><li><p>Kopien davon sind auf mehreren Servern in der Schweiz (alle Backups in der Schweiz)</p></li><li><p>Ein Gesamtrestore ist jederzeit möglich</p></li><li><p>Bei Verlust einer Rechnung kann ein älterer Stand, dessen Zeitpunkt wir angeben, mitgeteilt werden (nicht auf DB restored, sondern Werte separat übermittelt)</p></li><li><p>Die Daten können jederzeit manuell in ein Excel exportiert werden</p></li></ul></li><li><p>Kündigungsfall</p><ul><li><p>Die Daten werden noch 40 Tage auf dem System belassen.</p></li><li><p>Danach wird ein Backup davon gezogen, der weitere 180 Tage behalten wird.</p></li></ul></li></ul><h2 id="Backup-GoogleDrive">Google Drive</h2><ul><li><p>Cloud Service, kein direktes Backup möglich</p><ul><li><p>Gelöschte Daten bleiben für 30 Tage im “Bin”</p></li><li><p>Files werden automatisch versioniert. Ältere Versionen können aber gelöscht werden, wenn sie nicht manuell auf “keep forever” gesetzt werden</p></li><li><p>Bei einem Ransomware-Angriff  können Folder und Files um X-Tage zurückgesetzt werden, nicht aber ganze Drives</p></li></ul></li><li><p>Automatische Snapshots durch Backup PC (stündlich), Google Docs werden nach Open Document Format konvertiert</p></li><li><p>TODO: Entfernen wenn Backup PC zuverlässig funktioniert: Monatlicher manueller <a class="createlink" href="/wiki/pages/createpage.action?spaceKey=IT&amp;title=Backup%20von%20Google%20Drive&amp;linkCreation=true&amp;fromPageId=8140488721">Backup auf mfwinsrv01</a>. </p></li><li><p>Zuständig: IT</p></li></ul><h2 id="Backup-CudosWiki">CudosWiki</h2><ul><li><p>Backup der Cloud</p><ul><li><p>“Atlassian doesn't officially provide data rollback based on customer requests.”</p></li></ul></li><li><p>Täglicher, automatisierter Backup nach “G:\Geteilte Ablagen\Diverses\Administration\IT\SeleniumBackups”</p><ul><li><p>Kontrolle über Teams, Backup Monitoring</p></li></ul></li><li><p>Der Code (Python/Selenium) ist im GIT abgelegt unter:</p><ul><li><p>https://dev.azure.com/MFEngineeringAG/_git/M_F%20Backup</p></li></ul></li><li><p>Ausgeführt wird der Code auf Hetzner (Ubuntu, docker container: selenium_backups)</p></li><li><p><a href="8088911884.html" data-linked-resource-id="8088911884" data-linked-resource-version="6" data-linked-resource-type="page">Notfallszenario</a></p></li><li><p>Zuständig: IT</p></li></ul><h2 id="Backup-JIRA">JIRA</h2><ul><li><p>Analog zu mfWiki, aber nur jeden 2. Tag (JIRA Backups sind nur alle zwei Tage erlaubt)</p></li><li><p>Automatisierter Backup alle 2 Tage nach “G:\Geteilte Ablagen\Diverses\Administration\IT\SeleniumBackups”</p><ul><li><p>Kontrolle über Teams, Backup Monitoring</p></li></ul></li><li><p>Der Code (Python/Selenium) ist im GIT abgelegt unter:</p><ul><li><p><a class="external-link" href="https://dev.azure.com/MFEngineeringAG/_git/M_F%20Backup" rel="nofollow">https://dev.azure.com/MFEngineeringAG/_git/M_F%20Backup</a></p></li></ul></li><li><p>Ausgeführt wird der Code auf Hetzner (Ubuntu, docker container: selenium_backups)</p></li><li><p>Zuständig: IT</p></li></ul><h2 id="Backup-RolX">RolX</h2><ul><li><p>Tägliche Backups durch Provider, 7 Versionen</p></li><li><p>Stündlicher automatisierter Backup durch Backup Scripts, nach Diverses\Administration\IT\RolX\Backup\rolx_prod.sql</p></li><li><p>Zuständig: IT (mit Unterstützung durch EWC, JOF, STR)</p></li><li><p>Anleitung: <a href="https://mfcloud.atlassian.net/wiki/spaces/ROLX/pages/8094482433/Database+Server" data-linked-resource-id="8094482433" data-linked-resource-version="9" data-linked-resource-type="page">Database Server</a> </p></li></ul><h2 id="Backup-Telefonanlage">Telefonanlage</h2><ul><li><p>Nach Änderungen <a href="3CX-Telefonzentrale-PBX_4844979661.html" data-linked-resource-id="4844979661" data-linked-resource-version="54" data-linked-resource-type="page">manueller Backup</a>.</p></li><li><p>Zuständig: IT</p></li></ul><h2 id="Backup-vTiger">vTiger</h2><ul><li><p>Durch Provider</p></li><li><p>Halbjährlicher Download CRM durch <a class="confluence-userlink user-mention" data-account-id="5bdc045e923d3245b8ba10b8" href="https://mfcloud.atlassian.net/wiki/people/5bdc045e923d3245b8ba10b8?ref=confluence" target="_blank" data-linked-resource-id="1232928770" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://mfcloud.atlassian.net/wiki">Rachel Blaser</a> : siehe <a href="vTiger-Management_4786094150.html" data-linked-resource-id="4786094150" data-linked-resource-version="4" data-linked-resource-type="page">vTiger Management</a> </p></li><li><p>Zuständig: <a class="confluence-userlink user-mention" data-account-id="5bdc045e923d3245b8ba10b8" href="https://mfcloud.atlassian.net/wiki/people/5bdc045e923d3245b8ba10b8?ref=confluence" target="_blank" data-linked-resource-id="1232928770" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://mfcloud.atlassian.net/wiki">Rachel Blaser</a> </p></li></ul><h2 id="Backup-Webseite">Webseite</h2><ul><li><p><a href="Cudos-Website_4779180337.html" data-linked-resource-id="4779180337" data-linked-resource-version="23" data-linked-resource-type="page">Akeeba Backup / Restore</a></p></li><li><p>Zusätzlich ist durch den Provider ein gutes automatisches Backup vorhanden</p></li><li><p>Zuständig: <a class="confluence-userlink user-mention" data-account-id="5bdc045e923d3245b8ba10b8" href="https://mfcloud.atlassian.net/wiki/people/5bdc045e923d3245b8ba10b8?ref=confluence" target="_blank" data-linked-resource-id="1232928770" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://mfcloud.atlassian.net/wiki">Rachel Blaser</a> </p></li></ul><h2 id="Backup-AzureDevops(CloudService)">Azure Devops (Cloud Service)</h2><ul><li><p>Cloud Service, kein direktes Backup möglich. <a class="external-link" href="https://docs.microsoft.com/en-us/azure/devops/organizations/security/data-protection?view=azure-devops" rel="nofollow">Infos von Microsoft bezüglich Backups/Sicherheit.</a></p></li><li><p>GIT-Repositories:</p><ul><li><p>Täglicher, automatisierter Backup (Git Clone/Fetch) nach “G:\Geteilte Ablagen\Diverses\Administration\IT\SeleniumBackups”</p><ul><li><p>Kontrolle über Teams, Backup Monitoring</p></li></ul></li><li><p>Der Code (Python) ist im GIT abgelegt unter:</p><ul><li><p><a class="external-link" href="https://dev.azure.com/MFEngineeringAG/_git/M_F%20Backup" rel="nofollow">https://dev.azure.com/MFEngineeringAG/_git/M_F%20Backup</a></p></li></ul></li><li><p>Ausgeführt wird der Code auf Hetzner (Ubuntu, docker container: selenium_backups)</p><ul><li><p>Zuständig: IT</p></li></ul></li><li><p>werden lokal bei den Entwicklern repliziert</p></li><li><p>werden gezippt und auf GDrive abgelegt jeweils bei Auslieferung eines Releases an den Kunden</p></li></ul></li><li><p>Source-Code würde nicht verloren gehen, aber Backlog, Doku etc.</p></li><li><p>Zuständig: Projektleiter</p></li></ul><ul class="inline-task-list" data-inline-tasks-content-id="8140488721"><li data-inline-task-id="6"><span class="placeholder-inline-tasks"><a class="confluence-userlink user-mention current-user-mention" data-account-id="557058:6697e3b1-b78b-46e9-8cec-69b2f592c15b" href="https://mfcloud.atlassian.net/wiki/people/557058:6697e3b1-b78b-46e9-8cec-69b2f592c15b?ref=confluence" target="_blank" data-linked-resource-id="227246082" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://mfcloud.atlassian.net/wiki">Reto B&auml;ttig</a> : Q-System Schulung der PL, spezielle Betrachtung dieses Punktes. Kontrolle durch <a class="confluence-userlink user-mention" data-account-id="61b8d3e5599f18006a3cda3c" href="https://mfcloud.atlassian.net/wiki/people/61b8d3e5599f18006a3cda3c?ref=confluence" target="_blank" data-linked-resource-id="2069168252" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://mfcloud.atlassian.net/wiki">Binasa Misinovic</a> bei Projektabschluss</span></li></ul><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8140488721/8145895429">Overview</a> (application/gliffy+json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8140488721/8145960966.png">Overview.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8140488721/8174567438">Overview</a> (application/gliffy+json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8140488721/8174895105.png">Overview.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8140488721/8226570241">Overview</a> (application/gliffy+json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8140488721/8225751045.png">Overview.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8140488721/8146124803">Overview</a> (application/gliffy+json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8140488721/8145928218.png">Overview.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Okt. 15, 2024 11:54</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

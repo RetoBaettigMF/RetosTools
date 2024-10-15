@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marketing : Excel Import ins CRM (Massenbearbeitung)</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Marketing</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Marketing-Startseite_2257486187.html">Marketing Startseite</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="2262401115.html">CRM now (ehem. V-Tiger) Learnings</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Marketing : Excel Import ins CRM (Massenbearbeitung)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Rachel Blaser</span>, last modified by <span class='editor'> Reto Bättig</span> on Juni 14, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><style>[data-colorid=xredsihug5]{color:#ff5630} html[data-color-mode=dark] [data-colorid=xredsihug5]{color:#cf2600}[data-colorid=sgblfu5a87]{color:#ff5630} html[data-color-mode=dark] [data-colorid=sgblfu5a87]{color:#cf2600}[data-colorid=j9kdjpmqpr]{color:#bf2600} html[data-color-mode=dark] [data-colorid=j9kdjpmqpr]{color:#ff6640}[data-colorid=plydjaua8u]{color:#ff5630} html[data-color-mode=dark] [data-colorid=plydjaua8u]{color:#cf2600}[data-colorid=bwqxyxz4en]{color:#bf2600} html[data-color-mode=dark] [data-colorid=bwqxyxz4en]{color:#ff6640}[data-colorid=f4na53um0j]{color:#bf2600} html[data-color-mode=dark] [data-colorid=f4na53um0j]{color:#ff6640}</style>Wenn beispielweise die &ldquo;Unsubscribes&rdquo; von Mailchimp-Kampagnen im CRM nachgef&uuml;hrt werden m&uuml;ssen, kann dies &uuml;ber ein Excel bzw. CSV Import gemacht werden. </p><p><a class="confluence-userlink user-mention" data-account-id="557058:4ada06d4-2f40-48e0-b00b-a0a12bff5213" href="https://mfcloud.atlassian.net/wiki/people/557058:4ada06d4-2f40-48e0-b00b-a0a12bff5213?ref=confluence" target="_blank" data-linked-resource-id="1239810062" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://mfcloud.atlassian.net/wiki">Hans Zemp</a> kann den Import durchf&uuml;hren oder unterst&uuml;tzen.</p><p /><p><strong>Folgende Pflichtfelder braucht es im Excel f&uuml;r den Import:</strong></p><ul><li><p>Vorname</p></li><li><p>Nachname</p></li><li><p>prim&auml;re E-Mail</p></li><li><p>Letter Salutation</p></li><li><p>Zu importierende Felder (hinzuf&uuml;gen oder &uuml;berschreiben)</p></li></ul><p><strong>&rarr; Excel als CSV speichern (per Default wird &ldquo;;&rdquo; als Trennzeichen verwendet)</strong></p><p /><h2 id="ExcelImportinsCRM(Massenbearbeitung)-ACHTUNG:DerImportläuftnichtzuverlässig:"><strong><span data-colorid="plydjaua8u">ACHTUNG: Der Import l&auml;uft nicht zuverl&auml;ssig:</span></strong></h2><ul><li><p><strong><span data-colorid="sgblfu5a87">Zuerst Backup erstellen</span></strong></p></li><li><p><strong><span data-colorid="xredsihug5">Erste Tests mit wenigen Daten versuchen</span></strong></p></li><li><p><strong><span data-colorid="f4na53um0j">Wenn in den Feldern Kommas oder Strichpunkte vorkommen, funktioniert CSV nicht mehr richtig.</span></strong> In diesem Fall folgendermassen vorgehen:</p><ul><li><p>In Excel eine zus&auml;tzliche Seite machen</p></li><li><p>Alle Felder verweisen auf originalfelder und  mit &ldquo;&ldquo;&ldquo;&ldquo; vorne und hinten erg&auml;nzen:<br />=&quot;&quot;&quot;&quot;&amp;Worksheet!A1&amp;&quot;&quot;&quot;&quot;</p></li><li><p>Somit erscheinen Anf&uuml;rhungszeichen um die Zellen</p></li><li><p>Dann dieses Sheet als .CSV speichern</p></li><li><p>Im Editor sieht man dann Drei hochkommas (&ldquo;&ldquo;&ldquo;)</p></li><li><p>Im Texteditor suchen und ersetzen &ldquo;&ldquo;&ldquo; =&gt; &ldquo;</p></li><li><p>Dann importieren</p></li><li><p>Beispieldatei (siehe alle 3 Reiter!): <span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/2259124444/8752955394.xlsx" data-nice-type="Microsoft Excel Spreadsheet" data-file-src="/wiki/download/attachments/2259124444/Beispiel.xlsx?version=2&amp;modificationDate=1718368688543&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="8752955394" data-linked-resource-type="attachment" data-linked-resource-container-id="2259124444" data-linked-resource-default-alias="Beispiel.xlsx" data-mime-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data-has-thumbnail="true" data-linked-resource-version="2" data-media-id="be005af4-8f3a-42a6-a0b1-536678f38f44" data-media-type="file"><img src="attachments/thumbnails/2259124444/8752955394" height="250"/></a></span> </p></li></ul></li><li><p><strong><span data-colorid="bwqxyxz4en">Bei Zust&auml;ndigkeiten m&uuml;ssen die Exportierten Zust&auml;ndigkeiten durch die K&uuml;rzel ersetzt werden, z.B. </span></strong><br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240614-123651.png" width="213" loading="lazy" src="attachments/2259124444/8753053697.png?width=213" data-image-src="attachments/2259124444/8753053697.png" data-height="225" data-width="213" data-unresolved-comment-count="0" data-linked-resource-id="8753053697" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240614-123651.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="2259124444" data-linked-resource-container-version="15" data-media-id="dfb97f72-4cb1-4ddf-acca-6a379a80856f" data-media-type="file" /></span><p>Beispieldatei (siehe alle 3 Reiter!): <span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/2259124444/8752955394.xlsx" data-nice-type="Microsoft Excel Spreadsheet" data-file-src="/wiki/download/attachments/2259124444/Beispiel.xlsx?version=2&amp;modificationDate=1718368688543&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="8752955394" data-linked-resource-type="attachment" data-linked-resource-container-id="2259124444" data-linked-resource-default-alias="Beispiel.xlsx" data-mime-type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data-has-thumbnail="true" data-linked-resource-version="2" data-media-id="be005af4-8f3a-42a6-a0b1-536678f38f44" data-media-type="file"><img src="attachments/thumbnails/2259124444/8752955394" height="250"/></a></span> </p></li></ul><h1 id="ExcelImportinsCRM(Massenbearbeitung)-ImportinsCRM">Import ins CRM</h1><ol start="1"><li><p>Kommt das Excel oder .csv von Mailchimp:</p><ol start="1"><li><p> sind die Umlaute falsch dargestellt. Sie m&uuml;ssen zuerst manuell berichtigt werden.</p></li><li><p>ist die Titelzeile Englisch (&ldquo;Last Name&rdquo;) und muss auf Deutsch (&ldquo;Nachname&rdquo;) umgestellt werden.</p></li></ol></li><li><p>Login V-Tiger CRM (Credentials siehe IT Passw&ouml;rter)</p></li><li><p>Reiter &ldquo;Personen&rdquo; ausw&auml;hlen (Kopfzeile)</p></li><li><p>&ldquo;Aktionen&rdquo;</p></li><li><p>&ldquo;Import&rdquo;</p></li><li><p>Datei ausw&auml;hlen, Trennzeichen Semikolon (Default), hat &Uuml;berschriften, <strong><span data-colorid="j9kdjpmqpr">Zusammenf&uuml;hren </span></strong>ausw&auml;hlen, Schritt 3: Keine weiteren Felder als &ldquo;Vorname&rdquo;, &ldquo;Nachname&rdquo; w&auml;hlen:</p></li><li><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/2259124444/8407810054.png" data-image-src="attachments/2259124444/8407810054.png" data-height="696" data-width="1420" data-unresolved-comment-count="0" data-linked-resource-id="8407810054" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20230601-073355.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="2259124444" data-linked-resource-container-version="15" data-media-id="4768c023-88db-4f66-8681-d0882dc93d78" data-media-type="file" /></span><p>Wenn Zuordnung nicht automatisch gemacht wird (z.B. Organisation =&gt; Ohne), Zuordnung manuell erstellen<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/2259124444/8405745698.png" data-image-src="attachments/2259124444/8405745698.png" data-height="657" data-width="1396" data-unresolved-comment-count="0" data-linked-resource-id="8405745698" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20230531-100425.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="2259124444" data-linked-resource-container-version="15" data-media-id="95af6567-f8e6-4577-9159-3c982d5f7f70" data-media-type="file" /></span></li><li><p>Die manuelle Zuordnung kann unter einem Namen abgelegt werden (&ldquo;speichere Zuordnung&rdquo;), &ldquo;kompletten Import ablehnen, &hellip;&rdquo; ist eine Sicherheitsoption, die zum Zug kommt, ob sie ausgew&auml;hlt ist oder nicht&hellip;</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/2259124444/8405319718.png" data-image-src="attachments/2259124444/8405319718.png" data-height="658" data-width="1400" data-unresolved-comment-count="0" data-linked-resource-id="8405319718" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20230531-100808.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="2259124444" data-linked-resource-container-version="15" data-media-id="3080dbc8-598d-4d16-9e13-5f4faacba424" data-media-type="file" /></span></li><li><p>&ldquo;Import&rdquo;</p></li><li><p>Nach dem Import sollte folgendes Menu erscheinen:<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/2259124444/8407744515.png" data-image-src="attachments/2259124444/8407744515.png" data-height="327" data-width="1400" data-unresolved-comment-count="0" data-linked-resource-id="8407744515" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20230601-072648.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="2259124444" data-linked-resource-container-version="15" data-media-id="f21b4b12-0a8b-415a-999b-761ff62edf56" data-media-type="file" /></span><p /></li><li><p>&ldquo;Anzahl neu erstellter Datens&auml;tze&rdquo; muss &ldquo;0&rdquo; sein, &ldquo;Anzahl &uuml;berschriebener Datens&auml;tze&rdquo; muss 0 sein, &ldquo;Anzahl aller zusammengef&uuml;hrten Datens&auml;tze&rdquo; muss der Anzahl Records im .CSV File entsprechen.</p></li><li><p>Mit &ldquo;Fertigstellen&rdquo; wird der Import abgeschlossen.</p></li></ol>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/2259124440.png">image2016-7-6 10:53:58.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/2259124441.png">image2016-7-6 10:56:0.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/2259124442.png">image2016-7-6 10:58:41.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/2259124443.png">image2016-7-6 11:11:25.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/8405975088.png">image-20230531-095721.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/8406237194.png">image-20230531-095816.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/8405745698.png">image-20230531-100425.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/8405319718.png">image-20230531-100808.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/8406106141.png">ImportResult-20230531-094804.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/8407744515.png">image-20230601-072648.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/8407810054.png">image-20230601-073355.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/8753053697.png">image-20240614-123651.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/8752955400.xlsx">Beispiel.xlsx</a> (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/2259124444/8752955394.xlsx">Beispiel.xlsx</a> (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Okt. 15, 2024 12:09</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

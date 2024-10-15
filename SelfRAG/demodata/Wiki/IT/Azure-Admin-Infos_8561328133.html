@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT : Azure Admin Infos</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="IT_4769087480.html">IT</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            IT : Azure Admin Infos
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Reto Bättig</span>, last modified on Jan. 25, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1728986363618 {padding: 0px;}
+div.rbtoc1728986363618 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1728986363618 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1728986363618'>
+<ul class='toc-indentation'>
+<li><a href='#AzureAdminInfos-AdminZugriffaufALLEAzureRessourcen'>Admin Zugriff auf ALLE Azure Ressourcen</a></li>
+<li><a href='#AzureAdminInfos-ZugriffeinesMitarbeitendenaufeinespezifischeAzureRessource'>Zugriff eines Mitarbeitenden auf eine spezifische Azure Ressource</a></li>
+</ul>
+</div><h2 id="AzureAdminInfos-AdminZugriffaufALLEAzureRessourcen">Admin Zugriff auf ALLE Azure Ressourcen</h2><p>Problem: Ein neuer Admin braucht Zugriff auf die Azure Subscriptions.</p><p>Lösung: <a class="external-link" data-card-appearance="inline" href="https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin" rel="nofollow">https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin</a> </p><p>Microsoft Entra ID → Properties → Access management for Azure resources → Yes</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240125-080251.png" width="760" loading="lazy" src="attachments/8561328133/8561623041.png?width=760" data-image-src="attachments/8561328133/8561623041.png" data-height="933" data-width="1000" data-unresolved-comment-count="0" data-linked-resource-id="8561623041" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240125-080251.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="8561328133" data-linked-resource-container-version="3" data-media-id="06370156-9532-41f2-8da9-2a6e9017e5df" data-media-type="file"></span><h2 id="AzureAdminInfos-ZugriffeinesMitarbeitendenaufeinespezifischeAzureRessource">Zugriff eines Mitarbeitenden auf eine spezifische Azure Ressource</h2><p>Beispiel: Zhuo Zugriff geben auf die mf-openai Subscription</p><ul><li><p>mf-openai Subscription öffnen</p></li><li><p>Access Contrtrol (IAM) anklicken links</p></li><li><p>Role Assignments =&gt; Add (oben, links der Mitte)<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240125-081303.png" width="736" loading="lazy" src="attachments/8561328133/8560935049.png?width=736" data-image-src="attachments/8561328133/8560935049.png" data-height="727" data-width="1029" data-unresolved-comment-count="0" data-linked-resource-id="8560935049" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240125-081303.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="8561328133" data-linked-resource-container-version="3" data-media-id="6b1377ae-e474-4a8e-b6e1-246ad77c8694" data-media-type="file"></span></li></ul><ul><li><p>Unter “Members” den MA auswählen und hinzufügen<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240125-081442.png" width="736" loading="lazy" src="attachments/8561328133/8561819649.png?width=736" data-image-src="attachments/8561328133/8561819649.png" data-height="482" data-width="947" data-unresolved-comment-count="0" data-linked-resource-id="8561819649" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240125-081442.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="8561328133" data-linked-resource-container-version="3" data-media-id="8c8c9d5a-e65f-4045-9fdd-678de08e5806" data-media-type="file"></span></li></ul><ul><li><p>Unter Role auf “Privileged administrator roles” klicken und dann die Rolle wählen (“Contributor” reicht meist, sonst “Owner”<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240125-081530.png" width="736" loading="lazy" src="attachments/8561328133/8561557508.png?width=736" data-image-src="attachments/8561328133/8561557508.png" data-height="666" data-width="998" data-unresolved-comment-count="0" data-linked-resource-id="8561557508" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240125-081530.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="8561328133" data-linked-resource-container-version="3" data-media-id="9b0228b1-096d-465d-80a2-67bbb1fc7bb8" data-media-type="file"></span></li></ul>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8561328133/8561623041.png">image-20240125-080251.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8561328133/8560935049.png">image-20240125-081303.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8561328133/8561819649.png">image-20240125-081442.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8561328133/8561557508.png">image-20240125-081530.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Okt. 15, 2024 11:59</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

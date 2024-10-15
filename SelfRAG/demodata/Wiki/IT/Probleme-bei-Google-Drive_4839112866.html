@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT : Probleme bei Google Drive</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="IT_4769087480.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Google-Drive_4835115221.html">Google Drive</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            IT : Probleme bei Google Drive
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Reto Bättig</span>, last modified by <span class='editor'> Hans Zemp</span> on Aug. 30, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Bei GDrive kommt es manchmal zu Problemen, die folgendermassen behoben werden können:</p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1728986329440 {padding: 0px;}
+div.rbtoc1728986329440 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1728986329440 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1728986329440'>
+<ul class='toc-indentation'>
+<li><a href='#ProblemebeiGoogleDrive-LangsamesÖffnenvonDateieninOffice'>Langsames Öffnen von Dateien in Office</a></li>
+<li><a href='#ProblemebeiGoogleDrive-KompletteRechnerabstürzebeimArbeitenmitOffice'>Komplette Rechnerabstürze beim Arbeiten mit Office</a></li>
+<li><a href='#ProblemebeiGoogleDrive-FilessindaufG:nichtsichtbaroderandereProbleme'>Files sind auf G: nicht sichtbar oder andere Probleme</a></li>
+</ul>
+</div></p><h2 id="ProblemebeiGoogleDrive-LangsamesÖffnenvonDateieninOffice">Langsames Öffnen von Dateien in Office</h2><p>Manchmal gibt es Probleme, mehrere Dokumente in Microsoft Office zu öffnen, welche auf GDrive liegen. Grund scheint das Office-Plugin für die Zusammenarbeit zu sein.<br/>Falls ihr Probleme habt, deaktiviert bitte die Echtzeitzusammenarbeit:</p><p>- Bei Taskliste auf Gdrive Icon rechtsklicken =&gt; Gdrive Fenster kommt</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/4839112866/4839112864.png?height=250" data-image-src="attachments/4839112866/4839112864.png" data-unresolved-comment-count="0" data-linked-resource-id="4839112864" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2020-3-11_10-32-5.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4839112866" data-linked-resource-container-version="5" data-media-id="72908415-0c17-48d6-aac0-c1f6282efb41" data-media-type="file"></span></span><br/>- in GDrive Fenster auf Zahnrad klicken =&gt; Einstellungen<br/>- Echtzeit-Anwesenheit in Microsoft Office disablen<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="400" loading="lazy" src="attachments/4839112866/4839112865.png?height=400" data-image-src="attachments/4839112866/4839112865.png" data-unresolved-comment-count="0" data-linked-resource-id="4839112865" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2020-3-11_10-32-28.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4839112866" data-linked-resource-container-version="5" data-media-id="a9d3c5d6-b4bd-4e44-a629-a860d030adc2" data-media-type="file"></span></span><br/>- OK Clicken =&gt; GDrive wird neu gestartet und Probleme sollten behoben sein.</p><p><br/></p><h2 id="ProblemebeiGoogleDrive-KompletteRechnerabstürzebeimArbeitenmitOffice">Komplette Rechnerabstürze beim Arbeiten mit Office</h2><p>Es ist schon mehrfach vorgekommen, dass beim Arbeiten mit Word (insbesondere beim Drucken) der Rechner komplett eingefroren ist. Wenn dieses Problem auftritt, ist es meistens auch reproduzierbar, d.h. es kann gar nicht mehr vernünftig mit dem Rechner gearbeitet werden.</p><p>In diesem Fall hilft es, wenn man den Link auf GDrive aus den Vorlagenverzeichnissen im Word entfernt. Dies geht oft nur noch über die Registry, weil Word schon beim Einstellen der Vorlagenordner abstürzt.</p><p>Folgende Registry-Keys manuell entfernen: [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\General] =&gt; &quot;SharedTemplates&quot; den String mit GDrive löschen</p><p><br/></p><h2 id="ProblemebeiGoogleDrive-FilessindaufG:nichtsichtbaroderandereProbleme">Files sind auf G: nicht sichtbar oder andere Probleme</h2><p>Zuerst überprüfen, ob sie im Browser sichbar sind (unter <a class="external-link" href="https://drive.google.com/" rel="nofollow">https://drive.google.com/</a> )</p><p>Falls ja, Cache bei GDrive folgendermassen löschen:</p><ul style="list-style-type: square;"><li>Drive FS stoppen: <ul style="list-style-type: square;"><li>Bei der Taskleiste auf die Programm-Icons gehen und Gdrive Rechtsklicken:<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="150" loading="lazy" src="attachments/4839112866/4860248198.png?height=150" data-image-src="attachments/4839112866/4860248198.png" data-unresolved-comment-count="0" data-linked-resource-id="4860248198" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-8-9_10-38-37.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4839112866" data-linked-resource-container-version="5" data-media-id="35765a65-6964-4e4f-bfc7-9a54e0c06bcb" data-media-type="file"></span><br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" height="250" loading="lazy" src="attachments/4839112866/4860248197.png?height=250" data-image-src="attachments/4839112866/4860248197.png" data-unresolved-comment-count="0" data-linked-resource-id="4860248197" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2021-8-9_10-37-58.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4839112866" data-linked-resource-container-version="5" data-media-id="e0c11c01-fe7f-4c97-aaa2-fa8b4093e689" data-media-type="file"></span></li><li><strong><span class="legacy-color-text-red2">Wichtig: Zuerst warten, bis alle Files Synchronisiert sind, sonst können Daten verloren gehen (unten muss &quot;Alle Dateien sind auf dem aktuellen Stand&quot; stehen</span></strong></li><li>Unter Einstellungen auf &quot;Beenden&quot; clicken</li></ul></li><li>Cache löschen: %USERPROFILE%\AppData\Local\Google\DriveFS</li><li>Gdrive neu Starten (Windows-Taste =&gt; Google Drive App)</li><li>Neu einloggen in Google drive</li><li>=&gt; Jetzt synchronisiert Gdrive neu und alles sollte wieder funktionieren</li></ul><p><br/></p><p><br/></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4839112866/4839112865.png">image2020-3-11_10-32-28.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4839112866/4839112864.png">image2020-3-11_10-32-5.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4839112866/4860248197.png">image2021-8-9_10-37-58.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4839112866/4860248198.png">image2021-8-9_10-38-37.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Okt. 15, 2024 11:58</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

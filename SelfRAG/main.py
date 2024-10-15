@@ -2,7 +2,9 @@ from vectordb import get_vector_db
 from history import history
 from rag import execute_prompt
 from settings import HISTORY_FILE
+from prepare_data import prepare_data
   
+
 def main():
     # print(GPT("Write a funny sentence to welcome the user to the SelfRAG program."))
     print("Welcome to SelfRAG")

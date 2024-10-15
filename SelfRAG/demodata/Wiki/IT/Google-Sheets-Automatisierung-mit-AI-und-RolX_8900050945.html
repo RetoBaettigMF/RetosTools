@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT : Google Sheets Automatisierung mit AI und RolX</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="IT_4769087480.html">IT</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            IT : Google Sheets Automatisierung mit AI und RolX
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Reto Bättig</span>, last modified on Sept. 26, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Für Google Sheets wurden Bibliotheken entwickelt, um Automatisierungen von Abfragen, Auswertungen etc. zu vereinfachen. Die Bibliotheken können im Apps Script eingebunden werden. </p><p>Entwickelt und gewartet werden die Bibliotheken momentan von <a class="confluence-userlink user-mention current-user-mention" data-account-id="557058:6697e3b1-b78b-46e9-8cec-69b2f592c15b" href="https://mfcloud.atlassian.net/wiki/people/557058:6697e3b1-b78b-46e9-8cec-69b2f592c15b?ref=confluence" target="_blank" data-linked-resource-id="227246082" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://mfcloud.atlassian.net/wiki">Reto B&auml;ttig</a> </p><h1 id="GoogleSheetsAutomatisierungmitAIundRolX-CudosAILibrary">Cudos AI Library</h1><p>Google Link: <a class="external-link" data-card-appearance="inline" href="https://script.google.com/home/projects/11ctRQZSAFBVQpk9lynQOR9Ye1BjvtbvL3MfE_4LWE3y5sHVQCKI92Vih/edit" rel="nofollow">https://script.google.com/home/projects/11ctRQZSAFBVQpk9lynQOR9Ye1BjvtbvL3MfE_4LWE3y5sHVQCKI92Vih/edit</a> </p><p>Script ID:  11ctRQZSAFBVQpk9lynQOR9Ye1BjvtbvL3MfE_4LWE3y5sHVQCKI92Vih</p><p>Funktionen:</p><ul><li><p><strong>getCompletionAzure(args, deployment)</strong>:</p><ul><li><p>Sendet eine Anfrage an die Azure OpenAI API, um eine Antwort zu erhalten.</p></li><li><p>Optional kann ein Deployment angegeben werden. Wenn nicht, wird ein Standard-Deployment verwendet.</p></li><li><p>Rückgabe: API-Antwort als JSON-Objekt oder Fehlermeldung.</p></li></ul></li><li><p><strong>getSingleCompletionAzure(prompt)</strong>:</p><ul><li><p>Sendet einen einzelnen Prompt an die Azure OpenAI API und gibt die Antwort als Text zurück.</p></li><li><p>Protokolliert den Aufruf mit der <code>LogCall</code>-Funktion.</p></li></ul></li><li><p><strong>SheetGPTRange(prompt, range)</strong>:</p><ul><li><p>Sendet eine Anfrage an die API und erwartet eine Antwort basierend auf einem Prompt und optionalen Daten in einem Bereich.</p></li><li><p>Versucht, die Antwort als JSON-Array zu parsen.</p></li><li><p>Rückgabe: Geparstes JSON-Array oder rohe Antwort.</p></li></ul></li><li><p><strong>SheetGPT(prompt, range)</strong>:</p><ul><li><p>Sendet eine Anfrage an die API mit einem Prompt und optionalen Daten in einem Bereich.</p></li><li><p>Gibt die rohe API-Antwort zurück, ohne Parsing in ein JSON-Array.</p></li></ul></li></ul><p /><h1 id="GoogleSheetsAutomatisierungmitAIundRolX-CudosControllingLibrary">Cudos Controlling Library</h1><p>Google Link: <a class="external-link" data-card-appearance="inline" href="https://script.google.com/home/projects/1zpZczeKyxaEmCRXqplbV0HTUj8rM8itfV0Jn9WXJr_4_5iUAcGQade9N/edit" rel="nofollow">https://script.google.com/home/projects/1zpZczeKyxaEmCRXqplbV0HTUj8rM8itfV0Jn9WXJr_4_5iUAcGQade9N/edit</a> </p><p>Script ID: 1zpZczeKyxaEmCRXqplbV0HTUj8rM8itfV0Jn9WXJr_4_5iUAcGQade9N</p><p>Funktionsbeispiel:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">function GetRolXData() {
+  var daterange = CudosControllingLibrary.getDateRangeLastMonth()
+  var data = CudosControllingLibrary.getRolXData(daterange)
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(&quot;Zeiterfassung&quot;);
+  CudosControllingLibrary.clearSheetAndFillData(data, sheet)
+}</pre>
+</div></div><h1 id="GoogleSheetsAutomatisierungmitAIundRolX-EinbindeneinerLibraryinGoogleSheets">Einbinden einer Library in Google Sheets</h1><p>Im Google Sheets unter Erweiterungen-&gt;Apps Script die Script IDE starten</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240925-105325.png" width="760" loading="lazy" src="attachments/8900050945/8900083717.png?width=760" data-image-src="attachments/8900050945/8900083717.png" data-height="264" data-width="827" data-unresolved-comment-count="0" data-linked-resource-id="8900083717" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240925-105325.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="8900050945" data-linked-resource-container-version="3" data-media-id="757c1d73-ff1a-4b0f-b5e8-c9b826c8b479" data-media-type="file"></span><p>Unter Bibliotheken auf <img class="emoticon emoticon-plus" data-emoji-id="atlassian-plus" data-emoji-shortname=":plus:" data-emoji-fallback=":plus:" src="images/icons/emoticons/add.png" width="16" height="16" data-emoticon-name="plus" alt="(Plus)"/> clicken:<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240925-105423.png" width="305" loading="lazy" src="attachments/8900050945/8900247554.png?width=305" data-image-src="attachments/8900050945/8900247554.png" data-height="242" data-width="305" data-unresolved-comment-count="0" data-linked-resource-id="8900247554" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240925-105423.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="8900050945" data-linked-resource-container-version="3" data-media-id="0a558f28-16dd-44de-b4af-ac7721782761" data-media-type="file"></span><p /><p>Script-ID eingeben und auf Suchen klicken:</p><p /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240925-105538.png" width="512" loading="lazy" src="attachments/8900050945/8899985411.png?width=512" data-image-src="attachments/8900050945/8899985411.png" data-height="541" data-width="512" data-unresolved-comment-count="0" data-linked-resource-id="8899985411" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240925-105538.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="8900050945" data-linked-resource-container-version="3" data-media-id="31682b0f-5c0f-401a-a150-38bbae45b921" data-media-type="file"></span><p>Auf Hinzufügen klicken.</p><p /><p>Die Library kann nun verwendet werden im Script, z.B. so:</p><p /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240925-105654.png" width="731" loading="lazy" src="attachments/8900050945/8899756037.png?width=731" data-image-src="attachments/8900050945/8899756037.png" data-height="279" data-width="731" data-unresolved-comment-count="0" data-linked-resource-id="8899756037" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240925-105654.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="8900050945" data-linked-resource-container-version="3" data-media-id="d3f0cb24-bf06-4d56-9c00-1744b0706c65" data-media-type="file"></span><p>Nach dem Speichern kann in einer beliebigen Tabellenzelle =GPT(…) eingegeben werden.</p><p>Die Funktionen können auch in Scripts eingebaut werden, welche z.B. über einen Knopfdruck ausgeführt werden können.</p><p> </p><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8900050945/8900083717.png">image-20240925-105325.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8900050945/8900247554.png">image-20240925-105423.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8900050945/8899985411.png">image-20240925-105538.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8900050945/8899756037.png">image-20240925-105654.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Okt. 15, 2024 11:59</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

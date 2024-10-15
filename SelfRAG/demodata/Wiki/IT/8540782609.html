@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT : Cudos Schrift Installieren (KMR Apparat)</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="IT_4769087480.html">IT</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            IT : Cudos Schrift Installieren (KMR Apparat)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Reto Bättig</span>, last modified by <span class='editor'> sibille.habluetzel</span> on Juni 19, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="1748f6c6-d71d-49eb-99c0-7870c1f4d6a5" class="confluenceTable"><tbody><tr><th class="confluenceTh"><p><strong>Zuständig für Seite</strong></p></th><th class="confluenceTh"><p><a href="https://mfcloud.atlassian.net/wiki/people/557058:6697e3b1-b78b-46e9-8cec-69b2f592c15b?ref=confluence" rel="nofollow"><strong>Reto Bättig</strong></a></p></th></tr></tbody></table></div><p>Die Schrift muss bei jedem neuen Rechner installiert werden.</p><p>Die Daten können hier heruntergeladen werden:   <span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/8540782609/8540323906.zip" data-nice-type="Zip Archive" data-file-src="/wiki/download/attachments/8540782609/KMR%20Apparat.zip?version=2&amp;modificationDate=1718791028725&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="8540323906" data-linked-resource-type="attachment" data-linked-resource-container-id="8540782609" data-linked-resource-default-alias="KMR Apparat.zip" data-mime-type="application/zip" data-has-thumbnail="true" data-linked-resource-version="2" data-media-id="81fb439f-c6d2-4c85-afab-b48e5981e483" data-media-type="file"><img src="attachments/thumbnails/8540782609/8540323906" height="250"/></a></span> </p><h1 id="CudosSchriftInstallieren(KMRApparat)-InstallationinWindows">Installation in Windows</h1><ul><li><p>Zip herunterladen, entpacken</p></li><li><p>In Ordner “KMR Apparat\Desktop\TTF” wechseln <em>((TTF sind besser für PDFs anstatt OTF))</em></p></li><li><p>Alle Dateien markieren, Rechtsklick</p></li><li><p>“Öffnen”</p></li><li><p>Bei jeder Font “Installieren” Anklicken</p></li><li><p>Fertig</p></li></ul><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240110-140259.png" width="760" loading="lazy" src="attachments/8540782609/8540717087.png?width=760" data-image-src="attachments/8540782609/8540717087.png" data-height="592" data-width="1235" data-unresolved-comment-count="0" data-linked-resource-id="8540717087" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240110-140259.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="8540782609" data-linked-resource-container-version="4" data-media-id="7ffe6973-105c-41e6-bbb4-a1f87e77f771" data-media-type="file"></span><h1 id="CudosSchriftInstallieren(KMRApparat)-InstallationunterLinux">Installation unter Linux</h1><p>Zip runterladen und nach <code>~/.fonts</code> entpacken:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">ruedi@ruedi-mf:~/.fonts$ find .
+.
+./KMR Apparat
+./KMR Apparat/.uuid
+./KMR Apparat/DESKTOP
+./KMR Apparat/DESKTOP/TTF
+./KMR Apparat/DESKTOP/TTF/.uuid
+./KMR Apparat/DESKTOP/TTF/KMR-Apparat-Regular.ttf
+./KMR Apparat/DESKTOP/TTF/KMR-Apparat-Medium.ttf</pre>
+</div></div><p>Danach <code>fc-cache -f -v</code> laufen lassen (ohne sudo). Am schluss kommt oft ein <code>skipping, looped directory detected</code>. Einfach weiter oben schauen, die Directories werden mehrmals gefunden.</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8541208582.png">image-20240110-135829.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8758329402.zip">KMR Apparat.zip</a> (application/zip)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8540717087.png">image-20240110-140259.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8758263833.ttf">KMR-Apparat-Light.ttf</a> (binary/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8758657026.ttf">KMR-Apparat-Heavy.ttf</a> (binary/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8758689798.ttf">KMR-Apparat-Black.ttf</a> (binary/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8758558734.ttf">KMR-Apparat-Regular.ttf</a> (binary/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8758689805.ttf">KMR-Apparat-Book.ttf</a> (binary/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8758493186.ttf">KMR-Apparat-Medium.ttf</a> (binary/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8758394890.ttf">KMR-Apparat-Bold.ttf</a> (binary/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8758624261.zip">KMR-Apparat-ttf.zip</a> (application/zip)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8540782609/8540323906.zip">KMR Apparat.zip</a> (application/zip)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Okt. 15, 2024 11:59</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

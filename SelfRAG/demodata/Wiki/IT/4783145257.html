@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT : Einbindung externes VoIP-Telefon für ROU</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="IT_4769087480.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="4783145250.html">IT Tasks und Zuständigkeiten</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3CX-Telefonzentrale-PBX_4844979661.html">3CX Telefonzentrale PBX</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            IT : Einbindung externes VoIP-Telefon für ROU
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ehemaliger Benutzer</span>, last modified by <span class='editor'> nizami.sevindi</span> on Aug. 26, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="EinbindungexternesVoIP-TelefonfürROU-Zweck">Zweck</h2><p>Damit ROU von extern gegenüber Kunden mit einer Cudos Rufnummer (im Fall ROU: 044 747 44 68) kommunizieren kann, wurde ein separates VoIP-Telefon<br/>konfiguriert. Über diese Rufnummer kann ROU ein- und ausgehende Gespräche führen.</p><h2 id="EinbindungexternesVoIP-TelefonfürROU-Konfiguration">Konfiguration</h2><ol start="1"><li><p>Beschaffung eines <a class="external-link" href="https://www.digitec.ch/de/s1/product/gigaset-c530-ip-telefon-2738882" rel="nofollow">Gigaset C530IP</a> VoIP Telefons bei digitec.</p></li><li><p>In <a class="external-link" href="http://my.sipcall.ch/customer" rel="nofollow">sipcall business Konto</a> folgendes sichergestellt:</p><ol start="1"><li><p>In der Rufnummerübersicht sicherstellen, dass das Verhalten bei eingehenden Anrufen bei der gewünschten Nummer auf &quot;Klingeln, dann weiterleiten&quot; gesetzt ist.<br/></p><span class="confluence-embedded-file-wrapper image-left-wrapper"><img class="confluence-embedded-image image-left" loading="lazy" src="attachments/4783145257/8145895453.png" data-image-src="attachments/4783145257/8145895453.png" data-height="185" data-width="1007" data-unresolved-comment-count="0" data-linked-resource-id="8145895453" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-5-5_14-51-36.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4783145257" data-linked-resource-container-version="8" data-media-id="e4d701e2-6bdc-4401-9597-365c9a70f9a5" data-media-type="file"></span></li><li><p>In der Konfiguration ein neues VoIP-Passwort generieren (zwingend empfohlen, damit dieses vom Haupt-VoIP-Passwort abweicht!) und notieren.<br/></p><span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-left" width="183" loading="lazy" src="attachments/4783145257/8146255882.png?width=183" data-image-src="attachments/4783145257/8146255882.png" data-height="413" data-width="630" data-unresolved-comment-count="0" data-linked-resource-id="8146255882" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-5-5_14-56-26.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4783145257" data-linked-resource-container-version="8" data-media-id="afc46e48-f755-4b8c-8f08-77a870210bdd" data-media-type="file"></span></li><li><p>Allfällige Weiterleitung auf Alternativnummer hinterlegen (diese greift nach Ablauf der definierten Klingelzeit oder sofern das VoIP Telefon nicht aktiv ist).<br/></p><span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-left" width="421" loading="lazy" src="attachments/4783145257/8145600524.png?width=421" data-image-src="attachments/4783145257/8145600524.png" data-height="466" data-width="1534" data-unresolved-comment-count="0" data-linked-resource-id="8145600524" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2022-5-5_14-50-50.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4783145257" data-linked-resource-container-version="8" data-media-id="75eedf27-7926-4d2a-b620-72b1cdee32db" data-media-type="file"></span></li></ol></li><li><p>Gigaset C530IP Funktelefon einrichten:</p><ol start="1"><li><p>sipcall als Provider aus Liste auswählen</p></li><li><p>Anmeldename: 41447474468</p></li><li><p>VoIP-Passwort: aus Schritt 2b bekannt.</p></li></ol></li><li><p>Je nach Infrastruktur (Internetanbindung und Router mit NAT) ist noch eine Port Weiterleitung für die SIP-Signalisierung und RTP-Sprachpakete nötig. Für Gigaset Telefone sind diese typischerweise wie folgt:<br/></p><ol start="1"><li><p>SIP: Port 5060/UDP auf Gigaset IP weiterleiten</p></li><li><p>RTP Ports 5004-5020 auf Gigaset IP weiterleiten</p></li></ol></li></ol><p>Schritte 3 und 4 können einfacher als am Gerät selbst über das Webinterface des Gigaset C530ip gemacht werden. Die Bedienungsanleitung ist zu finden auf:</p><p>G:\Geteilte Ablagen\Diverses\Administration\IT\Telefonanlage\Bedinungsanleitung Gigaset C530ip.pdf</p><p>Stichwörter: &quot;Web-Konfigurator&quot; / &quot;Verbindungsaufbau über die IP-Adresse des Telefons&quot;</p><p>Hinweise: Als guter Inbetriebnahme-Test eignet sich ein Anruf von einem Mobiltelefon auf die neu eingerichtete SIP-Nummer. So kann sichergestellt werden, ob die SIP-Signalisierung von aussen durchkommt. Bei einem kurzen Gespräch lässt sich auch schnell feststellen, ob die RTP-Sprachdaten in beide Richtungen gehen (Stimmen auf beiden Endgeräten hörbar).</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4783145257/4783145254.png">image2016-11-4 15:35:36.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4783145257/4783145255.png">image2016-11-4 15:37:23.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4783145257/4783145256.png">image2016-11-4 15:41:46.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4783145257/8145600524.png">image2022-5-5_14-50-50.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4783145257/8145895453.png">image2022-5-5_14-51-36.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4783145257/8146255882.png">image2022-5-5_14-56-26.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Okt. 15, 2024 11:56</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT : Migrationsplan</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="IT_4769087480.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Google-Drive_4835115221.html">Google Drive</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Migration_4839112869.html">Migration</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            IT : Migrationsplan
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Reto Bättig</span>, last modified by <span class='editor'> nizami.sevindi</span> on Aug. 26, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <ul class="inline-task-list" data-inline-tasks-content-id="4835115235"><li data-inline-task-id="580"><span class="placeholder-inline-tasks">Sämtliche Daten mit DirSync auf Google Drive Kopieren, entsprechende DirSync Jobs erstellen.<br/>Die Jobs immer so definieren, dass auf GDrive eine exakte Kopie der lokalen Daten liegt (gelöschte lokale Daten auch auf GDrive löschen). <strong>=&gt; Master sind immer noch unsere lokalen Daten. Niemand darf auf den GDrive Daten arbeiten (Ausnahme: GL-Ordner)!</strong></span></li><li class="checked" data-inline-task-id="555"><span class="placeholder-inline-tasks">2-Faktor Authentisierung durchsetzen</span></li><li class="checked" data-inline-task-id="556"><span class="placeholder-inline-tasks">Schulung der Mitarbeitenden (an MA-Info März)</span><ul class="inline-task-list" data-inline-tasks-content-id="4835115235"><li class="checked" data-inline-task-id="557"><span class="placeholder-inline-tasks">Installation von GDrive</span></li><li class="checked" data-inline-task-id="558"><span class="placeholder-inline-tasks">Wie kann ich Daten offline bzw. schnell zur Verfügung haben?</span></li><li class="checked" data-inline-task-id="559"><span class="placeholder-inline-tasks">Wie kann ich alte Versionen wieder holen?</span></li><li class="checked" data-inline-task-id="560"><span class="placeholder-inline-tasks">Wie kann ich Versionen pinnen, auf die ich auch später noch zugreifen möchte?</span></li></ul></li><li class="checked" data-inline-task-id="561"><span class="placeholder-inline-tasks">Alle Mitarbeitenden installieren Google File Stream und schauen, ob sie die Verzeichnisse sehen <strong>=&gt; NOCH NICHT DARAUF ARBEITEN</strong></span></li><li class="checked" data-inline-task-id="562"><span class="placeholder-inline-tasks">Tag X: Umstellung machen (am Besten an einem Freitag Abend oder Samstag)</span><ul class="inline-task-list" data-inline-tasks-content-id="4835115235"><li class="checked" data-inline-task-id="563"><span class="placeholder-inline-tasks">Fileshares der Verzeichnisse auf mfwinsrv01 entfernen =&gt; Verzeichnisse für MA nicht mehr sichtbar</span></li><li class="checked" data-inline-task-id="564"><span class="placeholder-inline-tasks">Backup machen von allen Daten auf den Shares =&gt; auf separate Festplatte</span></li><li class="checked" data-inline-task-id="565"><span class="placeholder-inline-tasks">Sämtliche Daten noch einmal synchronisieren auf GDrive (dauert hoffentlich dank der bereits vorsynchronisierten Daten nur noch 1-2 Stunden)</span></li><li class="checked" data-inline-task-id="566"><span class="placeholder-inline-tasks">Verzeichnisse auf den Shares umbenennen in *_old</span></li><li class="checked" data-inline-task-id="567"><span class="placeholder-inline-tasks">Dummy-Fileshares mit Symlinks zu neuen GDrive Verzeichnissen auf G:\ erstellen</span></li><li class="checked" data-inline-task-id="578"><span class="placeholder-inline-tasks">Zugriffsrechte von <a class="external-link" href="mailto:alle@m-f.ch" rel="nofollow">alle@cudos.ch</a> auf die Dateien von &quot;Betrachter&quot; auf &quot;Content Manager&quot; ändern (Ausser GL-Ordner)</span></li><li data-inline-task-id="579"><span class="placeholder-inline-tasks">Logon Skript für Domäne anpassen, damit Laufwerke nicht mehr gemounted werden: <a class="external-link" href="https://sid-500.com/2017/04/29/logon-skript-erstellen-active-directory/" rel="nofollow">https://sid-500.com/2017/04/29/logon-skript-erstellen-active-directory/</a></span></li><li class="checked" data-inline-task-id="568"><span class="placeholder-inline-tasks">Google Backup and Sync installieren auf mfwinsrv01</span><ul class="inline-task-list" data-inline-tasks-content-id="4835115235"><li class="checked" data-inline-task-id="569"><span class="placeholder-inline-tasks">So konfigurieren, dass Daten wieder auf D:\data landen</span></li><li class="checked" data-inline-task-id="570"><span class="placeholder-inline-tasks">Google lädt alle Daten runter von Cloud uns synchronisiert sie von nun an (dauert einige Stunden)</span></li><li class="checked" data-inline-task-id="571"><span class="placeholder-inline-tasks">Backup von allen Google Drive Daten wird gleich wie früher erstellt ab mfwinsrv01</span></li></ul></li></ul></li><li class="checked" data-inline-task-id="572"><span class="placeholder-inline-tasks">Info an alle Mitarbeitenden, dass auf sofort auf GDrive gearbeitet wird.</span></li><li class="checked" data-inline-task-id="573"><span class="placeholder-inline-tasks">Migration der Daten von inStep nach G:\Geteilte Ablagen\Projekte</span><ul class="inline-task-list" data-inline-tasks-content-id="4835115235"><li class="checked" data-inline-task-id="574"><span class="placeholder-inline-tasks">Ein Verzeichnis pro Projekt. Benennung:<br/>KUNDE - Projekt - Projektnummer</span></li><li class="checked" data-inline-task-id="575"><span class="placeholder-inline-tasks">Migration der geschlossenen Projekte durch Hilfskraft =&gt; <a href="4835115240.html" data-linked-resource-id="4835115240" data-linked-resource-version="6" data-linked-resource-type="page">siehe Anleitung</a></span></li><li class="checked" data-inline-task-id="576"><span class="placeholder-inline-tasks">Migration der aktiven Projekte durch die Projektleiter =&gt;  <a href="4835115240.html" data-linked-resource-id="4835115240" data-linked-resource-version="6" data-linked-resource-type="page">siehe Anleitung</a></span><ul class="inline-task-list" data-inline-tasks-content-id="4835115235"><li class="checked" data-inline-task-id="577"><strong><span class="placeholder-inline-tasks">Der PL muss seinem Team sagen, wann er migriert und sicherstellen, dass das Team ab dann auf G: arbeitet und nicht mehr im inStep</span></strong></li></ul></li></ul></li></ul>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Okt. 15, 2024 11:58</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

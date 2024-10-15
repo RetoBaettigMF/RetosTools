@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT : SAP JCo API</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="IT_4769087480.html">IT</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            IT : SAP JCo API
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Lukas Brun</span>, last modified on Aug. 05, 2016
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>SAP JCo ist eine Schnittstelle, die Java mit einem SAP System verbindet. Es erlaubt Aufrufe in beide Richtungen (Java → SAP und SAP → Java).</p><p>Um JCo nutzen zu können, braucht man die Dateien <code>sapjco3.jar</code> und <code>sapjco3.dll</code>. Diese müssen in den Projektordner verschoben werden.</p><p>Um eine Verbindung zu SAP aufzubauen, braucht man eine Implementation des Interface<span class="crayon-h"> </span> <code>com.sap.conn.jco.ext.DestinationDataProvider</code>. Dieses hat die Methoden <code>getDestinationProperties</code>, <code>setDestinationDataEventListener</code> und <code>supportEvents</code>.</p><p>Die letzten zwei Methoden sind für einfache Anwendungen unwichtig, man kann sie leer lassen bzw. immer <code>false</code> zurückgeben lassen.</p><p><code>getDestinationProperties(String destName)</code> hat als Rückgabewert ein <code>java.util.Properties</code> Objekt, das die Eigenschaften der Verbindung mit Namen <code>destName</code> beschreibt. Dabei sind die Eigenschaften <code>client</code>, <code>user</code>, <code>ashost</code>, <code>passwd</code>, <code>sysnr</code> notwendig für den Aufbau einer Verbindung.</p><p>Einen <code>DestinationDataProvider</code> kann man nun registrieren mit der Zeile</p><pre>Environment.registerDestinationDataProvider(destinationDataProvider);</pre><p>und mit <code>JCoDestination dest = JCoDestinationManager.getDestination(destName);</code> eine Verbindung instanzieren. WICHTIG: diese Verbindung wird noch nicht bei der Instanzierung geöffnet, sondern erst, sobald man einen Aufruf macht.</p><p>Zum Abrufen von Informationen aus dem SAP braucht es sogenannte &quot;Function Modules&quot;. Ein Function Module kann man mit SAP JCo erzeugen mit dem Befehl</p><pre>JCoFunction function = dest.getRepository().getFunction(moduleName);</pre><p>Dabei ist der String <code>moduleName</code> der Name des Function Modules (z.B. <code>&quot;GETCUSTOMERDATA&quot;</code>).</p><p>Parameter für diese Funktion (hier z.B. die ID oder Namen des Kunden) kann man über <code>function.getImportParameterList().setValue(String paramName, String value)</code> setzen.</p><p>Eine Funktion ausführen kann man mit <code>function.execute(dest)</code>.</p><p>Falls die Funktion Rückgabewerte hat (hier die Kundendaten), erhält man diese mit <code>function.getExportParameterList().getXX(String paramName)</code>. Dabei ist <code>XX</code> der DatenTyp, den man für die Rückgabewerte haben will (<code>int</code>, <code>String</code>, <code>double</code> etc.)</p><p> </p><p>Links:</p><p><a class="external-link" href="http://www.finereporthelp.com/download/SAP/sapjco3_linux_32bit/javadoc/overview-summary.html" rel="nofollow">JCo API 3.0</a></p><p><a class="external-link" href="http://www.softserv.at/sap-java-connector-verbindung-herstellen/" rel="nofollow">Anleitung für eine JCo Verbindung mit Erklärung (sehr hilfreich)</a></p><p><a class="external-link" href="https://help.sap.com/saphelp_nwpi711/helpdata/de/46/fb807cc7b46c30e10000000a1553f7/content.htm" rel="nofollow">Offizielle SAP Seite zu JCo</a></p><p><a class="external-link" href="https://help.sap.com/saphelp_nwpi711/helpdata/de/48/63bb85c6bf07dbe10000000a42189b/content.htm" rel="nofollow">Anleitung für eine JCo SAP Verbindung</a></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Okt. 15, 2024 11:55</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

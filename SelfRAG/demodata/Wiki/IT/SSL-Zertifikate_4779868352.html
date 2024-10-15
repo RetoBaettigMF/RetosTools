@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT : SSL Zertifikate</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="IT_4769087480.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Cudos-Website_4779180337.html">Cudos Website</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            IT : SSL Zertifikate
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ehemaliger Benutzer</span>, last modified by <span class='editor'> nizami.sevindi</span> on Aug. 26, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Für die bei METANET gehosteten Webseiten können über Plesk einfach kostenlose Let's Encrypt SSL Zertifikate erstellt werden. Damit ist der Datentransfer zwischen Server und Client über https auch verschlüsselt.</p><h2 id="SSLZertifikate-WissenswerteszuLet&#39;sEncryptZertifikaten">Wissenswertes zu Let's Encrypt Zertifikaten</h2><ul><li>Let's Encrypt Zertifikate können jeweils nur für 1 Domain respektive Subdomain erstellt werden. Es handelt sich also nicht um Wildcard-Zertifikate und daher sind unter Umständen mehrere Zertifikate zu erstellen.</li><li>Die Zertifikate sind 3 Monate gültig. Sie werden jedoch durch Plesk automatisch erneuert.</li><li>Bevor das Let's Encrypt Zertifikat aktiviert werden kann, muss die DNS Verwaltung bei der neuen Domain deaktiviert sein.<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/4779868352/4819812762.png?height=250" data-image-src="attachments/4779868352/4819812762.png" data-unresolved-comment-count="0" data-linked-resource-id="4819812762" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2019-4-25_13-56-9.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4779868352" data-linked-resource-container-version="3" data-media-id="8ba77b3c-44e1-476d-88d3-a50c914ebbbb" data-media-type="file"></span></li></ul><h2 id="SSLZertifikate-VorgehenzurAktivierungeinesZertifikates">Vorgehen zur Aktivierung eines Zertifikates</h2><div class="confluence-information-macro confluence-information-macro-information"><p class="title">Pleskbenutzer für Let&#39;s Encrypt Aktivierung</p><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Die Aktivierung von Let's Encrypt Zertifikaten muss zwangsweise mit dem Hauptbenutzer <strong>mfchbae</strong> erfolgen! Ansonsten kommt eine Fehlermeldung.</p></div></div><ol><li>Bei der gewünschten Domain/Subdomain auf den Let's Encrypt Link klicken.<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/4779868352/4779868350.png?height=250" data-image-src="attachments/4779868352/4779868350.png" data-unresolved-comment-count="0" data-linked-resource-id="4779868350" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2016-7-4 22:10:55.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4779868352" data-linked-resource-container-version="3" data-media-id="8bd7d354-4a7d-4e49-9a87-747d7949cb4e" data-media-type="file"></span></li><li>Im Folgescreen die Benachrichtiguns-Emailadresse auf <a class="external-link" href="mailto:admin@cudos.ch" rel="nofollow">admin@cudos.ch</a> setzen.<br/>Sofern es sich um eine Hauptdomain (z.B cudos.ch) handelt, macht es Sinn, das Zertifikate auch mit dem Alternativnamen inkl. &quot;www.&quot; aufzunehmen (über Checkbox, siehe Screenshot).<br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/4779868352/4779868351.png?height=250" data-image-src="attachments/4779868352/4779868351.png" data-unresolved-comment-count="0" data-linked-resource-id="4779868351" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2016-7-4 22:17:41.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4779868352" data-linked-resource-container-version="3" data-media-id="8f9cea19-7a2f-45b7-85e0-02b41ff84e2e" data-media-type="file"></span> </li><li>Nach einem Klick auf &quot;Installieren&quot; erscheint folgende Meldung:<br/><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" loading="lazy" src="attachments/4779868352/4779868349.png" data-image-src="attachments/4779868352/4779868349.png" data-unresolved-comment-count="0" data-linked-resource-id="4779868349" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2016-7-4 21:56:22.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4779868352" data-linked-resource-container-version="3" data-media-id="18cb31b2-fbd2-4741-aecd-4ad42e77d3bc" data-media-type="file"></span><br/>→ Der Webserver wird danach automatisch neugestartet. Nach zirka 10min ist die Website über HTTPS erreichbar! <img class="emoticon emoticon-smile" data-emoji-id="1f642" data-emoji-shortname=":slight_smile:" data-emoji-fallback="🙂" src="images/icons/emoticons/smile.png" width="16" height="16" data-emoticon-name="smile" alt="(Lächeln)"/></li></ol><h2 id="SSLZertifikate-AutomatischeUmleitungvonhttpaufhttps">Automatische Umleitung von http auf https</h2><p>Damit eine Website beim Aufruf über verschlüsselte Kommunikation geladen wird, ist eine automatische Umleitung von http auf https nötig.</p><p>Dies kann über das Erstellen einer .htaccess Datei im root Verzeichnis der jeweiligen Domain erfolgen mit folgendem Inhalt:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>.htaccess</b></div><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">RewriteEngine On
+RewriteCond %{SERVER_PORT}   !^443$
+RewriteRule  (.*)  https://%{HTTP_HOST}/$1   [L]</pre>
+</div></div><p><br/></p><p>Beispiel:</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="400" loading="lazy" src="attachments/4779868352/4819812761.png?height=400" data-image-src="attachments/4779868352/4819812761.png" data-unresolved-comment-count="0" data-linked-resource-id="4819812761" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2019-4-25_13-53-42.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="4779868352" data-linked-resource-container-version="3" data-media-id="4d795ea5-bd3a-4ccb-97bf-aca2243d2d5d" data-media-type="file"></span></p><p><br/></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4779868352/4779868349.png">image2016-7-4 21:56:22.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4779868352/4779868350.png">image2016-7-4 22:10:55.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4779868352/4779868351.png">image2016-7-4 22:17:41.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4779868352/4819812761.png">image2019-4-25_13-53-42.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/4779868352/4819812762.png">image2019-4-25_13-56-9.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Okt. 15, 2024 11:56</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

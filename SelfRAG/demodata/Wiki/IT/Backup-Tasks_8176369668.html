@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT : Backup Tasks</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="IT_4769087480.html">IT</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="4784619738.html">IT Systemübersicht</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Backup_8140488721.html">Backup</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            IT : Backup Tasks
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ruedi Steinmann</span>, last modified by <span class='editor'> nizami.sevindi</span> on Aug. 26, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="BackupTasks-Weekly">Weekly</h1><p>Überprüfen, ob die Heartbeat-Benachrichtigung im Teams angekommen ist:</p><ul><li><p>Im Teams:</p><ul><li><p>Teams</p></li><li><p>Cudos AG</p></li><li><p>Backup Monitoring (evtl. über “1 ausgeblendeter Kanal”</p></li></ul></li></ul><h1 id="BackupTasks-Monthly">Monthly</h1><ul><li><p>Einloggen auf Backup PC (user/user)</p></li><li><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">sudo btrfs device stats /data</pre>
+</div></div><p>alle Werte sollten 0 sein</p></li><li><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">sudo btrfs fi show /data</pre>
+</div></div><p>Beide Disks sollten mit dem gleichen used Speicher angegeben sein</p></li><li><p>Jeweils am 25. des Monats startet ein cron job ein disk scrub. Der Status muss überprüft werden<br/></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">sudo btrfs scrub status /data</pre>
+</div></div><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/8176369668/8176205831.png" data-image-src="attachments/8176369668/8176205831.png" data-height="125" data-width="541" data-unresolved-comment-count="0" data-linked-resource-id="8176205831" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220621-111820.png" data-base-url="https://mfcloud.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="8176369668" data-linked-resource-container-version="8" data-media-id="90867979-20bd-463c-a4bb-2ceec062b203" data-media-type="file"></span><p>Wichtig: </p><ul><li><p>Scrub started: muss zu letztem Monat passen</p></li><li><p>Status: finished</p></li><li><p>Error summary: no errors found</p></li></ul></li></ul><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8176369668/8176893954.png">image-20220621-111728.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/8176369668/8176205831.png">image-20220621-111820.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Okt. 15, 2024 11:54</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>
