@@ -40,6 +40,6 @@ def get_data():
 
 if __name__ == '__main__':
     # Starten Sie die Anwendung mit SSL-Kontext
-    app.run(ssl_context=('cert.pem', 'key.pem'))
+    app.run(host='0.0.0.0', port=5000, ssl_context=('/etc/letsencrypt/live/baettig.org/fullchain.pem', '/etc/letsencrypt/live/baettig.org/privkey.pem'))
     #app.run()
     
