@@ -11,14 +11,14 @@ class APITestCase(unittest.TestCase):
     
     def test_unauthorized_access(self):
         response = requests.get(self.BASE_URL, verify=False)
-        self.assertEqual(response.status_code, 401, verify=False)
+        self.assertEqual(response.status_code, 401)
         self.assertEqual(response.json(), {'message': 'Unauthorized'})
 
     def test_invalid_json(self):
         headers = {'Authorization': self.RETOS_API_TOKEN}
         response = requests.get(self.BASE_URL, headers=headers, data='not a json', verify=False)
         self.assertEqual(response.status_code, 400)
-        self.assertEqual(response.json(), {'message': 'Invalid input, JSON required like: \{"query":"SELECT * FROM data LIMIT 5"\}'})
+        self.assertEqual(response.json(), {'message': r'Invalid input, JSON required like: {"query":"SELECT * FROM data LIMIT 5"}'})
 
     def test_missing_query(self):
         headers = {'Authorization': self.RETOS_API_TOKEN}

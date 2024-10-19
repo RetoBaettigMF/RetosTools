@@ -22,7 +22,7 @@ def get_data():
         return jsonify({'message': 'Unauthorized'}), 401
 
     if not request.is_json:
-        return jsonify({'message': 'Invalid input, JSON required like: \{"query":"SELECT * FROM data LIMIT 5"\}'}), 400
+        return jsonify({'message': r'Invalid input, JSON required like: {"query":"SELECT * FROM data LIMIT 5"}'}), 400
 
     # Extrahiere die SQL-Abfrage aus dem JSON-Objekt
     data = request.get_json()
