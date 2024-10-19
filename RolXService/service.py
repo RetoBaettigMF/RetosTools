@@ -40,6 +40,6 @@ def get_data():
 
 if __name__ == '__main__':
     # Starten Sie die Anwendung mit SSL-Kontext
-    #app.run(ssl_context=('cert.pem', 'key.pem'))
-    app.run()
+    app.run(ssl_context=('cert.pem', 'key.pem'))
+    #app.run()
     
