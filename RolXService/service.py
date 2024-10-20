@@ -10,9 +10,49 @@ RETOS_API_TOKEN = os.environ.get('RETOS_API_TOKEN')
 if RETOS_API_TOKEN is None:
     raise ValueError('RETOS_API_TOKEN nicht in Umgebungsvariablen gefunden')
 
-@app.route('/rolx/test', methods=['GET'])
+@app.route('/rolx', methods=['GET'])
 def test():
-    return "API Works!", 200
+    return """
+    {
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get timesheet entries",
+    "description": "Retrieves timesheet entries for the company",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://baettig.org"
+    }
+  ],
+  "paths": {
+    "/rolx/sqlquery": {
+      "get": {
+        "description": "Get timesheet data",
+        "operationId": "SQLQuery",
+    
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "The SQL query for the table 'data'.
+The fields of the timesheet database include:
+date, firstName, lastName, projectNumber, subprojectNumber, activityNumber, orderNumber (in the form of #0123.456 where 123 is the projectNumber and 456 is the subprojectNumber), customerName, projectName, subprojectName, activityName, durationHours, billabilityName, isBillable (1 for billable, 0 for non-billable), comment",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}""", 200
 
 @app.route('/rolx/sqlquery', methods=['GET'])
 def get_data():
@@ -21,12 +61,6 @@ def get_data():
     if auth_header != RETOS_API_TOKEN:
         return jsonify({'message': 'Unauthorized'}), 401
 
-    #if not request.is_json:
-    #    return jsonify({'message': r'Invalid input, JSON required like: {"query":"SELECT * FROM data LIMIT 5"}'}), 400
-
-    # Extrahiere die SQL-Abfrage aus dem JSON-Objekt
-    #data = request.get_json()
-    #query = data.get('query')
     query = request.args.get('query')
 
     if not query:
