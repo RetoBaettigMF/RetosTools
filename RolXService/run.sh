@@ -2,8 +2,10 @@
 
 # Setze den Projektordner auf das aktuelle Verzeichnis
 PROJECT_PATH=$(pwd)
+PROJECT_PATH=/root/RetosTools/RolXService
 
 echo "$PROJECT_PATH/venv"
+cd $PROJECT_PATH
 
 if [ -d "$PROJECT_PATH/venv" ]; then
     echo "Projekt ist installiert"

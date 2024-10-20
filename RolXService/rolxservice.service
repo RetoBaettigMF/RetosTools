@@ -1,0 +1,13 @@
+[Unit]
+Description=RolX Service
+After=network.target
+
+[Service]
+ExecStart=/root/RetosTools/RolXService/run.sh
+Restart=always
+User=root
+WorkingDirectory=/usr/local/bin
+
+[Install]
+WantedBy=multi-user.target
+
