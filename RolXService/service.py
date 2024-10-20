@@ -37,9 +37,15 @@ def get_data():
         return result, 200
     except Exception as e:
         return jsonify({'message': str(e)}), 500  # Fehlerbehandlung
+    
+# Catch-All Route
+@app.route('/<path:subpath>', methods=['GET'])
+def catch_all(subpath):
+    print(f"Endpoint '{subpath}' not found.")
+    return f"Endpoint '{subpath}' not found.", 404
 
 if __name__ == '__main__':
     # Starten Sie die Anwendung mit SSL-Kontext
-    app.run(host='0.0.0.0', port=5000, ssl_context=('/etc/letsencrypt/live/baettig.org/fullchain.pem', '/etc/letsencrypt/live/baettig.org/privkey.pem'))
-    #app.run()
+    #app.run(host='0.0.0.0', port=5000, ssl_context=('/etc/letsencrypt/live/baettig.org/fullchain.pem', '/etc/letsencrypt/live/baettig.org/privkey.pem'))
+    app.run(port=5000)
     
