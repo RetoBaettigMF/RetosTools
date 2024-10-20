@@ -3,7 +3,7 @@ import os
 import requests
 
 class APITestCase(unittest.TestCase):
-    BASE_URL = 'https://localhost:5000/api/data'
+    BASE_URL = 'https://baettig.org:5000/api/data'
     
     RETOS_API_TOKEN = os.environ.get('RETOS_API_TOKEN')
     if RETOS_API_TOKEN is None:
