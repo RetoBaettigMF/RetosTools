@@ -1,14 +1,25 @@
 import os
 from settings import DATA_PATH, PREPARED_DATA_PATH
 from preparefiles import prepare_files
+
+def get_wiki_path(filename):
+    # Entferne die Dateiendung
+    name_without_extension = filename.rsplit('.', 1)[0]
+    # Teile den Namen am letzten "-"
+    part_after_last_dash = name_without_extension.rsplit('-', 1)[-1]
+    # Wenn ein "_" vorhanden ist, entferne den Teil davor
+    if '_' in part_after_last_dash:
+        part_after_last_dash = part_after_last_dash.rsplit('_', 1)[-1]
+    return part_after_last_dash
     
 def convert_file(subdir, filename, outfile):
     if os.path.isfile(os.path.join(subdir, filename)):
         # Schreiben Sie den Dateinamen in das gewünschte Format
         subdir_name = os.path.basename(subdir)
+        page_name= get_wiki_path(filename)
         
-        print(f"Füge Datei {filename} aus '{subdir_name}' an\n")
-        outfile.write(f"*** FILENAME: \"{filename}\" ***\n")
+        print(f"Füge Datei {page_name} aus '{subdir_name}' an\n")
+        outfile.write(f"*** FILENAME: \"{subdir_name}/pages/{page_name}\" ***\n")
         
         # Öffnen und lesen Sie den Inhalt der aktuellen Datei
         with open(os.path.join(subdir, filename), 'r', encoding='utf-8') as infile:
