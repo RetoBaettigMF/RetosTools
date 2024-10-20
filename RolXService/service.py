@@ -21,12 +21,13 @@ def get_data():
     if auth_header != RETOS_API_TOKEN:
         return jsonify({'message': 'Unauthorized'}), 401
 
-    if not request.is_json:
-        return jsonify({'message': r'Invalid input, JSON required like: {"query":"SELECT * FROM data LIMIT 5"}'}), 400
+    #if not request.is_json:
+    #    return jsonify({'message': r'Invalid input, JSON required like: {"query":"SELECT * FROM data LIMIT 5"}'}), 400
 
     # Extrahiere die SQL-Abfrage aus dem JSON-Objekt
-    data = request.get_json()
-    query = data.get('query')
+    #data = request.get_json()
+    #query = data.get('query')
+    query = request.args.get('query')
 
     if not query:
         return jsonify({'message': 'Query parameter is required'}), 400
