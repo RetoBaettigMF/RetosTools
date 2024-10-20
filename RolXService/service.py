@@ -10,11 +10,11 @@ RETOS_API_TOKEN = os.environ.get('RETOS_API_TOKEN')
 if RETOS_API_TOKEN is None:
     raise ValueError('RETOS_API_TOKEN nicht in Umgebungsvariablen gefunden')
 
-@app.route('/api/test', methods=['GET'])
+@app.route('/rolx/test', methods=['GET'])
 def test():
     return "API Works!", 200
 
-@app.route('/api/data', methods=['GET'])
+@app.route('/rolx/sqlquery', methods=['GET'])
 def get_data():
     # Prüfen, ob der Authorization-Header vorhanden ist und dem geheimen Token entspricht
     auth_header = request.headers.get('Authorization')
