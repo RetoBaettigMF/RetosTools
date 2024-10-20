@@ -4,6 +4,8 @@ import pandas as pd
 from pandasql import sqldf
 import os
 import json
+import threading
+import time
 
 class Rolx():
     __instance = None
@@ -44,7 +46,9 @@ class Rolx():
 
             # Create a pandas dataframe from the list of dictionaries
             self.data = pd.DataFrame(data_list)
-
+            print("Data successfully loaded")
+            self.__start_timer()
+            
         except requests.exceptions.RequestException as e:
             print(f"HTTP Request failed, could not get RolX Data: {e}")
             raise e
@@ -61,6 +65,10 @@ class Rolx():
         
         result = result.to_json(orient="records")
         return result
+    
+    def __start_timer(self):
+        self.timer = threading.Timer(300, self.__get_rolx_data)  # 300 Sekunden = 5 Minuten
+        self.timer.start()
        
     def __new__(self):
         if not self.__instance:
