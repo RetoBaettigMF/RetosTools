@@ -86,7 +86,5 @@ def catch_all(subpath):
     return f"Endpoint '{subpath}' not found.", 404
 
 if __name__ == '__main__':
-    # Starten Sie die Anwendung mit SSL-Kontext
-    #app.run(host='0.0.0.0', port=5000, ssl_context=('/etc/letsencrypt/live/baettig.org/fullchain.pem', '/etc/letsencrypt/live/baettig.org/privkey.pem'))
     app.run(port=5000)
     
