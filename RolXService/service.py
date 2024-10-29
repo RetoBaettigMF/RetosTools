@@ -8,9 +8,7 @@ from tools import Tools
 from openapi_def import OPENAPI_DEF
 
 sys.path.append('../common')
-from gpt import get_single_completion, get_completion_with_tools # type: ignore
-
-print(get_single_completion("Hello, I am a test prompt."))
+from gpt import get_completion_with_tools # type: ignore
 
 app = Flask(__name__)
 rolx = Rolx()

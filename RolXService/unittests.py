@@ -41,7 +41,7 @@ class APITestCase(unittest.TestCase):
 
     def test_successful_query2(self):
         headers = {'Authorization': self.RETOS_API_TOKEN}
-        query = "wieviele einträge hat es in der Datenbank?"
+        query = "wieviele einträge hat es in der Datenbank? Gib mir die Antwort als JSON-Objekt."
                 
         # Hier solltest du sicherstellen, dass der Service tatsächlich läuft und die erwartete Antwort zurückgibt
         response = requests.get(f"{self.PLAIN_URL}?query={query}", headers=headers, verify=False)
