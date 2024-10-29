@@ -10,6 +10,7 @@ from gpt import get_single_completion # type: ignore
 
 class APITestCase(unittest.TestCase):
     BASE_URL = 'http://localhost:5000/rolx'
+    #BASE_URL = 'http://baettig.org/rolx'
     SQL_URL = BASE_URL+'/sqlquery'
     PLAIN_URL = BASE_URL+'/query'
     
@@ -17,7 +18,6 @@ class APITestCase(unittest.TestCase):
     if RETOS_API_TOKEN is None:
         raise ValueError('RETOS_API_TOKEN nicht in Umgebungsvariablen gefunden')
     
-    """
     def test_unauthorized_access(self):
         response = requests.get(self.SQL_URL, verify=False)
         self.assertEqual(response.status_code, 401)
@@ -38,7 +38,7 @@ class APITestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         response_data = response.json()
         self.assertEqual(len(response_data), 5)
-"""
+
     def test_successful_query2(self):
         headers = {'Authorization': self.RETOS_API_TOKEN}
         query = "wieviele einträge hat es in der Datenbank?"
