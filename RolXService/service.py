@@ -1,5 +1,6 @@
 import sys
 import os
+import json
 
 from flask import Flask, request, jsonify
 from rolx import Rolx
@@ -20,6 +21,13 @@ RETOS_API_TOKEN = os.environ.get('RETOS_API_TOKEN')
 if RETOS_API_TOKEN is None:
     raise ValueError('RETOS_API_TOKEN nicht in Umgebungsvariablen gefunden')
 
+def is_valid_json(json_string):
+    try:
+        json.loads(json_string)
+        return True
+    except ValueError:
+        return False
+
 @app.route('/rolx', methods=['GET'])
 def test():
     return OPENAPI_DEF, 200
@@ -39,7 +47,10 @@ def plain_text_query():
     try:
         messages=[{"role": "user", "content": query}]
         result = get_completion_with_tools(messages, tools)
-        return result, 200
+        if is_valid_json(result):
+            return result, 200
+        else:
+            return jsonify({"result": result}), 200
     except Exception as e:
         return jsonify({'message': str(e)}), 500  # Fehlerbehandlung
 
