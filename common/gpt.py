@@ -29,3 +29,21 @@ def get_vector(text):
     else:
         return get_vector_openai(text)
     
+def get_completion_with_tools(messages, tools):
+    try:
+        completion = get_completion(messages=messages, tools=tools.get_tools())
+        message = completion.choices[0].message
+        messages.append(message) # extend conversation with assistant's reply
+
+        tool_calls = message.tool_calls
+        while tool_calls:
+            for tool_call in tool_calls:
+                tools.handle_tool_call(tool_call, messages)
+            completion = get_completion(messages=messages, tools=tools.get_tools())
+            message = completion.choices[0].message
+            tool_calls = message.tool_calls
+            messages.append(message) # extend conversation with assistant's reply
+        return message.content
+    except Exception as e:
+        return str(e)
+    
