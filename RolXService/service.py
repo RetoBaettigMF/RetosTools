@@ -8,7 +8,7 @@ from tools import Tools
 from openapi_def import OPENAPI_DEF
 
 sys.path.append('../common')
-from gpt import get_completion_with_tools # type: ignore
+from gpt import get_completion_with_tools, get_single_completion # type: ignore
 
 app = Flask(__name__)
 rolx = Rolx()
@@ -25,6 +25,13 @@ def is_valid_json(json_string):
         return True
     except ValueError:
         return False
+    
+def query_is_dangerous(query):
+    ans = get_single_completion("Is the following SQL query dangerous? Answer only YES or NO: "+query)
+    if ans.upper() == 'YES':
+        return True
+    return False
+    
 
 @app.route('/rolx', methods=['GET'])
 def test():
@@ -64,6 +71,9 @@ def get_data():
     if not query:
         return jsonify({'message': 'Query parameter is required'}), 400
 
+    if query_is_dangerous(query):
+        return jsonify({"result": "Dangerous query detected"}), 403
+    
     # Führe die SQL-Abfrage aus
     try:
         result = rolx.get_data(query)  # Hier wird die Funktion aufgerufen
