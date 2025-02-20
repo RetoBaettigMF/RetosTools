@@ -1,5 +1,6 @@
 import sys
 import os
+import json
 
 from flask import Flask, request, jsonify
 from rolx import Rolx
@@ -7,9 +8,7 @@ from tools import Tools
 from openapi_def import OPENAPI_DEF
 
 sys.path.append('../common')
-from gpt import get_single_completion, get_completion_with_tools # type: ignore
-
-print(get_single_completion("Hello, I am a test prompt."))
+from gpt import get_completion_with_tools, get_single_completion # type: ignore
 
 app = Flask(__name__)
 rolx = Rolx()
@@ -19,6 +18,20 @@ tools = Tools(rolx)
 RETOS_API_TOKEN = os.environ.get('RETOS_API_TOKEN')
 if RETOS_API_TOKEN is None:
     raise ValueError('RETOS_API_TOKEN nicht in Umgebungsvariablen gefunden')
+
+def is_valid_json(json_string):
+    try:
+        json.loads(json_string)
+        return True
+    except ValueError:
+        return False
+    
+def query_is_dangerous(query):
+    ans = get_single_completion("Is the following SQL query dangerous? Answer only YES or NO: "+query)
+    if ans.upper() == 'YES':
+        return True
+    return False
+    
 
 @app.route('/rolx', methods=['GET'])
 def test():
@@ -39,7 +52,10 @@ def plain_text_query():
     try:
         messages=[{"role": "user", "content": query}]
         result = get_completion_with_tools(messages, tools)
-        return result, 200
+        if is_valid_json(result):
+            return result, 200
+        else:
+            return jsonify({"result": result}), 200
     except Exception as e:
         return jsonify({'message': str(e)}), 500  # Fehlerbehandlung
 
@@ -55,6 +71,9 @@ def get_data():
     if not query:
         return jsonify({'message': 'Query parameter is required'}), 400
 
+    if query_is_dangerous(query):
+        return jsonify({"result": "Dangerous query detected"}), 403
+    
     # Führe die SQL-Abfrage aus
     try:
         result = rolx.get_data(query)  # Hier wird die Funktion aufgerufen

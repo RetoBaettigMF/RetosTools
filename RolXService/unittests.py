@@ -1,9 +1,16 @@
 import unittest
 import os
 import requests
+import sys
+import json
+
+sys.path.append('../common')
+from gpt import get_single_completion # type: ignore
+
 
 class APITestCase(unittest.TestCase):
     BASE_URL = 'http://localhost:5000/rolx'
+    #BASE_URL = 'http://baettig.org/rolx'
     SQL_URL = BASE_URL+'/sqlquery'
     PLAIN_URL = BASE_URL+'/query'
     
@@ -34,14 +41,15 @@ class APITestCase(unittest.TestCase):
 
     def test_successful_query2(self):
         headers = {'Authorization': self.RETOS_API_TOKEN}
-        query = "wieviele einträge hat es in der Datenbank?"
+        query = "wieviele einträge hat es in der Datenbank? Gib mir die Antwort als JSON-Objekt."
                 
         # Hier solltest du sicherstellen, dass der Service tatsächlich läuft und die erwartete Antwort zurückgibt
         response = requests.get(f"{self.PLAIN_URL}?query={query}", headers=headers, verify=False)
         self.assertEqual(response.status_code, 200)
         response_data = response.json()
-        print(response_data)
-        self.assertEqual(len(response_data), 5)
+        ans = get_single_completion("Enthält das folgende Objekt eine Aussage über eine Anzahl von Einträgen? Bitte Antwote NUR mit 'JA' oder 'NEIN': "+
+                                    json.dumps(response_data))
+        self.assertEqual(ans.upper(), "JA")
     
 if __name__ == '__main__':
     unittest.main()

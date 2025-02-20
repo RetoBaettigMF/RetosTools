@@ -34,6 +34,7 @@ class Rolx():
         }
         
         try:
+            print("Loading Rolx data...")
             response = requests.get(url, headers=headers)
             
             # Überprüfe den Statuscode der Antwort
@@ -46,7 +47,7 @@ class Rolx():
 
             # Create a pandas dataframe from the list of dictionaries
             self.data = pd.DataFrame(data_list)
-            print("Data successfully loaded")
+            print("...data successfully loaded")
             self.__start_timer()
             
         except requests.exceptions.RequestException as e:
