@@ -1,9 +1,13 @@
 from langchain import hub
 from langchain_community.tools import Tool
 from langchain_groq import ChatGroq
-from langgraph.prebuilt import create_agent_executor
+from create_agent_executor import create_agent_executor
+from semantic_search import semantic_search
+from rag_query import rag_query, create_rag_store
+from sql_query import sql_query
 
 # Initialisierung der Komponenten
+create_rag_store()
 llm = ChatGroq(model="deepseek-r1", temperature=0)
 exa_tool = Tool.from_function(
     name="web_search",
