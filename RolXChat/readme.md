@@ -32,7 +32,7 @@ Für Azure AI muss ein Key von Azure AI gesetzt werden:
 
 `set AZURE_OPENAI_KEY=88..`
 
-
+ 
 ## Lizenz
 
 Copyright (c) 2024 Reto Bättig (reto@baettig.org)
