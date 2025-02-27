@@ -1,0 +1,4335 @@
+*** FILENAME: "TP/pages/3255107607" ***
+Here's the cleaned-up text without headers, footers, and extraneous content:
+
+---
+
+**Allgemein:**
+
+* Anzahl Referenten, Anzahl Teilnehmende
+* Essenswünsche: Vegetarisch, Vegan, Unverträglichkeiten?
+* Ankunft?
+* Pausen?
+* Infrastruktur, Räumlichkeiten, Bestuhlung?
+* Sprache (Schweizer-)Deutsch
+* Unterlagen: im Voraus verschicken? im Nachhinein verteilen?
+
+**Vorbereitung:**
+
+* Niveau der Teilnehmenden abholen:
+	+ Fragen im Voraus klären?
+	+ Bsp. Wie viele Projekte hast du schon mit SQL umgesetzt? Wie viel Erfahrung hast du mit Git? Was erhoffst du dir vom Workshop? Welches Thema sollte unbedingt behandelt werden?
+* Vorbereitungsaufgaben & -Installationen:
+	+ Was können die Teilnehmenden vorbereiten, sodass Grundverständnis fürs Thema vorhanden ist? (Terminologie)
+	+ Welche Programme können sie bereits installieren? Was können sie schon einrichten/vorbereiten?
+
+**Durchführung:**
+
+* Stimmungsbarometer:
+	+ Wie ist das Niveau?
+	+ Wie ist das Tempo?
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5646057825" ***
+```markdown
+# Cudos Trail: Einführung
+
+Die Einführung in den Cudos Trail findet durch BLR statt und sollte Folgendes beinhalten:
+
+## Einführungs-Checkliste
+
+* **Cudos Trail-Schrank und** [**Arbeitsplätze**](8341651479.html) **zeigen**
+* **Wiki-Einführung, relevante Confluence Bereiche:**
+  * [Cudos Trail](https://mfcloud.atlassian.net/wiki/spaces/TP)
+  * [Junior Onboarding: Business Rules](8454864912.html)
+  * [Regelung Zeiterfassung](Regelung-Zeiterfassung_5674632052.html)
+  * [Cudos Trail Mentoring](https://mfcloud.atlassian.net/wiki/spaces/TC)
+  * [CT Workshops](https://mfcloud.atlassian.net/wiki/spaces/WOR)
+  * [IT](https://mfcloud.atlassian.net/wiki/spaces/IT)
+  * [Q-Handbuch](https://mfcloud.atlassian.net/wiki/spaces/QHAN) (Prozesse, Reglemente, Laptop-Konzept, Spesenformular, Home Office Reglement etc.)
+
+* **Verpflichtungen aufzeigen:**
+  * Zeit erfassen bis Ende Monat: RolX Zeiterfassung (siehe [Anleitung Zeiterfassung](Regelung-Zeiterfassung_5674632052.html))
+  * Meldepflicht bei Abwesenheit:
+    + bei Krankheit/Unfall:
+      - Info an Vorgesetzte bzw. Team bei Einsatzfirma und an BLR
+      - tägliches Update
+      - ab dem 4. Tag Arztzeugnis an MIB
+    + bei Ferien/Militär/Zivildienst/Zivilschutz:
+      - Absprache mit Vorgesetzte bzw. Team bei Einsatzfirma und Eintrag in Cudos Kalender
+      - bei mehr als 1 Woche Info an BLR
+    + bei Kurzabwesenheiten: Info an Vorgesetzte bzw. Team bei Einsatzfirma und Eintrag in Cudos Kalender
+  * Teilnahme an Workshops und Dokumentationen schreiben (Übersicht siehe: [CT Workshops Startseite](https://mfcloud.atlassian.net/wiki/spaces/WOR))
+    + bei Soft Skills Workshops: messbare Anwendungsziele setzen
+  * Teilnahme an Jobmessen, Hochschulevents und Info-Anlässe
+  * Profil aktuell halten: G:\Geteilte Ablagen\Projekte\Cudos - Cudos Trail - 8810\000 Projektmanagement\Profile
+  * [Know-how Matrix](https://docs.google.com/spreadsheets/d/12wGV7l0toxMOLGJvIyFuNUcI0rA6z6WzTIZdFWdWL3A/edit?usp=sharing) updaten
+  * **Google Drive Einführung**: G:\Geteilte Ablagen\Projekte\Cudos - Cudos Trail - 8810
+  * [**Cudos Blog**](https://www.m-f.ch/blog) und [**LinkedIn**](https://www.linkedin.com/company/m&f-engineering-ag/) zeigen
+  * **CRM-Einführung** (Adressverwaltung):
+    * Login: [https://mf250.co.crm-now.de](https://mf250.co.crm-now.de/) 
+    * Passwort: Siehe "G:\Geteilte Ablagen\MF\_Diverses\Administration\Allgemeine Passwörter für alle MA.docx"
+  * **Gmail zeigen und Signatur einrichten**: [E-Mail Signatur](https://mfcloud.atlassian.net/wiki/spaces/MAR/pages/2262401259/E-Mail+Signatur)
+  * **MS Teams zeigen**
+  * [**Discord Server**](https://mfcloud.atlassian.net/wiki/spaces/IT/pages/8295153689/Cudos+Discord+Server) **zeigen**
+  * <https://gpt.m-f.ch/login> zeigen
+
+## Nächste Schritte
+
+* Mentor vorstellen → [1. Mentoring-Gespräch](https://mfcloud.atlassian.net/wiki/spaces/TC/pages/6129614869/1.+Mentoring-Gespr+ch)
+* Infos zum geplanten ersten Einsatz, Einarbeitungsthemen oder aktuellen Stand
+* [Partnerfirmen FAQ](#) zeigen, Meeting mit Vorgänger-Junior vereinbaren
+* Zusatz zum Arbeitsvertrag
+* zur WhatsApp Chatgruppe hinzufügen
+* Termin vereinbaren für Vorstellung BU Junior-Programm (G:\Geteilte Ablagen\Diverses\Verkauf-Marketing\Präsentationen\Präsentationen Rachel)
+* Feedback einholen:
+  + Wie findest du den Bewerbungsprozess? Was könnte man verbessern? Hast du genügend Informationen erhalten?
+  + Wie findest du die Infos auf der Website?
+  + Auf welchen Jobplattformen hast du gesucht? Wie bist du auf Cudos aufmerksam geworden?
+
+## Vorbereitungs-Checkliste
+
+* Arbeitsplatz für Einarbeitung bestimmen (BLR/BOR)
+* Einführungsplan erstellen und auf Tisch legen (BOR)
+* Ablage in Cudos Trail-Schrank vorbereiten (BOR)
+* Termine für Workshops & Events schicken (BLR)
+* Visitenkarte (BOR)
+* Fototermin (BOR)
+* Mentor bestimmen & vorstellen (BLR)
+
+
+
+*** FILENAME: "TP/pages/5681250929" ***
+Here’s the cleaned-up content without headers, footers, and extraneous text:
+
+---
+
+**Mögliche Fragen Trainees**
+
+| Frage | Antwort |
+| --- | --- |
+| Wenn keine Beschäftigung in der Ostschweiz, muss ich dann in Zürich arbeiten? | Vielleicht zum Teil (Scrum), jedoch ist auch Homeoffice möglich. Generell sollten die Einsätze aber schon frühzeitig bekannt sein und wir tun alles daran, genügend Partnerfirmen zu haben, so dass diese Situation nicht eintritt. |
+| Im Arbeitsvertrag steht eine Stunde Wegzeit. Von wo aus gilt das in der Ostschweiz? | Prinzipiell der nächstgelegene Bahnhof mit guter Verbindung in die entsprechende Region. Dabei kommen folgende Bahnhöfe in Frage: 1. Chur 2. Landquart 3. Sargans 4. Buchs 5. St. Gallen. Selbstverständlich können wir dies individuell mit dem Trainee und dem entsprechenden Einsatzort anschauen. |
+
+**Mögliche Fragen Firmen**
+
+| Frage | Antwort |
+| --- | --- |
+|  |  |
+|  |  |
+|  |  |
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5688099068" ***
+Here's the cleaned-up version of the text:
+
+---
+
+**Einladung**
+
+**Save the Date Jahresanlass: Partnerfirmen, Referenten, Alumni**  
+Langsam aber sicher neigt sich das Jahr dem Ende zu. Um uns bei Dir für die gute Zusammenarbeit zu bedanken und das vergangene Jahr Revue passieren zu lassen, laden wir Dich gerne zum **alljährlichen Cudos Trail Anlass** zusammen mit allen Partnerfirmen, Mentoren, Referenten sowie aktuellen und ehemaligen Juniors ein. Dieser findet am **Montag, 3. Dezember ab 16.00 Uhr** statt. Ich bitte Dich um eine kurze Rückmeldung, ob Du am Anlass teilnehmen kannst. Beste Grüsse, Rachel
+
+**Save the Date Jahresanlass: Partnerfirmen, Referenten, Alumni (Sie)**  
+Langsam aber sicher neigt sich das Jahr dem Ende zu. Um sich bei Ihnen für die gute Zusammenarbeit zu bedanken und das vergangene Jahr Revue passieren zu lassen, laden wir Sie gerne zum **alljährlichen Cudos Trail Anlass** zusammen mit allen Partnerfirmen, Mentoren, Referenten sowie aktuellen und ehemaligen Juniors ein. Dieser findet am **Montag, 3. Dezember ab 16.00 Uhr** statt. Ich bitte Sie um eine kurze Rückmeldung, ob Sie am Anlass teilnehmen können. Freundliche Grüsse, Rachel Blaser
+
+**Save the Date: Cudos Trail Sommer Event**  
+Liebe Partnerfirmen, Juniors, Mentoren und ehemalige Juniors,  
+Wir laden Euch herzlich zum Cudos Trail Sommer Event ein. Es erwartet Euch ein geselliger Abend mit gutem Essen und noch besserer Gesellschaft.  
+**Wann:** Donnerstag, 07.07.2022 ab 16:00 Uhr  
+**Wo:** Giesserei Oerlikon (Birchstrasse 108, 8050 Zürich)  
+Bitte gebt mir kurz Bescheid, ob Ihr am Sommer Event dabei sein könnt. Wir freuen uns auf ein baldiges Wiedersehen! Beste Grüsse, Rachel
+
+**Organisation**  
+
+**Locations Sommerevent**  
+- Giesserei, Oerlikon: [diegiesserei.ch](https://diegiesserei.ch/event-location/unser-raumangebot/metalli/)  
+- Kantine Hermetschloo, Altstetten: [markt-luecke.ch](https://www.markt-luecke.ch/de/restaurant/vermietung-fuer-anlaesse)  
+- Kraftwerk, Zürich: [kraftwerk.host](https://www.kraftwerk.host/)  
+- Mühlehof, ZH Tiefenbrunnen: [muehle-tiefenbrunnen.ch](https://www.muehle-tiefenbrunnen.ch/ihr-anlass/angebot/muehlehof)  
+- Tanzwerk 101: [eins0eins.ch](https://eins0eins.ch/)  
+- Pause im Foifi: [pauseimfoifi.ch](https://www.pauseimfoifi.ch/vermietung)  
+- Gleis 21, Dietikon: [gleis21.ch](https://gleis21.ch/kulturhaus-mieten-dietikon/)  
+- Quartierzentrum Schütze: [raumboerse-zh.ch](https://www.raumboerse-zh.ch/stunden-tagesnutzung/flex-12-quartierzentrum-schuetze)  
+- Räume Stadt Zürich: [stadt-zuerich.ch](https://www.stadt-zuerich.ch/content/portal/de/index/raumvermietung-redirect/raumvermietung.tagIdbmV1dHJhbGVfd2VydGU6bGlzdGVuZmlsdGVyL3JhdW12ZXJtaWV0dW5n.html#)  
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5700552305" ***
+Here’s the cleaned-up version of the text, focusing solely on the relevant interview questions:
+
+---
+
+### Interview-Fragen
+
+**Dauer**: technischer Teil des Interviews: ca. 2 Stunden
+
+Die unterstehenden Fragen zu den 6 Themenbereichen sind nicht vollständig und nur aus dem Gedächtnis rekonstruiert. Gemäß Feedback liegt der Fokus stärker auf OO-Themen/Datenstrukturen/Patterns und Design/Testing als auf WPF/Datenbanken.
+
+#### Themen/Fragen
+
+**Objekt-Orientierung allgemein**
+- Was ist eine Klasse?
+- Was ist Vererbung?
+- Was ist Polymorphie?
+- Was bedeutet private/protected/public?
+- Beispiel mit 3 Klassen ausgedruckt (C erbt von B erbt von A), überladene Konstruktoren, Frage nach Aufrufreihenfolge / was passiert bei Aufruf einer Methode
+- Zeichne UML Diagramm für obigen Fall.
+
+**Testing**
+- Fragen zur Test-Pyramide / Test-Arten
+- Was ist ein Unit Test? Was macht einen guten Unit-Test aus?
+- Beispiel mit ausgedruckter Klasse (C#) und Tests dazu - Fragen nach Qualität der Tests / Code Coverage / Verbesserungsmöglichkeiten.
+
+**Datenstrukturen**
+- Erkläre die Datenstrukturen: Array, List, Linked List, Hashtabelle, Baum, Graph.
+- Implementiere eine Linked-List (Syntax nicht so relevant, z.B. C#) am Whiteboard.
+
+**C# / WPF**
+- Frage nach Patterns von WPF.
+- (Ausgedruckter Code einer kleinen WPF Applikation, erkläre die Elemente/zeige Verbesserungen auf.)
+- Was sind Bindings in WPF? Erkläre Binding-Arten.
+- Was sind Ressourcen in WPF, wie werden sie gut eingesetzt?
+
+**Patterns und Design**
+- Was für Patterns kennst du?
+- Implementiere Singleton-Pattern am Whiteboard (Syntax nicht so relevant, z.B. C#).
+- Was ist MVVC? Was ist MVC? Observer Pattern?
+
+**Datenbanken**
+- Was ist eine relationale Datenbank? Welche Alternativen gibt es?
+- Erkläre Vorteile einer relationalen DB.
+- Welche Datenbank-Typen kennst du?
+- Beispiel mit kleiner Datenbankstruktur - schreibe Query für gewisse Fragen in T-SQL.
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5703532878" ***
+Here’s a cleaned-up version of your text, with headers, footers, and extraneous text removed:
+
+---
+
+## Cudos Trail: Korrespondenz Bewerber & Studenten
+
+### 1. Einladung an Jobmesse
+Bist du diesen Mittwoch, 10. Mai 2017, ebenfalls am [Career Day der FHNW](https://www.m-f.ch/events/event/0/21-jobmessen/20-career-day-fhnw)?
+
+Wir sind wie jedes Jahr mit einem Stand vor Ort und würden uns sehr über deinen Besuch freuen! Bei uns am **Stand-Nr. 19** erfährst du alles über unser [Software Trainee-Programm](https://www.m-f.ch/kompetenzen#JUMP3) und kannst dich direkt mit unseren Trainees austauschen.
+
+Falls du keine Zeit hast und trotzdem mehr über unser Trainee-Programm erfahren möchtest, kannst du auch gerne an einem unserer [Info-Anlässe](https://www.m-f.ch/component/k2/30-info-trainee-programm) kommen. 
+
+Ich wünsch dir einen schönen Tag und hoffentlich bis am Mittwoch!
+
+Freundliche Grüsse
+
+---
+
+In der CV-Cloud der BFH wurde ich auf dich aufmerksam und nun möchte ich dich auf uns aufmerksam machen.
+
+Wir sind ein **Schweizer Engineering-Unternehmen** mit über **30 Jahren Erfahrung** in den Bereichen **Software-Entwicklung**, automatisiertes Testen und Prüfsysteme. Ein spezielles Augenmerk richten wir auf die Förderung von Top-Studienabgängern. 
+
+M&F bietet Studienabgängern ein attraktives [**Software Trainee-Programm**](https://www.m-f.ch/kompetenzen#JUMP3), um sich innerhalb von drei Jahren gezielt zu Top Software-Entwicklern mit breiter Erfahrung zu entwickeln. Die Trainees arbeiten dabei jeweils 6 oder 12 Monate in einer unserer Partnerfirmen in spannenden Software-Projekten mit. Paralleles professionelles Coaching und monatliche Workshops unterstützen die Weiterbildung. Mehr dazu findest du auf unserer Website: [www.m-f.ch](https://www.m-f.ch/) oder im Flyer anbei.
+
+Interessiert? Komm doch am **Dienstag an unserem Stand 5.11 am** [**Career Day**](https://www.m-f.ch/events/event/0/21-jobmessen/22-bfh-career-day) vorbei und wir erzählen dir mehr davon! 
+
+Falls du nicht am Career Day teilnehmen kannst und dich trotzdem fürs Trainee-Programm interessierst, schreib mir einfach.
+
+---
+
+### 2. Einladung Info-Anlass
+Hallo,
+
+Es hat uns sehr gefreut, dich gestern am Absolvententag kennen zu lernen und mit dir über unser firmenübergreifendes [Software Trainee-Programm](https://www.m-f.ch/kompetenzen/trainee-programm) zu sprechen.
+
+Gerne laden wir dich zum **Info-Anlass am Dienstag, 10. März** ein. Da erfährst du aus erster Hand alles über das Trainee-Programm, die Anforderungen, unsere Partnerfirmen und deren spannenden Software-Projekte. Die Trainees sind selbst vor Ort und beantworten dir gerne all deine Fragen.
+
+Anmelden kannst du dich bei mir per Mail oder über unsere Website:  
+[**Dienstag, 10. März von 17.00 bis 19.30 Uhr**](https://www.m-f.ch/events/event/14-info-trainee-programm/68-info-anlass-trainee-programm) (ACHTUNG: Die Anzahl Plätze sind beschränkt!)
+
+Sollte dir der Termin nicht passen, lass es mich wissen. Selbstverständlich kannst du dich jederzeit bei uns bewerben, auch ohne an einem Info-Anlass teilgenommen zu haben. Wenn du Fragen hast, melde dich ungeniert bei mir.
+
+Ich wünsch dir einen schönen Tag und hoffentlich bis bald!
+
+Beste Grüsse, Rachel
+
+---
+
+### 3. Kontakt aus CV-Datenbank
+Hallo Linda,
+
+Auf der CV-Datenbank der ZHAW wurde ich auf dich aufmerksam und möchte dich auf uns aufmerksam machen.
+
+M&F Engineering ist der Industrie 4.0 Spezialist für kompetente Software-Entwicklung und massgeschneiderte Prüfsysteme. Zudem bieten wir ein schweizweit einzigartiges Software Trainee-Programm, welches innovative Technologiefirmen und junge Software-Ingenieure zusammenbringt.
+
+Für Hochschulabsolventen ist unser firmenübergreifendes Trainee-Programm der ideale Berufseinstieg und macht dich zum gesuchten Software-Experten mit breitem Know-how, viel Erfahrung und grossem Netzwerk. Weitere Informationen findest du unter: [www.m-f.ch/kompetenzen/trainee-programm](https://www.m-f.ch/kompetenzen/trainee-programm).
+
+
+
+
+*** FILENAME: "TP/pages/5706417843" ***
+Certainly! Here’s a cleaned-up version of the text, focusing on the relevant questions and answers regarding the Cudos Trail FAQ:
+
+---
+
+### Bewerbung
+
+**Q: Gibt es fixe Startdaten oder Bewerbungsfristen?**  
+A: Bewerbungsfristen oder fixe Startdaten gibt es in dem Sinne nicht. Wir sind froh, wenn du uns bereits 2-3 Monate vor dem gewünschten Startdatum deine Bewerbung schickst, aber auch dies ist nicht zwingend notwendig.
+
+**Q: Ich bin momentan im letzten (6.) Semester meines Bachelor Studiums. Kann ich mich jetzt bereits für das Cudos Trail bewerben und nach dem Semester anfangen oder braucht man zuerst den Abschluss?**  
+A: Du kannst dich jetzt schon bewerben. Das Bachelordiplom kannst du dann nachreichen, sobald du es erhalten hast.
+
+**Q: Da ich meinen Bachelor nicht in einem technischen Fach abgeschlossen habe, wollte ich fragen, ob eine Bewerbung bei Ihnen Aussicht auf Erfolg hätte?**  
+A: Es ist grundsätzlich möglich, auch ohne technischen Bachelor ins Trainee-Programm zu kommen, vorausgesetzt, du hast Programmiererfahrung und kennst dich mit objekt-orientierter Programmierung aus.
+
+**Q: Welche Unterlagen müssen bei der Bewerbung eingereicht werden?**  
+A: CV, Motivationsschreiben, Diplome und Abschlusszeugnisse. Falls das Studium noch nicht abgeschlossen ist, kann das Diplom nachgereicht werden.
+
+**Q: Wie sieht der Bewerbungsprozess aus?**  
+A: 
+1. Online-Programmiertest
+2. 1. Interview
+3. 2. Interview (technisch)
+4. Vertragsangebot und Eintrittsdatum
+
+**Q: Da ich im Bereich Embedded Systems / C++ Programmierung Fuß fassen möchte, würden Sie Ihr Cudos Trail empfehlen?**  
+A: Der Cudos Trail ist nicht primär auf Embedded-Entwicklung ausgerichtet, obwohl ca. 30% aller Einsätze in diesem Bereich liegen. 
+
+---
+
+### Codility
+
+**Q: Kann ich den Link mehr als einmal öffnen?**  
+A: Ja, der Link kann mehrmals verwendet werden.
+
+**Q: Gibt es eine Deadline für den Test?**  
+A: Es gibt keine feste Deadline, aber wir empfehlen, den Test zeitnah zu absolvieren.
+
+**Q: Gibt es Demo-Aufgaben im Online-Test?**  
+A: Ja, es stehen Demo-Aufgaben zur Verfügung.
+
+---
+
+### Cross-Company-Programm Konzept
+
+**Q: Wie erfolgt die Zuteilung der Trainees auf die Firmen?**  
+A: Die Planung erfolgt in Absprache mit den Juniors. 
+
+**Q: Im Studium hatte ich viele verschiedene Themen, werde ich die Grundlagen nicht festigen können?**  
+A: Während des Cudos Trails arbeitest du an echten Projekten, was dir einen umfassenden Einblick gibt.
+
+**Q: Kann man sich für eine Technologie entscheiden?**  
+A: Grundsätzlich kann man Interessen angeben, es wird jedoch empfohlen, offen für verschiedene Bereiche zu sein.
+
+**Q: Wie hoch ist die Wahrscheinlichkeit, nach dem Programm eine Stelle bei einer der Firmen zu bekommen?**  
+A: Alle Firmen haben die Gelegenheit, dir ein Job-Angebot zu machen.
+
+---
+
+### Anstellung
+
+**Q: Ist ein Teilzeitpensum möglich?**  
+A: Das Cross-Company-Programm ist auf ein 100%-Pensum ausgelegt, jedoch gibt es bei Cudos viele Teilzeit-Mitarbeitende.
+
+---
+
+### Corona-Situation
+
+**Q: Wie wird das Programm in der aktuellen Corona-Situation organisiert?**  
+A: Die Organisation variiert je nach Partnerfirma. Es werden sowohl Homeoffice- als auch Büroarbeitlösungen genutzt.
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5715492952" ***
+Here’s the cleaned-up version of your markdown text:
+
+---
+
+**Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei M&F.**
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+### Ehemalige Trainees
+
+*Bemerkung: Einsatzbereich muss nur bei Firmen ausgefüllt werden, in welchen auch unterschiedliche Teams existieren.*
+
+| Name | Einsatzdauer | Einsatzbereich |
+| --- | --- | --- |
+|  |  |  |
+
+### Vorstellungsgespräch
+
+### Firmen- und Teamkultur
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+### Herausforderungen und Besonderheiten
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5715493116" ***
+Here's the cleaned-up version of the provided markdown text:
+
+---
+
+**Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei SPEAG.**
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+### Ehemalige Trainees
+
+| Name           | Einsatzdauer       | Einsatzbereich |
+|----------------|-------------------|----------------|
+| Mike Burkhard  | 10.2020 - 04.2021 |                |
+
+### Vorstellungsgespräch
+
+### Firmen- und Teamkultur
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+Sven Kuehn, Leiter R&D
+
+### Herausforderungen und Besonderheiten
+
+Firmensprache ist Englisch, entsprechend auch Mentoring-Protokoll auf Englisch
+
+Wenn möglich auch Zwischenzeugnis und Einsatzfirmenbeurteilung auf Englisch
+
+
+
+
+*** FILENAME: "TP/pages/5721686034" ***
+Sure! Here’s the cleaned-up content without headers, footers, or extraneous text:
+
+---
+
+**Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Sofel.**
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+<https://sofel.ch/> ist eine Tochtergesellschaft der Ferag AG und stellt Digitalisierungs- und Automatisierungslösungen für Unternehmen in verschiedenen Bereichen (z.B. Textilindustrie) her. Die Umbenennung zu Ferag (Schweiz) AG ist laut aktuellem Stand (02.2024) für Ende des ersten Quartals 2024 geplant. Die Software, welche entwickelt wird, ist hauptsächlich für den Bereich Intralogistik. Der Firmensitz befindet sich in Hinwil und ist von Zürich HB mit den öffentlichen Verkehrsmitteln in 40-50 min erreichbar.
+
+### Ehemalige Trainees
+
+| **Name** | **Einsatzdauer** | **Einsatzbereich** |
+| --- | --- | --- |
+| [Edwin Hernandez (Deactivated)](https://mfcloud.atlassian.net/wiki/people/61b8d2e321f3810067282c65?ref=confluence) | 07.2021 - 04.2022 |  |
+| [Manuel Brändli](https://mfcloud.atlassian.net/wiki/people/61b8d2932c73380069e8aac9?ref=confluence) | 12.2021 - 04.2022 |  |
+| Josua Bögli | ab 12.2021 | UI |
+| [marco.schiltknecht](https://mfcloud.atlassian.net/wiki/people/6278ccb7ea6ca0006972e985?ref=confluence)  | 08.2022-06.2023 | UI & API, Materialflussstrategien, TCP / IP |
+| [Simeï Steiner](https://mfcloud.atlassian.net/wiki/people/61b8d32d08e4e00069972336?ref=confluence)  | 05.2023-05.2024 | Core, OPC UA Scada & MFC |
+| [maximilian.wolfertz](https://mfcloud.atlassian.net/wiki/people/6384822bde5cdaba3a692983?ref=confluence)  | 05.2024-08.2024 | MFC (Material Flow Control) |
+
+### Vorstellungsgespräch
+
+- **Manuel**: Angenehmes Gespräch mit Maurizio (Chief Software) und Giuliano (Project Owner). Es ging darum, die Firma zu sehen und Interesse an der Technik zu zeigen. Kein technischer Teil; Diskussion über bisherige Erfahrungen und den Tech Stack (Angular, Asp .net Core).
+  
+- **Simeï**: Einfaches Kennenlern-Gespräch mit Giuliano (CEO). Die Firma wurde vorgestellt und mögliche Einsatzbereiche besprochen. Keine technischen Aufgaben. Frage, ob man spielt → Factorio oder Satisfactory.
+
+### Firmen- und Teamkultur
+
+Sofel optimiert alte Prozesse und digitalisiert sie, z.B. mit neuer Business Software für automatisches Rechnungsstellen. Es gibt vier Teams: Core, UI, Station (Verpackungsanlage und Aufladung), MFC (Strategie und Planung von Anlagen für Kunden).
+
+### Erfahrungen von Simeï
+
+- Daily Meeting von 8:45 bis 9:00 online auf Teams
+- Sprintplanung montags im 2-Wochenintervall (vor Ort)
+- Retro freitags im 2-Wochenintervall (nur wenn im Azure fürs Retro eingetragen)
+- Möglichkeit, vor Ort beim Kunden zu sein (nicht verpflichtend für Trainees)
+- Mindestens 2 Tage vor Ort arbeiten (Montag standardmäßig), sonst Home-Office möglich
+
+### Technologie-Stack
+
+- Selbstständige Entwicklung des OPC UA Services (SCADA) für Intralogistik. Unterstützt Kunden bei der Informationsbereitstellung über den Zustand von Anlagen.
+- Technologien: C# mit .Net 8, Docker, Redis, VS mit ReSharper, VS Code.
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Giuliano De Gani (CEO), Jan Eggers (Software Architect), Fabio Caruso (UI Lead), Valentina Merturi (Project Manager für Software).
+
+### Herausforderungen und Besonderheiten
+
+- Mensa/Kantine in der Nähe, auch verschiedene Restaurants und Lebensmittelgeschäfte.
+- Anforderungen nicht immer detailliert, was Abklärungen mit Kunden erfordert.
+- Stressige Arbeitsumgebung, da Kunden schnelle Lösungen benötigen.
+- Ehemaliger Trainee Josua Bögli arbeitet bei Sofel im UI.
+
+### Präsentationen und Vorträge
+
+- Trainee Projekt-Präsentationen Aufzeichnungen: G:\Geteilte Ablagen\MF\_NoBackup\0\_Aufzeichnungen Trainee Projekt-Präsentationen
+- Trainee Projekt-Präsentation Folien: G:\Geteilte Ablagen\MF\_Projekte\MF - Trainee-Programm - MF-8810\000 Projektmanagement\Trainee Projekt-Präsentationen\Sofel, Ferag
+
+
+
+*** FILENAME: "TP/pages/8040972301" ***
+Here’s a cleaned-up version of the content you provided, with headers, footers, and extraneous text removed:
+
+---
+
+### Tipps für Stellensuche nach CT
+
+Wir versuchen die Juniors bei der Stellensuche, Verhandlungen mit Partnerfirmen und beim Entscheid bestmöglich zu unterstützen. Ein individuelles Coaching mit dem Mentor, BAR oder BLR kann jederzeit in Anspruch genommen werden.
+
+Hier werden einige generelle Tipps und Hilfestellungen gesammelt:
+
+### Gehaltsforderungen nach CT
+
+Dies ist der offizielle Lohnrechner vom Bund und bietet eine gute Diskussionsgrundlage für Lohnverhandlungen: [Salarium - Statistischer Lohnrechner (zurzeit nicht verfügbar)](https://www.bfs.admin.ch/bfs/de/home/statistiken/arbeit-erwerb/loehne-erwerbseinkommen-arbeitskosten/lohnniveau-schweiz/salarium.html)
+
+Der größte private Lohnrechner der Schweiz ist: <https://www.lohncheck.ch/> 
+
+### Übung: Formuliere dein Traum-Stelleninserat
+
+Um herauszufinden, was man eigentlich für eine Stelle sucht und was man von einem Arbeitgeber erwartet, kann es helfen, ein fiktives “Traum-Stelleninserat” zu formulieren.
+
+Dafür kann folgende Vorlage verwendet werden:
+
+---
+
+Titel / Pensum: \_\_\_\_\_\_\_\_\_\_ (XX%)
+
+Ort / Unternehmensbeschreibung der fiktiven Firma: \_\_\_\_\_\_\_\_\_\_\_
+
+Stellenbeschreibung & Umfeld: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Wir erwarten von unserem neuen Teammitglied folgendes:
+
+* …
+* …
+* …
+
+Wir bieten unserem neuen Teammitglied folgendes:
+
+* …
+* …
+* …
+
+---
+
+### Vergleich Jobangebote
+
+Bei der Entscheidung zwischen verschiedenen Jobangeboten kann eine Entscheidungsmatrix helfen.
+
+Beispiel: <https://www.mint-solutions.de/assets/pdf/Bewertungstabelle.pdf>
+
+Vorlage:
+
+| Entscheidungsfaktoren | **Gewichtung** (1-3) | **Angebot A** Punkte (1-5) | **Angebot A Total** | **Angebot B** Punkte (1-5) | **Angebot B Total** |
+| --- | --- | --- | --- | --- | --- |
+| **Tätigkeit / Projekte** |  |  |  |  |  |
+| **Technologien** |  |  |  |  |  |
+| **Arbeitsumfeld** |  |  |  |  |  |
+| **Entwicklungs-Möglichkeiten** |  |  |  |  |  |
+| **Förderung / Weiterbildung** |  |  |  |  |  |
+| **Teamgeist** |  |  |  |  |  |
+| **Teamkompetenz** |  |  |  |  |  |
+| **Unternehmenskultur** |  |  |  |  |  |
+| **Lohn** |  |  |  |  |  |
+| **Erfolgsbeteiligung** |  |  |  |  |  |
+| **Fringe Benefits** |  |  |  |  |  |
+| **Arbeitsort** |  |  |  |  |  |
+| **Unternehmensgröße** |  |  |  |  |  |
+| **Branche** |  |  |  |  |  |
+| **Unternehmensart (Dienstleister vs. Produktentwickler)** |  |  |  |  |  |
+| **Identifikation mit dem Unternehmen** |  |  |  |  |  |
+| **…** |  |  |  |  |  |
+| **…** |  |  |  |  |  |
+| **…** |  |  |  |  |  |
+| **Total** |  |  | **Summe Angebot A** |  | **Summe Angebot B** |
+
+
+
+
+*** FILENAME: "TP/pages/8091172866" ***
+Here's the cleaned-up version of the text, with headers, footers, and extraneous text removed:
+
+---
+
+**Ideen-Sammlung für Give-Aways:**
+
+- M&F Tasse mit CH-Karte und eingezeichneten Trainee-Stopps
+- Alternativ: Camping Tasse (siehe Muster von simcla)
+- Laptop Sticker mit witzigem Spruch
+- Entscheidungswürfel mit Hilfestellungen zu offensichtlichen Programmierfehler:
+  - ask your mentor
+  - ask a friend
+  - take a coffee
+  - open the window
+  - turn on the light
+  - control your …
+- Time Cube Timer: [Link](https://www.amazon.de/Datexx-Wunder-Zeitwürfel-Minuten-Zeitmanagement-Hausaufgaben-Timer/dp/B0002U72LS)
+- Monitor Memo Board Computer: [Link](https://www.amazon.com/Monitor-Memo-Board-Computer-Multifunction/dp/B0792N95D2)
+- Etikett für Ladegerät-Beschriftung
+- Webcam Cover: [Link](https://www.apfelkiste.ch/zubehor/specials/kamera-abdeckungen.html)
+- Brille mit Blaulichtfilter: [Link](https://www.apfelkiste.ch/mako-go-view-anti-blue-light-blaulichtfiler-brille-schwarz.html?gclid=CjwKCAiAsNKQBhAPEiwAB-I5zSa2rmU-DqG2mo8T-P5VHm_kT0jKqlbGURdgJ1a1p5H6mzTc230p0RoC4WEQAvD_BwE)
+- digitaler Steckbrief
+- Mini Whiteboard: [Link](https://www.officeworld.ch/de/nobo-whiteboard-quartet-28-x-36-cm-1066245?gclid=CjwKCAiAsNKQBhAPEiwAB-I5zRgyCQhsefgn0U8S5B9J6_VcknWXGJk_ZKk0RaGtjyL9jd2h4zz5nBoCOtgQAvD_BwE)
+- Trainee-Reisepass
+- Büro-Pflanze
+- Sichtschutz-Folie für Handy oder Laptop
+- Bildschirm Putzlappen
+- Tastatur Reinigungsschleim
+- Flaschenöffner
+- Pingpong Schläger
+- Jasskarten
+- Mehrweg Kaffeebecher
+- SIGG Flasche
+
+Weitere Ideen unter: [Link](https://bytescout.com/blog/best-gifts-for-programmers-gadgets.html#28) 
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8133771265" ***
+Here's the cleaned-up version of your Markdown text:
+
+---
+
+**Cudos Trail: Güdel**
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Güdel.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+### Ehemalige Trainees
+
+*Bemerkung: Einsatzbereich muss nur bei Firmen ausgefüllt werden, in welchen auch unterschiedliche Teams existieren.*
+
+| Name | Einsatzdauer | Einsatzbereich |
+| --- | --- | --- |
+|  |  |  |
+
+### Vorstellungsgespräch
+
+* Vor Ort in Langenthal
+  + Vorstellung aller Softwareprojekte von Güdel durch Halil Iper
+  + Firmenrundgang durch alle Produktionsbereiche mit Halil Iper
+  + Vorstellungsrunde zusammen mit Andreas Weber
+
+### Firmen- und Teamkultur
+
+Du-Kultur
+
+### Technologien
+
+Angular und C#
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+* Andreas Weber: Leiter Software & Controls (SPS, Highlevel, Testing, …)
+* Halil Iper: Leiter Hochsprachen-Team
+
+### Herausforderungen und Besonderheiten
+
+Homeoffice Reglement: 2 Tage pro Woche vor Ort
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8278867969" ***
+Here’s the cleaned-up text from your scraping:
+
+---
+
+**Cudos Trail : Weytec (WEY Group AG)**
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Weytec.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+### Ehemalige Trainees
+| Name               | Einsatzdauer | Einsatzbereich |
+|--------------------|--------------|----------------|
+| Marco Schiltknecht | 08.2024      | Archivserver    |
+
+### Einsatzmöglichkeit
+
+### Vorstellungsgespräch
+**Weytec Bewerbungsgespräch 25.04.2024 SCM**
+
+Gesprächsteilnehmer seitens Weytec waren:
+- Adrian Briner
+- Sascha Huber (Product Owner/Engineer)
+- Renato Bosshart (Leiter Software)
+
+Das Gespräch begann mit einem Rundgang durch den "Showroom" und endete mit einem Bürorundgang. Dazwischen war das Gespräch in einem Sitzungszimmer mit folgendem Ablauf:
+
+- Vorstellung der Firma
+- Vorstellungsrunde
+
+**Fragen an Trainee:**
+- Hast du Präferenzen bzgl. Frontend/Backend?
+- Gibt es Aufgaben, die du bevorzugst bzw. dir weniger zusagen?
+- Bist du ein Teamplayer oder Einzelgänger? Kannst du selbstständig arbeiten, aber auch neue Ideen einbringen?
+- Bist du bereit anstelle von Angular auch mal mit React zu arbeiten?
+- Was sind deine Hobbies?
+
+(Es gab keine "klassischen" und keine technischen Fragen)
+
+**Fragen meinerseits**
+
+### Firmen- und Teamkultur
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+- Adrian Briner (Entwicklungsleiter)
+- Sascha Huber (Product Owner/Engineer)
+- Renato Bosshart (Leiter Software)
+
+### Herausforderungen und Besonderheiten
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8341651479" ***
+
+
+
+Cudos Trail : Cudos Trail Arbeitsplätze
+
+
+
+
+
+
+
+
+1. [Cudos Trail](index.html)
+2. [Cudos Trail Startseite](Cudos-Trail-Startseite_5639668934.html)
+
+
+
+
+
+ Cudos Trail : Cudos Trail Arbeitsplätze
+==========================================
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Created by  Jannic Veith (Deactivated), last modified by  marianne.petitpierre on Juli 08, 2024
+ 
+
+Insgesamt stehen min. 10 Cudos Trail Arbeitsplätze zur Verfügung. Diese können für Einsätze bei Cudos, für Einarbeitungsphasen vor oder zwischen den Einsätzen sowie für spontanes Arbeiten vor Ort genutzt werden. Die Cudos Trail Arbeitsplätze sind als solche angeschrieben. Zusätzlich können Sitzungszimmer reserviert werden, wo sich die restlichen Juniors einrichten und arbeiten können. 
+
+Die Juniors während einem Cudos Einsatz sowie die Juniors während der Einarbeitungsphase haben das Anrecht auf einen fixen Arbeitsplatz während dieser Zeit. Für alle anderen gilt: “de Schneller isch de Gschwinder”.
+
+Wo befinden sich die Junior Arbeitsplätze?
+------------------------------------------
+
+Büro EG rechts: 2 Cudos Trail Arbeitsplätze
+
+Büro EG links: 4 Cudos Trail Arbeitsplätze 
+
+Büro OG hinten links: 3 Cudos Trail Arbeitsplätze 
+
+Büro OG mitte rechts: 2 Cudos Trail Arbeitsplätze
+
+**→ alle Bürotische sind mit “Cudos Trail” beschriftet!**
+
+Ausstattung der Arbeitsplätze
+-----------------------------
+
+Alle Cudos Trail Arbeitsplätze sind mit folgender Infrastruktur ausgestattet:
+
+* Maus
+* Tastatur
+* 2 Bildschirme
+* USB C Hub oder Docking Station, Empfehlung VEJ: <https://www.digitec.ch/de/s1/product/ratings/lenovo-thinkpad-hybrid-usb-c-dockingstation-usb-hub-10162691?sortOrder=Newest&loadNextPage=true>
+* ggf. USB C Stromkabel
+* ggf. Webcam
+
+Voraussetzung: Jemand mit einem USB-C Anschluss sollte problemlos seinen Laptop anschliessen und arbeiten können.
+
+**Die Infrastruktur darf nicht entfernt werden. Falls irgendwas fehlt, meldet euch umgehend beim IT Team. Bitte denkt daran, den USB Receiver (Dongle) nicht versehentlich Nachhause zu nehmen!**
+
+Zusätzliches SiZi am Tag der Cudos Insights
+-------------------------------------------
+
+Alle anderen können sich im Sitzungszimmer einrichten.
+
+BOR reserviert wenn immer möglich das grosse Sitzungszimmer (Hauptgebäude Fahrweid-1-SiZi\_1\_Links) am Tag von Cudos Insights bis 15:00. Danach helfen alle beim Umstellen der Tische und Stühle für die anschliessende Cudos Insights. 
+
+Das SiZi ist mit genügend Mäuse ausgestattet, wo sich alle bedienen können. Falls zusätzlich Bildschirme, Tastatur etc. gebraucht wird, kann man sich ans IT-Team wenden.
+
+Falls jemand ungestört arbeiten muss, kann er oder sie selbständig ein SiZi reservieren.
+
+
+
+ 
+
+
+Document generated by Confluence on Okt. 15, 2024 12:04
+
+
+[Atlassian](http://www.atlassian.com/)
+
+
+ 
+
+
+
+
+*** FILENAME: "TP/pages/8375140353" ***
+Here's a cleaned-up version of the provided text, with headers, footers, and extraneous information removed:
+
+---
+
+**Cudos Trail**
+
+Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Sisag / Remec.
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+Sisag ist eine Firma mit Schwerpunkt Personentransport und vor allem Seilbahnen, aber auch im Bereich Strassenverkehr und Operating Solutions aktiv. Remec entwickelt Software im Wartungsbereich von Personentransporten. Der Firmensitz ist in der Nähe von Altdorf in der Zentralschweiz, ca. 1h und 20min von Zürich HB entfernt.
+
+### Ehemalige Trainees
+
+| Name                      | Einsatzdauer         | Einsatzbereich          |
+|---------------------------|---------------------|-------------------------|
+| Josua Cantieni (caj)      | März - Okt 2023     | Sisag - SisControl      |
+| Nicolas Ehrenberg (ehn)   | Nov 2023 - April 2024 | Sisag - SisControl      |
+
+### Vorstellungsgespräch
+
+**Vorstellung BEB, März 2024, Remec**
+
+- Vorstellung Remec und aktuelle Projekte
+- Kurzvorstellung vom Trainee, dessen Interessen und Erfahrungen 
+- Firmenführung
+
+**Vorstellung EHN und WOM, September 2023, Sisag**
+
+- Kurzvorstellung der Trainees und deren Interessen 
+- Organisatorisches: Startzeitpunkt, Wohnung, Laptop etc.
+- Firmenführung durch Michael Arnold
+
+**Vorstellung CAJ und WOM, Februar 2023, Sisag**
+
+Das Vorstellungsgespräch war mehr ein Vorstellen der Firma und gegenseitiges Kennenlernen. Es wurden hauptsächlich Fragen zum Traineeprogramm gestellt.
+
+### Firmen- und Teamkultur
+
+Offenheit ist ein zentrales Thema im Team, man kann mit jedem sprechen. Das Team SisControl verwendet Scrum mit einem zwei-Wochen Sprint. Änderungen und Fixes werden in eigenen Branches erstellt und vor dem Mergen reviewt. Flexibilität beim Arbeitsort ist gegeben; 1-2 Tage vor Ort sind besonders am Anfang vorteilhaft.
+
+**Erfahrung von EHN:**
+
+Die Hierarchie im Team ist sehr flach. Das Sisag-Team besteht aus 6 Personen: 1 Scrum Master, 3 Entwickler, 1 Trainee, 1 Lehrling.
+
+**Remec:**
+
+- 30 Personen bei Remec, gegründet 2010
+- 10 Personen in SWE, 2 Scrum-Teams, PO, Cloud etc.
+
+### Technologien und Projekte
+
+**Remec:**
+
+- Hauptprodukt: Entwicklung im Projekt [Sambesi](https://www.remec.ch/de/sambesi)
+
+  - WinUI 3, WPF, Angular, .NET Core, Azure, MSSQL, EF
+
+- Nebenprojekte: SisValor, GemUR, Dätwyler
+
+**Sisag:**
+
+- SisControl (IOT / Azure Anwendung)
+
+  - Backend in C# mit Azure Functions; Frontend in Angular
+
+**Einsatz EHN:**
+
+Entwicklung an einer Destination Management Plattform für Skigebietsbetreiber. Verwendete Technologien sind Angular, Cypress, Azure Functions, C#, SQL-Server.
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Marco Zgraggen, CEO Sisag
+- Daniel Schuler, Leiter Softwareentwicklung Remec
+- Johannes Stadler, Geschäftsführer Remec
+- Michael Arnold, PO SisControl
+- Valentin Schuler, Scrum Master SisControl
+
+### Herausforderungen und Besonderheiten
+
+- Viele seilbahn-interessierte Mitarbeiter
+- Gute Stimmung und familiäres Umfeld
+
+**Erfahrung von CAJ:**
+
+Die Sisag besteht aus mehreren Firmen unter der "Sisag Holding". Die Unterkunft wurde in einer Studio-Wohnung in Altdorf organisiert. 
+
+Remec-Team ist hauptsächlich vor Ort, flexible Arbeitskultur.
+
+---
+
+
+
+
+*** FILENAME: "TP/pages/8417378305" ***
+## Cudos Trail: HSLU Wirtschaftsprojekt (WiPro)
+
+An der HSLU müssen die Informatik-Studierenden ein sogenanntes Wirtschaftsprojekt umsetzen. Dies sei für Firmen sehr attraktiv, da es relativ umfangreich ist (2x180h), wenig Betreuungsaufwand benötigt, nicht wissenschaftlich sein muss (wie die BA) und kostenlos ist.
+
+### Wirtschaftsprojekt
+
+Das Wirtschaftsprojekt findet im 5. Semester der Bachelor-Studiengänge Informatik, Information & Cyber Security und Wirtschaftsinformatik statt. Die Projektarbeit dauert maximal **14 bis 15 Wochen** und der **Arbeitsaufwand pro Student/Studentin beträgt 180 Stunden**. Der Start der Arbeit kann im Herbstsemester (KW 38) oder im Frühlingssemester (KW 8) erfolgen. Die verschiedenen Studierendengruppen bearbeiten jeweils unterschiedliche Projekte.
+
+Sie als Auftraggeber/in reichen die Projektidee ein. Diese sollte über kreativen Spielraum verfügen und den Studierenden erlauben, neue Ideen zu entwickeln, die ausserhalb des Tagesgeschäfts angesiedelt sind und Innovation beinhalten. Ihre Projektidee kann daraufhin von einem Studierendenteam ausgewählt werden. Mit etwas Glück wird Ihre Idee ausgewählt, und die Betreuungsperson wird mit Ihnen die definitive Aufgabenstellung ausarbeiten. Eine Betreuungsperson (Dozent/in oder wissenschaftliche/r Mitarbeiter/in) wird von der Hochschule Luzern gestellt.
+
+Die Eingabe der Projektidee kann bis spätestens im **November** oder im **Juni** für das darauffolgende Semester erfolgen.
+
+### Betreuungsaufwand
+
+Das Wirtschaftsprojekt ist eine individuelle Projektarbeit mit Bezug zur gewählten Ausrichtung. Die Studierenden absolvieren das WiPro meist in Zweierteams während ihres Studiums an der HSLU. Als Auftraggebende sind Sie der **Ideen-Lieferant** und werden von der Betreuungsperson kontaktiert, um gemeinsam die Aufgabenstellung auszuarbeiten. Sie sind beim **Kick-off und an der Abschlusspräsentation** dabei. Der Aufwand für Auftraggebende ist in der Regel gering. Bei berufsbegleitenden Arbeiten kann zusätzlich ein Besuch durch die Betreuungsperson stattfinden.
+
+### Rechte
+
+Resultate des Projekts dürfen für eigene, kommerzielle Produkte und Dienstleistungen verwendet werden. Der Entscheid liegt schlussendlich bei den Studierenden, die die Eigentumsrechte der Arbeit besitzen. Die Hochschule besitzt lediglich die Nutzungsrechte. Es ist wichtig, dies bei Projektstart mit den Studierenden zu klären.
+
+### Eckdaten
+
+- Zweierarbeit
+- Studierende im 5. Semester (bei Vollzeit) bzw. im vorletzten Semester
+- **Kein Kostenbeitrag**
+
+### Mögliche Themen
+
+- Optimierung Einsatz von SharePoint
+- Photobooth mit GoPro
+- Digitale Mieterplattform
+
+### Weitere Informationen
+
+- [Projekte mit Studierenden](https://www.hslu.ch/de-ch/informatik/ueber-uns/unternehmen-und-institutionen/projekte-mit-studierenden/)
+
+
+
+*** FILENAME: "TP/pages/8454864912" ***
+
+
+
+Cudos Trail : Junior Onboarding: Business Rules
+
+
+
+
+
+
+
+
+1. [Cudos Trail](index.html)
+2. [Cudos Trail Startseite](Cudos-Trail-Startseite_5639668934.html)
+3. [Einführung](5646057825.html)
+
+
+
+
+
+ Cudos Trail : Junior Onboarding: Business Rules
+==================================================
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Created by  Rachel Blaser, last modified by  marianne.petitpierre on Juli 08, 2024
+ 
+
+Umgang mit Emails
+-----------------
+
+* Das Cudos Mail sollte min. 1x täglich gecheckt werden (der Cudos Gmail Account kann problemlos auf dem Handy eingerichtet werden)
+* Bei Abwesenheit sollte dies im Cudos Kalender eingetragen sowie eine Abwesenheitsnotiz eingerichtet werden: <https://support.google.com/mail/answer/25922?hl=de&co=GENIE.Platform%3DDesktop>   
+  
+**Textvorlage**:   
+Guten Tag,
+
+Ich bin ab dem XX.XX.XXXX wieder im Büro und bearbeite Ihre Emails gerne nach meiner Rückkehr. In dringenden Fällen wenden Sie sich bitte einfach an unsere Zentrale (044 747 44 44, <mailto:info@cudos.ch>).
+
+Freundliche Grüsse,
+* Interne und externe Emails sollten innerhalb von 24h beantwortet werden
+* Falls man mehr Zeit für die Rückmeldung braucht, soll man dennoch kurz antworten und informieren, dass man noch mehr Zeit für Abklärungen braucht
+* Häufig beruhigt es den Absender, wenn man den Erhalt einer (wichtigen) Informationen kurz bestätigt
+* Verbindliche und wichtige Information wird schriftlich in einem Email festgehalten und nicht in Chat-Tools
+
+Umgang mit Chat-Tools
+---------------------
+
+Chat-Tools (Teams, Whatsapp, Slack etc.) sind nur für unverbindliche Kommunikation geeignet. Wenn man sofort eine Antwort kriegt ist es gut, wenn nicht, muss man davon ausgehen, dass der Empfänger das nicht gesehen hat und keine Antwort liefert/liefern muss.
+
+Verbindliche Kommunikation bzw. wenn es wichtig ist, dass eine Person etwas sieht und/oder reagiert, gehört in’s Email.
+
+Kommunikation von heiklen Themen
+--------------------------------
+
+Grundsätzlich gilt: Keine Kritik schriftlich!
+
+Für die Kommunikation von heiklen Themen, Kritik etc. welche vom Gegenüber missverstanden werden könnten, ist weder Email noch Chat geeignet. In diesem Fall wird ein Meeting, online-Meeting oder mindestens Telefonanruf gemacht. 
+
+Telefon
+-------
+
+* Telefon abnehmen mit “Vor- und Nachnamen, (Cudos)”
+* Namen des Anrufers notieren (falls nicht bekannt)
+
+Meetings und Auftreten
+----------------------
+
+* pünktlich erscheinen
+* bei Verspätung oder Verhinderung den Organisator möglichst rasch informieren (am besten telefonisch)
+* sich mit Namen und Funktion vorstellen, falls die anderen Teilnehmer dich nicht kennen
+* etwas zum Schreiben mitnehmen (Laptop bspw. OneNote oder Block und Stift)
+* Meeting vorbereiten (auch wenn man nicht der Organisator ist): 
+
+
+	+ was ist mein Ziel?
+	+ was ist mein Beitrag?
+	+ was muss ich vorbereiten?
+* abschliessend Meeting zusammenfassen, weiteres Vorgehen definieren, Zuständigkeiten verteilen (wer kümmert sich um was)
+* Bei Meetings mit Kunden mit sauberen, angemessenen Kleidern und Schuhen erscheinen (saubere Hose, Hemd oder neutrales, neueres T-Shirt, Turnschuhe ok). Geduscht und nicht verschwitzt erscheinen.
+
+Verbindlichkeit
+---------------
+
+* Wenn man etwas abgemacht/versprochen hat (z.B. “Ich mache das Dokument bis …”), dann kann sich das Gegenüber darauf verlassen. Falls man sieht, dass man eine Abmachung nicht einhalten kann (z.B. krankheitsbedingt), meldet man sich so früh wie möglich und bespricht das weitere Vorgehen.
+
+Weitere Tipps findet man im Business-Knigge: <https://blog.hubspot.de/sales/business-knigge> 
+
+Hilfe holen bzw. Fragen stellen
+-------------------------------
+
+Bei Unsicherheit oder wenn man nicht weiter kommt, ist es wichtig, dass man sich **zeitnah** Hilfe holt. Dabei sollte man jedoch zuerst selbst überlegen und wenn nötig recherchieren (aber nicht zu lange!), sich optimalerweise einen oder mehrere Lösungsvorschläge überlegen und dann die Betreuungsperson damit konsultieren. 
+
+
+
+ 
+
+
+
+
+
+*** FILENAME: "TP/pages/8793751553" ***
+Here’s the cleaned-up version of the text, stripped of headers, footers, and extraneous content:
+
+---
+
+**Cudos Trail : Stemys SA (Brütsch/Rüegger)**
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Juniors bei stemys SA.***
+
+**Schreibt alles auf, was für zukünftige Juniors von Bedeutung sein könnte!**
+
+**Ehemalige Juniors**
+
+*Bemerkung: Einsatzbereich muss nur bei Firmen ausgefüllt werden, in welchen auch unterschiedliche Teams existieren.*
+
+| Name | Einsatzdauer | Einsatzbereich |
+| --- | --- | --- |
+|  |  |  |
+
+**Vorstellungsgespräch**
+
+Fragen von Raphaël Müller:
+- Industrieerfahrung?
+- Bevorzugst du Frontend oder Backend?
+- Bevorzugst du Produktentwicklung oder Projektarbeit?
+- Lieber etablierte Technologien verwenden oder auch Ausprobieren von neuen?
+- Vorteil von Microservices?
+
+**Firmen- und Teamkultur**
+
+**Zuständigkeiten und wichtige Kontaktpersonen**
+
+Raphaël Müller, Leiter Industriel Solutions und Senior Consultant bei Brütsch/Rüegger und gleichzeitig CEO von stemys.
+
+**Herausforderungen und Besonderheiten**
+
+Stemys hat Büro in Delémont (Jura); Junior von uns könnte aber von Urdorf aus arbeiten und wenn möglich 1-2x pro Woche oder für wichtige Meetings nach Delémont.
+
+Reisezeit gilt als Arbeitszeit.
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5715492870" ***
+Here’s the cleaned-up version of the markdown text:
+
+---
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Juniors bei ABF Informatik AG.***
+
+**Schreibt alles auf, was für zukünftige Juniors von Bedeutung sein könnte!**
+
+### Ehemalige Juniors
+
+*Bemerkung: Einsatzbereich muss nur bei Firmen ausgefüllt werden, in welchen auch unterschiedliche Teams existieren.*
+
+| Name | Einsatzdauer | Einsatzbereich |
+| --- | --- | --- |
+|  |  |  |
+
+### Vorstellungsgespräch
+
+Fragen von Julien Richa:
+
+* Welche Rolle nehmen sie im Team ein?
+* Wie hat die Zusammenarbeit funktioniert?
+* Grösste Herausforderung im letzten Projekt?
+* Backend oder Frontend: was liegt ihnen besser?
+
+### Assessment
+
+Zuerst Führung durch Firma, dann ca. 4h Zeit für Aufgabe. Aufgabe war, einen User mit Vorname, Nachname, Anrede, Adresse, Email, Passwort und Sprache zu registrieren, dann ein Login und eine filterbare Tabelle mit allen Login-Events zu erstellen.
+
+Reines PHP (7.2) mit leerer Oracle-Datenbank, war alles auf dem Assessment-PC schon installiert und ein Texteditor mit der index.php und Datenbankverbindung offen.
+
+Das Ganze sollte objektorientiert gelöst werden. 
+
+Am Schluss Demo vor dem Team.
+
+### Firmen- und Teamkultur
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+### Herausforderungen und Besonderheiten
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5696554503" ***
+Here's the cleaned-up text with headers, footers, and extraneous material removed:
+
+---
+
+## Cudos Trail: Akquise Partnerfirmen
+
+### Vorgehen für die Kaltakquise
+
+Dieses Dokument gibt die Überlegungen wieder, wie man am besten zu einem Vorstellungstermin für den Cudos Trail von potentiellen Partnerfirmen kommen kann.
+
+### Quellen für potentielle Partnerfirmen
+
+- CRM: Klassifizierung Trainee-Programm auf “abklären”
+- [Swiss Made Software](https://www.swissmadesoftware.org/praktika-und-diplomarbeiten.html)
+- [Swiss Dev Jobs](https://swissdevjobs.ch/)
+- [Software Job](https://software-job.ch/)
+- [Ostjob](https://www.ostjob.ch/)
+
+### Vorbereitung
+
+- CRM checken, ob es schon Kontakte oder Potentiale gab
+- Kurze Firmenanalyse und Stelleninserate anschauen
+- Argumentationen vorbereiten
+
+### Textvorlagen
+
+#### Mailtext (Junior schlägt Partnerfirma vor)
+
+Haben Sie schon mal von unserem [Cross-Company-Programm für Software Engineers](https://cudos.ch/de/trail-partner-werden/) gehört?
+
+Ein Junior von uns (Name) ist auf Ihre ausgeschriebene Stelle als XY (Link) aufmerksam geworden und meint, dass sich Ihr Unternehmen ausgezeichnet für einen Einsatz im Rahmen des Cross-Company Programms eignet. Zudem passen seine Technologie-Kenntnisse sehr gut zum Stelleninserat.
+
+Kurz zusammengefasst: Das Ziel des Cudos Trails ist es, junge, motivierte Software-Ingenieure und innovative Technologie-Firmen zusammenzubringen. Dabei rotiert der Junior während drei Jahren im Netzwerk und arbeitet jeweils 6-12 Monate bei einer Partnerfirma im Software-Team vor Ort mit. Parallel dazu wird er mittels monatlichen Workshops und Mentoring zu einem erfahrenen Software-Engineer ausgebildet.
+
+Sind Sie auf der Suche nach jungen, kompetenten und engagierten Software-Ingenieuren? Gerne komme ich bei Ihnen vorbei und stelle das Cross-Company Programm persönlich vor. Wann darf ich vorbeikommen? Ich freue mich, von Ihnen zu hören.
+
+---
+
+#### Mailtext (Junior wirbt direkt bei Firma)
+
+Sehr geehrte(r) Herr/Frau … XX,
+
+Ich melde mich bei Ihnen bezüglich Ihres Stelleninserats für XX. Ich arbeite zurzeit als Software Ingenieur im Cross-Company-Programm der Cudos AG (mehr Details unter [Cross-Company-Programm](https://cudos.ch/de/trail-partner-werden/)). 
+
+Ihr Inserat klingt interessant, und ich denke, Sie würden als Partnerfirma gut ins Programm passen. Ich würde mich freuen, das Cross-Company Programm näher zu erläutern. 
+
+Freundliche Grüsse,  
+XX
+
+---
+
+### Fragen fürs erste Telefongespräch
+
+- Haben Sie die Informationen erhalten?
+- Sind auch Sie immer wieder auf der Suche nach jungen SW Ingenieuren?
+- Wer sind bei Ihnen die richtigen Leute für die Vorstellung?
+- Dürfte ich (zusammen mit dem Junior) vorbei kommen? Wann hätten Sie Zeit?
+- Ich würde Ihnen sonst vorab das Profil des aktuellen Juniors XY schicken.
+
+### Antworten zu Aufschiebung
+
+Sehr geehrter Herr …,
+
+Vielen Dank für Ihre Rückmeldung. Ich wollte kurz nachfragen, was es braucht, um einen Schritt weiter zu kommen. 
+
+Der Aufwand ist kleiner als bei einer „normalen“ Bewerbung, da wir die Vorselektion und Qualitätsprüfung bereits vorgenommen haben. 
+
+Gerne können Sie mich auch kurz zurückrufen.
+
+Freundliche Grüsse,  
+Rachel
+
+---
+
+### Antworten zu Absagen
+
+#### Absage wegen Niveau der Juniors
+
+Hoi XY,
+
+Vielen Dank für deine Rückmeldung. 
+
+Es ginge nicht um ein Praktikum, sondern um einen Junior-Einsatz mit Möglichkeit zur Festanstellung (try and hire). Unsere Trainees sind motiviert und hochqualifiziert. 
+
+Falls du trotzdem Fragen hast oder interessiert bist, melde dich jederzeit. 
+
+Liebe Grüsse,  
+Rachel
+
+#### Absage wegen „kein Budget“
+
+Optimierungspotential bei Herrn ….
+
+Sehr geehrter Herr …,
+
+Leider hat sich in Ihrer Firma folgendes Szenario abgespielt:
+
+- Jemand hat eine gute Idee, um ein dringendes Problem zu lösen.
+- Der Vorgesetzte hat abgelehnt mit der Begründung: „Wir haben kein Budget dafür“.
+- Projekte verzögern sich, was zu höheren Kosten führen kann.
+
+
+
+
+*** FILENAME: "TP/pages/5706418355" ***
+Here's the cleaned-up version of the content you provided:
+
+---
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Juniors bei Axetris.***
+
+**Schreibt alles auf, was für zukünftige Juniors von Bedeutung sein könnte!**
+
+Ehemalige Juniors
+=================
+
+| Name | Einsatzdauer | Einsatzbereich |
+| --- | --- | --- |
+|  |  |  |
+
+Vorstellungsgespräch
+====================
+
+Firmen- und Teamkultur
+======================
+
+Zuständigkeiten und wichtige Kontaktpersonen
+============================================
+
+Herausforderungen und Besonderheiten
+====================================
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5674632398" ***
+Here's the cleaned-up version of the content, removing headers, footers, and extraneous text:
+
+---
+
+**Cudos Trail: Controlling und interne Prozesse**
+
+### Controlling
+
+#### Task-Schätzung
+
+- **Soll** = Schätzung zu Beginn des Projekts (Offerte) bzw. Anfangs Jahr  
+  → bleibt gleich bis Ende Jahr, ausser man erstellt eine neue Offerte
+
+- **Ist** = aktueller Stand  
+  → wird aus der Dateneingabe aus dem RolX berechnet (aktueller Stand)
+
+- **Geplant** = aktualisierte Schätzung  
+  → wird möglichst realitätsnah nachgeführt bzw. aktualisiert nach aktuellem Wissensstand  
+  → Ende Jahr wird das Geplant dem Ist angepasst
+
+#### Jahresabschluss
+
+**Erfassung von Partnerfirma im RolX**
+
+1. **Google Drive (M&F Traineeprogramm - MF-8810):** 
+   - Firma mit Nummer erfassen inkl. Unterordner:  
+     - Mentoring-Reports  
+     - Controlling, Rechnungen, Projektleitung  
+     - Review-Gespräche
+     
+2. **Google Drive (M&F Traineeprogramm - MF-8810\000 Projektmanagement\Verträge):** Vertragsordner erstellen
+
+3. **Verträge erstellen, unterschreiben lassen & ablegen**  
+   - Rahmenvertrag inkl. allen Anhängen  
+   - Zusatz zum Arbeitsvertrag
+
+4. **RolX Subprojekt erstellen**
+
+   1. RolX Subprojekte 8810: +
+   2. Projektnummer: 8810
+   3. Subprojektnummer gemäss Nummer im Google Drive
+   4. Kunde: M&F
+   5. Projekt: Trainee-Programm
+   6. Subprojekt: Name der Partnerfirma
+   7. Projektleiter: BLR  
+
+5. **RolX Aktivität erstellen**
+
+   1. RolX Subprojekt öffnen
+   2. Aktivität erstellen: +
+   3. Name: Arbeiten bei XY
+   4. Verrechenbarkeit: Verrechenbar TP
+   5. Startzeitpunkt eingeben
+
+### Rechnung erstellen
+
+1. **Beleg-Nr. lösen (Debitoren-Verkauf/Beleg-Nr-Vergabe.xlsx)**
+2. **Rechnungsvorlage erstellen**
+3. **Monatsrechnung erstellen**
+
+   1. Rechnung-Nr. anpassen (fortlaufend)
+   2. speichern unter (8810/Firmenordner/Controlling, Rechnungen)  
+   3. Blatt "inStep Export" --> alles löschen & aktuellen Monat einfügen aus instep (Projekt auswerten)
+   4. Bereinigen & Drucken bzw. Makro ausführen (Daten werden aktualisiert)
+   5. Kontrolle mit Stundenmatrix & Verträge
+   6. Drucken & verschicken gemäss Rechnungsadressen.docx
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5639668934" ***
+Here's a cleaned-up version of the text, focusing only on the relevant content:
+
+---
+
+### Cudos Trail
+
+#### Inhaltsverzeichnis
+- [Korrespondenz Bewerber & Studenten](5703532878.html)
+- [Akquise Partnerfirmen](Akquise-Partnerfirmen_5696554503.html)
+- [Einführung](5646057825.html)
+- [Partnerfirmen FAQ](Partnerfirmen-FAQ_5706418344.html)
+- [Controlling und interne Prozesse](Controlling-und-interne-Prozesse_5674632398.html)
+- [Jahresanlass & Sommerevent Cudos Trail](5688099068.html)
+- [FAQ Interessenten / Bewerber / Juniors](5706417843.html)
+- [Hochschulen](Hochschulen_8170307585.html)
+- [Info-Anlass](Info-Anlass_5639669027.html)
+- [SI Professional Zertifikat](SI-Professional-Zertifikat_5712576857.html)
+- [Trainee Programm Ostschweiz](Trainee-Programm-Ostschweiz_5681250927.html)
+- [Tipps für Stellensuche nach CT](8040972301.html)
+- [Cudos Trail Arbeitsplätze](8341651479.html)
+- [Workshops: Briefing Referent/in](3255107607.html)
+
+### Trainees und Einsätze
+Hier findet man den aktuellen Stand, welcher Junior sich aktuell bei welcher Partnerfirma befindet. Eine detaillierte Ansicht findet man im [*Gesamtübersicht Einsätze.xlsx*](https://drive.google.com/open?id=1lPX7S0mzXmLT4hIcIHP0rwnfGlLLA_XF).
+
+| Junior               | Partnerfirma | Einsatz von ... bis    | Mentor                          |
+|----------------------|--------------|------------------------|----------------------------------|
+| Fabian Ullmann       | abgeschlossen, HAPA |                          | Simon Alther                    |
+| Sebastian Wendland    | abgeschlossen, EBP  |                          | Michael Giessel                 |
+| Rico Widmer           | abgeschlossen, Crypto |                          | Marcel Räber                    |
+| Markus Frei           | abgeschlossen, Cudos |                          | Marcel Räber                    |
+| Andreas Michel        | abgeschlossen, Cudos |                          | Reto Bättig                     |
+| Claudio Stoob         | abgeschlossen, Siemens |                          | Markus Meier                    |
+| Lukas Brun            | abgeschlossen, Cudos |                          | Michael Bader (ehem. Giessel)  |
+| Lionel Miserez        | frühzeitig beendet     |                          | Michael Giessel                 |
+| Micha Brunner         | abgeschlossen, Migros Bank |                          | Simon Alther                    |
+| Josua Stähli         | abgeschlossen, Amberg |                          | Christian Ewald                 |
+| Kristof Kölker        | abgeschlossen, EBP    |                          | Christian Ewald (ehem. Alther) |
+| Florian Gubler        | abgeschlossen, Ergon  |                          | Christian Ewald                 |
+| Frank Jordi           | abgeschlossen, Cudos  |                          | Simon Alther                    |
+| Fabio Wanner          | abgeschlossen, Dectris |                          | Roger Billeter                  |
+| Fabian Müller         | abgeschlossen, GVZ    |                          | Marcel Räber                    |
+| Samuel Dobmann        | abgeschlossen, Cudos  |                          | Michael Bader (ehem. Giessel)  |
+| Benjamin Imbach       | abgeschlossen, Cudos 50% |                          | Roger Billeter                  |
+| Nicolai Buck         | abgeschlossen, Franke  |                          | Markus Meier                    |
+| Edwin Hernandez      | abgeschlossen, Siemens  |                          | Simon Alther                    |
+| Dominik Bachmann      | abgeschlossen, Cudos   |                          | Uche Mennel                     |
+| Alexandra De Groof    | abgeschlossen, Siemens  |                          | Sandro Brandt                   |
+| Simon Walter          | frühzeitig beendet, Abraxas Informatik | | Michael Bader                    |
+| ...                  | ...                      | ...                    | ...                              |
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5706418372" ***
+Here's the cleaned-up version of the text:
+
+---
+
+**Cudos Trail: CyOne Security**
+
+Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei CyOne Security AG.
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+### Ehemalige Trainees
+
+*Bemerkung: Einsatzbereich muss nur bei Firmen ausgefüllt werden, in welchen auch unterschiedliche Teams existieren.*
+
+| Name | Einsatzdauer | Einsatzbereich |
+| --- | --- | --- |
+|  |  |  |
+
+### Vorstellungsgespräch
+
+**Anmerkungen**
+
+Dauer technischer Teil des Interviews: ca. 2 Stunden
+
+Die unterstehenden Fragen zu den 6 Themenbereichen sind nicht vollständig und nur aus dem Gedächtnis rekonstruiert. Gemäß Feedback liegt der Fokus stärker auf OO-Themen/Datenstrukturen/Patterns und Design/Testing als auf WPF/Datenbanken.
+
+**Themen/Fragen**
+
+#### Objekt-Orientierung allgemein
+
+- Was ist eine Klasse?
+- Was ist Vererbung?
+- Was ist Polymorphie?
+- Was bedeutet private/protected/public?
+- Beispiel mit 3 Klassen ausgedruckt (C erbt von B erbt von A), überladene Konstruktoren, Frage nach Aufrufreihenfolge / was passiert bei Aufruf einer Methode.
+- Zeichne UML-Diagramm für obigen Fall.
+
+#### Testing
+
+- Fragen zur Test-Pyramide / Test-Arten.
+- Was ist ein Unit Test? / Was macht einen guten Unit-Test aus?
+- Beispiel mit ausgedruckter Klasse (C#) und Tests dazu - Fragen nach Qualität der Tests / Code Coverage / Verbesserungsmöglichkeiten.
+
+#### Datenstrukturen
+
+- Erkläre die Datenstrukturen Array/List/Linked List/Hashtabelle/Baum/Graph.
+- Implementiere eine Linked-List (Syntax nicht so relevant, z.B. C#) am Whiteboard.
+
+#### C# / WPF
+
+- Frage nach Patterns von WPF.
+- (Ausgedruckter Code einer kleinen WPF-Applikation, erkläre die Elemente/zeige Verbesserungen auf.)
+- Was sind Bindings in WPF / erkläre Binding-Arten?
+- Was sind Ressourcen in WPF, wie werden sie gut eingesetzt?
+
+#### Patterns und Design
+
+- Was für Patterns kennst du?
+- Implementiere Singleton-Pattern am Whiteboard (Syntax nicht so relevant, z.B. C#).
+- Was ist MVVC? Was ist MVC? Observer Pattern?
+
+#### Datenbanken
+
+- Was ist eine relationale Datenbank? Was für Alternativen gibt es?
+- Erkläre Vorteile einer relationalen DB?
+- Was für Datenbanktypen kennst du?
+- Beispiel mit kleiner Datenbankstruktur - schreibe Query für gewisse Frage in T-SQL.
+
+---
+
+
+
+
+*** FILENAME: "TP/pages/5715493248" ***
+Here's the cleaned-up version of the provided text, with headers, footers, and extraneous information removed:
+
+---
+
+**Cudos Trail: Dectris**
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Dectris.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+[DECTRIS](https://www.dectris.com/en/) stellt Röntgendetektoren und Elektronendetektoren her, welche beispielsweise in der Forschung zum Einsatz kommen, um Proteinstrukturen und Kristallstrukturen zu analysieren. Die Software zum Testen und Kalibrieren der Detectoren wird von Dectris ebenfalls hergestellt. Der Firmensitz von Dectris ist Täfernweg 1, 5405 Baden-Dättwil. Mit den öffentlichen Verkehrsmitteln ist die Firma von Zürich HB aus in ~40min erreichbar. Dectris selbst hat noch weitere Sales-Offices in den USA, China und Japan.
+
+**Ehemalige Trainees**
+
+| Name                     | Einsatzdauer     | Einsatzbereich |
+|--------------------------|------------------|----------------|
+| Fabio Wanner             | 02.2018-10.2018  |                |
+| Josua Stähli            | 11.2018-10.2019  |                |
+| Benjamin Imbach         | 11.2019-04.2020  |                |
+| Nico Buck               | 05.2020-10.2020  |                |
+| Alexandra de Groof      | 05.2021-04.2022  | PQM/TSW2       |
+| Matthias Bräm           | 11.2021-10.2022  | TSW2           |
+| Manuel Brändli          | 11.2022-05.2023  | TSW2           |
+| Florian Wernli          | 05.2023-10.2023  | TSW2           |
+| Josua Cantieni          | 11.2023-heute    | TSW2           |
+
+**Vorstellungsgespräch**
+
+Vorstellung bei TSW2:
+- Zeigen der Firma
+- Pair Programming
+  - Halb virtuell, eine Person war nicht im Raum
+  - Test Drive implementieren
+    - Früher war's Game-Of-Life, jetzt versuchen sie neue Aufgaben, z.B. ein Refactoring von einem alten Code.
+    - In Python
+    - Packets/Libraries sind erlaubt
+    - Googeln ist erlaubt
+  - Es war mehrheitlich ich, der den Code geschrieben hat und Diskussionen und Erklärungen, was ich am machen war
+  - Fragen zur Implementation, würde ich was anders machen
+- Kaffee trinken und über Vorstellungen reden
+
+Vorstellung beim PQM-Team:
+- War mehr Kennenlernen mit Team
+  - Erwartungen
+  - Vorstellen
+  - Fragen
+    - Wo fühlst du dich wohl: hektisch, schnell reagieren und Problem lösen; gute Spezialisten, aber anspruchsvoll; oder Aufgaben total durchgeplant und vorgegeben?
+
+**Firmen- und Teamkultur**
+
+Software-Team 1 arbeitet an der Firmware für die verschiedenen Module der Detectoren. In einem Trainee-Einsatz entwickelt man in der Regel im Software-Team 2 an der Software mit, welche in der Herstellung der Microchips für die Detectoren benötigt wird: z. B. Waver-Processing-Tool oder Verwaltungs-Tool für den ganzen Herstellungsprozess (Aletsch).
+
+Software-Team 2:
+- 10 Personen (inkl. Trainee)
+- Selbst organisiertes Team ohne Teamchef, Entscheidungen werden gemeinsam getroffen
+- Softwareentwicklung ist SCRUM-artig (Daily Meetings, Sprints von 1 Woche, Weekly Meeting mit Retro)
+- Legen großen Wert auf hohe Softwarequalität, gute Entwicklungsprozesse, viel Testing, gute Infrastruktur für die Entwickler, etc.
+
+**Technologie-Stack:**
+- Rust (SW-Team 1)
+- Python (SW-Team 2)
+- Vue2 / Vue3
+- Bazel (Buildsystem von Google)
+- Gitlab
+- Concord (CI/CD-Pipeline, soll durch Gitlab abgelöst werden)
+- Kubernetes und Helm
+- Kafka (Event-Queue) und Kotlin (DB-Verbindung)
+
+Sensordaten vom Test der Detektoren werden über Events auf ein Kubernetes-Netz geladen, wo die Logik der Applikationen laufen und die Auswertung dieser Daten wird dann mittels GUI angezeigt.
+
+**Zuständigkeiten und wichtige Kontaktpersonen**
+
+- Fabio Wanner, ehemaliger Trainee, SW-Engineer und aktuell zuständig für Trainee-Koordination
+- Rekha Thota, neue PO, Production-Operations Software
+- Michael Wedel, Software Developer
+- Matthias Ming, Ex. Product Owner, Production Engineering SW/Testing
+- Markus Mathes, (Ex.) Head of Software-Development, Product Development
+
+
+
+*** FILENAME: "TP/pages/5706418376" ***
+Here's the cleaned-up content:
+
+---
+
+**Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei EBP (Schweiz) AG.**
+
+Die [EBP Schweiz AG](https://www.ebp.ch/de) ist ein unabhängiges Ingenieur-, Planungs- und Beratung- sowie Informatikunternehmen für Projekte von öffentlichen und privaten Kunden. Weltweit hat EBP 6 Standorte mit über 500 Mitarbeitern, 300 davon im deutschsprachigen Raum (CH/DE). Der Firmensitz befindet sich in Zürich, sehr zentral gelegen.
+
+### Ehemalige Trainees
+
+| Name                | Einsatzdauer                          | Einsatzbereich                           |
+|---------------------|---------------------------------------|-----------------------------------------|
+| Fabian Müller MUF   | 1 Jahr (+ 6 Monate Verlängerung)     | GB Informatik - TF Softwareentwicklung  |
+| Jannic Veith VEJ    | 13 Monate (1 Monat früher begonnen)  | GB Informatik - TF Softwareentwicklung  |
+| Stefan Geringer      | 13 Monate (1 Monat früher begonnen)  | GB Informatik - TF Softwareentwicklung  |
+| Linard Furck        | 6 Monate                             | GB Informatik - TF Softwareentwicklung  |
+| Miroslaw Yan       | 12 Monate                            | GB Informatik - TF Softwareentwicklung  |
+
+### Vorstellungsgespräch
+
+Typische Fragen:
+
+- Wo sind deine Stärken?
+- Wieso möchtest du einen Einsatz bei EBP machen?
+- Erwartungen an EBP? Was suchst du? Was möchtest du zukünftig machen?
+- Github Account? Private Projekte?
+
+Codility Test mit 4 Aufgaben vor dem Gespräch, später abgelöst durch einen 75-minütigen HackerRank Test. Der neue Test funktioniert ähnlich.
+
+**Aufgaben/Themen beim Test:**
+
+- Form-Validierung - plain Javascript, HTML 5
+- Button in Komponente hinzufügen - Angular / TypeScript
+- String-Parsing - Sprache wählbar
+- Eine Programmieraufgabe zu RestApi: Buchtitel via HttpGet anfragen, sortieren und die 3 relevantesten ausgeben.
+- Vier Multiple-Choice Aufgaben zu Angular, Observables (rxjs) etc.
+
+### Firmen- und Teamkultur
+
+#### Firmenstruktur
+
+EBP ist in verschiedene Geschäftsbereiche aufgeteilt, insbesondere in den Geschäftsbereich Informatik (GBI), der der größte ist. M&F Trainees haben bisher immer im GBI gearbeitet.
+
+#### Kultur
+
+Die Atmosphäre im GBI ist kollegial und freundlich. Teammitglieder sind hilfsbereit und nehmen sich Zeit für Erklärungen. Oft arbeiten auch Werkstudenten im GBI. Das Team ist jung und offen für Neues, mit einem höheren Frauenanteil als bei anderen Software-Firmen.
+
+#### Projekte und Aufgaben
+
+Die Unterteilung in Tätigkeitsfelder hat im GBI eine untergeordnete Rolle. Projekt-Teams werden nach Anforderungen und Verfügbarkeit zusammengestellt, typischerweise 2-8 Personen.
+
+Ein Großteil der Projekte bezieht sich auf geografische (GIS) Daten mit oft eingebetteten Karten zur Datenvisualisierung. Technologien sind aktuell stark auf Angular und .NET fokussiert, mit Projekten in Java Backend.
+
+#### Technologie-Stack
+
+Der Technologie-Stack kann je nach Projekt variieren. Im Projekt Energiekarte der Stadt Zürich wurden folgende Technologien verwendet:
+
+- Java
+- Angular
+- OpenLayers
+- GitLab
+- Jira
+- IntelliJ (VS Code ebenfalls möglich)
+
+### Herausforderungen und Besonderheiten
+
+#### Perspektive MUF
+
+Der Start war etwas holprig, aber ich konnte schnell Verantwortung übernehmen und direkt mit Kunden kommunizieren. Die Einbeziehung von User Experience im Team hat zu besseren Ergebnissen geführt.
+
+#### Perspektive VEJ
+
+Die Mittagspausenkultur ist sehr angenehm, und es gibt sportliche Aktivitäten wie Fußball spielen am Mittwoch.
+
+#### Perspektive YAM
+
+Hohe Eigenverantwortung und Teamfokus. Es wird Wert auf gemeinsames Essen gelegt, mit Veranstaltungen und teamübergreifenden Aktivitäten.
+
+---
+
+
+
+
+*** FILENAME: "TP/pages/5706418357" ***
+Here’s the cleaned-up version of the provided markdown text, with headers, footers, and other extraneous text removed:
+
+---
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Finnova.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+Ehemalige Trainees:
+
+| Name           | Einsatzdauer | Einsatzbereich |
+|----------------|--------------|----------------|
+| Josua Bögli    | 10 Mnt.     |                |
+
+Vorstellungsgespräch:
+
+### Anmerkungen
+
+Das Interview hat sich über zwei Tage verteilt. Am ersten Tag fand ein allgemeines Kennenlernen und die Vorstellung des Traineeprogramms statt. Am zweiten Termin gab es ein Programmier-Assessment und ein Gespräch mit dem Product Owner.
+
+1. Tag:  1.5 Stunden allgemeines Kennenlernen  
+2. Tag:  2 Stunden Programmier-Assessment  
+         1.25 Stunden Gespräch Product Owner
+
+### Allgemeines Kennenlernen
+
+* Vorstellung der Firma und der Aufgabe des Teams
+* Vorstellung meines Werdegangs
+* Was war mein größtes Programiererfolgserlebnis?
+* Wie gehe ich mit Stress um?
+* Wie gehe ich mit Frustration um?
+* Wie halte ich mich technisch auf dem Laufenden/bilde ich mich weiter?
+* Wie gut bin ich mit Kundenkontakt?
+* Wie gehe ich damit um, mich schnell in neue Thematik einlernen zu müssen?
+* Kann ich es mir vorstellen, dem Rest des Teams neue Themen vorzustellen?
+* Wie gehe ich damit um, wenn ein Teamkollege meine Hilfe braucht, ich aber noch viel zu tun habe? (Einzelkämpfer oder Teamorientiert)
+* Was mache ich, wenn ein Teamkollege schlechte Stimmung im Team verbreitet?
+
+### Programming Assessment
+
+2 Stunden Zeit, 3 Aufgaben, Apache Camel, Rest API, Spring Boot. Aufgabenstellung siehe unten.
+
+[Programming_Assessment_finnova.pdf](http://mfwiki/download/attachments/71042667/Programming_Assessment_finnova.pdf?version=1&modificationDate=1592817660000&api=v2)
+
+### Gespräch Product Owner
+
+* Die Persönlichkeit einer Person wird geprägt von den Ereignissen im Alter von 0-18 Jahren.
+    + Was sind einschneidende/prägende Ereignisse in dieser Zeit?
+    + Wie bist du zu deiner Laufbahn gekommen?
+* Konfliktmanagement / Selbstreflexion
+    + Wenn man versuchen will, ein Programm zu schreiben, um dich zornig zu machen, was würde dieses enthalten.
+
+Firmen- und Teamkultur:
+
+Zuständigkeiten und wichtige Kontaktpersonen:
+
+Daniel Bernasconi - CTO
+
+Herausforderungen und Besonderheiten:
+
+* Kleines Team
+* Sehr viel zu tun, viele Externe im Team
+
+Technologien: Apache Camel, Groovy, PLSQL, MS SQL
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5712577509" ***
+Certainly! Here’s the cleaned-up version of the markdown text, focusing on the relevant content while removing headers, footers, and extraneous text:
+
+---
+
+**Cudos Trail : Franke**
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Franke.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+Franke ist ein Hersteller für Kaffeemaschinen mit Firmensitz in der Nähe von Olten, westlich von Zürich. Der Standort ist mit den öffentlichen Verkehrsmitteln in etwa 45 Minuten vom HB in Zürich erreichbar.
+
+### Ehemalige Trainees
+
+| **Name** | **Einsatzdauer** | **Einsatzbereich** |
+| --- | --- | --- |
+| Nicolai Buck |  | Cloud-Team (IoT) |
+| Florian Wernli | 1y | Plattform Intern (embedded linux) |
+| David Ochsner | 1y | HMI Plattform (embedded Linux), Automatisiertes Testing |
+| Simon Rodoni | 1y | HMI Plattform (embedded Linux) |
+| Gianni Gugolz | 1y | HMI Plattform |
+
+### Vorstellungsgespräch
+
+**Interview-Fragen CAJ für UX Fleet (Cloud) Team:**
+- Wie definierst du “sinnvollen” Code?
+- Woher holst du dir dein Wissen?
+- Was machst du in deiner Freizeit?
+- Was hast du von der ETH mitgenommen?
+- Erwartungen an nächsten Einsatz?
+
+**Interview-Fragen GUG für HMI Plattform:**
+- Warum hast du dich für die Trainee-Stelle bei M&F entschieden?
+- Weshalb möchtest du C++ lernen?
+
+**Interview-Fragen EHN für HMI Plattform:**
+- Weshalb möchtest du C++ lernen?
+- Arbeiten mit Yocto - Erfahrung damit?
+
+**Interview-Fragen ROS und OCD für HMI Plattform:**
+- Erfahrung mit C++ Embedded, welche Versionen genutzt?
+- Erfahrung mit Linux Build System
+- Erfahrung mit Jira
+- Was hat beim letzten Projekt am meisten Spaß gemacht?
+- Was sind eure Schwächen und Stärken?
+- Nach welchem Entwicklungsprozess arbeitet ihr am liebsten?
+
+**Interview-Fragen WEF für HMI Plattform:**
+- Erfahrung mit C++ (Standards 11 und 17 werden bei Franke aktiv genutzt)
+- Erfahrung TDD (Test-Driven Development)
+- Erfahrung mit Jenkins
+- Erfahrung mit Yocto-Linux / OpenEmbedded
+- Erfahrung mit Bildverarbeitung/Objekterkennung mit OpenCV/Matlab
+- Weitere mögliche Punkte: Erfahrung mit WSL2, “Automatic code review tools”
+
+**Interview-Fragen BUN fürs Cloud-Team:**
+- DevOps: Jenkins kennen Sie?
+- Erfahrung mit Cloud Entwicklung?
+- Erfahrung mit C#
+- Erfahrung mit Vue
+- Welche Skriptingsprachen kennen sie?
+- Mit was für SW-Prozess bereits gearbeitet?
+- Bug Tracking Tools
+- Was für Schwächen / Stärken?
+- Grösster Erfolg
+- Wie sehen ihre Rolle im Team?
+- Testtools
+- Docker / Kubernetes (auf CV bezogen)
+- Typescript Erfahrung
+- Wie schnell können Sie sich in Azure einarbeiten?
+
+### Firmen- und Teamkultur
+
+Einige externe Firmen in der IoT-Solution:
+- Ultratronic
+- ibw-ag
+- Apps with love
+- BBV
+- BytesAtWork
+
+Die Firma ist in verschiedene Teams unterteilt:
+- UX Fleet (“Cloud”)
+- UX Device (“Applikation”, Ultratronik)
+- HMI Plattform
+- X-Test
+- PP Team (“Embedded”)
+- Pflege Produktlinien (A-Linie, Mytico)
+
+Softwareentwicklung nach dem SCRUM-Prinzip mit 3-wöchigen Sprints und Daily Meetings.
+
+### HMI Platform
+
+- Software für das Human-Machine-Interface der Kaffeemaschinen
+- Technologie-Stack:
+  - Linux Umgebung, C++ Microservices (C++17), Qt, Jenkins, CLion, Jira/Confluence, SonarCloud
+- Arbeitsweise:
+  - Clean Architecture, TDD (empfohlen), Standard Git-Flow
+
+### X-Test
+
+- Automated Testing und UI Testing
+- Technologie-Stack: Squish, Selenium
+
+### UX Fleet (Cloud)
+
+- Team: 4 Interne und 3 Externe
+- Technologie-Stack: Azure, .NET 8, Vue 3 mit Typescript und Compositions
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Marc Rohrbach (Head of Research and Development)
+- Claudio Botta (Teamlead HMI Plattform)
+- Walter Pirrota (Teamlead X-Testing)
+- Christoph Richner (Teamleiter und Scrum-Master UX Fleet)
+
+### Herausforderungen und Besonderheiten
+
+- Hilfsbereites Team
+- Keine fixen Home-Office-Regelungen (2 Tage/Woche)
+- Mensa in der Nähe
+- Häufige Umstrukturierungen
+- Starke Nutzung von Azure Tooling: IoT Hub, Service Bus, AAI Monitoring, AKS
+
+
+
+
+*** FILENAME: "TP/pages/5706418378" ***
+Here's a cleaned-up version of the text:
+
+---
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Geberit Verwaltungs AG***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+### Ehemalige Trainees
+
+| Name     | Einsatzdauer               | Einsatzbereich                                       |
+|----------|---------------------------|-----------------------------------------------------|
+| Fabio    | August 2020 - April 2021  | Diverse (Fastlane, IoT, Webplattform, ...)          |
+| Benjamin | Mai 2021 - Jan 2022      | Customer Service Automation (ML Projekt), Pfullendorf|
+
+### Vorstellungsgespräch
+
+Die HR Business Partnerin (Bürgisser, Sibylle) stellte viele klassische HR-Fragen:  
+- Höhen und Tiefen im Leben  
+- Wo holen sie Energie?  
+- Erfahrungen mit Teamarbeit: positive und negative  
+- Größter beruflicher Traum  
+- Was machen sie in der Freizeit?  
+
+Bei Fabio & Benjamin: Sehr locker, generelles Kennenlernen.
+
+### Firmen- und Teamkultur
+
+Sehr offen und hilfsbereit. Offene Ohren für Verbesserungsvorschläge.
+
+### Arbeitsweise
+
+Generell in Richtung SCRUM, aber teamabhängig.
+
+### Technologien, Frameworks & Tooling
+
+- **Webplatform-Team (Geberit Web-Auftritt):**
+  - React, Javascript, FirstSpirit CMS, Azure DevOps, Kubernetes
+- **Fastlane Team:**
+  - React, Angular, jQuery, Typescript, Javascript, Azure DevOps
+- **IoT Team:**
+  - React, Typescript, Next.js, TailwindCss, Jest, Kubernetes, Azure IoTHub, Azure DevOps
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Michael Zuberbühler: SCRUM-Master von Webplattformteam (Geberit Webauftritt) und Fastlane Team (Web Apps)
+- Stefan Gysel: IoT Team
+- Dr. Tilo Sperling: Project Manager Customer Service Automation bei Geberit Pfullendorf
+
+### Herausforderungen und Besonderheiten
+
+Große Firma mit vielen Teams und Projekten. Daher auch sehr unterschiedliche Einsätze möglich. Gewisse Projekte in Einzelarbeit, viel Selbstständigkeit. Wechsel innerhalb des Einsatzes (4 verschiedene Teams bei Fabio).
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5715492948" ***
+Here’s a cleaned-up version of the text:
+
+---
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Gemdat.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+### Ehemalige Trainees
+
+*Bemerkung: Einsatzbereich muss nur bei Firmen ausgefüllt werden, in welchen auch unterschiedliche Teams existieren.*
+
+| Name    | Einsatzdauer | Einsatzbereich         |
+|---------|--------------|------------------------|
+| Dominik | 6 Monate     | gemdat insurance        |
+
+### Vorstellungsgespräch
+
+Keine vertiefte technische Fragen, eher Kennenlernen/Vorstellung des ganzen Teams, Erfahrungsaustausch, 1.5 Stunden lockeres Gespräch mit zwei Entwicklern über ihre Arbeit.
+
+### Firmen- und Teamkultur
+
+Offen, nett, sehr modern und agil. Es wird Wert auf gute Scrum-Praktiken gelegt. Einige grundlegende Entscheidungen bzgl. Architektur und Technologien werden teamübergreifend geregelt. Cooles Büro am Bahnhof St. Gallen. 3 Tage Homeoffice möglich.
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Yves Thalmann: Geschäftsbereichleiter Versicherung
+- Ralf Schildknecht: Senior Entwickler
+- Stefan Walser: Senior Entwickler
+- Marco Sutter: CTO
+
+### Herausforderungen und Besonderheiten
+
+Angular Frontend mit shared libraries, die teamübergreifend entwickelt werden/wurden. Gute Angular-Kenntnisse/Vorbereitung sind sicher von Vorteil. Backend ist/war .Net, ursprünglich für Silverlight-Applikation entwickelt und soll auf REST-Schnittstelle umgebaut werden.
+
+* Angular
+* C# / .Net
+* Git / Azure DevOps / Microsoft Teams
+* Remote Desktop / FortiClient
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5706418347" ***
+Here's the cleaned-up version of the provided markdown text:
+
+---
+
+**Cudos Trail – Hamilton Medical**
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Hamilton Medical AG.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+### Ehemalige Trainees
+
+| Name    | Einsatzdauer | Einsatzbereich |
+|---------|--------------|----------------|
+| Dominik | 10 Monate    | AIT            |
+| Matthias| 8 Monate     | AIT            |
+| Stefan L| 12 Monate    | AIT            |
+| Linard  | 10 Monate    | AIT            |
+| Mike    |              | AIT            |
+
+### Vorstellungsgespräch
+
+### Firmen- und Teamkultur
+
+Offen, sehr nett. Es wird stark auf eine hohe Code-Qualität geachtet. Aufgrund von Regulationen der Medizinbranche muss relativ viel Dokumentation (Pflichtenhefte und manuelle Tests) erstellt werden. Technologisch wird eher auf etwas ältere, bewährte Versionen gesetzt. Das Projektmanagement erfolgt fast komplett nach Agile, Releases sind aufgrund von Dokumentations- und Testaufwand alle 6-12 Monate.
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+AIT: Peter von Reitzenstein (Pesche), Product Owner, Hamilton
+
+Besonders ist, dass es auch Senior Engineers von M&F im Einsatz bei Hamilton gibt.
+
+### Herausforderungen und Besonderheiten
+
+**Vorbereitung:**
+
+* Angular → Tour of Heroes: [Angular Tutorial](https://angular.io/tutorial)
+* Lese dich in Spring Boot und Hibernate ein
+
+**Technologien:**
+
+* Frontend: Angular, TypeScript
+* Backend: Hibernate, Spring Boot, Java
+* Toolchain: Git, Bitbucket, Bamboo, Jira
+
+### (Optional) Zimmer in Chur
+
+Ich (Linard) hatte ein Zimmer für Langzeitmieter im [Hotel Sommerau](http://www.sommerau.ch/) in Chur.
+
+Das Zimmer ist einfach, aber völlig ausreichend. Kochutensilien/Geschirr sind nicht vorhanden und müssen selber mitgebracht werden. Des Weiteren gibt es weder einen Geschirrspüler, noch eine Waschmaschine oder einen Backofen.
+
+Hinweis: Falls man Wochenaufenthalter in Chur ist, muss man sich in Chur anmelden.
+
+---
+
+Impressionen:
+
+![Image 1](attachments/5706418347/8066662413.jpg?width=95) ![Image 2](attachments/5706418347/8067022856.jpg?width=176) ![Image 3](attachments/5706418347/8067743755.jpg?width=176) ![Image 4](attachments/5706418347/8066891786.jpg?width=95) ![Image 5](attachments/5706418347/8066859041.jpg?width=95)
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5706418359" ***
+Certainly! Here's the cleaned-up markdown text, free from headers, footers, and extraneous text:
+
+---
+
+**Cudos Trail: Hapa**
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Hapa.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+[Hapa Website](https://www.hapa.ch/de) ist in der Druckerindustrie tätig und stellt Druckergeräte für den industriellen Einsatz her. Bei den Druckern liegt der Fokus auf Innovation und Inline-Drucken. Seit 2016 ist Hapa Teil der Unternehmensgruppe Coesia, spezialisiert auf Industrie- und Verpackungslösungen. Hapa hat zahlreiche Standorte und 170 Angestellte. Ein Trainee-Einsatz findet in Volketswil statt, 30 Minuten von Zürich entfernt.
+
+### Ehemalige Trainees
+
+| Name                | Einsatzdauer     | Einsatzbereich                          |
+|---------------------|------------------|----------------------------------------|
+| Simeï Steiner       | 05.2024-         | Make Ready                             |
+| Simon Rodoni        | 05.2024-         | Cloud Service Platform                 |
+| Thomas Hindermann    | 02.2023-04.2024  | Make Ready, HMI, Vision System, LicenseManager |
+| Alexandra de Groof  | 05.2020-04.2021  | HMI-Team                               |
+| Kristof Kölker      | 11.2019-04.2020  |                                        |
+| Sebastian Wendland  | 11.2014-11.2015  |                                        |
+| Fabian Ullmann      | 03.2014-10.2014  |                                        |
+
+### Vorstellungsgespräch
+
+#### Vorstellung ROS & STS, 27.02.24
+
+Vorgesehenes Projekt:
+
+- Backend und HMI Nachfolger
+- Grüne-Wiese Neuentwicklung
+- Fokus auf Integration mit vorhandenen Kunden-Systemen
+- Berücksichtigung von Cloud-Lösungen
+- Technologien: .NET Backend/Vue Frontend
+
+Fragen an ROS:
+
+- Erfahrungen mit Microservices
+- Frontend-Frameworks
+- UX Design
+- Jenkins
+
+Fragen an STS:
+
+- OPC UA & SCADA
+- Typescript
+- Minimal API
+
+#### Vorstellung SOL bei Hapa, 25.9.23
+
+Vorgesehenes Projekt für SOL:
+
+- Edge Computing, Cloud-basiertes System
+- Kommunikation zwischen Maschinen und Cloud
+- Technologien: ASP.NET, Javascript, Vue
+
+Fragen Hapa an SOL:
+
+- Erfahrungen mit .NET, Datenbanken etc.?
+- Teamdynamik?
+
+#### Vorstellung HIT, 23.1.23
+
+- Technologien: C#, .NET Core 7, AngularJS, MS SQL, MongoDB
+- Home Office möglich, Team Members sind mehrheitlich vor Ort.
+
+**Fragen von Hapa an HIT:**
+
+- Erfahrung mit Scrum?
+- Technologische Interessen?
+
+### Firmen- und Teamkultur
+
+Teamkultur gut, hohe Selbstständigkeit und offen für Vorschläge. Das SW-Team ist relativ klein, aber die Bedeutung von Software wächst.
+
+* Hierarchie in der Firma ist flach, Trainees haben viel Einfluss.
+* Einführung von Scrum-Prozessen
+
+### Technologie/Aufgabe
+
+Projektbeschreibung, 01.2023:
+
+- PDFs verarbeiten für Digital-Drucker.
+- Backend: C# MVC Web Api, .NET Framework; Frontend: Vue 3.
+- Integration von Kamera in Hapa Drucker’s HMI.
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Shankar Ram Lakshminarayanan, SW Teamleiter
+- Baris Kurtlutepe, SW Teamleiter (Ersatz für Shankar)
+- Felix Liebl, Head of Engineering
+
+### Herausforderungen und Besonderheiten
+
+- Home-Office möglich (2 Tage/Woche)
+- Einarbeitung chaotisch
+- Firmensprache: Deutsch
+
+### Präsentationen und Vorträge
+
+- Trainee Projekt-Präsentationen Aufzeichnungen und Folien in den entsprechenden Ablageorten.
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8226996225" ***
+Here's the cleaned-up version of the markdown text:
+
+---
+
+**Cudos Trail : Hitachi Energy**
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Juniors bei Hitachi Semiconductors.***
+
+**Schreibt alles auf, was für zukünftige Juniors von Bedeutung sein könnte!**
+
+[Hitachi Energy](https://www.hitachienergy.com/ch/de/products-and-solutions/semiconductors#our-offerings) ist Produzent für Leistungselektronikbauteile und -module für Powerelektronics mit entsprechenden Prüfmaschinen zum Testen von Mikrochips, welche auch In-House entwickelt wurden. Der Firmensitz ist in Lenzburg und von Zürich HB aus mit den öffentlichen Verkehrsmitteln in ~40min erreichbar.
+
+### Ehemalige Juniors
+
+| **Name**            | **Einsatzdauer**   | **Einsatzbereich** |
+|---------------------|--------------------|---------------------|
+| Simeï Steiner       | 05.2022-04.2023    | CAQ Team            |
+| Beat Besmer         | 07.2023-05.2024    | CAQ Team            |
+| Nick Ehrenberg      | 05.2024- heute     |                     |
+
+### Vorstellungsgespräch
+
+#### Firmen- und Teamkultur
+
+Der Prozess der Softwareentwicklung wird vermehrt von Kanban auf Scrum umgestellt.
+
+- **Daily Scrum**: Täglich von 10:30 - 11:00
+- Teils "Grundsatz" Diskussionen im Daily, oft in zusätzliche Meetings verschoben.
+- Meetings sind immer digital (Teams).
+- Pair-Programming bei schwierigen Aufgabenstellungen.
+- Code wird (außer trivialer Code) von mindestens einem anderen Teammitglied gereviewt, neuerdings per Pull Request.
+- Änderungen werden tendenziell auf einem Feature Branch entwickelt.
+
+### Technologie/Aufgabe
+
+- C#
+- .NET Framework 4.8
+- .NET 5 – zusätzlich zum 4.8 als Target
+- .NET 6 – neue Projekte
+- Visual Studio 22
+- Azure DevOps
+- Blazor
+- MS SQL
+- Angular
+- SignalR
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- **Andreas Demmer**: Manager Factory Automation Systems, seit über 20 Jahren bei Hitachi/ABB
+
+#### Team
+
+- **Andreas Popelka**: PO & Teamleiter
+- **Senad Kocic**: langjähriger Senior Software Engineer bei Hitachi
+- **Christoph Hafner**: Senior Software Engineer (Cudos, wohnhaft in England, arbeitet Remote)
+- **Raphael Wüest**: Senior Software Engineer bei Cudos
+
+### Herausforderungen und Besonderheiten
+
+- Bei der Zeiterfassung im RolX muss jeweils der Task [Azure DevOps] als Kommentar hinzugefügt werden.
+- 0-100% Home-Office möglich, 1-3 Tage pro Woche bei Cudos in Fahrweid üblich.
+- Möglichkeit zur Festanstellung muss frühzeitig abgeklärt werden.
+- Arbeiten mit Raphael Wüest von Cudos in einem Team.
+- Viele interessante Projekte noch im Backlog.
+- Verpflegung: Restaurant Barracuda (8.00 CHF für Salat, Hauptgang und Dessert), Coop Restaurant (10% Vergünstigung).
+- Vielseitige Projekte und flexible Arbeitsmöglichkeiten.
+- Code Reviews und Pair Programming.
+- Gutes Essen, komplizierte IT-Landschaft, schwer planbare Arbeit.
+
+### Präsentationen und Vorträge
+
+- **Junior Projekt-Präsentationen Aufzeichnungen**: G:\Geteilte Ablagen\MF\_NoBackup\0\_Aufzeichnungen Junior Projekt-Präsentationen
+- **Junior Projekt-Präsentation Folien**: G:\Geteilte Ablagen\MF\_Projekte\MF - Junior-Programm - MF-8810\000 Projektmanagement\Junior Projekt-Präsentationen\Hitachi\_Energy
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8170307585" ***
+Here's a cleaned-up version of the text, removing headers, footers, and extraneous information:
+
+---
+
+**Cudos Trail**
+
+1. [Cudos Trail](index.html)
+2. [Cudos Trail Startseite](Cudos-Trail-Startseite_5639668934.html)
+
+Created by Rachel Blaser, last modified on July 20, 2022.
+
+
+
+
+*** FILENAME: "TP/pages/8170504193" ***
+Here's the cleaned-up version of the provided text, focusing on the relevant content and removing extraneous headers, footers, and navigation links:
+
+---
+
+### Cudos Trail : HSLU Mentoring Programm
+
+Das Informatik-Departement der HSLU bietet den Studierenden gegen Ende ihres Studiums ein Mentoring-Programm mit erfahrenen Fachkräften aus der Industrie an. Für Firmen ist es eine gute Möglichkeit, mit Studierenden (und potentiellen Trainees) in Kontakt zu kommen und diese bei ihrer Berufswahl zu unterstützen. 
+
+Der Aufwand beläuft sich auf etwa ein Gespräch pro Monat, dies wird jedoch individuell zwischen Student/in und Mentor/in vereinbart. Zudem gibt es ca. drei fixe Termine im Jahr, wie z.B. den Kick-off-Termin, wo die HSLU froh ist, wenn die Mentoren daran teilnehmen könnten. Das Fachgebiet kann selbst ausgewählt werden.
+
+Das Mentoring startet jährlich zu Beginn des Herbstsemesters. Wir machen einen Aufruf an die Studierenden ab dem 4. Semester, dass diese sich anmelden können.
+
+Es gibt eine Art Mentoren-Pool, in dem die Studierenden nach einem passenden Mentor suchen und diesen anfragen können. Der Mentor entscheidet, wen er annehmen möchte. Danach steht eine fixe Zuteilung fest. Sollten im Laufe des Jahres noch Anfragen von Studierenden reinkommen, versuchen wir, diese händisch unterzubringen.
+
+Das Mentoring wird hauptsächlich durch Student/in und Mentor/in bestimmt. Sie können gemeinsam abmachen, wie oft sie sich treffen möchten und wie (Video-Calls, vor Ort, Besuch in der Firma, etc.).
+
+→ Infos zum HSLU Mentoring & Registration: [HSLU Mentoring](https://www.hslu.ch/de-ch/informatik/ueber-uns/unternehmen-und-institutionen/mentoring-programm/?sourceurl=/informatik-mentoring)
+
+**Bisher registrierte Mentoren**
+
+- Ruedi Steinmann
+- Markus Frei
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5639669027" ***
+Here’s the cleaned-up version of the text:
+
+---
+
+**Cudos Trail Info-Anlass**
+
+Der Info-Anlass ist für Interessenten des Cudos Trail und wird 4-6 Mal im Jahr durchgeführt, je nach Anzahl der Interessenten. Häufig wird der Info-Anlass nach einer Jobmesse geplant. Er wird immer mit einem Essen kombiniert und findet entweder über den Mittag oder am Abend statt.
+
+### Ablauf Info-Anlass
+
+| **Zeit** | **Agenda**                            | **Verantwortliche** |
+|----------|---------------------------------------|---------------------|
+| 12:00    | Begrüssung                            | BLR / MAR           |
+| 12:10    | Firmenführung und Projektvorstellung  | BAR                 |
+| 12:50    | Präsentation des Cudos Trail          | BLR                 |
+| 13:20    | Pizza-Essen und Austausch mit den Juniors| alle              |
+| 14:30    | Ende                                  | alle                |
+
+### Checkliste Info-Anlass
+
+* Termin reservieren
+* Raum reservieren
+* Info-Anlass auf Website platzieren
+* Einladungen an Interessenten verschicken
+* Info-Anlass auf LinkedIn und Xing posten
+* Pizza bestellen, Getränke organisieren
+* Tische umstellen, Beamer einrichten
+* Namensschilder für Interessenten & Mitarbeiter vorbereiten
+* Tischkärtchen für Cudos Mitarbeiter bereitstellen
+* Geschirr & Besteck bereitlegen
+* Präsentation aktualisieren und bereitstellen
+* Liste mit allen Teilnehmern drucken
+* Flyer, Stellenausschreibung, Partnerfirmen Broschüre & Workshop-Liste vorbereiten und bereitlegen
+* Feedbackformular bereitlegen
+* Bei Bedarf: Fotos während der Info-Anlass machen
+* Alles aufräumen
+* Bei Bedarf: Rückblick auf Social Media & Website platzieren
+* Feedback-Analyse
+* Kontaktpflege mit Interessenten
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5696554071" ***
+Here’s the cleaned-up version of the text:
+
+---
+
+### Cudos Trail: Marketingmassnahmen Ostschweiz
+
+**Hochschul Kontakte**
+- **HTW Chur**: Tobias Leutenegger, Studiengangsleiter Photonics und ICT, [Profile](https://www.fhgr.ch/personen/person/leutenegger-tobias/)
+- **NTB Buchs**: Guido Pai, Leiter Institut für Elektronik, Sensorik und Aktorik, [Profile](https://www.ntb.ch/person/guido-piai/)
+- **NTB Buchs**: Prof. René Pawlitzek, Studienrichtungsverantwortlicher Ingenieurinformatik, [Profile](https://www.ntb.ch/studium/systemtechnik/studienrichtungen/inf/)
+- **NTB Buchs**: Daniel Keller, [Profile](https://www.ntb.ch/person/daniel-keller/)
+- **FH Vorarlberg**: [Website](https://www.fhv.at/studium/technik/informatik-bsc/) | [About Us](https://www.fhv.at/ueber-die-fh/ueber-uns/kontakte/)
+
+**Prof. (FH) Dipl.-Ing. Dr. techn. Karl-Heinz Weidmann**
+- Vize-Rektor, Leiter Department of Computer Science
+- Phone: +43 5572 792 3001 
+- Email: [karl-heinz.weidmann@fhv.at](mailto:karl-heinz.weidmann@fhv.at)
+
+### Marketingmassnahmen
+- Regionale Werbung und Inserate, Magazine, Onlineportale
+- Sponsoring von Semesterendevents
+- Fachvorträge an Hochschulen
+
+### Weitere Massnahmen
+- Kommunikation allgemein, Strategie 2. Standort?
+- Kontakt zu Studis
+- Zusammenarbeit mit IT rockt verstärken
+- Jobmesse an FH Vorarlberg: 22. Jänner, 11:00 - 16:30
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8133771275" ***
+Here's the cleaned-up version of the markdown text, removing headers, footers, and extraneous text:
+
+---
+
+**Cudos Trail: MSCI**
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei MSCI.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+Ehemalige Trainees
+==================
+
+*Bemerkung: Einsatzbereich muss nur bei Firmen ausgefüllt werden, in welchen auch unterschiedliche Teams existieren.*
+
+| Name | Einsatzdauer | Einsatzbereich |
+| --- | --- | --- |
+| Linard Furck | Mai - Okt 2022 | Climate Risk Center |
+
+Vorstellungsgespräch (Stefan)
+=============================
+
+1. Informelles Mittagessen mit Stephan Heuel und Linard
+   1. Kennen Lernen (Was ist MSCI, Wer ist Stephan, Wer bin ich)
+2. Gespräch mit zwei Mitgliedern des Teams
+   1. Vor dem Termin musste ich eine Selbsteinschätzung meiner Kenntnisse zu verschiedenen Technologien abgeben. Bewertung zwischen 1 (noch nie gehört) und 10 (habe ein Buch darüber verfasst):
+      * Networking
+      * Algorithms, data structures (design and complexity)
+      * SQL and DB design
+      * Unix user level knowledge (shell scripting, file system organization, concepts)
+      * Programming language design
+      * Geospatial data management & analysis/GIS
+      * POSIX programming model
+      * Software architecture & design patterns
+      * Software testing
+      * Data visualization
+      * Distributed systems
+      * Computer security & cryptography
+      * Frontend web development (HTML/CSS/JS)
+   2. Interview selber: ca. 1 Stunde, mit zwei Programmier-Aufgaben am Whiteboard:
+      1. Kleine Vorstellungsrunde
+         * Wer sind deine Interviewer, was machen sie bei MSCI
+         * Wer bist du und woran arbeitest du gerade bei der aktuellen Partnerfirma
+      2. Python:
+         * Gegeben sind zwei Listen a und b mit Ganzzahlen.
+         * Schreibe eine Funktion, welche eine Liste mit den Elementen zurückgibt, die sowohl in a als auch in b vorkommen.
+         * Analyse der Komplexität gemäss Big-O-Notation
+         * Diskussion und Implementierung von verbesserten Lösungsansätzen
+      3. SQL:
+         * Gegeben ist eine Liste mit Zügen, die vom Bahnhof Hardbrücke abfahren.
+         * Zu jedem Zug ist der Name (z.B. S12), Herkunft- und Zielort, Abfahrtszeit und Gleis gegeben.
+         * Wie würdest du das modellieren? Stichworte Normalisierung, Beziehungen, Primary / Foreign Keys,...
+         * Gegeben deine DB-Struktur, schreibe einen Query, der den Zug inklusive Zielort zurückgibt, der als nächstes abfährt.
+      4. Kurze Zusatzfragen:
+         * Angenommen, du bist heute im Support eingeteilt und erhältst Meldungen von Benutzern über Probleme beim Login. Du testest es und erhältst einen Statuscode 500 in der Konsole. Wie würdest du vorgehen?
+
+Vorstellungsgespräch (Linard)
+=============================
+
+1. Gespräch mit Stephan Heuel
+   1. Kennen Lernen (Was ist MSCI, Wer ist Stephan, Wer bin ich)
+2. Gespräch mit 2 Mitgliedern des Teams
+   1. Vor Termin musste ich eine Selbsteinschätzung meiner Kenntnisse von verschiedenen Technologien abgeben.
+   2. Interview selber. 1 Stunde, sehr viele Fragen der Teammitglieder:
+      1. Was bedeutet ORM?
+      2. Was ist der this Operator in C++ und seine Entsprechung in Python?
+      3. Was ist ein Model im Django Rest Framework?
+      4. Beschreibe deiner Großmutter das Internet?
+      5. Erkläre, was man beim Öffnen der Dev Console alles sieht?
+      6. Implementiere eine Linked List.
+
+Firmen- und Teamkultur
+======================
+
+Onboarding:
+
+* "Onboarding Buddy": Angestellter, welcher dich in den ersten Wochen unterstützt und deine erste Ansprechperson ist.
+* Viele Videos und Meetings zur Einführung.
+
+Future of Work: Homeoffice wird aktiv unterstützt, 1-2 Tage vor Ort im Büro.
+
+Für Tech Team: mindestens Dienstags vor Ort.
+
+Technologien
+============
+
+Zuständigkeiten und wichtige Kontaktpersonen
+============================================
+
+* Stephan Heuel: IT Team Leiter.
+
+
+
+
+*** FILENAME: "TP/pages/5674631238" ***
+Sure! Here's the cleaned-up version of the text without headers, footers, and extraneous information:
+
+---
+
+Die Übersichtsliste aller Jobmessen ist hier abgelegt: [Jobmessen Übersicht](https://docs.google.com/spreadsheets/d/19us1EwLwcPHLAM6cTK79287TGQX-4j3vrF87M9cCcZI/edit?usp=sharing)
+
+Die Erfassung und Pflege der Interessenten wird in folgender Excel-Datei gemacht: G:\Geteilte Ablagen\MF\_HR\_Vertraulich\2 Trainee-Programm\Interessenten\_Trainee-Programm.xlsx
+
+### Vorbereitung Jobmesse
+
+- Termin reservieren (BLR, BAR, 1-3 Trainees)
+- wichtigsten Infos zur Jobmesse an Helfer schicken (Treffpunkt, Zeit, Adresse, Mitnehmen, etc.)
+- Jobmesse auf Website platzieren
+- Einladung an Interessenten verschicken
+- Teilnahme an Jobmesse auf LinkedIn posten
+- sämtliches Material vorbereiten gemäss Checkliste, falls nötig zusätzliches Material bestellen
+- mit Interessenten Kontakt pflegen
+
+### Checkliste "Mitnehmen an Jobmesse"
+
+- Infos zur Messe
+- Visitenkarten
+- Visitenkartenhalter
+- Namensschilder
+- Cudos Shirts
+- Broschüre Partnerfirmen
+- Stellenanzeigen (Cudos und CT)
+- CT-Flyer (mit Info-Anlass Daten auf Rückseite)
+- Prospektständer
+- Reissnägel (Stellenanzeigen festmachen)
+- Klebeband (Stellenanzeigen festmachen)
+- Verlängerungskabel
+- Laptop inkl. Netzkabel
+- 2-3 Rollup Banner
+- Stehtisch (falls nicht von Veranstalter zur Verfügung gestellt)
+- Kugelschreiber (Stand 9.10.23 - keine zur Verfügung)
+- Cudos Tassen, gefüllt mit Süssigkeiten (ab ca. Score 800)
+- Planning Poker Sets
+- Studenten-Erfassungsliste (Google Form)
+- Glas für Kugelschreiber
+- Bildschirmständer
+- Bildschirm inkl. Kabel
+- Jobmessen-Game: [Game Link](https://crazy-towers.azurewebsites.net/info) → Azure Service Plan im Vorfeld umstellen: [Azure Plan](https://mfcloud.atlassian.net/l/cp/FsRtakRA)
+- Trainee-Film: [Trainee-Film Link](https://youtu.be/-1A2DeB2JHc) (Alternative zum Game)
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5706418344" ***
+Here's the cleaned-up version of the text without headers, footers, and other extraneous information:
+
+---
+
+Hier werden pro Partnerfirma persönliche Erfahrungen von unseren Juniors gesammelt. Dies kann z.B. Angaben zu folgenden Themen beinhalten:
+
+* Vorstellungsgespräch
+* Firmenkultur
+* Teamarbeit
+* Zeiterfassung
+* Zuständigkeiten
+* Herausforderungen
+* usw.
+
+Diese Informationen dienen dann zukünftigen Juniors, um sich ein Bild der Partnerfirma zu machen und um sich schneller in die Firma einzuleben.
+
+Folgende Partnerfirmen sind beschrieben:
+
+* [ABF Informatik](ABF-Informatik_5715492870.html)
+* [Thales](Thales_8380088321.html)
+* [Axetris](Axetris_5706418355.html)
+* [CyOne Security](CyOne-Security_5706418372.html)
+* [Dectris](Dectris_5715493248.html)
+* [EBP](EBP_5706418376.html)
+* [Franke](Franke_5712577509.html)
+* [Finnova Bankware](Finnova-Bankware_5706418357.html)
+* [Geberit Verwaltungs AG](Geberit-Verwaltungs-AG_5706418378.html)
+* [Gemdat](Gemdat_5715492948.html)
+* [Güdel](8133771265.html)
+* [Hamilton Medical](Hamilton-Medical_5706418347.html)
+* [Hapa](Hapa_5706418359.html)
+* [Hitachi Energy](Hitachi-Energy_8226996225.html)
+* [Repower](Repower_8469250049.html)
+* [Riedel](Riedel_8448770049.html)
+* [M&F](5715492952.html)
+* [MSCI](MSCI_8133771275.html)
+* [Rheinmetall](Rheinmetall_5706418370.html)
+* [Safran Vectronix](Safran-Vectronix_5706418353.html)
+* [Sensirion](Sensirion_8073510917.html)
+* [Securosys](Securosys_8588886017.html)
+* [Siemens](Siemens_5706418361.html)
+* [SISAG / Remec](8375140353.html)
+* [SPEAG (Schmid & Partner Engineering AG)](5715493116.html)
+* [Sofel AG / Ferag (Schweiz) AG](5721686034.html)
+* [Stemys SA (Brütsch/Rüegger)](8793751553.html)
+* [Thermoplan](Thermoplan_8474951681.html)
+* [Trumpf](Trumpf_8135704577.html)
+* [Weytec (WEY Group AG)](8278867969.html)
+
+### Mögliche Interview-Fragen für Juniors
+
+Vorschläge für Fragen, die ein Trainee an eine Partnerfirma stellen kann:
+
+* Wie ist das Team organisiert?
+	+ Wie groß ist die Abteilung/ das Team, in dem ich arbeiten werde?
+	+ Gibt es tägliche oder wöchentliche Team-Meetings?
+	+ Was gibt es für Möglichkeiten für mich als Angestellter/ Junior, Feedback zu erhalten?
+	+ Habt ihr eine Homeoffice-Regelung?
+* Können Sie mir einen typischen Arbeitsalltag in dieser Position beschreiben?
+* Wie werden Talente und Stärken bei Ihnen gefördert?
+* Wie oft arbeitet man mit anderen Abteilungen/Teams zusammen? Täglich? Wöchentlich? Monatlich?
+* Hat man direkten Kundenkontakt?
+* Wie würden Sie Ihren Führungsstil beschreiben? (Oder: Wie ist die Stimmung im Team?)
+* Mit welchen Hindernissen sollte ich rechnen? (Oder: Wie ist die Firmenkultur?)
+* Welchen Themen/ Herausforderungen sind für Ihr Unternehmen gerade aktuell?
+* Warum arbeiten Sie gerne für das Unternehmen?
+* Was ist der TechStack? Wie wird dieser definiert?
+* Was sind die Zukunftspläne der Firma?
+* **Was könnte ich noch vorbereiten bis zum Start? Könnt ihr mir eine Themenliste schicken?**
+* **Was habt ihr für Erwartungen an mich?**
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8201830418" ***
+Here's a cleaned-up version of the text, focusing on the relevant content and removing headers and extraneous text:
+
+---
+
+### Cudos Trail: Partnerschaften mit Hochschulen
+
+#### FHNW - Partnerschaft
+folgt…
+
+#### OST - Partnerschaft
+[OST Career Center](https://www.ost.ch/de/die-ost/services/career-center/angebote-fuer-arbeitgebende/partnerschaft)
+
+**Antwort vom 5.8.2022:**
+
+Grüezi Frau Blaser,
+
+Besten Dank für Ihre Anfrage. Es freut uns, dass Sie an einer Partnerschaft mit der OST, bzw. an unseren Studierenden interessiert sind. Durch die Fusion der drei Einzelschulen ist die OST nun eine deutlich grössere Fachhochschule geworden. Noch sind aber nicht alle Strukturen und Prozesse ganz klar definiert und dazu gehören auch die Partnerschaften mit Unternehmen und Verbänden. Wir sind sicherlich interessiert an Partnerschaften, müssen aber noch klären, wie die Partnerschaften ausstaffiert werden können und wo unsere Kompetenzen dabei liegen. Hier bitte ich Sie noch um etwas Geduld, bis wir soweit sind. Schön, dass Sie unser Jobportal nutzen. Fall Sie da gerne eine Paketlösung haben möchten, steht Ihnen Frau Tanner für Fragen zur Verfügung. Noch ist sie aber in den Ferien.
+
+Freundliche Grüsse,
+
+***Carlos Simon***  
+*Institut IMS*  
+*Career Services OST*  
+*T direkt +41 58 257 1221*  
+*T zentral +41 58 257 1220*  
+*[carlos.simon@ost.ch](mailto:carlos.simon@ost.ch)*
+
+#### HSLU - Partnerschaft
+[HSLU Partnership](https://careershslu.ch/de/unternehmen/partnerstarin-werden/)
+
+- Dauer: 12 Monate
+- Preis: CHF 3'900.- zzgl. MwSt.
+- Angebot: Company Corner (CHF 750.-), Kontaktgespräche (CHF 1’340.-), SM-Post, Stelleninserat (CHF 50.-), Werbung auf Drucksachen
+
+**HSLU Company Corner**
+
+Alle Informationen und die Anmeldung finden Sie auf unserer Webseite: [HSLU Company Corner](https://careershslu.ch/de/unternehmen/company-corner/)
+
+- 6 Slots pro Semester, exklusive Präsenz
+- Für KMU: CHF 750.- exkl. MwSt.
+- Ort: Halle OG 2 Lounge-Bereich neben Treppenabgang (gute Sichtbarkeit dank Lichthof)
+- Dauer: 1/2 Tag jeweils 09.00-13.00 Uhr (umfasst grosse Pause und Mittagspause)
+- Mobiliar: 3 runde Hochtische (ca. 120x50cm), Stühle, Lounge-Bereich für Gespräche, Stromanschluss (evtl. Verlängerungskabel nötig, bitte mitnehmen), W-Lan
+- Unternehmen dürfen den Stand eigenständig bestücken oder einen eigenen Booth aufstellen (sofern im vorgegebenen Bereich (3x3m))
+- Betreuung vor Ort durch Lea Bucher
+- Kommunikation an die Studierenden durch uns
+- Anlieferung und Parkplatz: Anlieferung vor dem Eingang möglich, Parken am Bahnhof (Passerelle nutzen)
+- Auf- und Abbau sowie Entsorgen von Abfall liegt in Ihrer Verantwortung
+
+
+
+*** FILENAME: "TP/pages/5674632052" ***
+Here's the cleaned-up version of the text, with extraneous elements removed:
+
+---
+
+**Cudos Trail: Regelung Zeiterfassung**
+
+Hier werden alle Regelungen zur Zeiterfassung für die Juniors festgehalten ergänzend zum Reg-Jahresarbeitszeit.pdf.
+
+### Zeiterfassungstasks
+
+Den Trainees stehen folgende Zeiterfassungstasks in der Regel zur Verfügung:
+
+- **Cudos - Cudos Trail #8810 / 000 Interne Arbeiten**
+  
+- **02 Cudos Info / Events / EJG / Diverses (für Cudos Trail)**  
+  → alles, was mit Einsatzplanung, Events und Administration zu tun hat  
+  → MA-Info, EJG, Jahresanlass, Vorstellung bei Partnerfirmen inkl. Weg, Aktualisierung Junior-Profil, sonstige Pflicht-Events
+
+- **03 Schulung / Mentoring / Ausbildung**  
+  → alles, was mit Aus- und Weiterbildung zu tun hat  
+  → Workshops, Mentoring, Seminare inkl. Dokumentation und Weg, sonstige bewilligte Weiterbildung
+
+- **06 Jobmessen / Info-Anlässe / Hochschul-Events**  
+  → alles, was mit potentiellen Juniors zu tun hat  
+  → Unterstützung bei Jobmessen, Fachvorträgen, Sponsoring-Anlässe, Info-Anlass/Studentenführung inkl. Weg  
+
+- **001 Transition**
+  
+  **XX Einarbeitung (muss dem PL gemeldet werden)**  
+  → sämtliche Einarbeitung, welche der Einsatzfirma nicht verrechnet werden kann  
+
+- **0XX Einsatzfirma**
+  
+  **Arbeiten bei Einsatzfirma oder einzelne Projekte (muss dem PL gemeldet werden)**  
+  → sämtliche Arbeiten für die jeweilige Einsatzfirma inkl. Zeiterfassung, Review-Gespräch, Firmenbeurteilung  
+
+### Ferien, Militär, Krank
+
+- **Ferien**  
+  → Eintrag im Cudos Kalender und Meldung bzw. Antrag bei Einsatzfirma und BLR
+
+- **Krank**  
+  → Meldung an Vorgesetzten (und Team) bei Einsatzfirma sowie Info an BLR, Arztzeugnis bei mehr als 3 Tagen an BLR
+
+- **Militär/Zivilschutz**  
+  → Meldung an Einsatzfirma und BLR, Aufgebot an MIB schicken
+
+### Regelungen
+
+- Die Zeiten müssen immer bis Ende Monat im RolX eingetragen sein. Dies gilt auch bei Abwesenheit. Es besteht im RolX die Möglichkeit, im Voraus die Zeiten einzutragen (z.B. bei Ferienabwesenheit).
+- Arbeiten bei Cudos (außer auf Konto 8990) sollten jeweils eine kurze Notiz über die Aktivität enthalten (z.B.: "Mentoring mit Christian", "Workshop-Doku", "Profil updaten").
+- Sofern bei der Einsatzfirma eine separate Zeiterfassung existiert, kann mit der Einsatzfirma vereinbart werden, dass bei Cudos jeweils nur das Stundentotal am Ende des Monats gebucht wird. Dies muss durch den Trainee mit der Einsatzfirma geklärt werden.
+- Mitarbeiterevents wie Skitag, Sommer-Ausflug, Go-Kart etc. können in aller Regel nicht als Arbeitszeit aufgeschrieben werden, sondern finden in der Freizeit statt.
+
+**WICHTIG:** Wenn im Nachhinein irgendwas im RolX korrigiert wird (nach dem Versand der Stundenauswertung), muss man das unbedingt melden, sonst wird die Stundenauswertung (Excel) nicht mehr aktualisiert.
+
+### Reisezeit
+
+- Der Arbeitsweg von Zuhause zur Einsatzfirma (bis zu 1h vom HB Zürich aus) gilt nicht als Arbeitszeit. Falls eine Einsatzfirma weiter weg sein sollte, wird individuell abgesprochen, wie mit der zusätzlichen Zeit umgegangen werden kann.
+- Sofern zusätzliche Reisezeit zum Arbeitsweg entsteht, kann diese zusätzliche Reisezeit als Arbeitszeit verbucht werden (separater Task "07 Arbeitsweg zusätzlich gemäss Absprache").
+- Reisezeit, die auf Wunsch der Einsatzfirma entsteht, muss bei der Einsatzfirma verbucht werden.
+- Die Reisezeit von Cudos zur Einsatzfirma (z.B. nach MA-Info) oder umgekehrt gilt als Arbeitszeit (Task "02 MA-Info / Events / EJG / Diverses"). 
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8469250049" ***
+Here’s the cleaned-up version of the text:
+
+---
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Repower.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+[Repower](https://www.repower.com/ch) ist ein Energieunternehmen aus dem Kanton Graubünden, das in der gesamten Stromwertschöpfungskette involviert ist (Produktion, Betreuung des Stromnetzes, Vertrieb und Handel mit Strom). Der Trainee-Einsatz findet am Standort Landquart statt (3 Tage Home-Office möglich), direkt neben dem Bahnhof. Am Standort Zürich ist kein Trainee-Einsatz möglich.
+
+### Ehemalige Trainees
+
+| **Name**            | **Einsatzdauer**       | **Einsatzbereich**     |
+|---------------------|------------------------|-------------------------|
+| Kristof Kölker      | Mai - Oktober 2019     | Kundenportal            |
+| Linard Furck        | November 2023 -        | interne Applikation     |
+
+### Vorstellungsgespräch
+
+In einem ersten Schritt gab es ein einstündiges Kennenlerngespräch mit dem IT-Leiter und Projektleiter. Im zweiten Schritt erfolgte ein zweistündiges Assessment. Dabei musste in lockerer Atmosphäre ein alter Stand einer internen Applikation zum Laufen gebracht werden. Auswahl an Aufgaben:
+
+* Projekte klonen
+* SQL Server Management Studio Db restaurieren
+* Backend fixen, mit DB verbinden
+* Frontend fixen und neue Komponenten implementieren
+
+### Firmen- und Teamkultur
+
+Das SW-Team ist auf verschiedene Standorte verteilt. Einmal im Monat treffen sich die Teammitglieder vor Ort in Landquart, um die nächsten Schritte zu besprechen.
+
+Es gibt einen regen Austausch mit dem Business: Tickets sind oft allgemein formuliert, was bedeutet, dass man Details häufig mit dem Business abklären muss. 
+
+Die Entwicklung erfolgt nach dem Scrum-Prinzip mit zweiwöchigen Sprints und Plannings. Das Team ist sehr hilfsbereit, hört zu, und es wird viel Raum für Diskussionen gegeben.
+
+### Technologie-Stack
+
+Linard hat während seines Einsatzes an der Applikation “ReTask” gearbeitet, die die Umstellung von alten auf neue intelligente Stromzähler (Smartmeter) betreut. Die Applikation unterstützt das Business bei der Planung des Zähleraustausches und Techniker über ein mobiles Interface beim Austausch der Zähler.
+
+- Vue 2 mit DevExtreme als UI Component Library
+- .NET 8
+- Hangfire (Background Processing)
+- Azure DevOps
+- Visual Studio und Visual Studio Code
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+Antonio Moz, Leiter IT und Entwicklung
+
+### Herausforderungen und Besonderheiten
+
+* 3 Tage im Home-Office sind möglich, 2 Tage sollten vor Ort sein
+* Man erhält einen guten Einblick ins Strombusiness
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5706418370" ***
+Here's the cleaned-up version of the markdown text with extraneous information removed:
+
+---
+
+**Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Rheinmetall.**
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+[Rheinmetall Air Defence AG](https://www.rheinmetall.com/de/unternehmen/tochtergesellschaften/rheinmetall-air-defence/ueber-uns) ist eine Tochtergesellschaft der Rheinmetall AG in der Rüstungsbranche bei der Entwicklung von komplexen Waffensystemen für die Flugabwehr tätig und ein Trainee-Einsatz findet im Firmensitz in Zürich Oerlikon statt.
+
+### Ehemalige Trainees
+
+*Bemerkung: Einsatzbereich muss nur bei Firmen ausgefüllt werden, in welchen auch unterschiedliche Teams existieren.*
+
+| Name                   | Einsatzdauer               | Einsatzbereich       |
+|------------------------|---------------------------|----------------------|
+| Benjamin               | 1 Jahr                    | EZI1                 |
+| Simeï                  | August 2021 - April 2022 | EZI2 (internes Projekt) |
+| Maximilian Wolfertz    | März 2023 - März 2024     |                      |
+| Marco Schiltknecht     | Juli 2023 - März 2024     | EZI1                 |
+| Marcel Albl            | März 2024 -               | IFF / CN / IFF-HMI   |
+
+### Vorstellungsgespräch
+
+Es ist von Vorteil, sich mit C++ ein wenig auszukennen, aber es ist nicht notwendig. Vor allem ein Grundwissen über die C++ Standard Library und wie man Unique Pointer einsetzt wird gerne gesehen.
+
+**Fragen bei Vorstellung ALM, Januar 2024:**
+
+* Stell dich vor
+* Angenommen, du bekommst von mir eine neue Codebase und du sollst dich damit vertraut machen, wie würdest du vorgehen?
+* Erfahrungen mit C++?
+* Was ist ein unique_ptr? Was ein shared_ptr?
+* Erfahrungen mit SW-Dokumentation?
+* … (weitere Fragen wie oben)
+
+### Firmen- und Teamkultur
+
+Kleine Teams (2-3 Leute). Die Arbeit ist eher voneinander getrennt; jeder hat seine eigenen Code-Inseln. 
+
+Bevorzugen "statically typed languages". 
+
+### Technologien, Frameworks & Tooling
+
+| IDE                      | Visual Studio 2022 |
+|--------------------------|---------------------|
+| Language                 | C++ 20              |
+| Management Tool          | Jira                |
+| Versionsverwaltung       | Tortoise HG mit Mercurial (wollen auf Git umstellen) |
+| Frameworks               | Qt 6.5             |
+| Buildsystem              | Apache Ant          |
+
+### Infrastruktur
+
+| OS                           | Windows 10         |
+|------------------------------|--------------------|
+| Mail                         | Outlook            |
+| Online Meetings              | Cisco Webex        |
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Bruno Emmenegger - Leitung der Software Entwicklungsabteilung EZI
+- Yves Strube - Leitung der Software Entwicklungsabteilung EZI1
+- Philipp Maurer - Leitung der Software Entwicklungsabteilung EZI2
+
+### Home Office
+
+Für Trainees ist ein Tag Home Office pro Woche erlaubt, jedoch ist die Home Office Politik eher restriktiv.
+
+### Herausforderungen und Besonderheiten
+
+- Viel Eigeninitiative erwartet.
+- Veraltete Tools; Umstellung auf Git ist geplant.
+- Kernarbeitszeit: 9:00-11:30 und 13:00-16:00
+
+### Präsentationen und Vorträge
+
+* Trainee Projekt-Präsentationen Aufzeichnungen: G:\Geteilte Ablagen\MF\_NoBackup\0\_Aufzeichnungen Trainee Projekt-Präsentationen
+* Trainee Projekt-Präsentation Folien: G:\Geteilte Ablagen\MF\_Projekte\MF - Trainee-Programm - MF-8810\000 Projektmanagement\Trainee Projekt-Präsentationen\Rheinmetall
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8448770049" ***
+Here’s the cleaned-up text:
+
+---
+
+**Cudos Trail**
+
+Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Riedel.
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+[Riedel](https://www.riedel.net/de/) ist einer der führenden Anbieter für Hardware und Software von Audio- und Videonetzwerksystemen, welche in den Bereichen Medien, Sport und Unterhaltung zum Einsatz kommen. Riedel hat über 1000 Mitarbeiter an 30 Standorten weltweit und der Hauptsitz ist in Wuppertal, Deutschland. Ein Trainee-Einsatz findet am Standort Riedel Communications Switzerland AG in Rümlang statt, erreichbar von Zürich HB in ca. 20 Minuten.
+
+### Ehemalige Trainees
+
+*Bemerkung: Einsatzbereich muss nur bei Firmen ausgefüllt werden, in welchen auch unterschiedliche Teams existieren.*
+
+| **Name**         | **Einsatzdauer** | **Einsatzbereich**      |
+|------------------|------------------|-------------------------|
+| Stefan Geringer   | Juli 2023        | SAME-Team (Backend)     |
+
+### Vorstellungsgespräch
+
+1. Gespräch mit Peter Glaettli und Marie Sanders (online)
+   1. Kennenlernen der Firma und ihrer Struktur
+   2. Kurze Erläuterung zu meinem Werdegang und generelle Fragen
+2. Gespräch mit Team (online)
+   1. Teilnehmer: Simon Würgler (Leiter des SAME-Teams) und Mathias Mühsal (Frontend-Team)
+   2. Ablauf:
+      1. Kennenlernen
+      2. Beschreibung meiner Einsätze und Aufgaben im Trainee-Programm
+      3. Einführung in das Projekt
+      4. Fragen zu meinen Interessen (Front- oder Backend)
+   3. Keine technischen Fragen oder Tests. Wichtig sind Interesse und Teamkompatibilität.
+
+### Firmen- und Teamkultur
+
+* Das Team ist hilfsbereit und bereit, Wissen zu teilen.
+* Teammitglieder sind international verteilt, mit einigen in Deutschland.
+* Home-Office ist verbreitet; regelmäßige gemeinsame Bürozeiten werden angestrebt.
+* Softwareentwicklung folgt einem SCRUM-artigen Ansatz:
+   + Whiteboard-Diskussionen für Lösungsfindung
+   + 3 Wochen Sprints
+   + Wöchentliches Sync-Meeting
+   + Kaum Reviews, direkte Kommunikation wird gefördert.
+
+### Technologie-Stack
+
+Stefan hat mit folgenden Technologien gearbeitet:
+
+* Kotlin (mit Arrow.kt)
+* Kotest
+* Testcontainers
+* Exposed (Kotlin Datenbank-Anbindung)
+* PostgreSQL
+* Vert.x
+* Hazelcast
+* Angular
+
+Es wird auch in C++ oder Rust programmiert.
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+* Peter Glättli, Director R&D
+* Simon Würgler, Teamleiter
+* Marie Sanders, People Business Partner (HR)
+
+### Herausforderungen und Besonderheiten
+
+* Kotlin mit funktionalem Ansatz wird verwendet.
+* Hohe Code-Qualität und Wartbarkeit sind wichtig.
+* Ausführliche Problemanalyse und Diskussion von Lösungsansätzen im Team.
+* Intensive Produktarbeit an längerfristigen Projekten.
+* Begrenzte Essensmöglichkeiten in Industrieumgebung.
+
+### Präsentationen und Vorträge
+
+* Trainee Projekt-Präsentationen Aufzeichnungen: G:\Geteilte Ablagen\MF\_NoBackup\0\_Aufzeichnungen Trainee Projekt-Präsentationen
+* Trainee Projekt-Präsentation Folien: G:\Geteilte Ablagen\MF\_Projekte\MF - Trainee-Programm - MF-8810\000 Projektmanagement\Trainee Projekt-Präsentationen\Riedel
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5706418353" ***
+Here's the cleaned-up version of the text, with headers, footers, and extraneous information removed:
+
+---
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Safran Vectronix AG.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+### Ehemalige Trainees
+
+| Name | Einsatzdauer | Einsatzbereich |
+| --- | --- | --- |
+| Stefan Lochau | 05.2020 - 04.2021 | STERNA |
+| Mike Burkhard | 05.2021 - 04.2022 | STERNA, DMC-IMU |
+
+### Vorstellungsgespräch
+
+**Kennenlernen Mike Burkhard 04.03.2021**
+
+#### Ablauf:
+
+1. Vorstellung der Firma
+2. Vorstellungsrunde
+3. Produktvorstellung/Demo
+4. "Hat jemand noch Fragen?"
+
+Bei der Vorstellungsrunde werden Fragen zu Studium und vergangenen Projekten gestellt. Es gab **keine** technischen Fragen und keine typischen Interviewfragen wie "Was sind Ihre persönlichen Stärken und Schwächen?".
+
+**Kennenlernen Marco Schiltknecht 13.03.2024**
+
+#### Ablauf:
+
+Das Gespräch verlief ähnlich wie bei Mike. Fragen an mich waren u.a.:
+
+* Hast du ein Problem damit, bei einer Firma zu arbeiten, die militärische Ausrüstung herstellt?
+* Ist es für dich interessant, an verschiedenen kleinen Aufgaben zu arbeiten, statt an einem großen Projekt?
+* Hast du Erfahrung mit embedded Systemen?
+* Warum hast du dich für die Software-Entwicklung entschieden trotz Mathestudium?
+* Allgemeine Fragen zu meinen bisherigen Aufgaben bei Partnerfirmen.
+
+Homeoffice ist möglich, einige Teams arbeiten hauptsächlich remote.
+
+### Firmen- und Teamkultur
+
+Agile Methoden werden verwendet, angepasst an die Projekte. 
+
+In Heerbrugg arbeiten insgesamt 240 Mitarbeiter: über 100 in Produktion, 50 in R&D, 15 interne plus 10-15 externe in Software.
+
+#### Produktteams und Gruppen:
+
+* **Observation Systems:** Intelligente Ferngläser (C++) 
+* **Handheld Equipment:** Laser Range Finder, Kompass, etc. (C++) 
+* **Diverse Werkzeuge/Automatisierungs-Tool für die Produktion (C#)** 
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+* Sander LAPIERE, Head of Software Development
+* Marcel Zeller, CTO
+* Heide Stollberg, Team-Lead Software und Head of Project Management
+* Reto Hohl, Software Engineer
+* Ivan Adzic, Software Engineer, oft auf denselben Projekten wie die Trainees
+
+### Herausforderungen und Besonderheiten
+
+Die verwendeten Software-Technologien sind etwas veraltet:
+
+* Für STERNA Firmware: Embedded C++ (C++98, keine Templates, kein Heapmemory, keine STL, keine Exceptions)
+* Windows Forms wird in der Produktion stark gebraucht
+
+Das Software-Team bewegt sich in modernere Technologien (z.B. CI/CD-Pipelines, GitLab, Blazor). 
+
+
+
+
+*** FILENAME: "TP/pages/8588886017" ***
+Here’s a cleaned-up version of the text, focusing on relevant content and removing extraneous information:
+
+---
+
+**Cudos Trail: Securosys**
+
+Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Securosys. 
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+Securosys ist spezialisiert auf Sicherheitssysteme. Das Hauptprodukt sind Schlüsselspeicher für Bereiche wie Digitale ID, Verschlüsselung und Kryptowährungen. Alle Transaktionen bei CH-Banken werden durch die Hardware und Software von Securosys abgesichert.
+
+### Ehemalige Trainees
+
+| **Name** | **Einsatzdauer** | **Einsatzbereich** |
+| --- | --- | --- |
+| Florian Wernli (WEF) | 11.2023 - 04.2024 | C/C++ |
+
+### Vorstellungsgespräch
+
+**Vorstellung WEF bei Securosys, 20.09.2023**
+- Andreas Curiger, CTO
+- Marcel Dasen, Entwicklungsleiter
+- Thomas, Senior Embedded Entwickler
+
+Securosys hat verschiedene Einsatzgebiete, insbesondere Core-Software-Entwicklung. Hauptprodukte sind Schlüsselspeicher für:
+- Digitale ID
+- Verschlüsselung aller Transaktionen bei CH-Banken
+- Kryptowährungen
+
+**Fragen seitens Securosys:**
+- Projekte, Erfahrung mit Programmiersprachen?
+- Freizeit?
+- Was hat dich bisher am meisten interessiert?
+- Vor- und Nachteile TDD?
+
+**Vorstellung GES bei Securosys, 09.04.2024**
+- Marcel Dasen, Entwicklungsleiter
+
+**Technische Fragen:**
+- Unterschied zwischen symmetrischer und asymmetrischer Verschlüsselung?
+- Eigenschaften einer „guten“ Hash-Funktion?
+- Bekannte Hash-Funktionen?
+- Was ist TLS und wo wird es benutzt?
+- Authentifizierung einer Website mittels Zertifikaten?
+
+**Methodische Fragen:**
+- Wichtigste Aspekte für den Projekterfolg?
+- Welche Software-Programme gibt es dafür?
+
+### Firmen- und Teamkultur
+
+Das Kernentwicklungsteam bei Securosys besteht aus 10 Personen mit unterschiedlichen Fachgebieten. Man sollte 3 Tage pro Woche von 9 bis 16 Uhr vor Ort anwesend sein, die Kontrolle ist jedoch nicht streng. Testing an der Hardware ist nur vor Ort möglich.
+
+**Meetings:**
+- Status-Meeting
+- Besprechung anstehender Themen
+
+### Technologie-Stack
+
+Verwendete Technologien:
+- C
+- C++
+- Java
+- OpenSSL
+- OASISOpen PKCS #11
+- GitLab
+- GitHub
+- Go
+- JSON API
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Andreas Curiger, CTO: Forschungsprojekte
+- Melanie Raemy: Mentoring
+- Marcel Dasen: Head Engineering
+
+### Herausforderungen und Besonderheiten
+
+- Projekte werden selbst gehostet und enthalten vertrauliche Informationen.
+- Historisch bedingter C-Code.
+- Arbeit mit Firmenlaptop und isoliertem Rechner.
+- Offene Teamkultur mit Nearshoring-Team in Polen.
+
+**Zusammenarbeit:**
+- Wöchentliche Meetings
+- Modell-Driven-Entwicklung
+- Mentoring und Homeoffice nach Absprache möglich.
+
+### Präsentationen und Vorträge
+
+Trainee-Projekt-Präsentationen und Folien sind verfügbar in den gemeinsamen Ablagen.
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8073510917" ***
+Here’s a cleaned-up version of the text, with headers, footers, and extraneous information removed:
+
+---
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Sensirion.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+### Ehemalige Trainees
+
+| Name           | Einsatzdauer      | Einsatzbereich                                    |
+|----------------|------------------|--------------------------------------------------|
+| Simon Rodoni   | 02.2022 - 10.2022| Equipment Integration Team, Prozessflusskontrolle für Produktion |
+
+### Vorstellungsgespräch
+
+**BOJ & DGA, 10.02.2022:** Kennenlernen mit dem Flow Team (Produktionssoftware-Gruppe für Flüssigkeit und Gas Durchfluss Messung):
+
+- Wie arbeitet ihr im aktuellen Einsatz? (Testabdeckung, Vorgehensweise, Teamzusammenarbeit, Code Reviews, etc.)
+- Was war euer Highlight im TP?
+- Was würde euch an der Sensirion interessieren?
+- Was habt ihr im Traineeprogramm noch nicht gelernt, das ihr lernen möchtet?
+
+**ROS, 13.01.2022:** Kennenlernen mit dem gesamten Equipment Integration Team (Online über Teams):
+
+- Vorstellungsrunde
+- Vorstellung Projekt
+- Noch Fragen?
+
+### Firmen- und Teamkultur
+
+Entwicklung für interne Kunden: R&D, Schnittstellen für Produktion → enge Zusammenarbeit mit anderen Teams von Sensirion  
+Anlagensteuerung, Testen, Kalibrieren  
+Scrum mit PO, Scrum Master  
+
+### Technologien
+
+- .Net Framework, C#
+- MS SQL
+- WPF, WinForms für Legacy
+- GitLab
+- CI/CD: TeamCity
+- Code Review: Visual Studio Review Assistent Plugin
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+**Flow Cluster Software Team:**  
+- Thomas Kuschel: Teamleiter  
+- Luzius Brodbeck: PO, Entwickler  
+- Lukas Teichler: Scrum Master, Entwickler  
+- Ioan Chisoiu: Entwickler  
+- John Oldridge: Entwickler  
+
+### Herausforderungen und Besonderheiten
+
+(Details nicht angegeben)
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5712576857" ***
+Here's the cleaned-up version of the content, focusing on the relevant sections without headers, footers, or extraneous text:
+
+---
+
+### Cudos Trail : SI Professional Zertifikat
+
+Dieses Vorbereitungsdokument fürs SI Professional Zertifikat wurde von Florian Gubler verfasst.
+
+#### Themenbereiche
+
+- Software-Entwicklung (z.B. Design Patterns)
+- Relationale Datenbanken (relationale Algebra)
+- Unternehmensmodellierung
+- Begriffe aus dem Projektmanagement, Scrum, etc.
+- Intelligenztest: Folgt irgendeinem ISO Standard:
+  - Ein Teil Kopfrechnen
+  - Ein Teil Muster in Zahlenreihen erkennen
+  - Ein Teil geometrische Formen aus kleineren Teil-Formen zusammensetzen
+  - Ein Teil Muster in einer Spiegelung einer geometrischen Form erkennen und auf eine andere anwenden.
+
+### Relationale Datenbank-Theorie
+
+#### Normalformen
+
+1. Jedes Attribut der Relation muss einen atomaren Wertebereich haben, und die Relation muss frei von Wiederholungsgruppen sein.
+   - Spalten dürfen nur primitive Datentypen haben, welche nicht weiter zerlegt werden können (z.B. nicht ein JSON, eine Komma-Separierte Liste oder ein ganzes Objekt).
+   - Somit müssen komplexere Datenstrukturen aufgebrochen und auf mehrere Spalten verteilt werden.
+   
+2. Eine Relation ist genau dann in der zweiten Normalform, wenn die erste Normalform vorliegt und kein Nichtprimärattribut (Attribut, das nicht Teil eines Schlüsselkandidaten ist) funktional von einer echten Teilmenge eines Schlüsselkandidaten abhängt.
+   - Das bedeutet, dass ein Spaltenwert nur aus einem kompletten Unique-Key herleitbar sein darf; aber nicht nur aus einem Teil davon.
+   
+3. Die dritte Normalform ist genau dann erreicht, wenn sich das Relationenschema in der 2NF befindet, und kein Nichtschlüsselattribut von einem Schlüsselkandidaten transitiv abhängt.
+   - Das bedeutet, dass Spaltenwerte nur aus Unique-Keys herleitbar sein dürfen, aber nicht aus anderen Spalten.
+
+#### Transaktionen & ACID
+
+Datenbank-Transaktionen sollen die ACID Regeln erfüllen:
+
+- **Atomicity**: Eine Transaktion garantiert, dass alle Operationen entweder vollständig oder gar nicht ausgeführt werden.
+- **Consistency**: Eine Transaktion kann nur von einem gültigen Zustand in einen neuen gültigen Zustand führen.
+- **Isolation**: Die Änderungen einer Transaktion sind erst sichtbar, wenn sie abgeschlossen ist.
+- **Durability**: Einmal erfolgreich abgeschlossene Transaktionen bleiben dauerhaft bestehen.
+
+### Netzwerktheorie
+
+#### OSI Model
+
+| Layer | Beschreibung & Beispiele                                             |
+|-------|--------------------------------------------------------------------|
+| 7     | Application Layer: Interaktion mit Nutzer; z.B. HTTP, SMTP, DNS    |
+| 6     | Presentation Layer: Datenaufbereitung wie Ver- & Entschlüsselung    |
+| 5     | Session Layer: Öffnet und schließt Sessions zwischen Geräten        |
+| 4     | Transport Layer: Datenübertragung; TCP und UDP                      |
+| 3     | Network Layer: Routing von Netzwerk-Packages                        |
+| 2     | Datalink Layer: Kommunikation mit Frames innerhalb eines Netzwerks   |
+| 1     | Physical Layer: Physische Übertragung von Bits als 1 oder 0       |
+
+#### Internet Model
+
+| Layer | Beschreibung & Beispiele                                             |
+|-------|--------------------------------------------------------------------|
+| 4     | Application Layer: Beinhaltet Application, Presentation, Session   |
+| 3     | Transport Layer: Entspricht dem Transport Layer                     |
+| 2     | Internet Layer: Entspricht dem Network Layer                        |
+| 1     | Link Layer: Beinhaltet Data Link und Physical Layer                |
+
+### Sortierungsalgorithmen
+
+| Algorithmus   | Best          | Average       | Worst           | Stable |
+|---------------|---------------|---------------|------------------|--------|
+| Quick Sort    | n * log(n)    | n * log(n)    | n²               | Nein   |
+
+
+
+*** FILENAME: "TP/pages/5706418361" ***
+Here is the cleaned-up version of the content, with headers, footers, and extraneous text removed:
+
+---
+
+**Cudos Trail: Siemens**
+
+Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Siemens Smart Infrastructure. 
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+Siemens ist ein internationales Unternehmen mit vielen Firmenniederlassungen weltweit – ein Trainee-Einsatz findet bei Siemens Schweiz in der Niederlassung von Siemens in Zürich statt, erreichbar in 20 Minuten von Zürich HB. Ein Trainee-Einsatz erfolgt in der Regel in der Abteilung Smart Infrastructure, in der auch zwei ehemalige Trainees (Edwin und Alexandra) tätig sind.
+
+### Ehemalige Trainees
+
+| Name                   | Einsatzdauer | Einsatzbereich                          |
+|------------------------|--------------|----------------------------------------|
+| Fabian Ullmann         | 12 Monate    | Fullstack, Building Technologies, Steinhausen |
+| Dominik Bachmann       | 11 Monate    | Fullstack, Smart Infrastructure, Zürich |
+| Edwin Hernandez        | 12 Monate    | Fullstack, Smart Infrastructure, Zürich |
+| Josua Bögli            | 12 Monate    | Fullstack, Smart Infrastructure, Zürich |
+| Alexandra De Groof     | 8 Monate     | Fullstack, Smart Infrastructure, Zürich |
+| Mirek Yan              | 10 Monate    | Fullstack, Smart Infrastructure, Zürich |
+| Manuel Brändli         |              | Fullstack, Smart Infrastructure, Zürich |
+
+### Vorstellungsgespräch
+
+#### Kennenlernen Miroslaw Yan 22.11.2022
+
+Das Gespräch dauerte ca. 70 Minuten mit dem ganzen Team. Es wurden hauptsächlich das Team und die aktuellen Projekte vorgestellt, sowie generelle Infos zum Arbeitsalltag besprochen. Der Fokus lag darauf, dem Trainee einen guten Einblick in die Arbeitsweise des Teams zu verschaffen.
+
+Ein technischer Teil wurde hinzugefügt, und Fragen wurden leicht angepasst:
+
+* Wie ist eine Webapplikation aufgebaut?
+* Frontend: Frameworks, verwendete Sprachen, Typescript vs. Javascript
+* Kommunikation zwischen Backend und Frontend: Protokolle, JSON/XML, API
+* Backend: Aufbau, SQL/DB Erfahrungen
+* Was ist debugging? Was ist ein SQL Join?
+
+### Firmen- und Teamkultur
+
+Das Team bei Siemens ist jung und dynamisch und besteht aktuell aus:
+
+* 6 Festangestellten (2 Ex-Trainees)
+* 3 Lehrlingen
+* 1 Werkstudenten
+* 1 Cudos Junior
+
+### Technologie-Stack
+
+Der Technologie-Stack wird versucht, auf dem aktuellsten Stand zu halten:
+
+* React
+* .NET 8
+* GitLab
+* Azure
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Markus Graf - Teamleiter
+- Patrick Ammann - Lead Entwickler, SW Architekt Web-Team
+- Markus Dörig - Teamleiter Desktop Team
+- Patrick Eichhorn - SW Engineer
+- Edwin Hernandez - Ehemaliger Trainee, SW Engineer
+- Alexandra De Groof - Ehemalige Trainee, SW Engineer
+- Barbara Büchli - Business Excellence Manager
+
+### Herausforderungen und Besonderheiten
+
+* Zwei Ex-Juniors, Edwin Hernandez und Alexandra De Groof, arbeiten bei Siemens.
+* Siemens sucht Juniors für einen Jahres-Einsatz.
+* Einmal pro Monat wird ein Apero organisiert, um das Team zusammenzuführen.
+* Anwesenheit im Büro: Dienstag und jeden zweiten Mittwoch (sonst Home Office möglich).
+
+---
+
+
+
+
+*** FILENAME: "TP/pages/8380088321" ***
+Here's a cleaned-up version of the text with headers, footers, and extraneous content removed:
+
+---
+
+**Cudos Trail : Thales**
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Juniors bei Thales.***
+
+**Schreibt alles auf, was für zukünftige Juniors von Bedeutung sein könnte!**
+
+Thales entwickelt in Zürich Produkte für die Rüstungsindustrie zur Kommunikation, Funkaufklärung und Energiemanagement in Fahrzeugen. Zusätzlich entwickeln sie Software auf Produkt- oder Projektbasis.
+
+### Ehemalige Juniors
+
+| **Name**         | **Einsatzdauer** | **Einsatzbereich** |
+|------------------|------------------|---------------------|
+| David Ochsner    | 01.23 - 06.23    | Hardware Team       |
+| Beat Besmer      | 06.24 -          | Software Team       |
+
+### Vorstellungsgespräch
+
+**David:**
+- Anwesend: BAR, OCD, Samuel Godina
+- Kurze Vorstellung beider Seiten
+- Grobe Vorstellung Projekt von Samuel
+- Praktisch keine technischen Fragen, wichtigstes Kriterium: Möglichst schneller Start
+
+**Beat:**
+- Anwesend: BAR, BEB, Michael Beck, Andreas Helbling
+- Kurze Vorstellung beider Seiten
+- Grobe Vorstellung Projekt von Michael
+- Fragen zu bisherigen Erfahrungen in den Bereichen: Netzwerktechnik (Tool: Wireshark), Multithreading, Requirements Engineering und Dokumentation
+
+### Firmen- und Teamkultur
+
+Ein grosser Teil der Engineers arbeitet schon sehr lange dort, Projektmanagement hingegen hat grosse Fluktuation.
+
+Die Engineers arbeiten sehr selbstorganisiert, es gibt sehr wenig strukturierten Austausch (keine Dailies, Teamsitzung ca. alle 3 Wochen).
+
+Hilfe/Erklärung muss aktiv geholt werden, Leute sind oft nicht da oder haben keine Zeit.
+
+### Technologien
+
+- Java Maven
+- Intelij
+- Jira
+- ActiveMQ
+- WireShark
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Samuel Godina: Head of Engineering
+- Michael Beck: Head Software Engineering, IT Manager Switzerland, CISO
+
+Stand Frühling 2023: neuer CEO a.i., Organisation ist im Wandel
+
+### Herausforderungen und Besonderheiten
+
+Thales arbeitet mit Matrixorganisation (separates Produkt- und Projektmanagement). Das hat zur Folge, dass Verantwortlichkeiten für gewisse Sachen nicht sehr klar sind. Solange man eine gut definierte Aufgabe hat, ist das nicht so ein Problem.
+
+STR war für 1 Tag/Woche als Betreuung eingeplant, das war sehr hilfreich, um mich in diesem Umfeld zurechtzufinden.
+
+
+
+
+*** FILENAME: "TP/pages/8474951681" ***
+Here’s a cleaned-up version of the text, focusing on the essential information and removing extraneous text:
+
+---
+
+# Cudos Trail: Thermoplan
+
+**Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Thermoplan.**
+
+Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!
+
+Thermoplan entwickelt und stellt Kaffeevollautomaten für den professionellen Einsatz her. Zu ihren Kunden zählen unter anderem Starbucks und McDonalds. Der Grossteil der Kaffeemaschinen wird in rund 80 Länder exportiert. Ein Trainee-Einsatz findet am Firmenstandort in Weggis im Kanton Luzern statt.
+
+## Ehemalige Trainees
+
+| **Name** | **Einsatzdauer** | **Einsatzbereich** |
+| --- | --- | --- |
+| Leonie Sommer (SOL) | November 2023 - Oktober 2024 | 6 Monate Device Team, 6 Monate Digital Products Team |
+
+## Vorstellungsgespräch
+
+### Kennenlernen SOL bei Thermoplan, 27.9.23:
+
+Mit Tobias und Christoph, kurzes Kennenlernen mit Rolf und Markus. Mittagessen, ausführliche Firmenführung, Vorstellung Thermoplan und kurzes Interview.
+
+**Fragen an SOL:**
+- Erfahrungen?
+- Bachelorarbeit?
+- Was hat dir bei Sensirion am besten gefallen?
+- Was macht schöner Code aus?
+- C++, Linux Erfahrung?
+- Was brauchst du, um glücklich zu werden an einem Arbeitsort?
+- Best Practice SWE heute?
+- Weshalb fürs TP beworben (trotz Arbeitserfahrung)?
+
+## Firmen- und Teamkultur
+
+Intern ist Thermoplan in der Softwareentwicklung in zwei Teams aufgeteilt:
+
+### Device Team
+- Arbeit am grafischen User-Interface der Kaffeemaschinen (17 Personen).
+  - 1/3 Pool-Team: arbeiten nach Scrum (2 Wochen Sprints).
+  - 2/3 Projekt-Team: arbeiten auf verschiedenen Projekten.
+- Fullstack Entwicklung: Jeder kann selbst Tasks aussuchen.
+- Alltag: Arbeitsbeginn 7:00-7:30, 9:00 Pause, 9:15 Daily Meeting.
+- Homeoffice: 3 Tage pro Woche vor Ort, grundsätzlich sehr flexibel.
+
+### Digital Products Team
+- Kümmern sich um die Webseite [ThermoplanConnect](https://www.thermoplan.ch/de/produkte/digital-solutions).
+- 9 Personen (2 Externe in Polen).
+- Scrum, 2 Wochen Sprints, Daily Meeting um 9:30.
+- Homeoffice: offiziell 2 Tage pro Woche, inoffiziell mehr möglich.
+
+## Technologien
+
+### Software Team
+- C++
+- Qt
+
+### Digital Products Team
+- C#
+- Azure
+- TypeScript
+- SQL
+
+## Zuständigkeiten und wichtige Kontaktpersonen
+- Tobias Portmann, Head of Software & Electronics
+- Christoph Bühlmann, Team Leader Software Engineering
+- Rolf Hochstrasser, Co-CTO
+- Markus Pfyl, Head of Business Development
+- Monika Krewer, Head of Digital Products
+
+## Herausforderungen und Besonderheiten
+- Gratis Mittagessen in der Kantine für alle.
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5681250927" ***
+Here is the cleaned-up text, with headers, footers, and extraneous content removed:
+
+---
+
+**Cudos Trail: Trainee Programm Ostschweiz**
+
+---
+
+**Created by gur on Mai 10, 2019**
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8135704577" ***
+Here's the cleaned-up version of the provided text:
+
+---
+
+**Cudos Trail: Trumpf**
+
+***Eine (inoffizielle) Sammlung von persönlichen Erfahrungen von Trainees bei Trumpf.***
+
+**Schreibt alles auf, was für zukünftige Trainees von Bedeutung sein könnte!**
+
+### Ehemalige Trainees
+
+*Bemerkung: Einsatzbereich muss nur bei Firmen ausgefüllt werden, in welchen auch unterschiedliche Teams existieren.*
+
+| Name          | Einsatzdauer   | Einsatzbereich |
+|---------------|----------------|----------------|
+| Stefan Lochau | Mai - Okt 2022 |                |
+
+### Vorstellungsgespräch
+
+### Firmen- und Teamkultur
+
+### Technologien
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+* Thomas Schwank, Leiter F&E Elektronik
+
+### Herausforderungen und Besonderheiten
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8351842305" ***
+Here's the cleaned-up version of the text without headers, footers, or extraneous content:
+
+---
+
+Auf dieser Seite wird beschrieben, wie M&F Trainee-Einsätze gehandhabt werden betreffend Verantwortlichkeiten, Controlling, Stundensatz und Verrechenbarkeit.
+
+**Verantwortlichkeit**
+
+Vom Prinzip her wird die “Engineering-Abteilung” der M&F betrachtet wie eine andere Trainee-Partnerfirma. Sie kann einen Trainee für 6 oder 12 Monate bei sich aufnehmen und ist in dieser Zeit für die Betreuung und die Auslastung des Trainees zuständig.
+
+Die Einsätze kommen von den BU’s aus, d.h. ein BU-Leiter bestimmt, dass er jetzt einen Trainee nimmt für 6/12 Monate oder nicht. In dieser Zeit kümmert sich der BU-Leiter um die Planung und Auslastung des Trainees.
+
+Sollte der Trainee während des M&F Einsatzes kein verrechenbares Projekt haben, versucht der verantwortliche BU-Leiter in Absprache mit dem BU-Leiter-Team, eine alternative Beschäftigung (internes Projekt, Weiterbildung, o.ä.) für den Trainee zu organisieren und einen entsprechenden Task im RolX zu erstellen.
+
+Falls dann immer noch nichts gefunden werden kann, kann Rachel Blaser informiert werden, woraufhin sie im Partnernetzwerk schaut, ob ein frühzeitiger Wechsel organisiert werden kann.
+
+**Controlling**
+
+Bei einem Fixpreis-Projekt wird der Trainee mit einem internen Stundensatz von Fr. 100.-/h verrechnet.
+
+Bei einem Projekt nach Aufwand wird der effektiv verrechnete Stundensatz intern weiterverrechnet (bei einem Mischsatz wird der Mischsatz auch für den Trainee angewendet).
+
+Der gesamte Umsatz für den Trainee-Einsatz wird vom entsprechenden BU-Leiter spätestens am Ende des Einsatzes erfasst, um Erfahrungen zu sammeln. Es werden aber bewusst keine Ziele festgesetzt oder Konsequenzen, falls der Umsatz tiefer ist als bei anderen Partnerfirmen (Trainee-Einsätze lohnen sich auf jeden Fall, wenn wir gute Trainees danach fest einstellen können!).
+
+
+
+
+*** FILENAME: "TP/pages/8189018113" ***
+Here's the cleaned-up version of the text, focusing on the relevant content and removing extraneous information:
+
+---
+
+**Übersicht aller Hochschulen**
+
+| **Hochschule** | **Studiengang** | **Anzahl Absolvent:innen pro Jahr** | **Passend fürs TP** (Interesse und Vorkenntnisse) |
+| --- | --- | --- | --- |
+| ETH | MSc ETIT | 150 | 60 (40%) |
+| ETH | MSc Informatik | 300 | 30 (10%) |
+| ETH | MSc MAVT | 285 | 114 (40%) |
+| ETH | MSc Mathematik + RW | 220 | 44 (20%) |
+| ETH | MSc Physik | 190 | 38 (20%) |
+| Uni ZH | BSc Informatik | ca. 100 | 30 (30%) |
+| ZHAW | BSc Informatik | 150 | 45 (30%) |
+| FHNW | BSc Informatik | 110 | 33 (30%) |
+| HSLU | BSc Informatik | 100 | 30 (30%) |
+| OST Rapperswil | BSc Informatik | 315 | 95 (30%) |
+| OST Buchs | BSc Systemtechnik | 80 | 24 (30%) |
+| BFH | BSc Informatik | 60 | 18 (30%) |
+| Uni Bern | BSc Informatik | ? | ? |
+| HSG | BSc & MSc Informatik | ? | ? |
+| FH GR | BSc Computational and Data Science | 20 | ? |
+| **Total** |  | **2’960** | **633** |
+
+---
+
+**ETH**  
+[ETH Studierende](https://ethz.ch/staffnet/de/finanzen-und-controlling/zahlen-und-fakten/studierende.html)  
+
+---
+
+**Uni Zürich**  
+[Dynamische Tabelle der Studienabschlüsse](https://public.tableau.com/views/Dynamische-TabellenfrdenDownloadbereich/Dyn_TabelleAbschluesse?:language=de&:display_count=no&:showVizHome=no&:embed=yes&:tabs=no&:toolbar=yes)  
+
+---
+
+**Uni Bern**  
+[Uni Bern Informatik](https://www.philnat.unibe.ch/studium/studienprogramme/bachelor_informatik/index_ger.html)  
+
+---
+
+**FHNW**  
+[FHNW Facts und Figures](https://www.fhnw.ch/de/die-fhnw/facts-und-figures)  
+[Jahresbericht 2021](https://www.fhnw.ch/de/die-fhnw/facts-und-figures/jahresbericht/media/fhnw_jahresbericht_2021_statistiken.pdf)  
+
+---
+
+**ZHAW**  
+[ZHAW Informatik](https://www.zhaw.ch/de/engineering/studium/ausgewaehlte-bachelor-und-masterarbeiten/)  
+
+---
+
+**HSLU**  
+- Pro Semester starten ca. 40-50 neue “reine” Informatik-Bachelor-Studierende.
+- Die meisten studieren jedoch teilzeit und haben bereits einen Job.
+
+---
+
+**Berner FH**  
+[Berner FH Informationsseite](https://www.bfh.ch/dam/jcr:88c59e13-83bc-4a2f-a873-b09d17507c76/WEB_BFH%20-%20BSc%20Informatique.pdf)  
+
+---
+
+**HSG**  
+[HSG Bachelor und Master Programme](https://www.unisg.ch/de/studium/programme/bachelor/bcs/)  
+[HSG Master Programm](https://www.unisg.ch/de/studium/programme/master/mcs/)  
+
+---
+
+**FH GR**  
+[FH Grisons Studiengang](https://www.fhgr.ch/studium/bachelorangebot/medien-technik-und-it/computational-and-data-science/)  
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5646057825" ***
+ FAQ](#) zeigen, Meeting mit Vorgänger-Junior vereinbaren
+* Zusatz zum Arbeitsvertrag
+* zur WhatsApp Chatgruppe hinzufügen
+* Termin vereinbaren für Vorstellung BU Junior-Programm (G:\Geteilte Ablagen\Diverses\Verkauf-Marketing\Präsentationen\Präsentationen Rachel)
+* Feedback einholen:
+  + Wie findest du den Bewerbungsprozess? Was könnte man verbessern? Hast du genügend Informationen erhalten?
+  + Wie findest du die Infos auf der Website?
+  + Auf welchen Jobplattformen hast du gesucht? Wie bist du auf Cudos aufmerksam geworden?
+
+## Vorbereitungs-Checkliste
+
+* Arbeitsplatz für Einarbeitung bestimmen (BLR/BOR)
+* Einführungsplan erstellen und auf Tisch legen (BOR)
+* Ablage in Cudos Trail-Schrank vorbereiten (BOR)
+* Termine für Workshops & Events schicken (BLR)
+* Visitenkarte (BOR)
+* Fototermin (BOR)
+* Mentor bestimmen & vorstellen (BLR)
+* Profil erstellen, in [Cudos Know-how Matrix](https://docs.google.com/spreadsheets/d/12wGV7l0toxMOLGJvIyFuNUcI0rA6z6WzTIZdFWdWL3A/edit?usp=sharing) ergänzen (BLR)
+* Einsatz-Möglichkeiten abklären / Wünsche (BLR)
+* Vorlage für Welcome-Interview schicken (HAS)
+* Welcome-Interview auf Blog stellen (HAS)
+* Junior auf Website & in Präsentationen ergänzen (HAS)
+* Marketing-Info-Mail schicken (HAS)
+```
+
+
+
+*** FILENAME: "TP/pages/5703532878" ***
+ bei uns bewerben, auch ohne an einem Info-Anlass teilgenommen zu haben. Wenn du Fragen hast, melde dich ungeniert bei mir.
+
+Ich wünsch dir einen schönen Tag und hoffentlich bis bald!
+
+Beste Grüsse, Rachel
+
+---
+
+### 3. Kontakt aus CV-Datenbank
+Hallo Linda,
+
+Auf der CV-Datenbank der ZHAW wurde ich auf dich aufmerksam und möchte dich auf uns aufmerksam machen.
+
+M&F Engineering ist der Industrie 4.0 Spezialist für kompetente Software-Entwicklung und massgeschneiderte Prüfsysteme. Zudem bieten wir ein schweizweit einzigartiges Software Trainee-Programm, welches innovative Technologiefirmen und junge Software-Ingenieure zusammenbringt.
+
+Für Hochschulabsolventen ist unser firmenübergreifendes Trainee-Programm der ideale Berufseinstieg und macht dich zum gesuchten Software-Experten mit breitem Know-how, viel Erfahrung und grossem Netzwerk. Weitere Informationen findest du unter: [www.m-f.ch/kompetenzen/trainee-programm](https://www.m-f.ch/kompetenzen/trainee-programm).
+
+Klingt interessant? Dann komm doch diesen Donnerstag, 27. September 2018 um 17.00 Uhr an unseren [Info-Anlass](https://www.m-f.ch/events/info-veranstaltungen/event/14-info-trainee-programm/44-info-anlass-trainee-programm) inklusive Pizza-Essen mit unseren Trainees. Da erfährst du aus erster Hand alles über deren spannenden Projekte und kannst dich direkt mit den Trainees austauschen.
+
+Anmelden kannst du dich bei mir via Mail oder über unsere Website: [www.m-f.ch/events](https://www.m-f.ch/events).
+
+Sollte dir der obige Termin nicht möglich sein, lass es mich wissen. Selbstverständlich kannst du dich jederzeit für das Trainee-Programm bewerben, auch ohne an einem Info-Anlass teilgenommen zu haben.
+
+Beste Grüsse und hoffentlich bis bald,  
+Rachel
+
+---
+
+### 4. Nach Info-Anlass
+Liebe XY,
+
+Es hat uns sehr gefreut, dass du gestern bei uns am Info-Anlass warst. Ich hoffe, der Anlass hat dir gefallen und du konntest dir ein gutes Bild über M&F Engineering und unser Trainee-Programm verschaffen.
+
+Alle Informationen bezüglich Anforderungen und Vorbereitungen fürs Trainee-Programm findest du auf folgendem [Blog-Beitrag](https://www.m-f.ch/blog/softwareentwicklung-fuer-elektroingenieure). Zudem ist die Broschüre mit allen Partnerfirmen ebenfalls online als [PDF](https://www.m-f.ch/images/MF-Partnerfirmen-min.pdf) verfügbar.
+
+Falls du noch irgendwelche Fragen hast, kannst du dich jederzeit bei mir melden. Ansonsten freue ich mich, wieder von dir zu hören und dich vielleicht schon bald an einem Interview bei uns zu sehen. :-)
+
+Ich wünsche dir einen schönen Tag und viele Grüsse,  
+Rachel
+
+---
+
+### 5. Rückfrage Bewerbung
+Hallo Benjamin,
+
+Wie geht es dir? Bist du nach wie vor auf Stellensuche?
+
+An unserer Firmenführung hast du einen guten Eindruck bei uns hinterlassen. Falls du weiterhin an unserem Software Trainee-Programm interessiert bist, schick uns doch deine Bewerbung. Wir sind zurzeit wieder auf der Suche nach neuen Trainees.
+
+Es würde mich sehr freuen, von dir zu hören.
+
+Freundliche Grüsse,  
+Rachel
+
+---
+
+### 6. Bewerbungsbestätigung / Einladung Codility
+Liebe/r XY,
+
+Bei uns sind wir alle per Du, deshalb spreche ich dich gleich mit deinem Vornamen an. Ich hoffe, das ist in Ordnung für dich. 
+
+Zuerst einmal vielen Dank für deine Bewerbung. Es freut mich, dass du dich für uns und unser Software Trainee-Programm interessierst. Deine Bewerbungsunterlagen sehen sehr interessant aus und könnten gut zum Trainee-Programm passen.
+
+Gerne würde ich dir in einem ersten Schritt unseren Online-Programmiertest schicken, sodass wir schon mal sehen können, wie deine Programmierkenntnisse sind. Dies gehört zu unserem Standard-Bewerbungsprozess ([siehe Jobs-Page](https://www.m-f.ch/jobs)). Der Test dauert maximal 140 Minuten, besteht aus drei Aufgaben und ist in der Programmiersprache deiner Wahl lösbar. Den Zeitpunkt, wann du den Test lösen möchtest, kannst du ebenfalls frei wählen. Ich würde dir den Link in einer separaten Mail schicken. Ist das gut für dich?
+
+
+
+
+*** FILENAME: "TP/pages/5706417843" ***
+ Wie wird das Programm in der aktuellen Corona-Situation organisiert?**  
+A: Die Organisation variiert je nach Partnerfirma. Es werden sowohl Homeoffice- als auch Büroarbeitlösungen genutzt.
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5721686034" ***
+ Technologien: C# mit .Net 8, Docker, Redis, VS mit ReSharper, VS Code.
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Giuliano De Gani (CEO), Jan Eggers (Software Architect), Fabio Caruso (UI Lead), Valentina Merturi (Project Manager für Software).
+
+### Herausforderungen und Besonderheiten
+
+- Mensa/Kantine in der Nähe, auch verschiedene Restaurants und Lebensmittelgeschäfte.
+- Anforderungen nicht immer detailliert, was Abklärungen mit Kunden erfordert.
+- Stressige Arbeitsumgebung, da Kunden schnelle Lösungen benötigen.
+- Ehemaliger Trainee Josua Bögli arbeitet bei Sofel im UI.
+
+### Präsentationen und Vorträge
+
+- Trainee Projekt-Präsentationen Aufzeichnungen: G:\Geteilte Ablagen\MF\_NoBackup\0\_Aufzeichnungen Trainee Projekt-Präsentationen
+- Trainee Projekt-Präsentation Folien: G:\Geteilte Ablagen\MF\_Projekte\MF - Trainee-Programm - MF-8810\000 Projektmanagement\Trainee Projekt-Präsentationen\Sofel, Ferag
+- Video über die “Skyfall” Anlage der Ferag, an der Trainees beteiligt waren: <https://www.youtube.com/watch?v=EWemo6xZReI>  
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8375140353" ***
+ Mitarbeiter
+- Gute Stimmung und familiäres Umfeld
+
+**Erfahrung von CAJ:**
+
+Die Sisag besteht aus mehreren Firmen unter der "Sisag Holding". Die Unterkunft wurde in einer Studio-Wohnung in Altdorf organisiert. 
+
+Remec-Team ist hauptsächlich vor Ort, flexible Arbeitskultur.
+
+---
+
+
+
+
+*** FILENAME: "TP/pages/8454864912" ***
+ Kleidern und Schuhen erscheinen (saubere Hose, Hemd oder neutrales, neueres T-Shirt, Turnschuhe ok). Geduscht und nicht verschwitzt erscheinen.
+
+Verbindlichkeit
+---------------
+
+* Wenn man etwas abgemacht/versprochen hat (z.B. “Ich mache das Dokument bis …”), dann kann sich das Gegenüber darauf verlassen. Falls man sieht, dass man eine Abmachung nicht einhalten kann (z.B. krankheitsbedingt), meldet man sich so früh wie möglich und bespricht das weitere Vorgehen.
+
+Weitere Tipps findet man im Business-Knigge: <https://blog.hubspot.de/sales/business-knigge> 
+
+Hilfe holen bzw. Fragen stellen
+-------------------------------
+
+Bei Unsicherheit oder wenn man nicht weiter kommt, ist es wichtig, dass man sich **zeitnah** Hilfe holt. Dabei sollte man jedoch zuerst selbst überlegen und wenn nötig recherchieren (aber nicht zu lange!), sich optimalerweise einen oder mehrere Lösungsvorschläge überlegen und dann die Betreuungsperson damit konsultieren. 
+
+
+
+ 
+
+
+Document generated by Confluence on Okt. 15, 2024 12:04
+
+
+[Atlassian](http://www.atlassian.com/)
+
+
+ 
+
+
+
+
+*** FILENAME: "TP/pages/5696554503" ***
+ als bei einer „normalen“ Bewerbung, da wir die Vorselektion und Qualitätsprüfung bereits vorgenommen haben. 
+
+Gerne können Sie mich auch kurz zurückrufen.
+
+Freundliche Grüsse,  
+Rachel
+
+---
+
+### Antworten zu Absagen
+
+#### Absage wegen Niveau der Juniors
+
+Hoi XY,
+
+Vielen Dank für deine Rückmeldung. 
+
+Es ginge nicht um ein Praktikum, sondern um einen Junior-Einsatz mit Möglichkeit zur Festanstellung (try and hire). Unsere Trainees sind motiviert und hochqualifiziert. 
+
+Falls du trotzdem Fragen hast oder interessiert bist, melde dich jederzeit. 
+
+Liebe Grüsse,  
+Rachel
+
+#### Absage wegen „kein Budget“
+
+Optimierungspotential bei Herrn ….
+
+Sehr geehrter Herr …,
+
+Leider hat sich in Ihrer Firma folgendes Szenario abgespielt:
+
+- Jemand hat eine gute Idee, um ein dringendes Problem zu lösen.
+- Der Vorgesetzte hat abgelehnt mit der Begründung: „Wir haben kein Budget dafür“.
+- Projekte verzögern sich, was zu höheren Kosten führen kann.
+
+Falls Sie das Geld nicht verlieren möchten, lasse ich Ihnen gerne Informationen zukommen.
+
+Mit freundlichen Grüssen,  
+Reto Bättig
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5639668934" ***
+    |                          | Marcel Räber                    |
+| Samuel Dobmann        | abgeschlossen, Cudos  |                          | Michael Bader (ehem. Giessel)  |
+| Benjamin Imbach       | abgeschlossen, Cudos 50% |                          | Roger Billeter                  |
+| Nicolai Buck         | abgeschlossen, Franke  |                          | Markus Meier                    |
+| Edwin Hernandez      | abgeschlossen, Siemens  |                          | Simon Alther                    |
+| Dominik Bachmann      | abgeschlossen, Cudos   |                          | Uche Mennel                     |
+| Alexandra De Groof    | abgeschlossen, Siemens  |                          | Sandro Brandt                   |
+| Simon Walter          | frühzeitig beendet, Abraxas Informatik | | Michael Bader                    |
+| ...                  | ...                      | ...                    | ...                              |
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5715493248" ***
+ von 1 Woche, Weekly Meeting mit Retro)
+- Legen großen Wert auf hohe Softwarequalität, gute Entwicklungsprozesse, viel Testing, gute Infrastruktur für die Entwickler, etc.
+
+**Technologie-Stack:**
+- Rust (SW-Team 1)
+- Python (SW-Team 2)
+- Vue2 / Vue3
+- Bazel (Buildsystem von Google)
+- Gitlab
+- Concord (CI/CD-Pipeline, soll durch Gitlab abgelöst werden)
+- Kubernetes und Helm
+- Kafka (Event-Queue) und Kotlin (DB-Verbindung)
+
+Sensordaten vom Test der Detektoren werden über Events auf ein Kubernetes-Netz geladen, wo die Logik der Applikationen laufen und die Auswertung dieser Daten wird dann mittels GUI angezeigt.
+
+**Zuständigkeiten und wichtige Kontaktpersonen**
+
+- Fabio Wanner, ehemaliger Trainee, SW-Engineer und aktuell zuständig für Trainee-Koordination
+- Rekha Thota, neue PO, Production-Operations Software
+- Michael Wedel, Software Developer
+- Matthias Ming, Ex. Product Owner, Production Engineering SW/Testing
+- Markus Mathes, (Ex.) Head of Software-Development, Product Development
+- Markus Willimann, Head of Process & Quality Management, GL-Mitglied
+- Anic Gloor, HR und Ansprechperson für Trainee-Abschluss
+
+→ Da Dectris in selbst-organisierten Teams arbeiten, sind die Zuständigkeiten nicht immer ganz klar.
+
+**Herausforderungen und Besonderheiten**
+- Keine Überstunden (nicht zu viel Zeit buchen)
+- Mentoring läuft offiziell über Dectris, aktiv Mentoring-Gespräche einfordern!
+- Mittagessen vor Ort findet in der Regel mit dem SW-Team gemeinsam statt
+- Aus vorherigen Trainee-Erfahrungen kann meistens Home-Office gemacht werden und die meisten Entwickler sind eher daheim. Freitags findet in der Regel ein Weekly Meeting statt, das normalerweise in Person abgehalten wird.
+- Die Hierarchie in der Firma ist sehr flach, wodurch Entscheidungen manchmal eher spät kommuniziert werden und SW-Teams unter Umständen schnell darauf reagieren müssen.
+- Fun Fact: Namensgebung ist oft von Bergen inspiriert: Aletsch (Gletscher/internes Verwaltungstool), Horn (Berg/Sitzungszimmer), Wolfgang (Pass/Repository).
+
+**Präsentationen und Vorträge**
+- Trainee Projekt-Präsentationen Aufzeichnungen: G:\Geteilte Ablagen\MF\_NoBackup\0\_Aufzeichnungen Trainee Projekt-Präsentationen
+- Trainee Projekt-Präsentation Folien: G:\Geteilte Ablagen\MF\_Projekte\MF - Trainee-Programm - MF-8810\000 Projektmanagement\Trainee Projekt-Präsentationen\Dectris
+
+
+
+
+*** FILENAME: "TP/pages/5706418376" ***
+ der Stadt Zürich wurden folgende Technologien verwendet:
+
+- Java
+- Angular
+- OpenLayers
+- GitLab
+- Jira
+- IntelliJ (VS Code ebenfalls möglich)
+
+### Herausforderungen und Besonderheiten
+
+#### Perspektive MUF
+
+Der Start war etwas holprig, aber ich konnte schnell Verantwortung übernehmen und direkt mit Kunden kommunizieren. Die Einbeziehung von User Experience im Team hat zu besseren Ergebnissen geführt.
+
+#### Perspektive VEJ
+
+Die Mittagspausenkultur ist sehr angenehm, und es gibt sportliche Aktivitäten wie Fußball spielen am Mittwoch.
+
+#### Perspektive YAM
+
+Hohe Eigenverantwortung und Teamfokus. Es wird Wert auf gemeinsames Essen gelegt, mit Veranstaltungen und teamübergreifenden Aktivitäten.
+
+---
+
+
+
+
+*** FILENAME: "TP/pages/5712577509" ***
+ und Daily Meetings.
+
+### HMI Platform
+
+- Software für das Human-Machine-Interface der Kaffeemaschinen
+- Technologie-Stack:
+  - Linux Umgebung, C++ Microservices (C++17), Qt, Jenkins, CLion, Jira/Confluence, SonarCloud
+- Arbeitsweise:
+  - Clean Architecture, TDD (empfohlen), Standard Git-Flow
+
+### X-Test
+
+- Automated Testing und UI Testing
+- Technologie-Stack: Squish, Selenium
+
+### UX Fleet (Cloud)
+
+- Team: 4 Interne und 3 Externe
+- Technologie-Stack: Azure, .NET 8, Vue 3 mit Typescript und Compositions
+
+### Zuständigkeiten und wichtige Kontaktpersonen
+
+- Marc Rohrbach (Head of Research and Development)
+- Claudio Botta (Teamlead HMI Plattform)
+- Walter Pirrota (Teamlead X-Testing)
+- Christoph Richner (Teamleiter und Scrum-Master UX Fleet)
+
+### Herausforderungen und Besonderheiten
+
+- Hilfsbereites Team
+- Keine fixen Home-Office-Regelungen (2 Tage/Woche)
+- Mensa in der Nähe
+- Häufige Umstrukturierungen
+- Starke Nutzung von Azure Tooling: IoT Hub, Service Bus, AAI Monitoring, AKS
+
+### Präsentationen und Vorträge
+
+- Trainee Projekt-Präsentationen Aufzeichnungen: G:\Geteilte Ablagen\NoBackup\0\_Aufzeichnungen Projekt-Präsentationen
+- Trainee Projekt-Präsentation Folien: G:\Geteilte Ablagen\Projekte\Cudos - Cudos Trail - 8810\000 Projektmanagement\Projekt-Präsentationen\Franke
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5706418359" ***
+ Shankar Ram Lakshminarayanan, SW Teamleiter
+- Baris Kurtlutepe, SW Teamleiter (Ersatz für Shankar)
+- Felix Liebl, Head of Engineering
+
+### Herausforderungen und Besonderheiten
+
+- Home-Office möglich (2 Tage/Woche)
+- Einarbeitung chaotisch
+- Firmensprache: Deutsch
+
+### Präsentationen und Vorträge
+
+- Trainee Projekt-Präsentationen Aufzeichnungen und Folien in den entsprechenden Ablageorten.
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8226996225" ***
+ Projekt-Präsentationen
+- **Junior Projekt-Präsentation Folien**: G:\Geteilte Ablagen\MF\_Projekte\MF - Junior-Programm - MF-8810\000 Projektmanagement\Junior Projekt-Präsentationen\Hitachi\_Energy
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8133771275" ***
+ musste ich eine Selbsteinschätzung meiner Kenntnisse von verschiedenen Technologien abgeben.
+   2. Interview selber. 1 Stunde, sehr viele Fragen der Teammitglieder:
+      1. Was bedeutet ORM?
+      2. Was ist der this Operator in C++ und seine Entsprechung in Python?
+      3. Was ist ein Model im Django Rest Framework?
+      4. Beschreibe deiner Großmutter das Internet?
+      5. Erkläre, was man beim Öffnen der Dev Console alles sieht?
+      6. Implementiere eine Linked List.
+
+Firmen- und Teamkultur
+======================
+
+Onboarding:
+
+* "Onboarding Buddy": Angestellter, welcher dich in den ersten Wochen unterstützt und deine erste Ansprechperson ist.
+* Viele Videos und Meetings zur Einführung.
+
+Future of Work: Homeoffice wird aktiv unterstützt, 1-2 Tage vor Ort im Büro.
+
+Für Tech Team: mindestens Dienstags vor Ort.
+
+Technologien
+============
+
+Zuständigkeiten und wichtige Kontaktpersonen
+============================================
+
+* Stephan Heuel: IT Team Leiter.
+
+Herausforderungen und Besonderheiten
+====================================
+
+* Es ist eine multinationale Firma. Wundere dich daher nicht, wenn dein "Bewerbungsprozess" über HR Mitarbeiter in Indien, Ungarn, UK, oder USA abgewickelt wird.
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5706418344" ***
+
+This version focuses solely on the relevant content and removes any unrelated sections.
+
+
+
+*** FILENAME: "TP/pages/5674632052" ***
+ wird individuell abgesprochen, wie mit der zusätzlichen Zeit umgegangen werden kann.
+- Sofern zusätzliche Reisezeit zum Arbeitsweg entsteht, kann diese zusätzliche Reisezeit als Arbeitszeit verbucht werden (separater Task "07 Arbeitsweg zusätzlich gemäss Absprache").
+- Reisezeit, die auf Wunsch der Einsatzfirma entsteht, muss bei der Einsatzfirma verbucht werden.
+- Die Reisezeit von Cudos zur Einsatzfirma (z.B. nach MA-Info) oder umgekehrt gilt als Arbeitszeit (Task "02 MA-Info / Events / EJG / Diverses"). 
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5706418370" ***
+ erlaubt, jedoch ist die Home Office Politik eher restriktiv.
+
+### Herausforderungen und Besonderheiten
+
+- Viel Eigeninitiative erwartet.
+- Veraltete Tools; Umstellung auf Git ist geplant.
+- Kernarbeitszeit: 9:00-11:30 und 13:00-16:00
+
+### Präsentationen und Vorträge
+
+* Trainee Projekt-Präsentationen Aufzeichnungen: G:\Geteilte Ablagen\MF\_NoBackup\0\_Aufzeichnungen Trainee Projekt-Präsentationen
+* Trainee Projekt-Präsentation Folien: G:\Geteilte Ablagen\MF\_Projekte\MF - Trainee-Programm - MF-8810\000 Projektmanagement\Trainee Projekt-Präsentationen\Rheinmetall
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/8448770049" ***
+ Folien: G:\Geteilte Ablagen\MF\_Projekte\MF - Trainee-Programm - MF-8810\000 Projektmanagement\Trainee Projekt-Präsentationen\Riedel
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5712576857" ***
+                  |
+| 2     | Datalink Layer: Kommunikation mit Frames innerhalb eines Netzwerks   |
+| 1     | Physical Layer: Physische Übertragung von Bits als 1 oder 0       |
+
+#### Internet Model
+
+| Layer | Beschreibung & Beispiele                                             |
+|-------|--------------------------------------------------------------------|
+| 4     | Application Layer: Beinhaltet Application, Presentation, Session   |
+| 3     | Transport Layer: Entspricht dem Transport Layer                     |
+| 2     | Internet Layer: Entspricht dem Network Layer                        |
+| 1     | Link Layer: Beinhaltet Data Link und Physical Layer                |
+
+### Sortierungsalgorithmen
+
+| Algorithmus   | Best          | Average       | Worst           | Stable |
+|---------------|---------------|---------------|------------------|--------|
+| Quick Sort    | n * log(n)    | n * log(n)    | n²               | Nein   |
+| Merge Sort    | n * log(n)    | n * log(n)    | n * log(n)      | Ja     |
+| Heap Sort     | n * log(n)    | n * log(n)    | n * log(n)      | Nein   |
+| Tree Sort     | n * log(n)    | n * log(n)    | n * log(n)(if balanced) | Ja |
+
+#### Quicksort
+
+- Definiere ein Pivot-Element.
+- Erstelle zwei (implizite) Sub-Arrays.
+- Verschiebe alle Elemente, die größer sind, in das rechte Array und die kleineren in das linke Array.
+- Wiederhole rekursiv für die Sub-Arrays.
+
+#### Merge Sort
+
+- Unterteile das Array in Subarrays der Länge 1.
+- Merge rekursiv jeweils 2 Subarrays in ein größeres Array und sortiere es dabei.
+
+#### Tree Sort
+
+- Baue einen Binärbaum.
+- Füge jedes neue Element an die richtige Stelle im Baum ein.
+- Verwende einen Self-balancing Binary Search Tree, um ineffiziente Strukturen zu vermeiden.
+
+--- 
+
+
+
+
+*** FILENAME: "TP/pages/5706418361" ***
+ für einen Jahres-Einsatz.
+* Einmal pro Monat wird ein Apero organisiert, um das Team zusammenzuführen.
+* Anwesenheit im Büro: Dienstag und jeden zweiten Mittwoch (sonst Home Office möglich).
+
+---
+
+
+
+
+*** FILENAME: "TP/pages/5703532878" ***
+ 6. Bewerbungsbestätigung / Einladung Codility
+Liebe/r XY,
+
+Bei uns sind wir alle per Du, deshalb spreche ich dich gleich mit deinem Vornamen an. Ich hoffe, das ist in Ordnung für dich. 
+
+Zuerst einmal vielen Dank für deine Bewerbung. Es freut mich, dass du dich für uns und unser Software Trainee-Programm interessierst. Deine Bewerbungsunterlagen sehen sehr interessant aus und könnten gut zum Trainee-Programm passen.
+
+Gerne würde ich dir in einem ersten Schritt unseren Online-Programmiertest schicken, sodass wir schon mal sehen können, wie deine Programmierkenntnisse sind. Dies gehört zu unserem Standard-Bewerbungsprozess ([siehe Jobs-Page](https://www.m-f.ch/jobs)). Der Test dauert maximal 140 Minuten, besteht aus drei Aufgaben und ist in der Programmiersprache deiner Wahl lösbar. Den Zeitpunkt, wann du den Test lösen möchtest, kannst du ebenfalls frei wählen. Ich würde dir den Link in einer separaten Mail schicken. Ist das gut für dich?
+
+Besten Dank und einen schönen Tag!  
+Viele Grüsse,  
+Anna Laura
+
+---
+
+### 7. Einladung 1. Interview
+Liebe/r XY,
+
+Vielen Dank für das rasche Lösen des Codility-Tests. Deine Lösungen sehen soweit gut aus (auch wenn du nicht die volle Punktzahl geholt hast).
+
+Feedback von meinem Kollegen (Senior Ingenieur):
+- Insgesamt sauberer Code
+- In der ersten Aufgabe hat sie die negativen Zahlen vergessen
+- In der 4. Aufgabe ist sie über eine hässliche Eigenheit von Java gestolpert. Ansonsten käme sie da locker auf >60 %
+
+Wir würden dich deshalb sehr gerne zum ersten Interview einladen. Wann hättest du Zeit? Kommende Woche würde beispielsweise der Mittwoch, Donnerstag oder Freitag gut passen. Das erste Interview dauert in der Regel etwa 1.5h und ist gemeinsam mit einem Senior Ingenieur und mir.
+
+Beste Grüsse und einen schönen Abend,  
+Rachel
+
+---
+
+### 8. Einladung 2. Interview
+Hallo XY,
+
+Danke vielmals für deinen Besuch bei uns. Ich hoffe, es war auch für dich ein angenehmes Gespräch.
+
+Ich möchte dich gar nicht länger auf die Folter spannen und dir mitteilen, dass wir dich gerne zum zweiten Interview einladen möchten. Bitte schicke mir doch noch die Referenz, sobald du es abklären konntest.
+
+Falls du übernächste Woche bereits fürs zweite Interview vorbei kommen möchtest, wäre der Mittwoch, 16.10. nachmittags und Freitag, 18.10. nachmittags noch frei. Klär doch mal ab, wann es dir passen würde.
+
+Ich freue mich, wieder von dir zu hören und wünsche dir einen schönen Abend.
+
+Beste Grüsse,  
+Rachel
+
+---
+
+### 9. Absage
+#### 9.1 Direkte Absage
+Hallo XY,
+
+Vielen Dank für deine Bewerbung. Wir haben deine Unterlagen soeben intern besprochen, sind jedoch zum Schluss gekommen, dass deine Vorkenntnisse sowie auch deine schulischen Leistungen leider nicht für unser Trainee-Programm reichen.
+
+Ich wünsche dir für die Stellensuche viel Erfolg und hoffe, dass du bald deine Traumstelle findest.
+
+Alles Gute und beste Grüsse,  
+Rachel
+
+---
+
+Guten Tag Herr XY,
+
+Vielen Dank für Ihre Bewerbung und Ihr Interesse an unserem Software Trainee-Programm. Wir haben die Unterlagen soeben intern besprochen, sind jedoch zum Schluss gekommen, dass Ihre Vorkenntnisse im Bereich Software-Engineering leider nicht für unser Trainee-Programm reichen. Wir wünschen Ihnen viel Erfolg bei der Jobsuche und hoffen, dass Sie bald Ihre Traumstelle finden.
+
+Alles Gute und beste Grüsse,  
+Rachel Blaser
+
+---
+
+Lieber XY,
+
+Vielen Dank für Ihre Bewerbung und Ihr Interesse an unserem Software Trainee-Programm. Für unser Trainee-Programm werden einen Bachelor- oder Masterabschluss sowie sehr gute Deutschkenntnisse (Niveau C1) vorausgesetzt. Gerne dürfen Sie sich wieder bei uns melden, sobald Sie Ihr Studium abgeschlossen haben. Bis dahin wünschen wir Ihnen viel Erfolg bei der Stellensuche.
+
+Alles Gute und beste Grüsse,  
+Rachel Blaser
+
+---
+
+Dear XY,
+
+
+
+
+*** FILENAME: "TP/pages/5703532878" ***
+ Wir haben die Unterlagen soeben intern besprochen, sind jedoch zum Schluss gekommen, dass Ihre Vorkenntnisse im Bereich Software-Engineering leider nicht für unser Trainee-Programm reichen. Wir wünschen Ihnen viel Erfolg bei der Jobsuche und hoffen, dass Sie bald Ihre Traumstelle finden.
+
+Alles Gute und beste Grüsse,  
+Rachel Blaser
+
+---
+
+Lieber XY,
+
+Vielen Dank für Ihre Bewerbung und Ihr Interesse an unserem Software Trainee-Programm. Für unser Trainee-Programm werden einen Bachelor- oder Masterabschluss sowie sehr gute Deutschkenntnisse (Niveau C1) vorausgesetzt. Gerne dürfen Sie sich wieder bei uns melden, sobald Sie Ihr Studium abgeschlossen haben. Bis dahin wünschen wir Ihnen viel Erfolg bei der Stellensuche.
+
+Alles Gute und beste Grüsse,  
+Rachel Blaser
+
+---
+
+Dear XY,
+
+Many thanks for your interest and your application. Unfortunately, fluent German speaking and writing (minimum C1) is a must for all our jobs. So as soon as you have improved your German to C1, you can write me an email again and we will consider your application. I hope that's fine for you.  
+
+Until then, I wish you all the best.
+
+Best Regards,  
+Rachel
+
+---
+
+#### 9.2 Absage nach Codility
+Lieber XY,
+
+Vielen Dank für das Lösen der Codility-Aufgaben. Wir haben deine Lösungsvorschläge intern besprochen, sind jedoch zum Schluss gekommen, dass deine Vorkenntnisse leider nicht für unser Trainee-Programm reichen. Beispielsweise übergibst du in der "verbesserten" Version der Aufgabe 1 den Rückgabewert einer Funktion über eine globale Variable (ElementForArray), und dies ist gemäss Aussage unserer Seniors ein absolutes No-Go. Die Aufgabe 2 war jedoch gut gelöst. Verglichen zu den bestehenden Trainees und anderen Bewerbern müsstest du vermutlich zu viel Grundlagen-Know-how aufholen. Ich hoffe, du verstehst unseren Entscheid.
+
+Ich wünsche dir für die Stellensuche viel Erfolg und hoffe, dass du bald deine Traumstelle findest.  
+Alles Gute und beste Grüsse,  
+Rachel
+
+---
+
+Lieber XY,
+
+Vielen Dank für das Lösen des Codility Tests, du findest deinen Report anbei. Ich konnte dein Ergebnis nun mit einem Senior Ingenieur besprechen. Leider sind wir zum Schluss gekommen, dass dieses Ergebnis nicht fürs Trainee-Programm reicht. Deine Ansätze sind gut, aber unserer Meinung nach ist es zu laienhaft implementiert.
+
+Feedback von meinem Kollegen:  
+*Er scheint noch nicht wirklich viel Python Erfahrung zu haben, da die 1. Aufgabe etwas umständlich gelöst wurde.*  
+*Die 2. Aufgabe finde ich ok gelöst.*  
+*Die Formel in der 3. Aufgabe funktioniert nur für Spezialfälle. Zufälligerweise funktioniert es für die Beispiele (was ziemlich fies ist). Ich dachte erst, er hätte zu wenig Zeit gehabt, aber die Aussage, dass an der sqrt() Funktion etwas nicht stimmt, finde ich ein bisschen bedenklich.*  
+
+Ich wollte dir das Feedback eins-zu-eins weitergeben, sodass du unseren Entscheid nachvollziehen kannst. Falls du noch Fragen dazu hast, kannst du dich gerne bei mir melden.  
+Ich danke dir für dein Interesse und wünsche dir viel Erfolg bei der Stellensuche und weiterhin alles Gute!
+
+Beste Grüsse,  
+Rachel
+
+---
+
+#### 9.3 Absage nach 1. Interview
+Guten Tag Herr XY,
+
+Ich möchte mich nochmals herzlich für das freundliche Bewerbungsgespräch vom letzten Freitag bedanken. Nach Rücksprache mit XY muss ich Ihnen jedoch mitteilen, dass es vom technischen Niveau nicht reicht, um am Trainee-Programm teilzunehmen.
+
+Ich bedanke mich für Ihr Interesse und wünsche Ihnen für die Zukunft alles Gute.
+
+Freundliche Grüsse
+
+---
+
+Hallo XY,
+
+Ich möchte mich nochmals für das offene Gespräch und deinen Besuch bei uns bedanken. Nach Rücksprache mit XY muss ich dir jedoch mitteilen, dass wir dich leider nicht zum zweiten Interview einladen. Der Hauptgrund dafür sind die fehlenden OO-Kenntnisse.
+
+
+
+
+*** FILENAME: "TP/pages/5703532878" ***
+ dir viel Erfolg bei der Stellensuche und weiterhin alles Gute!
+
+Beste Grüsse,  
+Rachel
+
+---
+
+#### 9.3 Absage nach 1. Interview
+Guten Tag Herr XY,
+
+Ich möchte mich nochmals herzlich für das freundliche Bewerbungsgespräch vom letzten Freitag bedanken. Nach Rücksprache mit XY muss ich Ihnen jedoch mitteilen, dass es vom technischen Niveau nicht reicht, um am Trainee-Programm teilzunehmen.
+
+Ich bedanke mich für Ihr Interesse und wünsche Ihnen für die Zukunft alles Gute.
+
+Freundliche Grüsse
+
+---
+
+Hallo XY,
+
+Ich möchte mich nochmals für das offene Gespräch und deinen Besuch bei uns bedanken. Nach Rücksprache mit XY muss ich dir jedoch mitteilen, dass wir dich leider nicht zum zweiten Interview einladen. Der Hauptgrund dafür sind die fehlenden OO-Kenntnisse.
+
+*Ausserdem haben wir das Gefühl, dass du im Embedded-Umfeld besser aufgehoben bist. Als persönlicher Tipp für weitere Interviews: Versuche dich noch etwas klarer und bestimmter auszudrücken, um dabei mehr Sicherheit und Klarheit auszustrahlen. Falls du nicht genau verstehst, was ich meine, kannst du mich auch gerne kurz anrufen.*  
+*oder*  
+*Ausserdem sind wir nicht ganz sicher, ob es aufgrund deiner Interessen das Richtige für dich ist. Deine Motivation fürs Trainee-Programm und die Begeisterung an Software Engineering haben wir etwas vermisst.*
+
+Ich hoffe, du verstehst unseren Entscheid. Ich bedanke mich für dein Interesse und wünsche dir für die Zukunft alles Gute.
+
+---
+
+### 9.4 Absage nach 2. Interview
+Lieber XY,
+
+Ich möchte mich für deinen Besuch bei uns bedanken. Nach Rücksprache mit Reto und XY muss ich dir jedoch mitteilen, dass wir uns für einen anderen Bewerber entschieden haben. Du bringst zwar schon viele Kenntnisse mit und hast die Aufgaben im zweiten Interview gut gelöst, aber wir haben jemanden gefunden, der uns noch mehr überzeugen konnte.
+
+Ich persönlich kann dir als Feedback zum ersten Interview noch Folgendes auf den Weg geben: Du darfst ruhig mehr Begeisterung und Interesse zeigen, dies haben wir etwas zu wenig gespürt. Versuche ausserdem etwas klarer und überzeugter zu kommunizieren. Als Bewerber darfst du auch gewisse Forderungen stellen und sagen, was du von einem Arbeitgeber erwartest und was dir wichtig ist.  
+
+Ich hoffe, du verstehst unseren Entscheid. Ansonsten kannst du dich auch gerne telefonisch bei mir melden. Ich bedanke mich vielmals für dein Interesse und wünsche dir für die Zukunft alles Gute und dass du bald deinen Traumjob findest.
+
+Beste Grüsse,  
+Rachel
+
+--- 
+
+
+
+

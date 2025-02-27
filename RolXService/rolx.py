@@ -52,6 +52,7 @@ class Rolx():
             
         except requests.exceptions.RequestException as e:
             print(f"HTTP Request failed, could not get RolX Data: {e}")
+            self.__start_timer()
             raise e
         
     def get_data(self, sql_query=None):
