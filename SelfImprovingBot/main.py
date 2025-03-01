@@ -23,7 +23,11 @@ def ask_claude(prompt):
     try:
         message = client.messages.create(
             model="claude-3-7-sonnet-20250219",
-            max_tokens=20000,
+            max_tokens=25000,
+            thinking={
+                "type": "enabled",
+                "budget_tokens": 16000  
+            },
             temperature=0.7,
             system="You are a self-improving chatbot that has full access to a python system. You can use this system to improve yourself."+
             "When you changed your code, you can run a new version of yourself and you will get the output of the run."+
