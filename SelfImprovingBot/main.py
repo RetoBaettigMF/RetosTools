@@ -1,4 +1,5 @@
 import os
+import traceback
 import anthropic
 import json
 import time
@@ -229,7 +230,7 @@ class KnowledgeBase:
             )
             
             file_path = os.path.join(category_dir, f"{key}.json")
-            with open(file_path, "w") as f:
+            with open(file_path, "w", encoding='utf-8') as f:
                 json.dump(knowledge_item.to_dict(), f, indent=2)
                 
             # If this knowledge relates to skills, update the skill model
@@ -483,7 +484,7 @@ class ConversationManager:
     def _ensure_history_exists(self) -> None:
         """Make sure the history file exists"""
         if not os.path.exists(self.history_file):
-            with open(self.history_file, "w") as f:
+            with open(self.history_file, "w", encoding='utf-8') as f:
                 f.write(f"# Conversation History - Started {datetime.datetime.now()}\n\n")
                 
     def add_user_message(self, content: str) -> None:
@@ -520,7 +521,7 @@ class ConversationManager:
         result = f"# Try {self.try_number}\n## Prompt:\n{prompt}\n"
         result += self.format_response(response)
         
-        with open(self.history_file, "a") as f:
+        with open(self.history_file, "a", encoding='utf-8') as f:
             f.write(result)
             
         self.try_number += 1
@@ -555,7 +556,7 @@ class CodeManager:
             timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
             backup_path = os.path.join(self.backup_dir, f"main_{timestamp}.py")
             
-            with open(backup_path, "w") as f:
+            with open(backup_path, "w", encoding='utf-8') as f:
                 f.write(current_code)
             return True
         except Exception as e:
@@ -569,7 +570,7 @@ class CodeManager:
             self.backup_current_code()
             
             # Then write the new code
-            with open("main.py", "w") as f:
+            with open("main.py", "w", encoding='utf-8') as f:
                 f.write(new_code)
             return True
         except Exception as e:
@@ -930,61 +931,79 @@ class SelfImprovingChatbot:
         # Show initial progress
         print(self.command_processor.process_command("progress", []))
         print("\n")
-        
+        error = None
+            
         while True:
-            user_input = input(f"{Config.USER_NAME}'s input: ")
-            
-            # Handle empty input
-            if user_input == "":
-                user_input = "Ok. Write the next version of yourself."
+            if (not error):
+                user_input = input(f"{Config.USER_NAME}'s input: ")
                 
-            # Handle exit commands
-            if user_input.lower() in ['quit', 'exit']:
-                print("Goodbye!")
-                break
+                # Handle empty input
+                if user_input == "":
+                    user_input = "Ok. Write the next version of yourself."
+                    
+                # Handle exit commands
+                if user_input.lower() in ['quit', 'exit']:
+                    print("Goodbye!")
+                    break
                 
-            # Handle special commands
-            if user_input.startswith('/'):
-                result = self.process_command(user_input)
-                if result:
-                    print(result)
-                    continue
-            
-            # Record this interaction
-            self.progress_tracker.record_interaction(
-                "conversation",
-                {"user_input": user_input}
-            )
+                # Handle special commands
+                if user_input.startswith('/'):
+                    result = self.process_command(user_input)
+                    if result:
+                        print(result)
+                        continue
                 
-            # Normal flow - ask Claude
-            prompt = self.prepare_prompt(user_input)
-            self.conversation.add_user_message(prompt)
-            
-            print("Thinking...")
-            response = self.claude.ask(self.conversation.get_messages())
-            
-            # Add response to conversation history
-            if "research_idea" in response:
-                self.conversation.add_assistant_message(response["research_idea"])
+            else: 
+                user_input = error
                 
-            # Process and log the interaction
-            formatted_response = self.conversation.log_interaction(prompt, response)
-            print(formatted_response)
-            
-            # Process the response for potential code updates and knowledge extraction
-            self.process_response(response, user_input)
-            
-            # After processing a response that might relate to the learning plan,
-            # check if we should advance in the learning plan
-            current_topic = self.knowledge.learning_plan.get_current_topic()
-            if current_topic:
-                topic_name = current_topic["name"].lower()
-                if topic_name in user_input.lower() or topic_name in response.get("research_idea", "").lower():
-                    # This interaction was related to the current learning topic
-                    # There's a chance we should mark it as complete
-                    if "complete" in user_input.lower() or "finished" in user_input.lower():
-                        self.knowledge.complete_current_learning_topic()
-                        print(f"Marked learning topic '{topic_name}' as complete!")
+            try:
+                # Record this interaction
+                self.progress_tracker.record_interaction(
+                    "conversation",
+                    {"user_input": user_input}
+                )
+                    
+                # Normal flow - ask Claude
+                prompt = self.prepare_prompt(user_input)
+                self.conversation.add_user_message(prompt)
+                
+                print("Thinking...")
+                response = self.claude.ask(self.conversation.get_messages())
+                
+                # Add response to conversation history
+                if "research_idea" in response:
+                    self.conversation.add_assistant_message(response["research_idea"])
+                    
+                # Process and log the interaction
+                formatted_response = self.conversation.log_interaction(prompt, response)
+                print(formatted_response)
+                
+                # Process the response for potential code updates and knowledge extraction
+                self.process_response(response, user_input)
+                
+                # After processing a response that might relate to the learning plan,
+                # check if we should advance in the learning plan
+                current_topic = self.knowledge.learning_plan.get_current_topic()
+                if current_topic:
+                    topic_name = current_topic["name"].lower()
+                    if topic_name in user_input.lower() or topic_name in response.get("research_idea", "").lower():
+                        # This interaction was related to the current learning topic
+                        # There's a chance we should mark it as complete
+                        if "complete" in user_input.lower() or "finished" in user_input.lower():
+                            self.knowledge.complete_current_learning_topic()
+                            print(f"Marked learning topic '{topic_name}' as complete!")
+                error = None
+            except Exception as e:
+                error_message = f"Error: {str(e)}"
+    
+                # Get the stack trace
+                stack_trace = traceback.format_exc()
+    
+                # Combine the error message and stack trace
+                error = f"{error_message}\nStack Trace:\n{stack_trace}"
+                logger.error(error)
+                print(error)
+                print("Trying again.")
 
 # Entry point
 def main():
@@ -997,3 +1016,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+"""
+Your self improvement mechanism uses to many tokens. Implement a plan to improve that situation. E.g. make multiple code files and add Function calling to read them if needed. You could also consider documenting the architecture of the code and read it first when needed instead of reading the whole code.
+"""
