@@ -1,0 +1,16 @@
+{
+  "data": {
+    "type": "command",
+    "timestamp": 1740914243.171109,
+    "details": {
+      "command": "help",
+      "args": []
+    }
+  },
+  "category": "interactions",
+  "key": "interaction_command_1740914243",
+  "created_at": 1740914243.171109,
+  "updated_at": 1740914243.171109,
+  "confidence": 0.5,
+  "source": "direct"
+}

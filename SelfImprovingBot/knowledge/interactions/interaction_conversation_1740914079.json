@@ -1,0 +1,15 @@
+{
+  "data": {
+    "type": "conversation",
+    "timestamp": 1740914079.3705385,
+    "details": {
+      "user_input": "what do you need from me?"
+    }
+  },
+  "category": "interactions",
+  "key": "interaction_conversation_1740914079",
+  "created_at": 1740914079.3705385,
+  "updated_at": 1740914079.3705385,
+  "confidence": 0.5,
+  "source": "direct"
+}

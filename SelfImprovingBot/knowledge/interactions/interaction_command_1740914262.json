@@ -1,0 +1,18 @@
+{
+  "data": {
+    "type": "command",
+    "timestamp": 1740914262.7818022,
+    "details": {
+      "command": "code",
+      "args": [
+        "status"
+      ]
+    }
+  },
+  "category": "interactions",
+  "key": "interaction_command_1740914262",
+  "created_at": 1740914262.7818022,
+  "updated_at": 1740914262.7818022,
+  "confidence": 0.5,
+  "source": "direct"
+}
