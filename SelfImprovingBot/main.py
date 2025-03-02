@@ -25,8 +25,8 @@ logger = logging.getLogger("self-improving-chatbot")
 @dataclass
 class Config:
     ANTHROPIC_MODEL: str = "claude-3-7-sonnet-20250219"
-    MAX_TOKENS: int = 200000
-    THINKING_BUDGET: int = 100000
+    MAX_TOKENS: int = 64000
+    THINKING_BUDGET: int = 32000
     HISTORY_FILE: str = "history.txt"
     KNOWLEDGE_DIR: str = "knowledge"
     CODE_BACKUP_DIR: str = "code_backups"
