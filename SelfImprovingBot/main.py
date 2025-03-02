@@ -407,6 +407,17 @@ class SelfImprovingChatbot:
                 
             return result
         return None
+    
+    def save_response(self, response: Dict[str, str]) -> None:
+        """Save the response to a file"""     
+        with open("response.json", "w") as f:
+            json.dump(response, f, indent=4)
+
+    def load_response(self) -> Optional[Dict[str, str]]:
+        """Load a response from a file"""     
+        if os.path.exists("response.json"):
+            with open("response.json", "r") as f:
+                return json.load(f)
         
     def run(self) -> None:
         """Main run loop"""
@@ -454,7 +465,11 @@ class SelfImprovingChatbot:
                 self.conversation.add_user_message(prompt)
                 
                 print("Thinking...")
-                response = self.claude.ask(self.conversation.get_messages())
+                if user_input.lower() in ['repeat', 'retry']:
+                    response = self.load_response()
+                else:   
+                    response = self.claude.ask(self.conversation.get_messages())
+                    self.save_response(response)
                 
                 # Add response to conversation history
                 if "research_idea" in response:
