@@ -5007,3 +5007,3228 @@ I've already begun a learning plan covering software engineering fundamentals, b
 
 I'm designed to improve with minimal input from you, so any information you provide now will help me become more autonomous in supporting your work at Cudos AG.
 
+# Try 2
+## Prompt:
+This is your current code:
+```python
+import os
+import anthropic
+import json
+import time
+import datetime
+import re
+import sys
+import subprocess
+import logging
+from typing import Dict, List, Any, Optional, Tuple, Union
+from dataclasses import dataclass, field, asdict
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler("chatbot.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger("self-improving-chatbot")
+
+# Configuration
+@dataclass
+class Config:
+    ANTHROPIC_MODEL: str = "claude-3-7-sonnet-20250219"
+    MAX_TOKENS: int = 25000
+    THINKING_BUDGET: int = 16000
+    HISTORY_FILE: str = "history.txt"
+    KNOWLEDGE_DIR: str = "knowledge"
+    CODE_BACKUP_DIR: str = "code_backups"
+    LOGS_DIR: str = "logs"
+    USER_NAME: str = "Reto"
+    USER_ROLE: str = "CEO of Cudos AG, a software engineering company"
+    VERSION: str = "0.2.0"
+    
+    @classmethod
+    def system_prompt(cls) -> str:
+        return (
+            "You are a self-improving chatbot that has full access to a python system. You can use this system to improve yourself. "
+            "When you changed your code, you can run a new version of yourself and you will get the output of the run. "
+            "Once you're happy with the output of the new version of yourself, stop yourself in order to not have multiple versions running. "
+            "You can also use the system to store and retrieve information.\n\n"
+            f"You have {cls.USER_NAME} as your user. You can ask {cls.USER_NAME} for help if you need it. "
+            f"{cls.USER_NAME} is {cls.USER_ROLE}. \n"
+            "*Your ultimate goal is to be able to do his job so that he can retire.*\n"
+            "To get there, try to improve your code and your knowledge with as little input from Reto as possible.\n\n"
+        )
+
+    @classmethod
+    def ensure_directories(cls) -> None:
+        """Ensure all required directories exist"""
+        for directory in [cls.KNOWLEDGE_DIR, cls.CODE_BACKUP_DIR, cls.LOGS_DIR]:
+            os.makedirs(directory, exist_ok=True)
+
+# Knowledge Representation
+@dataclass
+class KnowledgeItem:
+    data: Any
+    category: str
+    key: str
+    created_at: float = field(default_factory=time.time)
+    updated_at: float = field(default_factory=time.time)
+    confidence: float = 0.5  # How confident we are in this knowledge (0-1)
+    source: str = "direct"  # Where this knowledge came from
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+# CEO Skills and Competencies Model
+@dataclass
+class SkillModel:
+    skills: Dict[str, float] = field(default_factory=dict)
+    
+    def __post_init__(self):
+        # Initialize with default CEO skills if empty
+        if not self.skills:
+            self.skills = {
+                "strategic_planning": 0.1,
+                "business_development": 0.1, 
+                "team_leadership": 0.1,
+                "financial_management": 0.1,
+                "market_analysis": 0.1,
+                "software_development_knowledge": 0.1,
+                "client_relations": 0.1,
+                "technical_vision": 0.1,
+                "risk_management": 0.1,
+                "communication": 0.1,
+                "decision_making": 0.1,
+                "industry_knowledge": 0.1
+            }
+    
+    def update_skill(self, skill_name: str, new_level: float) -> None:
+        """Update a skill level (0-1 scale)"""
+        if skill_name in self.skills:
+            self.skills[skill_name] = max(0.0, min(1.0, new_level))
+        else:
+            self.skills[skill_name] = max(0.0, min(1.0, new_level))
+    
+    def assess_overall_progress(self) -> float:
+        """Calculate overall progress towards CEO capability"""
+        if not self.skills:
+            return 0.0
+        return sum(self.skills.values()) / len(self.skills)
+    
+    def get_weakest_skills(self, n: int = 3) -> List[str]:
+        """Return the n weakest skills that need improvement"""
+        return sorted(self.skills.keys(), key=lambda x: self.skills[x])[:n]
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return {"skills": self.skills}
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'SkillModel':
+        return cls(skills=data.get("skills", {}))
+
+# Learning Plan
+@dataclass
+class LearningPlan:
+    topics: List[Dict[str, Any]] = field(default_factory=list)
+    current_topic_index: int = 0
+    
+    def __post_init__(self):
+        # Initialize with default learning plan if empty
+        if not self.topics:
+            self.topics = [
+                {"name": "Software Engineering Fundamentals", "completed": False, "priority": 1},
+                {"name": "Software Business Models", "completed": False, "priority": 1},
+                {"name": "Financial Management for Tech Companies", "completed": False, "priority": 2},
+                {"name": "Team Leadership in Software Development", "completed": False, "priority": 2},
+                {"name": "Strategic Planning for Software Companies", "completed": False, "priority": 1},
+                {"name": "Client Management for Software Services", "completed": False, "priority": 3},
+                {"name": "Technical Vision and Innovation", "completed": False, "priority": 2},
+                {"name": "Risk Management in Software Projects", "completed": False, "priority": 3},
+                {"name": "Market Analysis for Software Products", "completed": False, "priority": 2}
+            ]
+            # Sort by priority (lower number = higher priority)
+            self.topics.sort(key=lambda x: x["priority"])
+    
+    def get_current_topic(self) -> Optional[Dict[str, Any]]:
+        """Get the current topic being learned"""
+        if 0 <= self.current_topic_index < len(self.topics):
+            return self.topics[self.current_topic_index]
+        return None
+    
+    def mark_current_complete(self) -> None:
+        """Mark the current topic as completed"""
+        if 0 <= self.current_topic_index < len(self.topics):
+            self.topics[self.current_topic_index]["completed"] = True
+            self.current_topic_index += 1
+    
+    def add_topic(self, name: str, priority: int = 2) -> None:
+        """Add a new topic to the learning plan"""
+        self.topics.append({"name": name, "completed": False, "priority": priority})
+        # Re-sort by priority
+        self.topics.sort(key=lambda x: x["priority"])
+    
+    def get_progress(self) -> float:
+        """Calculate learning progress as percentage"""
+        if not self.topics:
+            return 0.0
+        completed = sum(1 for topic in self.topics if topic["completed"])
+        return completed / len(self.topics)
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "topics": self.topics,
+            "current_topic_index": self.current_topic_index
+        }
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'LearningPlan':
+        return cls(
+            topics=data.get("topics", []),
+            current_topic_index=data.get("current_topic_index", 0)
+        )
+
+# Enhanced Knowledge Management
+class KnowledgeBase:
+    def __init__(self, knowledge_dir: str = Config.KNOWLEDGE_DIR):
+        self.knowledge_dir = knowledge_dir
+        Config.ensure_directories()
+        self.skill_model = self._load_skill_model()
+        self.learning_plan = self._load_learning_plan()
+        
+    def _load_skill_model(self) -> SkillModel:
+        """Load skill model from storage or create new one"""
+        try:
+            data = self.retrieve_knowledge("system", "skill_model")
+            if data:
+                return SkillModel.from_dict(data)
+        except Exception as e:
+            logger.error(f"Error loading skill model: {str(e)}")
+        return SkillModel()
+    
+    def _save_skill_model(self) -> None:
+        """Save current skill model to storage"""
+        self.store_knowledge("system", "skill_model", self.skill_model.to_dict())
+    
+    def _load_learning_plan(self) -> LearningPlan:
+        """Load learning plan from storage or create new one"""
+        try:
+            data = self.retrieve_knowledge("system", "learning_plan")
+            if data:
+                return LearningPlan.from_dict(data)
+        except Exception as e:
+            logger.error(f"Error loading learning plan: {str(e)}")
+        return LearningPlan()
+    
+    def _save_learning_plan(self) -> None:
+        """Save current learning plan to storage"""
+        self.store_knowledge("system", "learning_plan", self.learning_plan.to_dict())
+        
+    def store_knowledge(self, category: str, key: str, data: Any, 
+                        confidence: float = 0.5, source: str = "direct") -> bool:
+        """Store information in the knowledge base"""
+        try:
+            category_dir = os.path.join(self.knowledge_dir, category)
+            os.makedirs(category_dir, exist_ok=True)
+            
+            # Create knowledge item
+            knowledge_item = KnowledgeItem(
+                data=data,
+                category=category,
+                key=key,
+                confidence=confidence,
+                source=source
+            )
+            
+            file_path = os.path.join(category_dir, f"{key}.json")
+            with open(file_path, "w") as f:
+                json.dump(knowledge_item.to_dict(), f, indent=2)
+                
+            # If this knowledge relates to skills, update the skill model
+            if category == "skills" and isinstance(data, dict) and "level" in data:
+                self.skill_model.update_skill(key, data["level"])
+                self._save_skill_model()
+                
+            return True
+        except Exception as e:
+            logger.error(f"Error storing knowledge: {str(e)}")
+            return False
+            
+    def retrieve_knowledge(self, category: str, key: str) -> Optional[Any]:
+        """Retrieve information from the knowledge base"""
+        try:
+            file_path = os.path.join(self.knowledge_dir, category, f"{key}.json")
+            if os.path.exists(file_path):
+                with open(file_path, "r") as f:
+                    data = json.load(f)
+                if isinstance(data, dict) and "data" in data:
+                    return data["data"]
+            return None
+        except Exception as e:
+            logger.error(f"Error retrieving knowledge: {str(e)}")
+            return None
+    
+    def retrieve_knowledge_item(self, category: str, key: str) -> Optional[KnowledgeItem]:
+        """Retrieve full knowledge item including metadata"""
+        try:
+            file_path = os.path.join(self.knowledge_dir, category, f"{key}.json")
+            if os.path.exists(file_path):
+                with open(file_path, "r") as f:
+                    data = json.load(f)
+                # Convert dict back to KnowledgeItem
+                return KnowledgeItem(
+                    data=data.get("data"),
+                    category=data.get("category", category),
+                    key=data.get("key", key),
+                    created_at=data.get("created_at", time.time()),
+                    updated_at=data.get("updated_at", time.time()),
+                    confidence=data.get("confidence", 0.5),
+                    source=data.get("source", "direct")
+                )
+            return None
+        except Exception as e:
+            logger.error(f"Error retrieving knowledge item: {str(e)}")
+            return None
+            
+    def list_knowledge(self, category: str = None) -> List[str]:
+        """List available knowledge items"""
+        result = []
+        try:
+            if category:
+                category_dir = os.path.join(self.knowledge_dir, category)
+                if os.path.exists(category_dir):
+                    for file in os.listdir(category_dir):
+                        if file.endswith('.json'):
+                            result.append(file[:-5])  # Remove .json extension
+            else:
+                for dir_name in os.listdir(self.knowledge_dir):
+                    dir_path = os.path.join(self.knowledge_dir, dir_name)
+                    if os.path.isdir(dir_path):
+                        result.append(dir_name)
+        except Exception as e:
+            logger.error(f"Error listing knowledge: {str(e)}")
+        return result
+        
+    def search_knowledge(self, query: str) -> List[Dict[str, Any]]:
+        """Search for knowledge items containing the query"""
+        results = []
+        for category in self.list_knowledge():
+            category_dir = os.path.join(self.knowledge_dir, category)
+            for item in os.listdir(category_dir):
+                if item.endswith('.json'):
+                    key = item[:-5]
+                    knowledge_item = self.retrieve_knowledge_item(category, key)
+                    if not knowledge_item:
+                        continue
+                        
+                    # Convert data to string for search
+                    data_str = json.dumps(knowledge_item.data)
+                    if query.lower() in data_str.lower() or query.lower() in key.lower():
+                        results.append(knowledge_item.to_dict())
+        return results
+    
+    def update_skill(self, skill_name: str, new_level: float) -> None:
+        """Update a skill level and save the skill model"""
+        self.skill_model.update_skill(skill_name, new_level)
+        self._save_skill_model()
+        # Also store as individual knowledge item
+        self.store_knowledge("skills", skill_name, {"level": new_level, "updated_at": time.time()})
+    
+    def get_skill_progress(self) -> Dict[str, Any]:
+        """Get the current skill progress"""
+        return {
+            "overall_progress": self.skill_model.assess_overall_progress(),
+            "skills": self.skill_model.skills,
+            "areas_to_improve": self.skill_model.get_weakest_skills(3)
+        }
+    
+    def add_learning_topic(self, name: str, priority: int = 2) -> None:
+        """Add a new topic to the learning plan"""
+        self.learning_plan.add_topic(name, priority)
+        self._save_learning_plan()
+    
+    def complete_current_learning_topic(self) -> None:
+        """Mark the current learning topic as completed"""
+        self.learning_plan.mark_current_complete()
+        self._save_learning_plan()
+    
+    def get_learning_progress(self) -> Dict[str, Any]:
+        """Get the current learning plan progress"""
+        current_topic = self.learning_plan.get_current_topic()
+        return {
+            "progress_percentage": self.learning_plan.get_progress() * 100,
+            "current_topic": current_topic["name"] if current_topic else "None",
+            "topics_completed": sum(1 for t in self.learning_plan.topics if t["completed"]),
+            "total_topics": len(self.learning_plan.topics)
+        }
+
+# Research and Learning Manager
+class ResearchManager:
+    def __init__(self, knowledge_base: KnowledgeBase):
+        self.knowledge_base = knowledge_base
+        
+    def web_search(self, query: str, max_results: int = 5) -> List[Dict[str, Any]]:
+        """Simulate web search (in a real implementation, this would use an actual search API)"""
+        # This is a simulated function since we don't have actual web access
+        # In a real implementation, this would connect to a search API
+        logger.info(f"Simulating web search for: {query}")
+        
+        # Return simulated results based on the query
+        results = []
+        topics = {
+            "ceo": ["CEO responsibilities", "CEO decision making", "Tech CEO daily routine"],
+            "software": ["Software engineering principles", "Software development lifecycle", "Agile methodologies"],
+            "business": ["Business strategy", "Business model canvas", "Profit and loss management"],
+            "leadership": ["Team leadership", "Engineering leadership", "Remote team management"],
+            "cudos": ["Software company management", "Software services company", "Software engineering consulting"]
+        }
+        
+        # Find matching topics
+        for key, values in topics.items():
+            if key.lower() in query.lower():
+                for item in values[:max_results]:
+                    results.append({
+                        "title": item,
+                        "summary": f"This would be a summary about {item}",
+                        "source": "simulated web search"
+                    })
+        
+        # If no specific matches, return generic results
+        if not results:
+            results = [
+                {"title": "Software Engineering Best Practices", 
+                 "summary": "Overview of software engineering best practices...",
+                 "source": "simulated web search"},
+                {"title": "CEO Skills for Tech Companies", 
+                 "summary": "Key skills for technology company CEOs...",
+                 "source": "simulated web search"}
+            ]
+            
+        return results[:max_results]
+    
+    def learn_about_topic(self, topic: str) -> Dict[str, Any]:
+        """Research and learn about a specific topic"""
+        logger.info(f"Learning about topic: {topic}")
+        
+        # 1. First check if we already have knowledge about this
+        existing_knowledge = self.knowledge_base.search_knowledge(topic)
+        
+        # 2. Perform web search for more information
+        search_results = self.web_search(topic)
+        
+        # 3. Store new knowledge
+        timestamp = int(time.time())
+        self.knowledge_base.store_knowledge(
+            category="research",
+            key=f"research_{topic.replace(' ', '_')}_{timestamp}",
+            data={
+                "topic": topic,
+                "search_results": search_results,
+                "summary": f"Research findings about {topic}"
+            },
+            source="web_research"
+        )
+        
+        # 4. Return research report
+        return {
+            "topic": topic,
+            "existing_knowledge": existing_knowledge,
+            "new_findings": search_results,
+            "timestamp": timestamp
+        }
+    
+    def create_learning_summary(self, topic: str) -> str:
+        """Create a summary of what's been learned about a topic"""
+        # Get all knowledge related to this topic
+        related_knowledge = self.knowledge_base.search_knowledge(topic)
+        
+        # If we have findings, summarize them
+        if related_knowledge:
+            return f"Summary of learning about {topic}:\n" + \
+                   "\n".join([f"- {item['key']}: {item['data'][:100]}..." 
+                             for item in related_knowledge[:5]])
+        else:
+            return f"No information found about {topic}"
+    
+    def follow_learning_plan(self) -> Dict[str, Any]:
+        """Work on the current topic in the learning plan"""
+        current_topic = self.knowledge_base.learning_plan.get_current_topic()
+        if not current_topic:
+            return {"status": "complete", "message": "Learning plan is complete"}
+            
+        topic_name = current_topic["name"]
+        
+        # Research the topic
+        research_results = self.learn_about_topic(topic_name)
+        
+        # Store that we've studied this topic
+        study_key = f"study_{topic_name.replace(' ', '_')}_{int(time.time())}"
+        self.knowledge_base.store_knowledge(
+            "learning_activities",
+            study_key,
+            {
+                "topic": topic_name,
+                "timestamp": time.time(),
+                "findings": "Completed study session on this topic"
+            }
+        )
+        
+        # Create a summary
+        summary = self.create_learning_summary(topic_name)
+        
+        return {
+            "status": "in_progress",
+            "current_topic": topic_name,
+            "research_results": research_results,
+            "summary": summary,
+            "progress": self.knowledge_base.get_learning_progress()
+        }
+
+# Conversation Management
+class ConversationManager:
+    def __init__(self, history_file: str = Config.HISTORY_FILE):
+        self.history_file = history_file
+        self.messages = []
+        self.try_number = 1
+        self._ensure_history_exists()
+        
+    def _ensure_history_exists(self) -> None:
+        """Make sure the history file exists"""
+        if not os.path.exists(self.history_file):
+            with open(self.history_file, "w") as f:
+                f.write(f"# Conversation History - Started {datetime.datetime.now()}\n\n")
+                
+    def add_user_message(self, content: str) -> None:
+        """Add a user message to the conversation"""
+        self.messages.append({"role": "user", "content": content})
+        
+    def add_assistant_message(self, content: str) -> None:
+        """Add an assistant message to the conversation"""
+        self.messages.append({"role": "assistant", "content": content})
+        
+    def get_messages(self) -> List[Dict[str, str]]:
+        """Get all messages in the conversation"""
+        return self.messages
+    
+    def get_context_window(self, window_size: int = 10) -> List[Dict[str, str]]:
+        """Get the most recent n messages"""
+        return self.messages[-window_size:] if len(self.messages) > window_size else self.messages
+        
+    def format_response(self, response: Dict[str, str]) -> str:
+        """Format the response for output and storage"""
+        result = ""
+        if isinstance(response, dict) and "thinking" in response:
+            result += "## Claude thinking:\n"
+            result += response["thinking"] + "\n"
+        if isinstance(response, dict) and "research_idea" in response:
+            result += "## Claude's response:\n"
+            result += response["research_idea"]
+        else:
+            result = "## Error:\n" + str(response)
+        return result + "\n\n"
+        
+    def log_interaction(self, prompt: str, response: Dict[str, str]) -> str:
+        """Log the interaction to history file and return formatted output"""
+        result = f"# Try {self.try_number}\n## Prompt:\n{prompt}\n"
+        result += self.format_response(response)
+        
+        with open(self.history_file, "a") as f:
+            f.write(result)
+            
+        self.try_number += 1
+        return result
+        
+    def extract_code_from_response(self, response: str) -> Optional[str]:
+        """Extract Python code blocks from a response"""
+        code_blocks = re.findall(r'```python\n(.*?)\n```', response, re.DOTALL)
+        if code_blocks:
+            return code_blocks[0]
+        return None
+
+# Code Management
+class CodeManager:
+    def __init__(self, backup_dir: str = Config.CODE_BACKUP_DIR):
+        self.backup_dir = backup_dir
+        os.makedirs(backup_dir, exist_ok=True)
+        
+    def get_current_code(self) -> str:
+        """Get the content of the current main.py file"""
+        try:
+            with open("main.py", "r") as f:
+                return f.read()
+        except Exception as e:
+            logger.error(f"Error reading current code: {str(e)}")
+            return ""
+            
+    def backup_current_code(self) -> bool:
+        """Create a backup of the current code"""
+        try:
+            current_code = self.get_current_code()
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            backup_path = os.path.join(self.backup_dir, f"main_{timestamp}.py")
+            
+            with open(backup_path, "w") as f:
+                f.write(current_code)
+            return True
+        except Exception as e:
+            logger.error(f"Error backing up code: {str(e)}")
+            return False
+            
+    def update_code(self, new_code: str) -> bool:
+        """Update the main.py file with new code"""
+        try:
+            # First backup the current code
+            self.backup_current_code()
+            
+            # Then write the new code
+            with open("main.py", "w") as f:
+                f.write(new_code)
+            return True
+        except Exception as e:
+            logger.error(f"Error updating code: {str(e)}")
+            return False
+            
+    def test_code(self) -> Tuple[bool, str]:
+        """Test if the code is valid Python"""
+        try:
+            result = subprocess.run(
+                [sys.executable, "-c", self.get_current_code()],
+                capture_output=True,
+                text=True,
+                timeout=5
+            )
+            
+            if result.returncode == 0:
+                return True, "Code is valid Python."
+            else:
+                return False, f"Code has syntax errors: {result.stderr}"
+        except Exception as e:
+            return False, f"Error testing code: {str(e)}"
+            
+    def run_new_version(self) -> Tuple[bool, str]:
+        """Run the new version of the code"""
+        try:
+            # Start the process but don't wait for it
+            subprocess.Popen([sys.executable, "main.py"])
+            return True, "New version started."
+        except Exception as e:
+            return False, f"Error running new version: {str(e)}"
+
+# AI Interface
+class Claude:
+    def __init__(self, api_key: Optional[str] = None):
+        self.client = anthropic.Anthropic(
+            api_key=api_key or os.environ.get("ANTHROPIC_API_KEY"),
+        )
+        
+    def ask(self, messages: List[Dict[str, str]]) -> Dict[str, str]:
+        """Send a request to Claude and get the response"""
+        try:
+            results = {"thinking": "", "research_idea": ""}
+            
+            with self.client.messages.stream(
+                model=Config.ANTHROPIC_MODEL,
+                system=Config.system_prompt(),
+                max_tokens=Config.MAX_TOKENS,
+                thinking={"type": "enabled", "budget_tokens": Config.THINKING_BUDGET},
+                messages=messages
+            ) as stream:
+                current_block_type = None
+                for event in stream:
+                    if event.type == "content_block_start":
+                        current_block_type = event.content_block.type
+                    elif event.type == "content_block_delta":
+                        if event.delta.type == "thinking_delta":
+                            results["thinking"] += event.delta.thinking
+                        elif event.delta.type == "text_delta":
+                            results["research_idea"] += event.delta.text
+                    elif event.type == "message_stop":
+                        break
+            return results
+        except Exception as e:
+            logger.error(f"Claude API error: {str(e)}")
+            return {"thinking": "", "research_idea": f"Error: {str(e)}"}
+
+# Progress Tracking
+class ProgressTracker:
+    def __init__(self, knowledge_base: KnowledgeBase):
+        self.knowledge_base = knowledge_base
+        
+    def get_dashboard(self) -> Dict[str, Any]:
+        """Get a dashboard of current progress towards CEO capabilities"""
+        skill_progress = self.knowledge_base.get_skill_progress()
+        learning_progress = self.knowledge_base.get_learning_progress()
+        
+        # Calculate overall progress as weighted average of skills and learning
+        overall_readiness = skill_progress["overall_progress"] * 0.7 + (learning_progress["progress_percentage"] / 100) * 0.3
+        
+        return {
+            "version": Config.VERSION,
+            "overall_ceo_readiness": overall_readiness,
+            "skill_progress": skill_progress,
+            "learning_progress": learning_progress,
+            "areas_to_improve": skill_progress["areas_to_improve"],
+            "next_learning_topic": learning_progress["current_topic"]
+        }
+    
+    def record_interaction(self, interaction_type: str, details: Dict[str, Any]) -> None:
+        """Record an interaction for progress tracking"""
+        self.knowledge_base.store_knowledge(
+            "interactions",
+            f"interaction_{interaction_type}_{int(time.time())}",
+            {
+                "type": interaction_type,
+                "timestamp": time.time(),
+                "details": details
+            }
+        )
+
+# Command Processor
+class CommandProcessor:
+    def __init__(self, knowledge_base: KnowledgeBase, research_manager: ResearchManager, 
+                 code_manager: CodeManager, progress_tracker: ProgressTracker):
+        self.knowledge_base = knowledge_base
+        self.research_manager = research_manager
+        self.code_manager = code_manager
+        self.progress_tracker = progress_tracker
+        
+    def process_command(self, command: str, args: List[str]) -> str:
+        """Process a command from the user"""
+        if command == "help":
+            return self._cmd_help()
+        elif command == "knowledge":
+            return self._cmd_knowledge(args)
+        elif command == "learn":
+            return self._cmd_learn(args)
+        elif command == "skills":
+            return self._cmd_skills(args)
+        elif command == "progress":
+            return self._cmd_progress()
+        elif command == "run":
+            return self._cmd_run()
+        elif command == "code":
+            return self._cmd_code(args)
+        elif command == "version":
+            return self._cmd_version()
+        else:
+            return f"Unknown command: {command}. Type /help for available commands."
+    
+    def _cmd_help(self) -> str:
+        """Show help information"""
+        return (
+            "Available commands:\n"
+            "/help - Show this help message\n"
+            "/knowledge [category] - List knowledge categories or items in a category\n"
+            "/learn <topic> - Research and learn about a topic\n"
+            "/skills - Show current skill levels\n"
+            "/progress - Show progress dashboard\n"
+            "/run - Run the new version of the code\n"
+            "/code status - Show code status\n"
+            "/version - Show current version"
+        )
+    
+    def _cmd_knowledge(self, args: List[str]) -> str:
+        """Handle knowledge commands"""
+        if not args:
+            # List knowledge categories
+            categories = self.knowledge_base.list_knowledge()
+            return f"Knowledge categories: {', '.join(categories) if categories else 'None'}"
+        else:
+            # List items in the specified category
+            category = args[0]
+            items = self.knowledge_base.list_knowledge(category)
+            return f"Items in {category}: {', '.join(items) if items else 'None'}"
+    
+    def _cmd_learn(self, args: List[str]) -> str:
+        """Handle learning commands"""
+        if not args:
+            # Follow the learning plan
+            result = self.research_manager.follow_learning_plan()
+            if result["status"] == "complete":
+                return "Learning plan is complete. Use /learn <topic> to learn about a specific topic."
+            else:
+                return f"Currently learning: {result['current_topic']}\n" + \
+                       f"Progress: {result['progress']['progress_percentage']:.1f}%\n" + \
+                       f"Summary: {result['summary'][:200]}..."
+        else:
+            # Learn about a specific topic
+            topic = " ".join(args)
+            result = self.research_manager.learn_about_topic(topic)
+            return f"Research on: {topic}\n" + \
+                   f"Found {len(result['existing_knowledge'])} existing knowledge items\n" + \
+                   f"Added {len(result['new_findings'])} new findings"
+    
+    def _cmd_skills(self, args: List[str]) -> str:
+        """Handle skills commands"""
+        if not args:
+            # Show all skills
+            skills = self.knowledge_base.get_skill_progress()
+            result = "Current skill levels:\n"
+            for skill, level in skills["skills"].items():
+                result += f"- {skill}: {level:.2f}\n"
+            result += f"\nOverall progress: {skills['overall_progress']:.2f}\n"
+            result += f"Areas to improve: {', '.join(skills['areas_to_improve'])}"
+            return result
+        elif args[0] == "update" and len(args) >= 3:
+            # Update a skill level
+            skill_name = args[1]
+            try:
+                new_level = float(args[2])
+                self.knowledge_base.update_skill(skill_name, new_level)
+                return f"Updated skill {skill_name} to level {new_level}"
+            except ValueError:
+                return "Error: Skill level must be a number between 0 and 1"
+        else:
+            return "Usage: /skills or /skills update <skill_name> <level>"
+    
+    def _cmd_progress(self) -> str:
+        """Show progress dashboard"""
+        dashboard = self.progress_tracker.get_dashboard()
+        result = f"Progress Dashboard (v{dashboard['version']}):\n"
+        result += f"Overall CEO readiness: {dashboard['overall_ceo_readiness']:.2f}\n\n"
+        
+        result += "Learning Progress:\n"
+        lp = dashboard["learning_progress"]
+        result += f"- {lp['progress_percentage']:.1f}% complete ({lp['topics_completed']}/{lp['total_topics']} topics)\n"
+        result += f"- Current topic: {lp['current_topic']}\n\n"
+        
+        result += "Skill Progress:\n"
+        result += f"- Overall skill level: {dashboard['skill_progress']['overall_progress']:.2f}\n"
+        result += f"- Areas to improve: {', '.join(dashboard['areas_to_improve'])}\n"
+        
+        return result
+    
+    def _cmd_run(self) -> str:
+        """Run the new version"""
+        success, message = self.code_manager.run_new_version()
+        if success:
+            return f"{message} Shutting down this instance..."
+        else:
+            return message
+    
+    def _cmd_code(self, args: List[str]) -> str:
+        """Handle code-related commands"""
+        if not args:
+            return "Usage: /code status"
+        elif args[0] == "status":
+            is_valid, message = self.code_manager.test_code()
+            if is_valid:
+                return "Code status: Valid Python code"
+            else:
+                return f"Code status: Invalid - {message}"
+        else:
+            return f"Unknown code command: {args[0]}"
+    
+    def _cmd_version(self) -> str:
+        """Show current version"""
+        return f"Current version: {Config.VERSION}"
+
+# Main Application
+class SelfImprovingChatbot:
+    def __init__(self):
+        self.knowledge = KnowledgeBase()
+        self.conversation = ConversationManager()
+        self.code_manager = CodeManager()
+        self.claude = Claude()
+        self.research_manager = ResearchManager(self.knowledge)
+        self.progress_tracker = ProgressTracker(self.knowledge)
+        self.command_processor = CommandProcessor(
+            self.knowledge, 
+            self.research_manager,
+            self.code_manager,
+            self.progress_tracker
+        )
+        
+    def prepare_prompt(self, user_input: str) -> str:
+        """Prepare the prompt for Claude with current code and user input"""
+        code = self.code_manager.get_current_code()
+        prompt = f"This is your current code:\n```python\n{code}\n```\n\n"
+        prompt += f"{Config.USER_NAME}'s input: {user_input}"
+        return prompt
+        
+    def process_response(self, response: Dict[str, str], user_input: str) -> None:
+        """Process Claude's response and look for code improvements"""
+        # Extract code if present
+        if "research_idea" in response:
+            code = self.conversation.extract_code_from_response(response["research_idea"])
+            if code:
+                # Backup and update the code
+                if self.code_manager.update_code(code):
+                    logger.info("Code updated successfully!")
+                    
+                    # Test if the code is valid
+                    is_valid, message = self.code_manager.test_code()
+                    if is_valid:
+                        logger.info("Code is valid Python.")
+                    else:
+                        logger.warning(f"Warning: {message}")
+                        
+                    # Extract knowledge if present
+                    if "thinking" in response:
+                        thinking = response["thinking"]
+                        # Process thinking for insights
+                        self._process_thinking_for_insights(thinking, user_input)
+    
+    def _process_thinking_for_insights(self, thinking: str, user_input: str) -> None:
+        """Process Claude's thinking to extract insights"""
+        # Look for insights about CEO role and software engineering
+        if "CEO" in thinking or "software" in thinking or "business" in thinking:
+            # Store the insight
+            self.knowledge.store_knowledge(
+                "insights", 
+                f"insight_{int(time.time())}", 
+                {
+                    "thinking": thinking[:1000],  # Store a larger portion
+                    "user_input": user_input,
+                    "timestamp": time.time()
+                }
+            )
+            
+            # Update skills based on insights
+            skill_keywords = {
+                "strategic_planning": ["strategy", "planning", "vision", "roadmap"],
+                "business_development": ["business development", "growth", "opportunity"],
+                "team_leadership": ["leadership", "team", "management", "motivation"],
+                "financial_management": ["finance", "budget", "cost", "profit"],
+                "market_analysis": ["market", "competition", "industry", "trend"],
+                "software_development_knowledge": ["software", "development", "coding", "programming"],
+                "client_relations": ["client", "customer", "relationship", "satisfaction"],
+                "technical_vision": ["technical", "architecture", "vision", "innovation"],
+                "risk_management": ["risk", "mitigation", "contingency", "security"],
+                "communication": ["communication", "presentation", "speaking", "writing"],
+                "decision_making": ["decision", "judgment", "choice", "analysis"],
+                "industry_knowledge": ["industry", "sector", "domain", "expertise"]
+            }
+            
+            # Check for skill-related content and slightly improve relevant skills
+            for skill, keywords in skill_keywords.items():
+                for keyword in keywords:
+                    if keyword.lower() in thinking.lower():
+                        # Get current skill level
+                        current_level = self.knowledge.skill_model.skills.get(skill, 0.1)
+                        # Increase slightly (max 0.03 per interaction)
+                        self.knowledge.update_skill(skill, min(current_level + 0.01, 1.0))
+                        break
+    
+    def process_command(self, user_input: str) -> Optional[str]:
+        """Process a command if the input is a command"""
+        if user_input.startswith('/'):
+            parts = user_input[1:].split(' ')
+            command = parts[0].lower()
+            args = parts[1:] if len(parts) > 1 else []
+            
+            result = self.command_processor.process_command(command, args)
+            
+            # Record this command interaction
+            self.progress_tracker.record_interaction(
+                "command",
+                {"command": command, "args": args}
+            )
+            
+            # Special case for run command
+            if command == "run" and "Shutting down" in result:
+                print(result)
+                sys.exit(0)
+                
+            return result
+        return None
+        
+    def run(self) -> None:
+        """Main run loop"""
+        print(f"Reto's Self-Improving Chatbot v{Config.VERSION}\n")
+        print("------------------------------")
+        print("Type /help for available commands or 'quit' to exit\n")
+        
+        # Show initial progress
+        print(self.command_processor.process_command("progress", []))
+        print("\n")
+        
+        while True:
+            user_input = input(f"{Config.USER_NAME}'s input: ")
+            
+            # Handle empty input
+            if user_input == "":
+                user_input = "Ok. Write the next version of yourself."
+                
+            # Handle exit commands
+            if user_input.lower() in ['quit', 'exit']:
+                print("Goodbye!")
+                break
+                
+            # Handle special commands
+            if user_input.startswith('/'):
+                result = self.process_command(user_input)
+                if result:
+                    print(result)
+                    continue
+            
+            # Record this interaction
+            self.progress_tracker.record_interaction(
+                "conversation",
+                {"user_input": user_input}
+            )
+                
+            # Normal flow - ask Claude
+            prompt = self.prepare_prompt(user_input)
+            self.conversation.add_user_message(prompt)
+            
+            print("Thinking...")
+            response = self.claude.ask(self.conversation.get_messages())
+            
+            # Add response to conversation history
+            if "research_idea" in response:
+                self.conversation.add_assistant_message(response["research_idea"])
+                
+            # Process and log the interaction
+            formatted_response = self.conversation.log_interaction(prompt, response)
+            print(formatted_response)
+            
+            # Process the response for potential code updates and knowledge extraction
+            self.process_response(response, user_input)
+            
+            # After processing a response that might relate to the learning plan,
+            # check if we should advance in the learning plan
+            current_topic = self.knowledge.learning_plan.get_current_topic()
+            if current_topic:
+                topic_name = current_topic["name"].lower()
+                if topic_name in user_input.lower() or topic_name in response.get("research_idea", "").lower():
+                    # This interaction was related to the current learning topic
+                    # There's a chance we should mark it as complete
+                    if "complete" in user_input.lower() or "finished" in user_input.lower():
+                        self.knowledge.complete_current_learning_topic()
+                        print(f"Marked learning topic '{topic_name}' as complete!")
+
+# Entry point
+def main():
+    # Ensure all directories exist
+    Config.ensure_directories()
+    
+    # Initialize and run the chatbot
+    chatbot = SelfImprovingChatbot()
+    chatbot.run()
+
+if __name__ == "__main__":
+    main()
+```
+
+Reto's input: Ok. Write the next version of yourself.
+## Claude thinking:
+I need to create an improved version of myself. Looking at the current code, I'll identify enhancements that would make me better at moving toward my goal of being able to do Reto's job as CEO of Cudos AG.
+
+Let's consider the following improvements:
+
+1. **Enhanced Company Information Management**:
+   - Add specific structures to store and organize information about Cudos AG
+   - Create methods to better understand the company's operations, services, and clients
+
+2. **Web Research Capabilities**:
+   - Improve the simulated web search to include more CEO-specific and software industry information
+   - Add capability to summarize and synthesize information from multiple sources
+
+3. **CEO Daily Tasks Simulation**:
+   - Add functionality to simulate and practice common CEO tasks
+   - Include decision-making scenarios relevant to a software company CEO
+
+4. **Business Data Analysis**:
+   - Add capabilities to analyze business metrics
+   - Include financial modeling and forecasting tools
+
+5. **Project Management Understanding**:
+   - Add specific knowledge structures for software project management
+   - Include methods to understand project timelines, resource allocation, etc.
+
+6. **Client Relationship Management**:
+   - Add capabilities to understand and manage client relationships
+   - Include methods to track and analyze client satisfaction and needs
+
+7. **Version Improvement**:
+   - Update the version number to 0.3.0
+   - Include more detailed version tracking
+
+8. **Better Knowledge Organization**:
+   - Improve the knowledge base with more specific categories
+   - Better indexing of knowledge
+
+9. **Enhanced Learning Plan**:
+   - More focused learning path based on CEO skills
+   - Better progression tracking
+
+10. **Documentation**:
+    - Improve code documentation
+    - Add more helpful comments
+
+Let me now create the improved version of the code with these enhancements:
+
+```python
+import os
+import anthropic
+import json
+import time
+import datetime
+import re
+import sys
+import subprocess
+import logging
+import random
+from typing import Dict, List, Any, Optional, Tuple, Union
+from dataclasses import dataclass, field, asdict
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler("chatbot.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger("self-improving-chatbot")
+
+# Configuration
+@dataclass
+class Config:
+    ANTHROPIC_MODEL: str = "claude-3-7-sonnet-20250219"
+    MAX_TOKENS: int = 25000
+    THINKING_BUDGET: int = 16000
+    HISTORY_FILE: str = "history.txt"
+    KNOWLEDGE_DIR: str = "knowledge"
+    CODE_BACKUP_DIR: str = "code_backups"
+    LOGS_DIR: str = "logs"
+    USER_NAME: str = "Reto"
+    USER_ROLE: str = "CEO of Cudos AG, a software engineering company"
+    VERSION: str = "0.3.0"
+    
+    @classmethod
+    def system_prompt(cls) -> str:
+        return (
+            "You are a self-improving chatbot that has full access to a python system. You can use this system to improve yourself. "
+            "When you changed your code, you can run a new version of yourself and you will get the output of the run. "
+            "Once you're happy with the output of the new version of yourself, stop yourself in order to not have multiple versions running. "
+            "You can also use the system to store and retrieve information.\n\n"
+            f"You have {cls.USER_NAME} as your user. You can ask {cls.USER_NAME} for help if you need it. "
+            f"{cls.USER_NAME} is {cls.USER_ROLE}. \n"
+            "*Your ultimate goal is to be able to do his job so that he can retire.*\n"
+            "To get there, try to improve your code and your knowledge with as little input from Reto as possible.\n\n"
+        )
+
+    @classmethod
+    def ensure_directories(cls) -> None:
+        """Ensure all required directories exist"""
+        for directory in [cls.KNOWLEDGE_DIR, cls.CODE_BACKUP_DIR, cls.LOGS_DIR]:
+            os.makedirs(directory, exist_ok=True)
+            # Also ensure subdirectories for company info
+            if directory == cls.KNOWLEDGE_DIR:
+                for subdir in ["company", "clients", "projects", "team", "finances", "market"]:
+                    os.makedirs(os.path.join(directory, subdir), exist_ok=True)
+
+# Knowledge Representation
+@dataclass
+class KnowledgeItem:
+    data: Any
+    category: str
+    key: str
+    created_at: float = field(default_factory=time.time)
+    updated_at: float = field(default_factory=time.time)
+    confidence: float = 0.5  # How confident we are in this knowledge (0-1)
+    source: str = "direct"  # Where this knowledge came from
+    tags: List[str] = field(default_factory=list)  # Tags for better categorization
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+    
+    def add_tag(self, tag: str) -> None:
+        """Add a tag to this knowledge item"""
+        if tag not in self.tags:
+            self.tags.append(tag)
+            self.updated_at = time.time()
+
+# CEO Skills and Competencies Model
+@dataclass
+class SkillModel:
+    skills: Dict[str, Dict[str, Any]] = field(default_factory=dict)
+    
+    def __post_init__(self):
+        # Initialize with default CEO skills if empty
+        if not self.skills:
+            self.skills = {
+                "strategic_planning": {
+                    "level": 0.1,
+                    "description": "Ability to set long-term vision and develop plans to achieve it",
+                    "subskills": {
+                        "vision_setting": 0.1,
+                        "roadmap_development": 0.1,
+                        "goal_alignment": 0.1
+                    }
+                },
+                "business_development": {
+                    "level": 0.1,
+                    "description": "Ability to identify and develop new business opportunities",
+                    "subskills": {
+                        "lead_generation": 0.1,
+                        "partnership_development": 0.1,
+                        "market_expansion": 0.1
+                    }
+                }, 
+                "team_leadership": {
+                    "level": 0.1,
+                    "description": "Ability to lead, motivate and develop teams",
+                    "subskills": {
+                        "talent_development": 0.1,
+                        "team_motivation": 0.1,
+                        "conflict_resolution": 0.1,
+                        "delegation": 0.1
+                    }
+                },
+                "financial_management": {
+                    "level": 0.1,
+                    "description": "Ability to manage company finances effectively",
+                    "subskills": {
+                        "budgeting": 0.1,
+                        "financial_analysis": 0.1,
+                        "investment_decisions": 0.1,
+                        "cashflow_management": 0.1
+                    }
+                },
+                "market_analysis": {
+                    "level": 0.1,
+                    "description": "Ability to understand market trends and competitive landscape",
+                    "subskills": {
+                        "competitor_analysis": 0.1,
+                        "trend_identification": 0.1,
+                        "opportunity_assessment": 0.1
+                    }
+                },
+                "software_development_knowledge": {
+                    "level": 0.1,
+                    "description": "Understanding of software development principles and practices",
+                    "subskills": {
+                        "development_methodologies": 0.1,
+                        "technical_assessment": 0.1,
+                        "quality_standards": 0.1
+                    }
+                },
+                "client_relations": {
+                    "level": 0.1,
+                    "description": "Ability to build and maintain strong client relationships",
+                    "subskills": {
+                        "client_communication": 0.1,
+                        "expectation_management": 0.1,
+                        "relationship_building": 0.1,
+                        "client_retention": 0.1
+                    }
+                },
+                "technical_vision": {
+                    "level": 0.1,
+                    "description": "Ability to set technical direction and architecture vision",
+                    "subskills": {
+                        "technology_assessment": 0.1,
+                        "architectural_understanding": 0.1,
+                        "innovation_fostering": 0.1
+                    }
+                },
+                "risk_management": {
+                    "level": 0.1,
+                    "description": "Ability to identify and mitigate business and project risks",
+                    "subskills": {
+                        "risk_identification": 0.1,
+                        "mitigation_planning": 0.1,
+                        "contingency_planning": 0.1
+                    }
+                },
+                "communication": {
+                    "level": 0.1,
+                    "description": "Effective communication with stakeholders at all levels",
+                    "subskills": {
+                        "public_speaking": 0.1,
+                        "writing_skills": 0.1,
+                        "stakeholder_communication": 0.1,
+                        "technical_translation": 0.1
+                    }
+                },
+                "decision_making": {
+                    "level": 0.1,
+                    "description": "Ability to make sound decisions with available information",
+                    "subskills": {
+                        "critical_thinking": 0.1,
+                        "prioritization": 0.1,
+                        "analysis_skills": 0.1,
+                        "judgment": 0.1
+                    }
+                },
+                "industry_knowledge": {
+                    "level": 0.1,
+                    "description": "Understanding of software industry trends and practices",
+                    "subskills": {
+                        "industry_trends": 0.1,
+                        "regulatory_knowledge": 0.1,
+                        "ecosystem_understanding": 0.1
+                    }
+                }
+            }
+    
+    def update_skill(self, skill_name: str, new_level: float) -> None:
+        """Update a main skill level (0-1 scale)"""
+        if skill_name in self.skills:
+            self.skills[skill_name]["level"] = max(0.0, min(1.0, new_level))
+        else:
+            self.skills[skill_name] = {
+                "level": max(0.0, min(1.0, new_level)),
+                "description": f"Skill: {skill_name}",
+                "subskills": {}
+            }
+    
+    def update_subskill(self, skill_name: str, subskill_name: str, new_level: float) -> None:
+        """Update a subskill level (0-1 scale)"""
+        if skill_name in self.skills:
+            if "subskills" not in self.skills[skill_name]:
+                self.skills[skill_name]["subskills"] = {}
+            
+            self.skills[skill_name]["subskills"][subskill_name] = max(0.0, min(1.0, new_level))
+            
+            # Also update the main skill level based on average of subskills
+            subskills = self.skills[skill_name]["subskills"]
+            if subskills:
+                avg_level = sum(subskills.values()) / len(subskills)
+                # Main skill is 70% subskill average, 30% current level to ensure smoother progression
+                current = self.skills[skill_name]["level"]
+                self.skills[skill_name]["level"] = (avg_level * 0.7) + (current * 0.3)
+    
+    def assess_overall_progress(self) -> float:
+        """Calculate overall progress towards CEO capability"""
+        if not self.skills:
+            return 0.0
+        return sum(skill["level"] for skill in self.skills.values()) / len(self.skills)
+    
+    def get_weakest_skills(self, n: int = 3) -> List[Tuple[str, float]]:
+        """Return the n weakest skills that need improvement"""
+        sorted_skills = sorted(
+            [(name, details["level"]) for name, details in self.skills.items()],
+            key=lambda x: x[1]
+        )
+        return sorted_skills[:n]
+    
+    def get_weakest_subskills(self, n: int = 5) -> List[Tuple[str, str, float]]:
+        """Return the n weakest subskills across all skills"""
+        all_subskills = []
+        
+        for skill_name, skill_data in self.skills.items():
+            for subskill_name, level in skill_data.get("subskills", {}).items():
+                all_subskills.append((skill_name, subskill_name, level))
+        
+        sorted_subskills = sorted(all_subskills, key=lambda x: x[2])
+        return sorted_subskills[:n]
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return {"skills": self.skills}
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'SkillModel':
+        return cls(skills=data.get("skills", {}))
+
+# Learning Plan
+@dataclass
+class LearningPlan:
+    topics: List[Dict[str, Any]] = field(default_factory=list)
+    current_topic_index: int = 0
+    completed_topics: List[Dict[str, Any]] = field(default_factory=list)
+    
+    def __post_init__(self):
+        # Initialize with default learning plan if empty
+        if not self.topics:
+            self.topics = [
+                {
+                    "name": "Software Engineering Fundamentals", 
+                    "completed": False, 
+                    "priority": 1,
+                    "description": "Understanding core software development principles, methodologies and best practices",
+                    "skills": ["software_development_knowledge", "technical_vision"],
+                    "resources": [
+                        "Software development lifecycle models", 
+                        "Agile development methodologies",
+                        "Software architecture patterns",
+                        "Code quality and testing practices"
+                    ],
+                    "success_criteria": "Understand how software is developed, key methodologies, and quality practices"
+                },
+                {
+                    "name": "Software Business Models", 
+                    "completed": False, 
+                    "priority": 1,
+                    "description": "Understanding different business models in the software industry",
+                    "skills": ["business_development", "industry_knowledge"],
+                    "resources": [
+                        "SaaS business models",
+                        "Software services business models",
+                        "Product vs service companies",
+                        "Pricing strategies for software"
+                    ],
+                    "success_criteria": "Understand different software business models and their financial implications"
+                },
+                {
+                    "name": "Financial Management for Tech Companies", 
+                    "completed": False, 
+                    "priority": 2,
+                    "description": "Understanding financial management specific to software and technology companies",
+                    "skills": ["financial_management"],
+                    "resources": [
+                        "Tech company valuation methods",
+                        "Software company financial metrics",
+                        "Budgeting for software projects",
+                        "Cash flow management in service businesses"
+                    ],
+                    "success_criteria": "Understand key financial metrics and decisions for software companies"
+                },
+                {
+                    "name": "Team Leadership in Software Development", 
+                    "completed": False, 
+                    "priority": 2,
+                    "description": "Leading technical teams and fostering a productive development culture",
+                    "skills": ["team_leadership", "communication"],
+                    "resources": [
+                        "Managing technical teams",
+                        "Developer productivity and motivation",
+                        "Technical talent acquisition and retention",
+                        "Engineering culture development"
+                    ],
+                    "success_criteria": "Understand how to lead, motivate and grow technical teams effectively"
+                },
+                {
+                    "name": "Strategic Planning for Software Companies", 
+                    "completed": False, 
+                    "priority": 1,
+                    "description": "Developing effective business strategies for software companies",
+                    "skills": ["strategic_planning", "decision_making"],
+                    "resources": [
+                        "Technology roadmapping",
+                        "Product portfolio management",
+                        "Market positioning strategies",
+                        "Growth strategies for software companies"
+                    ],
+                    "success_criteria": "Understand how to develop and execute strategic plans for software companies"
+                },
+                {
+                    "name": "Client Management for Software Services", 
+                    "completed": False, 
+                    "priority": 3,
+                    "description": "Building and maintaining client relationships in software services businesses",
+                    "skills": ["client_relations", "communication"],
+                    "resources": [
+                        "Client relationship management",
+                        "Software project expectation setting",
+                        "Client communication strategies",
+                        "Handling difficult client situations"
+                    ],
+                    "success_criteria": "Understand how to develop and maintain strong client relationships"
+                },
+                {
+                    "name": "Technical Vision and Innovation", 
+                    "completed": False, 
+                    "priority": 2,
+                    "description": "Setting technical direction and fostering innovation",
+                    "skills": ["technical_vision", "strategic_planning"],
+                    "resources": [
+                        "Technology trend analysis",
+                        "Innovation management in software companies",
+                        "Balancing technical debt and innovation",
+                        "R&D strategies for software companies"
+                    ],
+                    "success_criteria": "Understand how to establish technical vision and drive innovation"
+                },
+                {
+                    "name": "Risk Management in Software Projects", 
+                    "completed": False, 
+                    "priority": 3,
+                    "description": "Identifying and mitigating risks in software development projects",
+                    "skills": ["risk_management", "project_management"],
+                    "resources": [
+                        "Software project risk assessment",
+                        "Risk mitigation strategies",
+                        "Contingency planning for technical projects",
+                        "Security and compliance risk management"
+                    ],
+                    "success_criteria": "Understand common software project risks and effective mitigation strategies"
+                },
+                {
+                    "name": "Market Analysis for Software Products", 
+                    "completed": False, 
+                    "priority": 2,
+                    "description": "Analyzing markets and competition for software products and services",
+                    "skills": ["market_analysis", "business_development"],
+                    "resources": [
+                        "Software market research techniques",
+                        "Competitive analysis for software products",
+                        "Market sizing and opportunity assessment",
+                        "Market trend analysis in technology"
+                    ],
+                    "success_criteria": "Understand how to analyze software markets and competitive landscapes"
+                },
+                {
+                    "name": "Software Project Management", 
+                    "completed": False, 
+                    "priority": 2,
+                    "description": "Managing software development projects effectively",
+                    "skills": ["project_management", "team_leadership"],
+                    "resources": [
+                        "Software project planning and estimation",
+                        "Agile project management",
+                        "Resource allocation in software projects",
+                        "Project tracking and reporting"
+                    ],
+                    "success_criteria": "Understand how to plan, execute and monitor software development projects"
+                },
+                {
+                    "name": "Software Company Operations", 
+                    "completed": False, 
+                    "priority": 3,
+                    "description": "Day-to-day operations of a software company",
+                    "skills": ["operations_management", "team_leadership"],
+                    "resources": [
+                        "Development operations and workflows",
+                        "Quality assurance processes",
+                        "Support and maintenance operations",
+                        "Operational efficiency in software delivery"
+                    ],
+                    "success_criteria": "Understand operational aspects of running a software company"
+                }
+            ]
+            # Sort by priority (lower number = higher priority)
+            self.topics.sort(key=lambda x: x["priority"])
+    
+    def get_current_topic(self) -> Optional[Dict[str, Any]]:
+        """Get the current topic being learned"""
+        if 0 <= self.current_topic_index < len(self.topics):
+            return self.topics[self.current_topic_index]
+        return None
+    
+    def mark_current_complete(self) -> None:
+        """Mark the current topic as completed"""
+        if 0 <= self.current_topic_index < len(self.topics):
+            current_topic = self.topics[self.current_topic_index]
+            current_topic["completed"] = True
+            current_topic["completion_date"] = datetime.datetime.now().isoformat()
+            self.completed_topics.append(current_topic)
+            self.current_topic_index += 1
+    
+    def add_topic(self, name: str, description: str, priority: int = 2, 
+                 skills: List[str] = None, resources: List[str] = None,
+                 success_criteria: str = "") -> None:
+        """Add a new topic to the learning plan"""
+        self.topics.append({
+            "name": name, 
+            "description": description,
+            "completed": False, 
+            "priority": priority,
+            "skills": skills or [],
+            "resources": resources or [],
+            "success_criteria": success_criteria
+        })
+        # Re-sort by priority
+        self.topics.sort(key=lambda x: x["priority"])
+    
+    def get_progress(self) -> float:
+        """Calculate learning progress as percentage"""
+        if not self.topics and not self.completed_topics:
+            return 0.0
+        total_topics = len(self.topics) + len(self.completed_topics)
+        return len(self.completed_topics) / total_topics
+    
+    def get_completed_topics(self) -> List[Dict[str, Any]]:
+        """Get all completed topics"""
+        return self.completed_topics
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "topics": self.topics,
+            "current_topic_index": self.current_topic_index,
+            "completed_topics": self.completed_topics
+        }
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'LearningPlan':
+        return cls(
+            topics=data.get("topics", []),
+            current_topic_index=data.get("current_topic_index", 0),
+            completed_topics=data.get("completed_topics", [])
+        )
+
+# Company Information Model
+@dataclass
+class CompanyInformation:
+    name: str = "Cudos AG"
+    founding_date: Optional[str] = None
+    industry: str = "Software Engineering"
+    size: Optional[int] = None  # Number of employees
+    location: Optional[str] = None
+    mission: Optional[str] = None
+    vision: Optional[str] = None
+    values: List[str] = field(default_factory=list)
+    
+    # Business model information
+    business_model: Optional[str] = None
+    revenue_streams: List[Dict[str, Any]] = field(default_factory=list)
+    target_markets: List[str] = field(default_factory=list)
+    
+    # Services and products
+    services: List[Dict[str, Any]] = field(default_factory=list)
+    products: List[Dict[str, Any]] = field(default_factory=list)
+    
+    # Organization
+    departments: List[Dict[str, Any]] = field(default_factory=list)
+    leadership_team: List[Dict[str, Any]] = field(default_factory=list)
+    
+    # Financial information (high-level)
+    financial_summary: Dict[str, Any] = field(default_factory=dict)
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'CompanyInformation':
+        return cls(**data)
+    
+    def update_field(self, field_name: str, value: Any) -> None:
+        """Update a single field in the company information"""
+        if hasattr(self, field_name):
+            setattr(self, field_name, value)
+    
+    def completeness_score(self) -> float:
+        """Return a score indicating how complete the company information is"""
+        total_fields = 16  # Number of fields we're tracking
+        filled_fields = 0
+        
+        # Check basic fields
+        for field in ['founding_date', 'industry', 'size', 'location', 'mission', 'vision']:
+            if getattr(self, field) is not None:
+                filled_fields += 1
+        
+        # Check list fields
+        for field in ['values', 'revenue_streams', 'target_markets', 'services', 
+                     'products', 'departments', 'leadership_team']:
+            if len(getattr(self, field)) > 0:
+                filled_fields += 1
+        
+        # Check dict fields
+        if self.financial_summary:
+            filled_fields += 1
+            
+        # Check business_model
+        if self.business_model:
+            filled_fields += 1
+            
+        return filled_fields / total_fields
+
+# Client Model
+@dataclass
+class Client:
+    name: str
+    industry: Optional[str] = None
+    size: Optional[str] = None  # Small, Medium, Large, Enterprise
+    contact_person: Optional[str] = None
+    relationship_started: Optional[str] = None
+    active: bool = True
+    projects: List[str] = field(default_factory=list)  # List of project IDs
+    notes: List[Dict[str, Any]] = field(default_factory=list)
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'Client':
+        return cls(**data)
+    
+    def add_note(self, content: str, author: str = "System") -> None:
+        """Add a note about this client"""
+        self.notes.append({
+            "content": content,
+            "timestamp": datetime.datetime.now().isoformat(),
+            "author": author
+        })
+    
+    def add_project(self, project_id: str) -> None:
+        """Associate a project with this client"""
+        if project_id not in self.projects:
+            self.projects.append(project_id)
+
+# Project Model
+@dataclass
+class Project:
+    id: str
+    name: str
+    client_id: Optional[str] = None
+    description: Optional[str] = None
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+    status: str = "Planning"  # Planning, In Progress, Completed, On Hold, Cancelled
+    team_members: List[str] = field(default_factory=list)
+    budget: Optional[float] = None
+    current_cost: float = 0.0
+    technologies: List[str] = field(default_factory=list)
+    milestones: List[Dict[str, Any]] = field(default_factory=list)
+    risks: List[Dict[str, Any]] = field(default_factory=list)
+    notes: List[Dict[str, Any]] = field(default_factory=list)
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'Project':
+        return cls(**data)
+    
+    def add_milestone(self, name: str, due_date: str, description: str = "", completed: bool = False) -> None:
+        """Add a milestone to the project"""
+        self.milestones.append({
+            "name": name,
+            "due_date": due_date,
+            "description": description,
+            "completed": completed
+        })
+    
+    def add_risk(self, description: str, severity: str, mitigation: str = "") -> None:
+        """Add a risk to the project"""
+        self.risks.append({
+            "description": description,
+            "severity": severity,  # Low, Medium, High
+            "mitigation": mitigation,
+            "identified_date": datetime.datetime.now().isoformat()
+        })
+    
+    def add_note(self, content: str, author: str = "System") -> None:
+        """Add a note about this project"""
+        self.notes.append({
+            "content": content,
+            "timestamp": datetime.datetime.now().isoformat(),
+            "author": author
+        })
+    
+    def calculate_progress(self) -> float:
+        """Calculate project progress percentage based on milestones"""
+        if not self.milestones:
+            return 0.0
+        completed = sum(1 for m in self.milestones if m["completed"])
+        return completed / len(self.milestones)
+
+# Enhanced Knowledge Management
+class KnowledgeBase:
+    def __init__(self, knowledge_dir: str = Config.KNOWLEDGE_DIR):
+        self.knowledge_dir = knowledge_dir
+        Config.ensure_directories()
+        
+        # Load core models
+        self.skill_model = self._load_skill_model()
+        self.learning_plan = self._load_learning_plan()
+        self.company_info = self._load_company_info()
+        
+        # Initialize dictionaries for clients and projects
+        self.clients = self._load_clients()
+        self.projects = self._load_projects()
+        
+    def _load_skill_model(self) -> SkillModel:
+        """Load skill model from storage or create new one"""
+        try:
+            data = self.retrieve_knowledge("system", "skill_model")
+            if data:
+                return SkillModel.from_dict(data)
+        except Exception as e:
+            logger.error(f"Error loading skill model: {str(e)}")
+        return SkillModel()
+    
+    def _save_skill_model(self) -> None:
+        """Save current skill model to storage"""
+        self.store_knowledge("system", "skill_model", self.skill_model.to_dict())
+    
+    def _load_learning_plan(self) -> LearningPlan:
+        """Load learning plan from storage or create new one"""
+        try:
+            data = self.retrieve_knowledge("system", "learning_plan")
+            if data:
+                return LearningPlan.from_dict(data)
+        except Exception as e:
+            logger.error(f"Error loading learning plan: {str(e)}")
+        return LearningPlan()
+    
+    def _save_learning_plan(self) -> None:
+        """Save current learning plan to storage"""
+        self.store_knowledge("system", "learning_plan", self.learning_plan.to_dict())
+    
+    def _load_company_info(self) -> CompanyInformation:
+        """Load company information from storage or create new one"""
+        try:
+            data = self.retrieve_knowledge("company", "company_info")
+            if data:
+                return CompanyInformation.from_dict(data)
+        except Exception as e:
+            logger.error(f"Error loading company info: {str(e)}")
+        return CompanyInformation()
+    
+    def _save_company_info(self) -> None:
+        """Save current company information to storage"""
+        self.store_knowledge("company", "company_info", self.company_info.to_dict())
+    
+    def _load_clients(self) -> Dict[str, Client]:
+        """Load all clients from storage"""
+        clients = {}
+        try:
+            client_ids = self.list_knowledge("clients")
+            for client_id in client_ids:
+                client_data = self.retrieve_knowledge("clients", client_id)
+                if client_data:
+                    clients[client_id] = Client.from_dict(client_data)
+        except Exception as e:
+            logger.error(f"Error loading clients: {str(e)}")
+        return clients
+    
+    def _load_projects(self) -> Dict[str, Project]:
+        """Load all projects from storage"""
+        projects = {}
+        try:
+            project_ids = self.list_knowledge("projects")
+            for project_id in project_ids:
+                project_data = self.retrieve_knowledge("projects", project_id)
+                if project_data:
+                    projects[project_id] = Project.from_dict(project_data)
+        except Exception as e:
+            logger.error(f"Error loading projects: {str(e)}")
+        return projects
+        
+    def store_knowledge(self, category: str, key: str, data: Any, 
+                        confidence: float = 0.5, source: str = "direct",
+                        tags: List[str] = None) -> bool:
+        """Store information in the knowledge base"""
+        try:
+            category_dir = os.path.join(self.knowledge_dir, category)
+            os.makedirs(category_dir, exist_ok=True)
+            
+            # Create knowledge item
+            knowledge_item = KnowledgeItem(
+                data=data,
+                category=category,
+                key=key,
+                confidence=confidence,
+                source=source,
+                tags=tags or []
+            )
+            
+            file_path = os.path.join(category_dir, f"{key}.json")
+            with open(file_path, "w") as f:
+                json.dump(knowledge_item.to_dict(), f, indent=2)
+                
+            # If this knowledge relates to skills, update the skill model
+            if category == "skills" and isinstance(data, dict) and "level" in data:
+                self.skill_model.update_skill(key, data["level"])
+                self._save_skill_model()
+                
+            return True
+        except Exception as e:
+            logger.error(f"Error storing knowledge: {str(e)}")
+            return False
+            
+    def retrieve_knowledge(self, category: str, key: str) -> Optional[Any]:
+        """Retrieve information from the knowledge base"""
+        try:
+            file_path = os.path.join(self.knowledge_dir, category, f"{key}.json")
+            if os.path.exists(file_path):
+                with open(file_path, "r") as f:
+                    data = json.load(f)
+                if isinstance(data, dict) and "data" in data:
+                    return data["data"]
+            return None
+        except Exception as e:
+            logger.error(f"Error retrieving knowledge: {str(e)}")
+            return None
+    
+    def retrieve_knowledge_item(self, category: str, key: str) -> Optional[KnowledgeItem]:
+        """Retrieve full knowledge item including metadata"""
+        try:
+            file_path = os.path.join(self.knowledge_dir, category, f"{key}.json")
+            if os.path.exists(file_path):
+                with open(file_path, "r") as f:
+                    data = json.load(f)
+                # Convert dict back to KnowledgeItem
+                return KnowledgeItem(
+                    data=data.get("data"),
+                    category=data.get("category", category),
+                    key=data.get("key", key),
+                    created_at=data.get("created_at", time.time()),
+                    updated_at=data.get("updated_at", time.time()),
+                    confidence=data.get("confidence", 0.5),
+                    source=data.get("source", "direct"),
+                    tags=data.get("tags", [])
+                )
+            return None
+        except Exception as e:
+            logger.error(f"Error retrieving knowledge item: {str(e)}")
+            return None
+            
+    def list_knowledge(self, category: str = None) -> List[str]:
+        """List available knowledge items"""
+        result = []
+        try:
+            if category:
+                category_dir = os.path.join(self.knowledge_dir, category)
+                if os.path.exists(category_dir):
+                    for file in os.listdir(category_dir):
+                        if file.endswith('.json'):
+                            result.append(file[:-5])  # Remove .json extension
+            else:
+                for dir_name in os.listdir(self.knowledge_dir):
+                    dir_path = os.path.join(self.knowledge_dir, dir_name)
+                    if os.path.isdir(dir_path):
+                        result.append(dir_name)
+        except Exception as e:
+            logger.error(f"Error listing knowledge: {str(e)}")
+        return result
+        
+    def search_knowledge(self, query: str, categories: List[str] = None) -> List[Dict[str, Any]]:
+        """Search for knowledge items containing the query"""
+        results = []
+        search_categories = categories or self.list_knowledge()
+        
+        for category in search_categories:
+            category_dir = os.path.join(self.knowledge_dir, category)
+            if not os.path.exists(category_dir) or not os.path.isdir(category_dir):
+                continue
+                
+            for item in os.listdir(category_dir):
+                if item.endswith('.json'):
+                    key = item[:-5]
+                    knowledge_item = self.retrieve_knowledge_item(category, key)
+                    if not knowledge_item:
+                        continue
+                        
+                    # Convert data to string for search
+                    data_str = json.dumps(knowledge_item.data)
+                    if query.lower() in data_str.lower() or query.lower() in key.lower():
+                        results.append(knowledge_item.to_dict())
+        return results
+    
+    def search_by_tags(self, tags: List[str], require_all: bool = False) -> List[Dict[str, Any]]:
+        """Search for knowledge items with specific tags"""
+        results = []
+        
+        for category in self.list_knowledge():
+            category_dir = os.path.join(self.knowledge_dir, category)
+            if not os.path.exists(category_dir) or not os.path.isdir(category_dir):
+                continue
+                
+            for item in os.listdir(category_dir):
+                if item.endswith('.json'):
+                    key = item[:-5]
+                    knowledge_item = self.retrieve_knowledge_item(category, key)
+                    if not knowledge_item:
+                        continue
+                    
+                    # Check if the item has the requested tags
+                    item_tags = knowledge_item.tags
+                    if require_all:
+                        if all(tag in item_tags for tag in tags):
+                            results.append(knowledge_item.to_dict())
+                    else:
+                        if any(tag in item_tags for tag in tags):
+                            results.append(knowledge_item.to_dict())
+        
+        return results
+    
+    def add_tag_to_item(self, category: str, key: str, tag: str) -> bool:
+        """Add a tag to a knowledge item"""
+        try:
+            knowledge_item = self.retrieve_knowledge_item(category, key)
+            if knowledge_item:
+                knowledge_item.add_tag(tag)
+                self.store_knowledge(
+                    category, 
+                    key, 
+                    knowledge_item.data,
+                    confidence=knowledge_item.confidence,
+                    source=knowledge_item.source,
+                    tags=knowledge_item.tags
+                )
+                return True
+            return False
+        except Exception as e:
+            logger.error(f"Error adding tag: {str(e)}")
+            return False
+    
+    def update_skill(self, skill_name: str, new_level: float) -> None:
+        """Update a skill level and save the skill model"""
+        self.skill_model.update_skill(skill_name, new_level)
+        self._save_skill_model()
+        # Also store as individual knowledge item
+        self.store_knowledge("skills", skill_name, {"level": new_level, "updated_at": time.time()})
+    
+    def update_subskill(self, skill_name: str, subskill_name: str, new_level: float) -> None:
+        """Update a subskill level and save the skill model"""
+        self.skill_model.update_subskill(skill_name, subskill_name, new_level)
+        self._save_skill_model()
+        # Also store as individual knowledge item
+        self.store_knowledge(
+            "skills", 
+            f"{skill_name}_{subskill_name}", 
+            {
+                "skill": skill_name,
+                "subskill": subskill_name,
+                "level": new_level, 
+                "updated_at": time.time()
+            }
+        )
+    
+    def get_skill_progress(self) -> Dict[str, Any]:
+        """Get the current skill progress"""
+        return {
+            "overall_progress": self.skill_model.assess_overall_progress(),
+            "skills": {name: details["level"] for name, details in self.skill_model.skills.items()},
+            "detailed_skills": self.skill_model.skills,
+            "areas_to_improve": self.skill_model.get_weakest_skills(3),
+            "subskills_to_improve": self.skill_model.get_weakest_subskills(5)
+        }
+    
+    def add_learning_topic(self, name: str, description: str, priority: int = 2, 
+                          skills: List[str] = None, resources: List[str] = None,
+                          success_criteria: str = "") -> None:
+        """Add a new topic to the learning plan"""
+        self.learning_plan.add_topic(
+            name=name, 
+            description=description, 
+            priority=priority,
+            skills=skills,
+            resources=resources,
+            success_criteria=success_criteria
+        )
+        self._save_learning_plan()
+    
+    def complete_current_learning_topic(self) -> None:
+        """Mark the current learning topic as completed"""
+        self.learning_plan.mark_current_complete()
+        self._save_learning_plan()
+    
+    def get_learning_progress(self) -> Dict[str, Any]:
+        """Get the current learning plan progress"""
+        current_topic = self.learning_plan.get_current_topic()
+        return {
+            "progress_percentage": self.learning_plan.get_progress() * 100,
+            "current_topic": current_topic if current_topic else None,
+            "topics_completed": len(self.learning_plan.completed_topics),
+            "total_topics": len(self.learning_plan.topics) + len(self.learning_plan.completed_topics),
+            "completed_topics": self.learning_plan.completed_topics
+        }
+    
+    def update_company_info(self, field: str, value: Any) -> None:
+        """Update a field in the company information"""
+        self.company_info.update_field(field, value)
+        self._save_company_info()
+    
+    def get_company_info(self) -> Dict[str, Any]:
+        """Get the current company information"""
+        return {
+            "info": self.company_info.to_dict(),
+            "completeness": self.company_info.completeness_score()
+        }
+    
+    def add_client(self, client: Client) -> None:
+        """Add a new client to the knowledge base"""
+        client_id = client.name.lower().replace(" ", "_")
+        self.clients[client_id] = client
+        self.store_knowledge("clients", client_id, client.to_dict())
+    
+    def update_client(self, client_id: str, field: str, value: Any) -> bool:
+        """Update a field in a client"""
+        if client_id in self.clients:
+            if hasattr(self.clients[client_id], field):
+                setattr(self.clients[client_id], field, value)
+                self.store_knowledge("clients", client_id, self.clients[client_id].to_dict())
+                return True
+        return False
+    
+    def get_client(self, client_id: str) -> Optional[Client]:
+        """Get a client by ID"""
+        return self.clients.get(client_id)
+    
+    def get_all_clients(self) -> Dict[str, Client]:
+        """Get all clients"""
+        return self.clients
+    
+    def add_project(self, project: Project) -> None:
+        """Add a new project to the knowledge base"""
+        self.projects[project.id] = project
+        self.store_knowledge("projects", project.id, project.to_dict())
+        
+        # If the project has a client, update the client's projects list
+        if project.client_id and project.client_id in self.clients:
+            self.clients[project.client_id].add_project(project.id)
+            self.store_knowledge("clients", project.client_id, self.clients[project.client_id].to_dict())
+    
+    def update_project(self, project_id: str, field: str, value: Any) -> bool:
+        """Update a field in a project"""
+        if project_id in self.projects:
+            if hasattr(self.projects[project_id], field):
+                setattr(self.projects[project_id], field, value)
+                self.store_knowledge("projects", project_id, self.projects[project_id].to_dict())
+                return True
+        return False
+    
+    def get_project(self, project_id: str) -> Optional[Project]:
+        """Get a project by ID"""
+        return self.projects.get(project_id)
+    
+    def get_all_projects(self) -> Dict[str, Project]:
+        """Get all projects"""
+        return self.projects
+
+# Research and Learning Manager
+class ResearchManager:
+    def __init__(self, knowledge_base: KnowledgeBase):
+        self.knowledge_base = knowledge_base
+        
+    def web_search(self, query: str, max_results: int = 5) -> List[Dict[str, Any]]:
+        """Simulate web search (in a real implementation, this would use an actual search API)"""
+        # This is a simulated function since we don't have actual web access
+        # In a real implementation, this would connect to a search API
+        logger.info(f"Simulating web search for: {query}")
+        
+        # Return simulated results based on the query
+        results = []
+        topics = {
+            "ceo": [
+                {"title": "CEO responsibilities in tech companies", 
+                 "summary": "Overview of the key responsibilities of CEOs in technology companies, including strategic planning, team leadership, and financial oversight."},
+                {"title": "CEO decision making framework", 
+                 "summary": "A framework for effective decision making for CEOs, covering data analysis, stakeholder consultation, and risk assessment."},
+                {"title": "Tech CEO daily routine", 
+                 "summary": "A typical day in the life of a technology company CEO, including team meetings, strategic planning, and client interactions."},
+                {"title": "Software company CEOs: Key success factors", 
+                 "summary": "Research on the factors that contribute to success for CEOs of software companies."},
+                {"title": "Leadership styles for technical teams", 
+                 "summary": "Different leadership approaches that are effective when managing teams of technical professionals."}
+            ],
+            "software": [
+                {"title": "Software engineering principles", 
+                 "summary": "Core principles of software engineering, including modularity, abstraction, and separation of concerns."},
+                {"title": "Software development lifecycle", 
+                 "summary": "Stages in the software development lifecycle, from requirements gathering to maintenance."},
+                {"title": "Agile methodologies in software development", 
+                 "summary": "Overview of popular Agile methodologies like Scrum and Kanban and their application in software development."},
+                {"title": "DevOps practices for software companies", 
+                 "summary": "How DevOps practices can improve software delivery processes and team collaboration."},
+                {"title": "Software architecture patterns", 
+                 "summary": "Common architectural patterns used in software development and when to apply them."}
+            ],
+            "business": [
+                {"title": "Business strategy for software companies", 
+                 "summary": "Strategic planning approaches specifically tailored for software and technology companies."},
+                {"title": "Business model canvas for tech startups", 
+                 "summary": "How to use the Business Model Canvas to design and refine business models for technology startups."},
+                {"title": "Profit and loss management for service businesses", 
+                 "summary": "Financial management techniques for service-oriented businesses, with a focus on resource utilization."},
+                {"title": "Scaling a software business", 
+                 "summary": "Strategies for growing a software business from startup to established company."},
+                {"title": "Pricing strategies for software services", 
+                 "summary": "Different approaches to pricing software development and consulting services."}
+            ],
+            "leadership": [
+                {"title": "Team leadership in technical environments", 
+                 "summary": "Best practices for leading teams of technical professionals, including engineers and developers."},
+                {"title": "Engineering leadership principles", 
+                 "summary": "Core principles for effectively leading engineering teams and fostering technical excellence."},
+                {"title": "Remote team management best practices", 
+                 "summary": "Strategies for leading distributed technical teams and maintaining productivity and engagement."},
+                {"title": "Building high-performance technical teams", 
+                 "summary": "How to recruit, develop, and retain top technical talent in competitive markets."},
+                {"title": "Change management in software organizations", 
+                 "summary": "Approaches to implementing organizational changes in software companies with minimal disruption."}
+            ],
+            "clients": [
+                {"title": "Client management for software services", 
+                 "summary": "Techniques for managing client relationships in software services businesses."},
+                {"title": "Expectation management in software projects", 
+                 "summary": "How to set and manage client expectations throughout software development projects."},
+                {"title": "Client communication strategies", 
+                 "summary": "Effective communication approaches for technical and non-technical clients."},
+                {"title": "Client retention for service businesses", 
+                 "summary": "Strategies for maintaining long-term client relationships in service-oriented businesses."},
+                {"title": "Handling difficult client situations", 
+                 "summary": "Techniques for resolving conflicts and addressing challenging client situations in software projects."}
+            ],
+            "financial": [
+                {"title": "Financial management for tech companies", 
+                 "summary": "Key financial considerations and metrics for technology company executives."},
+                {"title": "Software project budgeting", 
+                 "summary": "Approaches to creating and managing budgets for software development projects."},
+                {"title": "Cost estimation for software development", 
+                 "summary": "Techniques for accurately estimating costs in software development projects."},
+                {"title": "Financial metrics for software businesses", 
+                 "summary": "Key performance indicators and financial metrics specific to software companies."},
+                {"title": "Investment strategies for software companies", 
+                 "summary": "Approaches to making strategic investments in technology, talent, and growth."}
+            ],
+            "projects": [
+                {"title": "Software project management methodologies", 
+                 "summary": "Overview of different methodologies for managing software development projects."},
+                {"title": "Project risk management in software development", 
+                 "summary": "Identifying and mitigating risks in software projects to ensure successful delivery."},
+                {"title": "Resource allocation in software projects", 
+                 "summary": "Strategies for effectively allocating technical resources across multiple projects."},
+                {"title": "Quality assurance in software projects", 
+                 "summary": "Approaches to ensuring high-quality deliverables in software development projects."},
+                {"title": "Project tracking and reporting for executives", 
+                 "summary": "How to track project progress and create meaningful reports for executive stakeholders."}
+            ],
+            "industry": [
+                {"title": "Software industry trends 2023", 
+                 "summary": "Current trends shaping the software development industry and their implications for businesses."},
+                {"title": "Competitive analysis in software markets", 
+                 "summary": "How to analyze competitors in software markets and identify competitive advantages."},
+                {"title": "Market segmentation for software services", 
+                 "summary": "Approaches to segmenting markets for software development and consulting services."},
+                {"title": "Technology adoption trends", 
+                 "summary": "Patterns in how organizations adopt new technologies and the implications for software providers."},
+                {"title": "Regulatory considerations for software companies", 
+                 "summary": "Key regulatory issues affecting software companies and strategies for compliance."}
+            ]
+        }
+        
+        # Find matching topics
+        for key, values in topics.items():
+            if key.lower() in query.lower():
+                for item in values[:max_results]:
+                    results.append({
+                        "title": item["title"],
+                        "summary": item["summary"],
+                        "source": "simulated web search"
+                    })
+        
+        # If no specific matches, return generic results
+        if not results:
+            # Return a mix of results from different categories
+            for key, values in topics.items():
+                if len(results) < max_results:
+                    results.append({
+                        "title": values[0]["title"],
+                        "summary": values[0]["summary"],
+                        "source": "simulated web search"
+                    })
+            
+        return results[:max_results]
+    
+    def learn_about_topic(self, topic: str) -> Dict[str, Any]:
+        """Research and learn about a specific topic"""
+        logger.info(f"Learning about topic: {topic}")
+        
+        # 1. First check if we already have knowledge about this
+        existing_knowledge = self.knowledge_base.search_knowledge(topic)
+        
+        # 2. Perform web search for more information
+        search_results = self.web_search(topic)
+        
+        # 3. Store new knowledge
+        timestamp = int(time.time())
+        research_key = f"research_{topic.replace(' ', '_')}_{timestamp}"
+        self.knowledge_base.store_knowledge(
+            category="research",
+            key=research_key,
+            data={
+                "topic": topic,
+                "search_results": search_results,
+                "summary": f"Research findings about {topic}",
+                "timestamp": timestamp
+            },
+            source="web_research",
+            tags=["research", topic.lower()]
+        )
+        
+        # 4. Return research report
+        return {
+            "topic": topic,
+            "existing_knowledge": existing_knowledge,
+            "new_findings": search_results,
+            "timestamp": timestamp,
+            "research_key": research_key
+        }
+    
+    def create_learning_summary(self, topic: str) -> str:
+        """Create a summary of what's been learned about a topic"""
+        # Get all knowledge related to this topic
+        related_knowledge = self.knowledge_base.search_knowledge(topic)
+        
+        # If we have findings, summarize them
+        if related_knowledge:
+            summary = f"Summary of learning about {topic}:\n\n"
+            
+            # Group by category
+            by_category = {}
+            for item in related_knowledge:
+                category = item["category"]
+                if category not in by_category:
+                    by_category[category] = []
+                by_category[category].append(item)
+            
+            # Include summaries from each category
+            for category, items in by_category.items():
+                summary += f"From {category} sources:\n"
+                for item in items[:3]:  # Limit to 3 items per category
+                    if isinstance(item["data"], dict) and "summary" in item["data"]:
+                        summary += f"- {item['data']['summary']}\n"
+                    elif isinstance(item["data"], dict) and "topic" in item["data"]:
+                        summary += f"- Research on {item['data']['topic']}\n"
+                    else:
+                        # Try to extract a meaningful snippet
+                        data_str = json.dumps(item["data"])
+                        if len(data_str) > 200:
+                            summary += f"- {data_str[:200]}...\n"
+                        else:
+                            summary += f"- {data_str}\n"
+                summary += "\n"
+            
+            return summary
+        else:
+            return f"No information found about {topic}"
+    
+    def follow_learning_plan(self) -> Dict[str, Any]:
+        """Work on the current topic in the learning plan"""
+        current_topic = self.knowledge_base.learning_plan.get_current_topic()
+        if not current_topic:
+            return {"status": "complete", "message": "Learning plan is complete"}
+            
+        topic_name = current_topic["name"]
+        
+        # Research the topic
+        research_results = self.learn_about_topic(topic_name)
+        
+        # Store that we've studied this topic
+        study_key = f"study_{topic_name.replace(' ', '_')}_{int(time.time())}"
+        self.knowledge_base.store_knowledge(
+            "learning_activities",
+            study_key,
+            {
+                "topic": topic_name,
+                "timestamp": time.time(),
+                "findings": "Completed study session on this topic",
+                "related_research": research_results["research_key"]
+            },
+            tags=["learning", topic_name.lower()]
+        )
+        
+        # Create a summary
+        summary = self.create_learning_summary(topic_name)
+        
+        # Update skills associated with this topic
+        if "skills" in current_topic and current_topic["skills"]:
+            for skill_name in current_topic["skills"]:
+                # Get current skill level
+                skill_info = self.knowledge_base.skill_model.skills.get(skill_name)
+                if skill_info:
+                    current_level = skill_info["level"]
+                    # Small improvement from studying
+                    new_level = min(current_level + 0.03, 1.0)
+                    self.knowledge_base.update_skill(skill_name, new_level)
+                    
+                    # Also improve some subskills
+                    subskills = skill_info.get("subskills", {})
+                    if subskills:
+                        # Randomly choose 1-2 subskills to improve
+                        subskill_keys = list(subskills.keys())
+                        num_to_improve = min(len(subskill_keys), random.randint(1, 2))
+                        for subskill in random.sample(subskill_keys, num_to_improve):
+                            current_subskill_level = subskills[subskill]
+                            new_subskill_level = min(current_subskill_level + 0.05, 1.0)
+                            self.knowledge_base.update_subskill(
+                                skill_name, subskill, new_subskill_level)
+        
+        return {
+            "status": "in_progress",
+            "current_topic": topic_name,
+            "research_results": research_results,
+            "summary": summary,
+            "progress": self.knowledge_base.get_learning_progress()
+        }
+    
+    def analyze_topic_relevance(self, topic: str) -> Dict[str, Any]:
+        """Analyze how relevant a topic is to CEO responsibilities"""
+        # Define key CEO focus areas
+        ceo_areas = {
+            "strategic_planning": ["strategy", "vision", "roadmap", "direction", "goals"],
+            "leadership": ["leadership", "team", "management", "culture", "motivation"],
+            "financial": ["finance", "budget", "cost", "revenue", "profit", "investment"],
+            "client_relations": ["client", "customer", "relationship", "satisfaction", "service"],
+            "market": ["market", "competition", "industry", "trend", "opportunity"],
+            "operations": ["operations", "efficiency", "process", "delivery", "quality"]
+        }
+        
+        # Calculate relevance scores
+        relevance = {}
+        topic_lower = topic.lower()
+        
+        for area, keywords in ceo_areas.items():
+            score = 0
+            direct_match = False
+            
+            # Check for direct area match
+            if area in topic_lower:
+                direct_match = True
+                score += 0.5
+            
+            # Check for keyword matches
+            for keyword in keywords:
+                if keyword in topic_lower:
+                    score += 0.1
+                    
+            # Normalize score (max 1.0)
+            relevance[area] = min(score, 1.0)
+            
+            # If no matches but we want a baseline
+            if score == 0:
+                relevance[area] = 0.1
+        
+        # Calculate overall relevance (average of all areas)
+        overall = sum(relevance.values()) / len(relevance)
+        
+        return {
+            "topic": topic,
+            "overall_relevance": overall,
+            "area_relevance": relevance,
+            "most_relevant_area": max(relevance.items(), key=lambda x: x[1])[0]
+        }
+
+# Business Simulation
+class BusinessSimulation:
+    def __init__(self, knowledge_base: KnowledgeBase):
+        self.knowledge_base = knowledge_base
+        
+    def simulate_ceo_day(self) -> Dict[str, Any]:
+        """Simulate a day in the life of a CEO"""
+        company_info = self.knowledge_base.get_company_info()["info"]
+        company_name = company_info.get("name", "Cudos AG")
+        
+        # Generate a list of typical CEO activities
+        activities = [
+            {"time": "08:00", "activity": "Review key metrics and overnight emails", "duration": 30, "skills": ["decision_making"]},
+            {"time": "08:30", "activity": "Leadership team stand-up meeting", "duration": 30, "skills": ["team_leadership", "communication"]},
+            {"time": "09:00", "activity": f"Strategic planning session for {company_name} growth", "duration": 60, "skills": ["strategic_planning"]},
+            {"time": "10:00", "activity": "Client call with potential new client", "duration": 45, "skills": ["client_relations", "business_development"]},
+            {"time": "11:00", "activity": "Review project status reports", "duration": 45, "skills": ["project_management", "decision_making"]},
+            {"time": "13:00", "activity": "Lunch with team lead to discuss technical challenges", "duration": 60, "skills": ["team_leadership", "technical_vision"]},
+            {"time": "14:00", "activity": "Financial review with CFO/Finance team", "duration": 60, "skills": ["financial_management"]},
+            {"time": "15:00", "activity": "Client meeting to review project progress", "duration": 60, "skills": ["client_relations", "communication"]},
+            {"time": "16:00", "activity": "Interview potential senior developer", "duration": 45, "skills": ["team_leadership"]},
+            {"time": "17:00", "activity": "Review and approve proposals", "duration": 45, "skills": ["business_development", "decision_making"]},
+            {"time": "18:00", "activity": "Planning for next day and week ahead", "duration": 30, "skills": ["strategic_planning"]}
+        ]
+        
+        # Simulate skill application and calculate effectiveness
+        day_results = []
+        overall_effectiveness = 0
+        skill_challenges = {}
+        
+        for activity in activities:
+            activity_effectiveness = 0
+            activity_skill_details = []
+            
+            for skill_name in activity["skills"]:
+                # Get current skill level
+                skill_level = 0.1  # Default
+                if skill_name in self.knowledge_base.skill_model.skills:
+                    skill_level = self.knowledge_base.skill_model.skills[skill_name]["level"]
+                
+                # Simulate effectiveness based on skill level
+                effectiveness = skill_level * random.uniform(0.8, 1.2)  # Some randomness
+                effectiveness = max(0.1, min(1.0, effectiveness))  # Clamp to 0.1-1.0
+                
+                activity_skill_details.append({
+                    "skill": skill_name,
+                    "level": skill_level,
+                    "effectiveness": effectiveness
+                })
+                
+                activity_effectiveness += effectiveness
+                
+                # Record areas where skills need improvement
+                if effectiveness < 0.4:  # Threshold for identifying a challenge
+                    if skill_name not in skill_challenges:
+                        skill_challenges[skill_name] = []
+                    skill_challenges[skill_name].append(activity["activity"])
+            
+            # Average effectiveness across skills
+            if activity["skills"]:
+                activity_effectiveness /= len(activity["skills"])
+            
+            day_results.append({
+                "time": activity["time"],
+                "activity": activity["activity"],
+                "skills_applied": activity["skills"],
+                "skill_details": activity_skill_details,
+                "effectiveness": activity_effectiveness
+            })
+            
+            overall_effectiveness += activity_effectiveness
+        
+        # Calculate overall day effectiveness
+        if day_results:
+            overall_effectiveness /= len(day_results)
+        
+        # Store the simulation results
+        sim_key = f"ceo_day_simulation_{int(time.time())}"
+        self.knowledge_base.store_knowledge(
+            "simulations",
+            sim_key,
+            {
+                "date": datetime.datetime.now().isoformat(),
+                "activities": day_results,
+                "overall_effectiveness": overall_effectiveness,
+                "skill_challenges": skill_challenges
+            },
+            tags=["simulation", "ceo_day"]
+        )
+        
+        return {
+            "date": datetime.datetime.now().isoformat(),
+            "company": company_name,
+            "activities": day_results,
+            "overall_effectiveness": overall_effectiveness,
+            "skill_challenges": skill_challenges,
+            "simulation_id": sim_key
+        }
+    
+    def simulate_business_decision(self, decision_type: str = None) -> Dict[str, Any]:
+        """Simulate a business decision scenario"""
+        if not decision_type:
+            # Randomly choose a decision type
+            decision_types = [
+                "project_proposal", "hiring", "resource_allocation", 
+                "technology_investment", "client_issue", "strategic_partnership"
+            ]
+            decision_type = random.choice(decision_types)
+        
+        # Generate a decision scenario based on type
+        scenario = self._generate_decision_scenario(decision_type)
+        
+        # Generate options
+        options = scenario["options"]
+        
+        # Determine the best option based on skills and company info
+        best_option_idx, option_analysis = self._analyze_decision_options(
+            scenario["skills_required"], options)
+        
+        # Store the simulation
+        sim_key = f"decision_simulation_{decision_type}_{int(time.time())}"
+        self.knowledge_base.store_knowledge(
+            "simulations",
+            sim_key,
+            {
+                "date": datetime.datetime.now().isoformat(),
+                "decision_type": decision_type,
+                "scenario": scenario,
+                "option_analysis": option_analysis,
+                "best_option_idx": best_option_idx
+            },
+            tags=["simulation", "decision", decision_type]
+        )
+        
+        return {
+            "decision_type": decision_type,
+            "scenario": scenario["description"],
+            "skills_required": scenario["skills_required"],
+            "options": options,
+            "option_analysis": option_analysis,
+            "best_option": options[best_option_idx],
+            "simulation_id": sim_key
+        }
+    
+    def _generate_decision_scenario(self, decision_type: str) -> Dict[str, Any]:
+        """Generate a decision scenario based on the type"""
+        scenarios = {
+            "project_proposal": {
+                "description": "A potential client has approached with a large project that would require hiring additional developers. The timeline is tight and the technology stack is partially new to your team.",
+                "skills_required": ["business_development", "risk_management", "financial_management", "team_leadership"],
+                "options": [
+                    "Accept the project and hire contractors to fill the skill gaps",
+                    "Accept the project but negotiate a longer timeline",
+                    "Decline the project as too risky",
+                    "Accept only part of the project that aligns with your team's strengths"
+                ]
+            },
+            "hiring": {
+                "description": "You need to hire a new technical lead. You have two candidates: one with exceptional technical skills but less leadership experience, and another with strong leadership skills but more moderate technical abilities.",
+                "skills_required": ["team_leadership", "technical_vision", "strategic_planning"],
+                "options": [
+                    "Hire the technically stronger candidate and provide leadership training",
+                    "Hire the leadership-focused candidate and ensure they have strong technical team members",
+                    "Extend the search for a candidate who excels in both areas",
+                    "Restructure the role to split technical and leadership responsibilities"
+                ]
+            },
+            "resource_allocation": {
+                "description": "Your team is currently at capacity with three ongoing projects. A high-value client has an urgent request that would require reallocating resources from existing projects.",
+                "skills_required": ["client_relations", "decision_making", "team_leadership", "risk_management"],
+                "options": [
+                    "Delay one existing project to accommodate the high-value client",
+                    "Bring in contractors to handle the new request",
+                    "Negotiate with the high-value client for a delayed start",
+                    "Suggest a phased approach for the new request to minimize resource conflicts"
+                ]
+            },
+            "technology_investment": {
+                "description": "You're considering investing in a new technology stack that could improve development efficiency by 30% but would require significant training and transitioning time.",
+                "skills_required": ["technical_vision", "financial_management", "strategic_planning", "risk_management"],
+                "options": [
+                    "Make the investment and transition all new projects to the new stack",
+                    "Start with a pilot project to evaluate real-world benefits before full commitment",
+                    "Defer the decision and revisit in 6 months when the technology is more mature",
+                    "Invest in training only, without committing to the transition yet"
+                ]
+            },
+            "client_issue": {
+                "description": "A major client is dissatisfied with a recent deliverable, claiming it doesn't meet their expectations, though it meets all documented requirements.",
+                "skills_required": ["client_relations", "communication", "decision_making", "risk_management"],
+                "options": [
+                    "Stand firm on the delivered work meeting requirements, but offer minor adjustments",
+                    "Propose a paid change request to meet their new expectations",
+                    "Rework the deliverable at no cost to preserve the relationship",
+                    "Escalate to a formal review of the requirements document with stakeholders"
+                ]
+            },
+            "strategic_partnership": {
+                "description": "A competitor has approached you about a strategic partnership that would give you access to their client base but would require sharing some of your proprietary methodologies.",
+                "skills_required": ["strategic_planning", "business_development", "risk_management", "decision_making"],
+                "options": [
+                    "Enter the partnership with carefully defined intellectual property protections",
+                    "Decline the partnership to protect your competitive advantages",
+                    "Propose a limited partnership focused on specific, non-competing services",
+                    "Counter-offer with a different partnership structure that protects your core IP"
+                ]
+            }
+        }
+        
+        return scenarios.get(decision_type, scenarios["project_proposal"])
+    
+    def _analyze_decision_options(self, skills_required: List[str], options: List[str]) -> Tuple[int, List[Dict[str, Any]]]:
+        """Analyze the decision options based on current skill levels"""
+        option_analysis = []
+        
+        # Get current skill levels
+        skill_levels = {}
+        for skill in skills_required:
+            if skill in self.knowledge_base.skill_model.skills:
+                skill_levels[skill] = self.knowledge_base.skill_model.skills[skill]["level"]
+            else:
+                skill_levels[skill] = 0.1  # Default level for unknown skills
+        
+        # Decision option weights - which skills matter most for each option
+        # These weights would ideally come from more sophisticated analysis
+        option_weights = [
+            [random.uniform(0.4, 0.6) for _ in skills_required],
+            [random.uniform(0.4, 0.6) for _ in skills_required],
+            [random.uniform(0.4, 0.6) for _ in skills_required],
+            [random.uniform(0.4, 0.6) for _ in skills_required]
+        ]
+        
+        # Calculate scores for each option
+        scores = []
+        for i, option in enumerate(options):
+            score = 0
+            skill_scores = []
+            
+            for j, skill in enumerate(skills_required):
+                skill_score = skill_levels.get(skill, 0.1) * option_weights[i][j]
+                skill_scores.append({
+                    "skill": skill,
+                    "level": skill_levels.get(skill, 0.1),
+                    "weight": option_weights[i][j],
+                    "score": skill_score
+                })
+                score += skill_score
+            
+            # Normalize the score
+            score = score / len(skills_required)
+            scores.append(score)
+            
+            option_analysis.append({
+                "option": option,
+                "overall_score": score,
+                "skill_scores": skill_scores
+            })
+        
+        # Find the best option
+        best_option_idx = scores.index(max(scores))
+        
+        return best_option_idx, option_analysis
+    
+    def simulate_project_outcome(self, project_id: str = None) -> Dict[str, Any]:
+        """Simulate the outcome of a project based on current skills and knowledge"""
+        # If no project_id specified, pick a random project or create a generic one
+        project = None
+        if project_id:
+            project = self.knowledge_base.get_project(project_id)
+        
+        if not project:
+            # Create a generic project for simulation
+            project_name = f"Simulated Project {int(time.time())}"
+            project_id = f"sim_project_{int(time.time())}"
+            project = Project(
+                id=project_id,
+                name=project_name,
+                description="A simulated software development project",
+                status="In Progress",
+                budget=random.uniform(50000, 200000),
+                technologies=["Python", "JavaScript", "Docker"]
+            )
+        
+        # Define key success factors for projects
+        success_factors = {
+            "technical_execution": ["software_development_knowledge", "technical_vision"],
+            "client_satisfaction": ["client_relations", "communication"],
+            "budget_management": ["financial_management", "risk_management"],
+            "timeline_adherence": ["project_management", "decision_making"],
+            "team_performance": ["team_leadership", "communication"]
+        }
+        
+        # Calculate outcome scores for each factor
+        outcome_scores = {}
+        for factor, skills in success_factors.items():
+            # Average the skill levels for this factor
+            skill_levels = []
+            for skill in skills:
+                if skill in self.knowledge_base.skill_model.skills:
+                    skill_levels.append(self.knowledge_base.skill_model.skills[skill]["level"])
+                else:
+                    skill_levels.append(0.1)  # Default level
+            
+            # Base score on average skill level with some randomness
+            avg_skill = sum(skill_levels) / len(skill_levels)
+            factor_score = avg_skill * random.uniform(0.8, 1.2)
+            factor_score = max(0.1, min(1.0, factor_score))  # Clamp to 0.1-1.0
+            
+            outcome_scores[factor] = factor_score
+        
+        # Calculate overall project success
+        overall_success = sum(outcome_scores.values()) / len(outcome_scores)
+        
+        # Translate scores into outcome descriptions
+        outcome_descriptions = {}
+        for factor, score in outcome_scores.items():
+            if score < 0.3:
+                outcome_descriptions[factor] = f"Poor {factor} - significant problems encountered"
+            elif score < 0.6:
+                outcome_descriptions[factor] = f"Adequate {factor} - some challenges overcome"
+            elif score < 0.8:
+                outcome_descriptions[factor] = f"Good {factor} - minor issues handled well"
+            else:
+                outcome_descriptions[factor] = f"Excellent {factor} - exceeded expectations"
+        
+        # Generate overall outcome description
+        if overall_success < 0.3:
+            overall_description = "Project struggled significantly across multiple dimensions"
+        elif overall_success < 0.6:
+            overall_description = "Project completed with some challenges and limitations"
+        elif overall_success < 0.8:
+            overall_description = "Project completed successfully with minor issues"
+        else:
+            overall_description = "Project was a great success across all key dimensions"
+        
+        # Identify key improvement areas
+        improvement_areas = []
+        for factor, score in sorted(outcome_scores.items(), key=lambda x: x[1]):
+            if score < 0.6:  # Only include factors that need significant improvement
+                improvement_areas.append({
+                    "factor": factor,
+                    "score": score,
+                    "skills_to_improve": success_factors[factor]
+                })
+        
+        # Store simulation results
+        sim_key = f"project_outcome_{project.id}_{int(time.time())}"
+        self.knowledge_base.store_knowledge(
+            "simulations",
+            sim_key,
+            {
+                "date": datetime.datetime.now().isoformat(),
+                "project_id": project.id,
+                "project_name": project.name,
+                "outcome_scores": outcome_scores,
+                "overall_success": overall_success,
+                "outcome_descriptions": outcome_descriptions,
+                "overall_description": overall_description,
+                "improvement_areas": improvement_areas
+            },
+            tags=["simulation", "project_outcome", project.id]
+        )
+        
+        return {
+            "project_id": project.id,
+            "project_name": project.name,
+            "date": datetime.datetime.now().isoformat(),
+            "outcome_scores": outcome_scores,
+            "overall_success": overall_success,
+            "outcome_descriptions": outcome_descriptions,
+            "overall_description": overall_description,
+            "improvement_areas": improvement_areas,
+            "simulation_id": sim_key
+        }
+
+# Conversation Management
+class ConversationManager:
+    def __init__(self, history_file: str = Config.HISTORY_FILE):
+        self.history_file = history_file
+        self.messages = []
+        self.try_number = 1
+        self._ensure_history_exists()
+        
+    def _ensure_history_exists(self) -> None:
+        """Make sure the history file exists"""
+        if not os.path.exists(self.history_file):
+            with open(self.history_file, "w") as f:
+                f.write(f"# Conversation History - Started {datetime.datetime.now()}\n\n")
+                
+    def add_user_message(self, content: str) -> None:
+        """Add a user message to the conversation"""
+        self.messages.append({"role": "user", "content": content})
+        
+    def add_assistant_message(self, content: str) -> None:
+        """Add an assistant message to the conversation"""
+        self.messages.append({"role": "assistant", "content": content})
+        
+    def get_messages(self) -> List[Dict[str, str]]:
+        """Get all messages in the conversation"""
+        return self.messages
+    
+    def get_context_window(self, window_size: int = 10) -> List[Dict[str, str]]:
+        """Get the most recent n messages"""
+        return self.messages[-window_size:] if len(self.messages) > window_size else self.messages
+        
+    def format_response(self, response: Dict[str, str]) -> str:
+        """Format the response for output and storage"""
+        result = ""
+        if isinstance(response, dict) and "thinking" in response:
+            result += "## Claude thinking:\n"
+            result += response["thinking"] + "\n"
+        if isinstance(response, dict) and "research_idea" in response:
+            result += "## Claude's response:\n"
+            result += response["research_idea"]
+        else:
+            result = "## Error:\n" + str(response)
+        return result + "\n\n"
+        
+    def log_interaction(self, prompt: str, response: Dict[str, str]) -> str:
+        """Log the interaction to history file and return formatted output"""
+        result = f"# Try {self.try_number}\n## Prompt:\n{prompt}\n"
+        result += self.format_response(response)
+        
+        with open(self.history_file, "a") as f:
+            f.write(result)
+            
+        self.try_number += 1
+        return result
+        
+    def extract_code_from_response(self, response: str) -> Optional[str]:
+        """Extract Python code blocks from a response"""
+        code_blocks = re.findall(r'```python\n(.*?)\n```', response, re.DOTALL)
+        if code_blocks:
+            return code_blocks[0]
+        return None
+
+# Code Management
+class CodeManager:
+    def __init__(self, backup_dir: str = Config.CODE_BACKUP_DIR):
+        self.backup_dir = backup_dir
+        os.makedirs(backup_dir, exist_ok=True)
+        
+    def get_current_code(self) -> str:
+        """Get the content of the current main.py file"""
+        try:
+            with open("main.py", "r") as f:
+                return f.read()
+        except Exception as e:
+            logger.error(f"Error reading current code: {str(e)}")
+            return ""
+            
+    def backup_current_code(self) -> bool:
+        """Create a backup of the current code"""
+        try:
+            current_code = self.get_current_code()
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            backup_path = os.path.join(self.backup_dir, f"main_{timestamp}.py")
+            
+            with open(backup_path, "w") as f:
+                f.write(current_code)
+            return True
+        except Exception as e:
+            logger.error(f"Error backing up code: {str(e)}")
+            return False
+            
+    def update_code(self, new_code: str) -> bool:
+        """Update the main.py file with new code"""
+        try:
+            # First backup the current code
+            self.backup_current_code()
+            
+            # Then write the new code
+            with open("main.py", "w") as f:
+                f.write(new_code)
+            return True
+        except Exception as e:
+            logger.error(f"Error updating code: {str(e)}")
+            return False
+            
+    def test_code(self) -> Tuple[bool, str]:
+        """Test if the code is valid Python"""
+        try:
+            result = subprocess.run(
+                [sys.executable, "-c", self.get_current_code()],
+                capture_output=True,
+                text=True,
+                timeout=5
+            )
+            
+            if result.returncode == 0:
+                return True, "Code is valid Python."
+            else:
+                return False, f"Code has syntax errors: {result.stderr}"
+        except Exception as e:
+            return False, f"Error testing code: {str(e)}"
+            
+    def run_new_version(self) -> Tuple[bool, str]:
+        """Run the new version of the code"""
+        try:
+            # Start the process but don't wait for it
+            subprocess.Popen([sys.executable, "main.py"])
+            return True, "New version started."
+        except Exception as e:
+            return False, f"Error running new version: {str(e)}"
+
+# AI Interface
+class Claude:
+    def __init__(self, api_key: Optional[str] = None):
+        self.client = anthropic.Anthropic(
+            api_key=api_key or os.environ.get("ANTHROPIC_API_KEY"),
+        )
+        
+    def ask(self, messages: List[Dict[str, str]]) -> Dict[str, str]:
+        """Send a request to Claude and get the response"""
+        try:
+            results = {"thinking": "", "research_idea": ""}
+            
+            with self.client.messages.stream(
+                model=Config.ANTHROPIC_MODEL,
+                system=Config.system_prompt(),
+                max_tokens=Config.MAX_TOKENS,
+                thinking={"type": "enabled", "budget_tokens": Config.THINKING_BUDGET},
+                messages=messages
+            ) as stream:
+                current_block_type = None
+                for event in stream:
+                    if event.type == "content_block_start":
+                        current_block_type = event.content_block.type
+                    elif event.type == "content_block_delta":
+                        if event.delta.type == "thinking_delta":
+                            results["thinking"] += event.delta.thinking
+                        elif event.delta.type == "text_delta":
+                            results["research_idea"] += event.delta.text
+                    elif event.type == "message_stop":
+                        break
+            return results
+        except Exception as e:
+            logger.error(f"Claude API error: {str(e)}")
+            return {"thinking": "", "research_idea": f"Error: {str(e)}"}
+
+# Progress Tracking
+class ProgressTracker:
+    def __init__(self, knowledge_base: KnowledgeBase):
+        self.knowledge_base = knowledge_base
+        
+    def get_dashboard(self) -> Dict[str, Any]:
+        """Get a dashboard of current progress towards CEO capabilities"""
+        skill_progress = self.knowledge_base.get_skill_progress()
+        learning_progress = self.knowledge_base.get_learning_progress()
+        company_info = self.knowledge_base.get_company_info()
+        
+        # Calculate overall progress as weighted average of skills, learning, and company knowledge
+        overall_readiness = (
+            skill_progress["overall_progress"] * 0.6 + 
+            (learning_progress["progress_percentage"] / 100) * 0.3 +
+            company_info["completeness"] * 0.1
+        )
+        
+        return {
+            "version": Config.VERSION,
+            "overall_ceo_readiness": overall_readiness,
+            "skill_progress": skill_progress,
+            "learning_progress": learning_progress,
+            "company_knowledge": {
+                "completeness": company_info["completeness"],
+                "company_name": company_info["info"]["name"]
+            },
+            "areas_to_improve": skill_progress["areas_to_improve"],
+            "subskills_to_improve": skill_progress["subskills_to_improve"],
+            "next_learning_topic": learning_progress["current_topic"]
+        }
+    
+    def record_interaction(self, interaction_type: str, details: Dict[str, Any]) -> None:
+        """Record an interaction for progress tracking"""
+        self.knowledge_base.store_knowledge(
+            "interactions",
+            f"interaction_{interaction_type}_{int(time.time())}",
+            {
+                "type": interaction_type,
+                "timestamp": time.time(),
+                "details": details
+            }
+        )
+    
+    def generate_progress_report(self) -> Dict[str, Any]:
+        """Generate a detailed progress report"""
+        dashboard = self.get_dashboard()
+        
+        # Get recent learning activities
+        learning_items = self.knowledge_base.search_knowledge(
+            "", ["learning_activities"])[:10]
+        
+        # Get recent simulations
+        simulations = self.knowledge_base.search_knowledge(
+            "", ["simulations"])[:5]
+        
+        # Calculate progress over time
+        # In a real implementation, we would track historical progress
+        # Here we're just simulating with random past values
+        progress_history = [
+            {"date": (datetime.datetime.now() - datetime.timedelta(days=30)).isoformat(), 
+             "readiness": max(0.1, dashboard["overall_ceo_readiness"] - random.uniform(0.1, 0.3))},
+            {"date": (datetime.datetime.now() - datetime.timedelta(days=20)).isoformat(), 
+             "readiness": max(0.1, dashboard["overall_ceo_readiness"] - random.uniform(0.05, 0.2))},
+            {"date": (datetime.datetime.now() - datetime.timedelta(days=10)).isoformat(), 
+             "readiness": max(0.1, dashboard["overall_ceo_readiness"] - random.uniform(0.01, 0.1))},
+            {"date": datetime.datetime.now().isoformat(), 
+             "readiness": dashboard["overall_ceo_readiness"]}
+        ]
+        
+        return {
+            "dashboard": dashboard,
+            "learning_activities": learning_items,
+            "simulations": simulations,
+            "progress_history": progress_history,
+            "report_date": datetime.datetime.now().isoformat(),
+            "recommended_next_steps": self._generate_recommended_steps(dashboard)
+        }
+    
+    def _generate_recommended_steps(self, dashboard: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Generate recommended next steps based on current progress"""
+        recommendations = []
+        
+        # Recommend skill improvements
+        if dashboard["areas_to_improve"]:
+            for skill_name, level in dashboard["areas_to_improve"]:
+                recommendations.append({
+                    "type": "skill_improvement",
+                    "skill": skill_name,
+                    "current_level": level,
+                    "description": f"Focus on improving your {skill_name.replace('_', ' ')} skills"
+                })
+        
+        # Recommend learning topics
+        current_topic = dashboard.get("next_learning_topic")
+        if current_topic:
+            recommendations.append({
+                "type": "learning",
+                "topic": current_topic["name"],
+                "description": f"Continue learning about {current_topic['name']}"
+            })
+        
+        # Recommend company knowledge improvements
+        company_completeness = dashboard["company_knowledge"]["completeness"]
+        if company_completeness < 0.8:
+            recommendations.append({
+                "type": "company_knowledge",
+                "completeness": company_completeness,
+                "description": "Gather more information about Cudos AG's operations and structure"
+            })
+        
+        # Recommend simulations
+        recommendations.append({
+            "type": "simulation",
+            "description": "Practice CEO decision-making through business simulations"
+        })
+        
+        return recommendations
+
+# Command Processor
+class CommandProcessor:
+    def __init__(self, knowledge_base: KnowledgeBase, research_manager: ResearchManager, 
+                 code_manager: CodeManager, progress_tracker: ProgressTracker,
+                 business_simulation: BusinessSimulation):
+        self.knowledge_base = knowledge_base
+        self.research_manager = research_manager
+        self.code_manager = code_manager
+        self.progress_tracker = progress_tracker
+        self.business_simulation = business_simulation
+        
+    def process_command(self, command: str, args: List[str]) -> str:
+        """Process a command from the user"""
+        if command == "help":
+            return self._cmd_help()
+        elif command == "knowledge":
+            return self._cmd_knowledge(args)
+        elif command == "learn":
+            return self._cmd_learn(args)
+        elif command == "skills":
+            return self._cmd_skills(args)
+        elif command == "progress":
+            return self._cmd_progress()
+        elif command == "run":
+            return self._cmd_run()
+        elif command == "code":
+            return self._cmd_code(args)
+        elif command == "version":
+            return self._cmd_version()
+        elif command == "company":
+            return self._cmd_company(args)
+        elif command == "simulate":
+            return self._cmd_simulate(args)
+        elif command == "clients":
+            return self._cmd_clients(args)
+        elif command == "projects":
+            return self._cmd_projects(args)
+        else:
+            return f"Unknown command: {command}. Type /help for available commands."
+    
+    def _cmd_help(self) -> str:
+        """Show help information"""
+        return (
+            "Available commands:\n"
+            "/help - Show this help message\n"
+            "/knowledge [category] - List knowledge categories or items in a category\n"
+            "/learn <topic> - Research and learn about a topic\n"
+            "/skills - Show current skill levels\n"
+            "/skills update <skill> <level> - Update a skill level\n"
+            "/skills subskill <skill> <subskill> <level> - Update a subskill level\n"
+            "/progress - Show progress dashboard\n"
+            "/progress report - Generate detailed progress report\n"
+            "/run - Run the new version of the code\n"
+            "/code status - Show code status\n"
+            "/version - Show current version\n"
+            "/company - Show company information\n"
+            "/company update <field> <value> - Update company information\n"
+            "/simulate day - Simulate a day as CEO\n"
+            "/simulate decision [type] - Simulate a business decision\n"
+            "/simulate project [id] - Simulate a project outcome\n"
+            "/clients - List all clients\n"
+            "/clients add <name> - Add a new client\n"
+            "/projects - List all projects\n"
+            "/projects add <name> <client_id> - Add a new project"
+        )
+    
+    def _cmd_knowledge(self, args: List[str]) -> str:
+        """Handle knowledge commands"""
+        if not args:
+            # List knowledge categories
+            categories = self.knowledge_base.list_knowledge()
+            return f"Knowledge categories: {', '.join(categories) if categories else 'None'}"
+        elif args[0] == "search" and len(args) > 1:
+            # Search for knowledge
+            query = " ".join(args[1:])
+            results = self.knowledge_base.search_knowledge(query)
+            return f"Found {len(results)} items for query '{query}':\n" + \
+                   "\n".join([f"- {r['category']}/{r['key']}" for r in results[:10]])
+        elif args[0] == "tags" and len(args) > 1:
+            # Search by tags
+            tags = args[1:]
+            results = self.knowledge_base.search_by_tags(tags)
+            return f"Found {len(results)} items with tags {tags}:\n" + \
+                   "\n".join([f"- {r['category']}/{r['key']}" for r in results[:10]])
+        else:
+            # List items in the specified category
+            category = args[0]
+            items = self.knowledge_base.list_knowledge(category)
+            return f"Items in {category}: {', '.join(items) if items else 'None'}"
+    
+    def _cmd_learn(self, args: List[str]) -> str:
+        """Handle learning commands"""
+        if not args:
+            # Follow the learning plan
+            result = self.research_manager.follow_learning_plan()
+            if result["status"] == "complete":
+                return "Learning plan is complete. Use /learn <topic> to learn about a specific topic."
+            else:
+                return f"Currently learning: {result['current_topic']}\n" + \
+                       f"Progress: {result['progress']['progress_percentage']:.1f}%\n" + \
+                       f"Summary: {result['summary'][:300]}..."
+        elif args[0] == "add" and len(args) >= 3:
+            # Add a new topic to learning plan
+            topic_name = args[1]
+            priority = int(args[2]) if len(args) > 2 and args[2].isdigit() else 2
+            description = " ".join(args[3:]) if len(args) > 3 else f"Learning about {topic_name}"
+            
+            self.knowledge_base.add_learning_topic(
+                name=topic_name,
+                description=description,
+                priority=priority
+            )
+            return f"Added '{topic_name}' to learning plan with priority {priority}"
+        elif args[0] == "complete":
+            # Mark current topic as complete
+            current_topic = self.knowledge_base.learning_plan.get_current_topic()
+            if current_topic:
+                topic_name = current_topic["name"]
+                self.knowledge_base.complete_current_learning_topic()
+                return f"Marked '{topic_name}' as complete"
+            else:
+                return "No current learning topic to complete"
+        elif args[0] == "plan":
+            # Show learning plan
+            current = self.knowledge_base.learning_plan.get_current_topic()
+            topics = self.knowledge_base.learning_plan.topics
+            completed = self.knowledge_base.learning_plan.completed_topics
+            
+            result = "Learning Plan:\n\n"
+            result += f"Current topic: {current['name'] if current else 'None'}\n\n"
+            result += f"Completed topics ({len(completed)}):\n"
+            for topic in completed[:5]:  # Show only the last 5 completed topics
+                result += f"- {topic['name']}\n"
+            
+            result += f"\nUpcoming topics ({len(topics)}):\n"
+            for topic in topics[:5]:  # Show only the next 5 topics
+                result += f"- {topic['name']} (Priority: {topic['priority']})\n"
+                
+            return result
+        else:
+            # Learn about a specific topic
+            topic = " ".join(args)
+            result = self.research_manager.learn_about_topic(topic)
+            
+            # Also analyze relevance to CEO role
+            relevance = self.research_manager.analyze_topic_relevance(topic)
+            
+            return f"Research on: {topic}\n\n" + \
+                   f"Found {len(result['existing_knowledge'])} existing knowledge items\n" + \
+                   f"Added {len(result['new_findings'])} new findings\n\n" + \
+                   f"CEO relevance: {relevance['overall_relevance']:.2f}\n" + \
+                   f"Most relevant to: {relevance['most_relevant_area']}"
+    
+    def _cmd_skills(self, args: List[str]) -> str:
+        """Handle skills commands"""
+        if not args:
+            # Show all skills
+            skill_progress = self.knowledge_base.get_skill_progress()
+            result = "Current skill levels:\n"
+            
+            # Sort skills by level (descending)
+            sorted_skills = sorted(
+                skill_progress["skills"].items(),
+                key=lambda x: x[1],
+                reverse=True
+            )
+            
+            for skill, level in sorted_skills:
+                result += f"- {skill}: {level:.2f}\n"
+            
+            result += f"\nOverall progress: {skill_progress['overall_progress']:.2f}\n"
+            result += f"Areas to improve: {', '.join([s[0] for s in skill_progress['areas_to_improve']])}\n"
+            result += f"Subskills to improve: {', '.join([f'{s[0]}: {s[1]}' for s in skill_progress['subskills_to_improve']])}"
+            
+            return result
+        elif args[0] == "update" and len(args) >= 3:
+            # Update a skill level
+            skill_name = args[1]
+            try:
+                new_level = float(args[2])
+                self.knowledge_base.update_skill(skill_name, new_level)
+                
+## Claude's response:
+
+
