@@ -325,10 +325,10 @@ class SelfImprovingChatbot:
         """Process Claude's response and look for code improvements"""
         # Extract code if present
         if "research_idea" in response:
-            code = self.conversation.extract_code_from_response(response["research_idea"])
+            code = self.code_manager.extract_code_blocks(response["research_idea"])
             if code:
                 # Backup and update the code
-                if self.code_manager.update_code(code):
+                if self.code_manager.update_multiple_files(code):
                     logger.info("Code updated successfully!")
                     
                     # Test if the code is valid

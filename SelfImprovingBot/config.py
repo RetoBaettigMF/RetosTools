@@ -11,6 +11,7 @@ class Config:
     ARCHITECTURE_FILE: str = "architecture.md"
     KNOWLEDGE_DIR: str = "knowledge"
     CODE_BACKUP_DIR: str = "code_backups"
+    CODE_DIR: str = "."
     LOGS_DIR: str = "logs"
     USER_NAME: str = "Reto"
     USER_ROLE: str = "CEO of Cudos AG, a software engineering company"
