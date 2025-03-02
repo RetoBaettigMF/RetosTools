@@ -1,5 +1,19 @@
-# Architecture Documentation - Self-Improving Chatbot
-(this file is "architecture.md")
+# Architecture Overview
+
+## codemanager.py
+
+**Classes:**
+- CodeManager
+- and
+
+**Functions:**
+- get_current_code
+- list_code_files
+- update_code
+- update_multiple_files
+- extract_code_blocks
+- test_code
+- run_new_version
 
 ## Overall Architecture
 
@@ -24,81 +38,92 @@ User Input → Command Processor or Claude → Knowledge Base ↔ Research Manag
                                   Code Manager → Self-Improvement
 ```
 
-## Class Descriptions
 
-### `Config` in config.py
-Configuration dataclass for system settings.
-- `system_prompt()`: Returns the system prompt for Claude
-- `ensure_directories()`: Creates necessary directories
+## config.py
 
-### `KnowledgeItem` in knowledgeitem.py
-Data structure for stored knowledge.
-- `to_dict()`: Converts item to dictionary
+**Classes:**
+- import
+- class
 
-### `SkillModel` in skillmodel.py
-Tracks CEO skills and competencies.
-- `update_skill()`: Updates a skill level
-- `assess_overall_progress()`: Calculates overall skill progress
-- `get_weakest_skills()`: Returns skills needing improvement
+**Functions:**
+- system_prompt
+- ensure_directories
 
-### `LearningPlan` in learningplan.py
-Manages the chatbot's learning curriculum.
-- `get_current_topic()`: Returns current learning topic
-- `mark_current_complete()`: Completes current topic
-- `add_topic()`: Adds new learning topic
-- `get_progress()`: Returns learning progress percentage
+## knowledgebase.py
 
-### `KnowledgeBase` in knowledgebase.py
-Core knowledge management system.
-- `store_knowledge()`: Stores information
-- `retrieve_knowledge()`: Retrieves stored information
-- `list_knowledge()`: Lists available knowledge items
-- `search_knowledge()`: Searches for knowledge
-- `update_skill()`: Updates skill levels
-- `get_skill_progress()`: Returns skill progress summary
-- `get_learning_progress()`: Returns learning plan progress
+**Classes:**
+- KnowledgeBase
 
-### `ResearchManager` in researchmanager.py
-Handles research and learning activities.
-- `web_search()`: Simulates web search (placeholder)
-- `learn_about_topic()`: Researches a specific topic
-- `follow_learning_plan()`: Advances through learning plan
+**Functions:**
+- store_knowledge
+- retrieve_knowledge
+- retrieve_knowledge_item
+- list_knowledge
+- search_knowledge
+- update_skill
+- get_skill_progress
+- add_learning_topic
+- complete_current_learning_topic
+- get_learning_progress
 
-### `ConversationManager`
-Manages chat interactions and history.
-- `add_user_message()`: Adds user message to history
-- `add_assistant_message()`: Adds assistant message to history
-- `get_messages()`: Returns all conversation messages
-- `log_interaction()`: Logs interactions to history file
-- `extract_code_from_response()`: Extracts code from responses
+## knowledgeitem.py
 
-### `CodeManager` in codemanager.py
-Handles code modification and execution. If no filename is provided, it uses "main.py" as filename.
-- `get_current_code([filename])`: Gets current code content
-- `backup_current_code([filename])`: Creates code backup
-- `update_code([filename])`: Updates code with new version
-- `test_code([filename])`: Tests if code is valid Python
-- `run_new_version()`: Runs updated code version of main.py
+**Classes:**
+- class
 
-### `Claude`
-Interface to the Claude API.
-- `ask()`: Sends request to Claude and processes response
+**Functions:**
+- to_dict
 
-### `ProgressTracker`
-Tracks progress toward CEO capabilities.
-- `get_dashboard()`: Returns progress dashboard
-- `record_interaction()`: Records user interactions
+## learningplan.py
 
-### `CommandProcessor`
-Processes user commands.
-- `process_command()`: Routes and handles commands
-- Various command handlers: `/help`, `/knowledge`, `/learn`, etc.
+**Classes:**
+- class
 
-### `SelfImprovingChatbot`
-Main application class.
-- `prepare_prompt()`: Prepares prompts for Claude
-- `process_response()`: Handles Claude's responses
-- `process_command()`: Processes user commands
-- `run()`: Main execution loop
+**Functions:**
+- get_current_topic
+- mark_current_complete
+- add_topic
+- get_progress
+- to_dict
+- from_dict
 
-The system aims to learn and improve itself with minimal user input, gradually building CEO capabilities through self-directed learning and code modifications.
+## main.py
+
+**Functions:**
+- prepare_prompt
+
+## main1.py
+
+**Functions:**
+- read_file
+- write_file
+- list_files
+- ask_claude
+- format_answer
+- append_text_to_history
+- print_and_save_answer
+- main
+
+## researchmanager.py
+
+**Classes:**
+- ResearchManager
+
+**Functions:**
+- web_search
+- learn_about_topic
+- create_learning_summary
+- follow_learning_plan
+
+## skillmodel.py
+
+**Classes:**
+- class
+
+**Functions:**
+- update_skill
+- assess_overall_progress
+- get_weakest_skills
+- to_dict
+- from_dict
+
