@@ -1,0 +1,24 @@
+{
+  "data": {
+    "skills": {
+      "strategic_planning": 0.11,
+      "business_development": 0.11,
+      "team_leadership": 0.11,
+      "financial_management": 0.11,
+      "market_analysis": 0.11,
+      "software_development_knowledge": 0.11,
+      "client_relations": 0.11,
+      "technical_vision": 0.11,
+      "risk_management": 0.11,
+      "communication": 0.11,
+      "decision_making": 0.11,
+      "industry_knowledge": 0.11
+    }
+  },
+  "category": "system",
+  "key": "skill_model",
+  "created_at": 1740931984.9020777,
+  "updated_at": 1740931984.9020777,
+  "confidence": 0.5,
+  "source": "direct"
+}
