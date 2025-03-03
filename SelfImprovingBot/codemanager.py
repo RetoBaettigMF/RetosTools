@@ -5,6 +5,7 @@ import subprocess
 import logging
 from typing import Dict, List, Tuple, Optional
 from config import Config
+from readarchitecture import ReadArchitecture
 
 logger = logging.getLogger("self-improving-chatbot.codemanager")
 
@@ -126,52 +127,9 @@ class CodeManager:
     
     def _update_architecture_description(self) -> None:
         """Update the architecture description based on the current code"""
-        try:
-            # Get all Python files in the code directory
-            files = self.list_code_files()
-            
-            # Generate a high-level description of each file
-            architecture = "# Architecture Overview\n\n"
-            for filename in sorted(files):
-                if filename == Config.ARCHITECTURE_FILE:
-                    continue
-                    
-                file_content = self.get_current_code(filename)
-                
-                # Extract class and function names
-                classes = re.findall(r'class\s+([a-zA-Z0-9_]+)', file_content)
-                functions = re.findall(r'def\s+([a-zA-Z0-9_]+)', file_content)
-                
-                architecture += f"## {filename}\n\n"
-                
-                # Extract top-level docstring if available
-                file_docstring = re.search(r'^"""(.*?)"""', file_content, re.DOTALL)
-                if file_docstring:
-                    doc = file_docstring.group(1).strip()
-                    architecture += f"{doc}\n\n"
-                
-                if classes:
-                    architecture += "**Classes:**\n"
-                    for cls in classes:
-                        architecture += f"- {cls}\n"
-                    architecture += "\n"
-                    
-                if functions:
-                    architecture += "**Functions:**\n"
-                    for func in functions:
-                        if func.startswith('_'):  # Skip private functions
-                            continue
-                        architecture += f"- {func}\n"
-                    architecture += "\n"
-                    
-            # Write the architecture description
-            architecture_path = os.path.join(self.code_dir, Config.ARCHITECTURE_FILE)
-            with open(architecture_path, 'w', encoding='utf-8') as f:
-                f.write(architecture)
-                
-        except Exception as e:
-            logger.error(f"Error updating architecture description: {str(e)}")
-    
+        ra = ReadArchitecture()
+        ra.update_architecture_description()
+        
     def test_code(self) -> Tuple[bool, str]:
         """Test if the code is valid Python"""
         try:

@@ -1,117 +1,123 @@
 # Architecture Overview
 
-## Overall Architecture
+## codemanager.py
 
-The code implements a self-improving chatbot system designed to learn and eventually replace a CEO. It follows a modular architecture with specialized components for knowledge management, conversation handling, code self-modification, and AI interactions via Claude API.
+**Class: CodeManager**
 
-### Core Components
-
-1. **Configuration** - Central settings management
-2. **Knowledge Management** - Stores and retrieves information
-3. **Learning System** - Tracks skills and learning progress
-4. **Conversation Management** - Handles user interactions
-5. **Code Management** - Self-modifies the codebase
-6. **AI Interface** - Integrates with Claude API
-7. **Progress Tracking** - Monitors improvement towards goal
-8. **Command Processing** - Handles user commands
-
-### Data Flow
-
-```
-User Input → Command Processor or Claude → Knowledge Base ↔ Research Manager
-                                        ↓
-                                  Code Manager → Self-Improvement
-```
-
+- __init__(self, code_dir: str = Config.CODE_DIR)
+- get_current_code(self, filename: str) -> str
+- list_code_files(self) -> List[str]
+- update_code(self, code: str, filename: str = "main.py") -> bool
+- update_multiple_files(self, file_contents: Dict[str, str]) -> Dict[str, bool]
+- extract_code_blocks(self, response: str) -> Dict[str, str]
 
 ## config.py
 
-**Classes:**
-- import
-- class
+**Class: Config**
 
-**Functions:**
-- system_prompt
-- ensure_directories
+- system_prompt(cls) -> str
+- ensure_directories(cls) -> None
 
 ## knowledgebase.py
 
-**Classes:**
-- KnowledgeBase
+**Class: KnowledgeBase**
 
-**Functions:**
-- store_knowledge
-- retrieve_knowledge
-- retrieve_knowledge_item
-- list_knowledge
-- search_knowledge
-- update_skill
-- get_skill_progress
-- add_learning_topic
-- complete_current_learning_topic
-- get_learning_progress
+- __init__(self, knowledge_dir: str = Config.KNOWLEDGE_DIR)
+- store_knowledge(self, category: str, key: str, data: Any, 
+                        confidence: float = 0.5, source: str = "direct") -> bool
+- retrieve_knowledge(self, category: str, key: str) -> Optional[Any]
+- retrieve_knowledge_item(self, category: str, key: str) -> Optional[KnowledgeItem]
+- list_knowledge(self, category: str = None) -> List[str]
+- search_knowledge(self, query: str) -> List[Dict[str, Any]]
+- update_skill(self, skill_name: str, new_level: float) -> None
+- get_skill_progress(self) -> Dict[str, Any]
+- add_learning_topic(self, name: str, priority: int = 2) -> None
+- complete_current_learning_topic(self) -> None
+- get_learning_progress(self) -> Dict[str, Any]
 
 ## knowledgeitem.py
 
-**Classes:**
-- class
+**Class: KnowledgeItem**
 
-**Functions:**
-- to_dict
+- to_dict(self) -> Dict[str, Any]
 
 ## learningplan.py
 
-**Classes:**
-- class
+**Class: LearningPlan**
 
-**Functions:**
-- get_current_topic
-- mark_current_complete
-- add_topic
-- get_progress
-- to_dict
-- from_dict
-
-## codemanager.py
-
-**Classes:**
-- CodeManager
-- and
-
-**Functions:**
-- get_current_code
-- list_code_files
-- update_code
-- update_multiple_files
-- extract_code_blocks
-- test_code
-- run_new_version
+- __post_init__(self)
+- get_current_topic(self) -> Optional[Dict[str, Any]]
+- mark_current_complete(self) -> None
+- add_topic(self, name: str, priority: int = 2) -> None
+- get_progress(self) -> float
+- to_dict(self) -> Dict[str, Any]
+- from_dict(cls, data: Dict[str, Any]) -> 'LearningPlan'
 
 ## main.py
 
-**Functions:**
-- prepare_prompt
+**Class: ConversationManager**
+
+- __init__(self, history_file: str = Config.HISTORY_FILE)
+- add_user_message(self, content: str) -> None
+- add_assistant_message(self, content: str) -> None
+- get_messages(self) -> List[Dict[str, str]]
+- get_context_window(self, window_size: int = 10) -> List[Dict[str, str]]
+- format_response(self, response: Dict[str, str]) -> str
+- log_interaction(self, prompt: str, response: Dict[str, str]) -> str
+- extract_code_from_response(self, response: str) -> Optional[str]
+
+**Class: Claude**
+
+- __init__(self, api_key: Optional[str] = None)
+- ask(self, messages: List[Dict[str, str]]) -> Dict[str, str]
+
+**Class: ProgressTracker**
+
+- __init__(self, knowledge_base: KnowledgeBase)
+- get_dashboard(self) -> Dict[str, Any]
+- record_interaction(self, interaction_type: str, details: Dict[str, Any]) -> None
+
+**Class: CommandProcessor**
+
+- __init__(self, knowledge_base: KnowledgeBase, research_manager: ResearchManager, 
+                 code_manager: CodeManager, progress_tracker: ProgressTracker)
+- process_command(self, command: str, args: List[str]) -> str
+
+**Class: SelfImprovingChatbot**
+
+- __init__(self)
+- prepare_prompt(self, user_input: str) -> str
+- process_response(self, response: Dict[str, str], user_input: str) -> None
+- process_command(self, user_input: str) -> Optional[str]
+- save_response(self, response: Dict[str, str]) -> None
+- load_response(self) -> Optional[Dict[str, str]]
+- run(self) -> None
+
+## readarchitecture.py
+
+**Class: ReadArchitecture**
+
+- __init__(self)
+- update_architecture_description(self) -> None
 
 ## researchmanager.py
 
-**Classes:**
-- ResearchManager
+**Class: ResearchManager**
 
-**Functions:**
-- web_search
-- learn_about_topic
-- create_learning_summary
-- follow_learning_plan
+- __init__(self, knowledge_base: KnowledgeBase)
+- web_search(self, query: str, max_results: int = 5) -> List[Dict[str, Any]]
+- learn_about_topic(self, topic: str) -> Dict[str, Any]
+- create_learning_summary(self, topic: str) -> str
+- follow_learning_plan(self) -> Dict[str, Any]
 
 ## skillmodel.py
 
-**Classes:**
-- class
+**Class: SkillModel**
 
-**Functions:**
-- update_skill
-- assess_overall_progress
-- get_weakest_skills
-- to_dict
-- from_dict
+- __post_init__(self)
+- update_skill(self, skill_name: str, new_level: float) -> None
+- assess_overall_progress(self) -> float
+- get_weakest_skills(self, n: int = 3) -> List[str]
+- to_dict(self) -> Dict[str, Any]
+- from_dict(cls, data: Dict[str, Any]) -> 'SkillModel'
 
