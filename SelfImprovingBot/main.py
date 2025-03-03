@@ -6,7 +6,6 @@ import time
 import datetime
 import re
 import sys
-import subprocess
 import logging
 from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, field, asdict
