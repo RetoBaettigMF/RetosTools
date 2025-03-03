@@ -1,20 +1,5 @@
 # Architecture Overview
 
-## codemanager.py
-
-**Classes:**
-- CodeManager
-- and
-
-**Functions:**
-- get_current_code
-- list_code_files
-- update_code
-- update_multiple_files
-- extract_code_blocks
-- test_code
-- run_new_version
-
 ## Overall Architecture
 
 The code implements a self-improving chatbot system designed to learn and eventually replace a CEO. It follows a modular architecture with specialized components for knowledge management, conversation handling, code self-modification, and AI interactions via Claude API.
@@ -87,22 +72,25 @@ User Input → Command Processor or Claude → Knowledge Base ↔ Research Manag
 - to_dict
 - from_dict
 
+## codemanager.py
+
+**Classes:**
+- CodeManager
+- and
+
+**Functions:**
+- get_current_code
+- list_code_files
+- update_code
+- update_multiple_files
+- extract_code_blocks
+- test_code
+- run_new_version
+
 ## main.py
 
 **Functions:**
 - prepare_prompt
-
-## main1.py
-
-**Functions:**
-- read_file
-- write_file
-- list_files
-- ask_claude
-- format_answer
-- append_text_to_history
-- print_and_save_answer
-- main
 
 ## researchmanager.py
 
