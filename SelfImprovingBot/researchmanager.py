@@ -1,3 +1,8 @@
+"""
+This module provides the ResearchManager class, which facilitates web searches,
+knowledge management, and learning activities. It interacts with a knowledge base
+to store and retrieve information related to various topics.
+"""
 # Research and Learning Manager
 from typing import List, Dict, Any
 import time

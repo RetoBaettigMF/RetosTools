@@ -1,3 +1,9 @@
+"""
+Manages code files for a self-improving chatbot.
+Handles reading, writing, updating files, creating backups, validating syntax, and executing code.
+Essential for the chatbot's self-improvement.
+"""
+
 import os
 import re
 import sys

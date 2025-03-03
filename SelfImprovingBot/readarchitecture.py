@@ -1,29 +1,15 @@
+"""
+Generates architecture documentation from Python source code.
+Analyzes files to extract class and function definitions, signatures, and docstrings.
+Maintains up-to-date documentation reflecting the current codebase.
+"""
 import os
 import re
-from typing import Any, Dict, List, Optional
+from typing import Any
 from config import Config
 from codemanager import CodeManager
-from knowledgebase import KnowledgeBase
 import logging
 logger = logging.getLogger("self-improving-chatbot")
-
-"""
-Architecture Documentation Generator
-
-This module provides functionality to automatically generate architecture documentation
-from Python source code. The ReadArchitecture class analyzes Python files in the code
-directory, extracts class and function definitions, signatures, and docstrings, and compiles
-them into a structured architecture overview document.
-
-The generated architecture overview includes:
-- High-level descriptions of each file based on their docstrings
-- Class definitions with their public methods and signatures
-- Top-level functions not belonging to any class
-
-This module helps maintain up-to-date documentation that reflects the current state
-of the codebase, ensuring that documentation stays synchronized with the actual
-implementation as the system evolves.
-"""
 
 class ReadArchitecture:
     def __init__(self):

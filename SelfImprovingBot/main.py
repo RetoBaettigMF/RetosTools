@@ -1,3 +1,8 @@
+"""
+Main application for the Self-Improving Chatbot.
+Handles conversation management, code execution, and interaction with the AI model.
+"""
+
 import os
 import traceback
 import anthropic
