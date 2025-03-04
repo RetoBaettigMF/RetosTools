@@ -151,10 +151,12 @@ class SelfImprovingAssistant:
             # Print and save the response
             self.print_and_save_answer(prompt, response)
             
-            # Implement code changes if requested or if it seems appropriate
-            if user_input.lower() in ['implement', '/implement', '/retry']:
+            do_changes = input("Do you want to implement the changes? (y/n): ")
+            if do_changes.lower() in ['y', 'yes']:
                 self.implement_code_changes(response)
-
+            else:
+                print("Ok. Let's continue.")
+            
 def main():
     # Parse command line arguments
     parser = argparse.ArgumentParser(description="Self-Improving Assistant")
