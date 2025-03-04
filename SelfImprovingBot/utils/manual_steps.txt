@@ -1,0 +1,4 @@
+This version
+- Fix filename extraction
+- New files are written to test directory but existing files are missing => copying files from test directory to base directory to continue
+

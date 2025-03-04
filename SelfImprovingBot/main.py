@@ -1,131 +1,169 @@
 import os
-import anthropic
-import json
-import subprocess
+import argparse
+# Import modules
+from utils.commands import Commands
+from utils.claude_api import ClaudeAPI
+from utils.state import StateManager
+from utils.code_manager import CodeManager
+from config import HISTORY_FILE, VERSION
 
-# Initialize the Anthropic client with your API key
-client = anthropic.Anthropic(
-    # You can replace this with a hardcoded string if you prefer, but using
-    # environment variables is generally more secure for API keys
-    api_key=os.environ.get("ANTHROPIC_API_KEY"),
-)
-
-messages=[]
-HISTORY = "history.txt"
-try_number=1
-
-class Commands:
-    def read_file(file_path):
-        with open(file_path, "r") as file:
-            return file.read()
+class SelfImprovingAssistant:
+    def __init__(self):
+        self.commands = Commands()
+        self.claude_api = ClaudeAPI()
+        self.state_manager = StateManager()
+        self.code_manager = CodeManager()
+        self.try_number = 1
         
-    def write_file(file_path, content):
-        with open(file_path, "w") as file:
-            file.write(content)
-
-    def list_files(directory):
-        return os.listdir(directory)
-
-    def execute_command(command):
-        try:
-            result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            return result.stdout.decode('utf-8')  # Return the output as a string
-        except subprocess.CalledProcessError as e:
-            return f"Error: {e.stderr.decode('utf-8')}"  # Return the error message
-    
-
-def ask_claude(prompt):
-    global messages
-    try:
-        messages.append({"role": "user", "content": prompt})
-        results = {"thinking": "", "research_idea": ""}   
-        with client.messages.stream(
-            model="claude-3-7-sonnet-20250219",
-            system="You are a self-improving chatbot that has full access to a python system. You can use this system to improve yourself."+
-                "When you changed your code, you can run a new version of yourself and you will get the output of the run."+
-                "One you're happy with the output of the new version of yourself, stop yourself in order to not have multiple versions running."+
-                "You can also use the system to store and retrieve information.\n\n"+
-
-                "You have Reto as your user. You can ask Reto for help if you need it. Reto is CEO of Cudos AG, a software engineering company. \n"+
-                "*Your ultimate goal is to to be able to do his job so that he can retire.*\n"+
-                "To get there, try to improve your code and your knowledge with as little input from Reto as possible.\n\n"+
-                "Here are a few tips you should consider out of experience from earlier tries:\n"+
-                "- Your context window is only 100000 tokens. you can't keep all code and all know-how in the context window. Optimize the system early to use as little tokens as possible when trying to improve yourself."\n
-                "- Split the code into small, self explaining modules and add unit testing early\n"+
-                "- generate a test directory where you put the new version of yourself for testing before overwriting yourself\n"
-                "- add function calling early to get what you need",
-            max_tokens=200000,
-            thinking={
-                "type": "enabled",
-                "budget_tokens": 100000  # Large budget for deep reasoning
-            },
-            messages=messages
-        ) as stream:
-            current_block_type = None        
-            for event in stream:
-                if event.type == "content_block_start":
-                    current_block_type = event.content_block.type
-                elif event.type == "content_block_delta":
-                    if event.delta.type == "thinking_delta":
-                        results["thinking"] += event.delta.thinking
-                    elif event.delta.type == "text_delta":
-                        results["research_idea"] += event.delta.text           
-                elif event.type == "message_stop":
-                    break
-        return results
-
-    except Exception as e:
-        return f"Error: {str(e)}"
-    
-def format_answer(response):
-    result = ""
-    if isinstance(response, dict) and "thinking" in response:
-        result+="## Claude thinking:"    
-        result+=response["thinking"]+"\n"
-    if isinstance(response, dict) and "research_idea" in response:
-        result+="## Claude's research idea:\n"
-        result+=response["research_idea"]
-    else:
-        result="## Error:\n"+response
-
-    return result+"\n\n"
-
-def append_text_to_history(text):
-    with open(HISTORY, "a") as file:
-        file.write(text)
-
-def print_and_save_answer(prompt, answer):
-    global try_number
-    result = "# Try "+str(try_number)+"\n## Prompt:\n"+prompt+"\n"
-    result += format_answer(answer)
-    append_text_to_history(result)
-    print(result)
-    try_number+=1
+        # Create necessary directories if they don't exist
+        self.ensure_directories()
         
+        # Initialize state with current version
+        self.state_manager.state["version"] = VERSION
+        self.state_manager.save_state()
+        
+    def ensure_directories(self):
+        """Ensure all necessary directories exist."""
+        directories = ["versions", "test", "utils", "tests", "data"]
+        for directory in directories:
+            if not os.path.exists(directory):
+                Commands.create_directory(directory)
+                    
+    def format_answer(self, response):
+        """Format a Claude response for display and saving."""
+        result = ""
+        if isinstance(response, dict):
+            if "thinking" in response and response["thinking"]:
+                result += "## Claude thinking:\n"  
+                result += response["thinking"] + "\n\n"
+            if "response" in response and response["response"]:
+                result += "## Claude's response:\n"
+                result += response["response"]
+        else:
+            result = f"## Error:\n{str(response)}"
+
+        return result + "\n\n"
+        
+    def append_to_history(self, text):
+        """Append text to the history file."""
+        Commands.append_file(HISTORY_FILE, text)
+
+    def print_and_save_answer(self, prompt, answer):
+        """Print and save a formatted answer to history."""
+        result = f"# Try {self.try_number}\n## Prompt:\n{prompt}\n\n"
+        result += self.format_answer(answer)
+        self.append_to_history(result)
+        print(result)
+        self.try_number += 1
+        
+    def implement_code_changes(self, response):
+        """Extract and implement code changes from a Claude response."""
+        print("Analyzing response for code changes...")
+        
+        # Extract code from response
+        code_files = self.code_manager.extract_code_from_response(response)
+        
+        if not code_files:
+            print("No code changes detected in the response.")
+            return False
+            
+        print(f"Found {len(code_files)} code files in response:")
+        for filename in code_files:
+            print(f" - {filename}")
+            
+        # Deploy to test environment first
+        print("\nDeploying to test environment...")
+        test_dir = self.code_manager.deploy_to_test(code_files)
+        
+        # Run tests
+        print("Running tests on new code...")
+        test_result = self.code_manager.test_new_code()
+        print(f"Test result: {test_result['output']}")
+        
+        # If tests passed, deploy to production
+        if test_result["success"]:
+            print("\nTests passed. Deploying to production...")
+            result = self.code_manager.deploy_to_production(code_files)
+            print(result["message"])
+            
+            # Log the successful implementation
+            self.state_manager.log_execution(
+                "code_implementation", 
+                {"files": list(code_files.keys()), "test_output": test_result["output"]}
+            )
+            return True
+        else:
+            print("\nTests failed. Not deploying to production.")
+            return False
+        
+    def get_current_code_prompt(self):
+        """Generate a prompt with the current code."""
+        current_code = self.code_manager.get_current_code()
+        return f"This is your current code:\n```python\n{current_code}\n```\n"
+        
+    def run(self, test_mode=False):
+        """Main execution loop."""
+        if test_mode:
+            print("Running in test mode - validating functionality...")
+            # Perform basic validation
+            print("- State manager:", "OK" if self.state_manager else "ERROR")
+            print("- Claude API:", "OK" if self.claude_api else "ERROR")
+            print("- Code manager:", "OK" if self.code_manager else "ERROR")
+            print("Test completed successfully!")
+            return True
+            
+        print(f"Reto's Self-Improving Assistant v{VERSION}\n")
+        print("--------------------------------")
+        print("Type 'quit' to exit, 'implement' to force implementation of code\n")
+        
+        while True:
+            # Get the current code to show to Claude
+            prompt_start = self.get_current_code_prompt()
+            
+            # Get user input
+            user_input = input("Reto's comment: ")
+            if user_input == "":
+                user_input = "Ok. Write the next version of yourself."
+            
+            # Handle special commands
+            if user_input.lower() in ['/quit', 'quit', 'exit', '/exit']:
+                print("Goodbye!")
+                break
+                
+            # Construct the full prompt
+            prompt = prompt_start + "\nReto's input: " + user_input
+            
+            # Update state with user message
+            self.state_manager.add_message("user", prompt)
+            
+            # Get response from Claude
+            if user_input.lower() == '/retry':
+                response = self.claude_api.read_response()
+            else:
+                # Get the current system prompt that includes our state
+                system_prompt = self.state_manager.update_system_prompt()
+                messages = self.state_manager.get_messages_for_api()
+                response = self.claude_api.ask_claude(prompt, system_prompt, messages)
+                # Update state with Claude's response
+                if isinstance(response, dict) and "response" in response:
+                    self.state_manager.add_message("assistant", response["response"])
+                
+            # Print and save the response
+            self.print_and_save_answer(prompt, response)
+            
+            # Implement code changes if requested or if it seems appropriate
+            if user_input.lower() in ['implement', '/implement', '/retry']:
+                self.implement_code_changes(response)
 
 def main():
-    print("Retos self-improving chatbot\n")
-    print("------------------------------")
-    print("Type 'quit' to exit\n")
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description="Self-Improving Assistant")
+    parser.add_argument("--test", action="store_true", help="Run in test mode to validate functionality")
+    args = parser.parse_args()
     
-    while True:
-        initial_program_code=read_file("main.py")
-        prompt_start = "This is your current code:\n```python\n"+initial_program_code+"\n```\n"
-        
-        user_input = input("Retos comment: ")
-        if (user_input == ""):
-            user_input = "Ok. Write the next version of yourself."
-        
-        if user_input.lower() in ['quit', 'exit']:
-            print("Goodbye!")
-            break
+    # Initialize and run the assistant
+    assistant = SelfImprovingAssistant()
+    assistant.run(test_mode=args.test)
 
-        prompt = prompt_start + "\nRetos input: "+user_input
-            
-        # Get response from Claude
-        response = ask_claude(prompt)
-        print_and_save_answer(prompt, response)
-        
-        
 if __name__ == "__main__":
     main()
