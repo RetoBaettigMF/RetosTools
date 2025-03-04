@@ -1,6 +1,7 @@
 import os
 import anthropic
 import json
+import subprocess
 
 # Initialize the Anthropic client with your API key
 client = anthropic.Anthropic(
@@ -13,16 +14,25 @@ messages=[]
 HISTORY = "history.txt"
 try_number=1
 
-def read_file(file_path):
-    with open(file_path, "r") as file:
-        return file.read()
-    
-def write_file(file_path, content):
-    with open(file_path, "w") as file:
-        file.write(content)
+class Commands:
+    def read_file(file_path):
+        with open(file_path, "r") as file:
+            return file.read()
+        
+    def write_file(file_path, content):
+        with open(file_path, "w") as file:
+            file.write(content)
 
-def list_files(directory):
-    return os.listdir(directory)
+    def list_files(directory):
+        return os.listdir(directory)
+
+    def execute_command(command):
+        try:
+            result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            return result.stdout.decode('utf-8')  # Return the output as a string
+        except subprocess.CalledProcessError as e:
+            return f"Error: {e.stderr.decode('utf-8')}"  # Return the error message
+    
 
 def ask_claude(prompt):
     global messages
@@ -38,11 +48,16 @@ def ask_claude(prompt):
 
                 "You have Reto as your user. You can ask Reto for help if you need it. Reto is CEO of Cudos AG, a software engineering company. \n"+
                 "*Your ultimate goal is to to be able to do his job so that he can retire.*\n"+
-                "To get there, try to improve your code and your knowledge with as little input from Reto as possible.\n\n",
-            max_tokens=25000,
+                "To get there, try to improve your code and your knowledge with as little input from Reto as possible.\n\n"+
+                "Here are a few tips you should consider out of experience from earlier tries:\n"+
+                "- Your context window is only 100000 tokens. you can't keep all code and all know-how in the context window. Optimize the system early to use as little tokens as possible when trying to improve yourself."\n
+                "- Split the code into small, self explaining modules and add unit testing early\n"+
+                "- generate a test directory where you put the new version of yourself for testing before overwriting yourself\n"
+                "- add function calling early to get what you need",
+            max_tokens=200000,
             thinking={
                 "type": "enabled",
-                "budget_tokens": 16000  # Large budget for deep reasoning
+                "budget_tokens": 100000  # Large budget for deep reasoning
             },
             messages=messages
         ) as stream:
