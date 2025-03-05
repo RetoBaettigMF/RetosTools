@@ -60,12 +60,25 @@ class SelfImprovingAssistant:
         """Append text to the history file."""
         Commands.append_file(HISTORY_FILE, text)
 
+    def long_print(self, text):
+        """Print long text in chunks to ensure complete output."""
+        # Print in chunks to ensure complete output
+        chunk_size = 1000  # Adjust chunk size as needed
+        text_length = len(text)
+        
+        for i in range(0, text_length, chunk_size):
+            end_idx = min(i + chunk_size, text_length)
+            print(text[i:end_idx], end='', flush=True)
+        
+        # Print a clear end marker
+        print("\n\n--- END OF OUTPUT ---\n", flush=True)
+    
     def print_and_save_answer(self, prompt, answer):
         """Print and save a formatted answer to history."""
         result = f"# Try {self.try_number}\n## Prompt:\n{prompt}\n\n"
         result += self.format_answer(answer)
         self.append_to_history(result)
-        print(result)
+        self.long_print(result)
         self.try_number += 1
         
     def implement_code_changes(self, response):
