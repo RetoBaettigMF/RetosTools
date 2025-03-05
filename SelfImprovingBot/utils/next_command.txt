@@ -1,0 +1,1 @@
+If you change a file, you have to read the original version first, and then make the changes in a way that the depending modules still work after the change. also, you have to copy all the files to the test directory before testing, also the files that have not changed.
