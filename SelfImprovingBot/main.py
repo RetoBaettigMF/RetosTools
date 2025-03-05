@@ -45,8 +45,12 @@ class SelfImprovingAssistant:
             # Add tool calls if any
             if "tool_calls" in response and response["tool_calls"]:
                 result += "\n\n## Tool calls used:\n"
-                for tool_call in response["tool_calls"]:
-                    result += f"- {tool_call['name']}({json.dumps(tool_call['parameters'])})\n"
+                # Number each tool call to show the sequence
+                for i, tool_call in enumerate(response["tool_calls"], 1):
+                    result += f"{i}. {tool_call['name']}({json.dumps(tool_call['parameters'])})\n"
+                
+                # Add total count of tool calls
+                result += f"\nTotal tool calls: {len(response['tool_calls'])}\n"
         else:
             result = f"## Error:\n{str(response)}"
 

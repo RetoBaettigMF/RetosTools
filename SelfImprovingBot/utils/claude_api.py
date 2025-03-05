@@ -277,24 +277,57 @@ class ClaudeAPI:
                     "model": self.model,
                     "system": system_prompt,
                     "messages": updated_messages,
-                    "max_tokens": self.max_tokens
+                    "max_tokens": self.max_tokens,
+                    "tools": self._format_tools_for_api()  # Make sure to include tools in the follow-up request
                 }
                 
-                # Use streaming API for the final response
+                # Use streaming API for the follow-up response
                 follow_up_text = ""
+                new_tool_calls = []
+                
                 with self.client.messages.stream(**follow_up_params) as stream:
                     for text in stream.text_stream:
                         follow_up_text += text
+                    
+                    # Get the final message to check for additional tool calls
+                    final_message = stream.get_final_message()
+                    
+                    # Extract any new tool calls from the final message
+                    for content in final_message.content:
+                        if content.type == "tool_use":
+                            # Store tool use information
+                            new_tool_calls.append({
+                                "id": content.id,
+                                "name": content.name,
+                                "parameters": content.input
+                            })
                 
-                result = {
-                    "thinking": "",
-                    "response": follow_up_text,
-                    "tool_calls": tool_calls,
-                    "tool_outputs": tool_outputs
-                }
-                
-                self.last_response = result
-                return result
+                # If there are additional tool calls, process them recursively
+                if new_tool_calls:
+                    # Recursively process the new tool calls
+                    recursive_result = self._process_tool_calls(final_message, new_tool_calls, system_prompt, updated_messages)
+                    
+                    # Combine the current tool calls/outputs with the recursive ones
+                    combined_result = {
+                        "thinking": "",
+                        "response": recursive_result.get("response", ""),
+                        "tool_calls": tool_calls + recursive_result.get("tool_calls", []),
+                        "tool_outputs": tool_outputs + recursive_result.get("tool_outputs", [])
+                    }
+                    
+                    self.last_response = combined_result
+                    return combined_result
+                else:
+                    # No more tool calls, return the final result
+                    result = {
+                        "thinking": "",
+                        "response": follow_up_text,
+                        "tool_calls": tool_calls,
+                        "tool_outputs": tool_outputs
+                    }
+                    
+                    self.last_response = result
+                    return result
                 
             except Exception as e:
                 error_msg = f"Error processing tool calls: {str(e)}"
