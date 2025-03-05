@@ -120,11 +120,6 @@ class SelfImprovingAssistant:
         else:
             print("\nTests failed. Not deploying to production.")
             return False
-        
-    def get_current_code_prompt(self):
-        """Generate a prompt with the current code."""
-        current_code = self.code_manager.get_current_code()
-        return f"This is your current code:\n```python\n{current_code}\n```\n"
     
     def read_command_from_file(self, command_input):
         """
@@ -199,7 +194,7 @@ class SelfImprovingAssistant:
         
         while True:
             # Get the current code to show to Claude
-            prompt_start = self.get_current_code_prompt()
+            prompt_start = ""
             
             # Get user input
             user_input = input("Reto's comment: ")
