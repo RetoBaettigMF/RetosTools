@@ -48,16 +48,45 @@ class CodeManager:
         text = response["response"]
         code_files = {}
         
-        # Pattern to match Python code blocks with filename indicators
-        # Looks for: ```python (or ```), then captures the code content
-        code_blocks = re.findall(r'```(?:python)?\s*\n(.*?)\n```', text, re.DOTALL)
+        # Pattern to match code blocks with any language specifier and optional inline filename
+        # Looks for: ```[language] [optional_filename] (or just ```), then captures the code content
+        code_blocks_with_meta = re.findall(r'```(?:([a-zA-Z]*))?\s*(?:([a-zA-Z0-9_\/\\]+?\.[a-zA-Z0-9]+))?\s*\n(.*?)\n```', text, re.DOTALL)
+        
+        # Extract just the code content and keep track of any inline filenames
+        code_blocks = []
+        inline_filenames = []
+        
+        for lang, inline_filename, code in code_blocks_with_meta:
+            code_blocks.append(code)
+            inline_filenames.append(inline_filename if inline_filename else "")
 
         filenames = []
-        for block in code_blocks:
+        for i, block in enumerate(code_blocks):
+            # First check if we have an inline filename
+            if inline_filenames[i]:
+                filenames.append(inline_filenames[i])
+                continue
+                
             # Look for filename indicators in each code block
             filename_match = re.search(r'^\s*#\s*([a-zA-Z0-9_\/\\]+?\.[a-zA-Z0-9]+)', block, re.MULTILINE)
             if filename_match:
                 filenames.append(filename_match.group(1))
+                continue
+                
+            # Look for "# filename: path/file.py" or "// filename: path/file.js" format in first or second line
+            lines = block.split('\n', 2)[:2]  # Get only first two lines
+            for line in lines:
+                # Check for Python-style comments (# filename: path/file.py)
+                filename_match = re.search(r'^\s*#\s*filename:\s*([a-zA-Z0-9_\/\\]+?\.[a-zA-Z0-9]+)', line)
+                if filename_match:
+                    filenames.append(filename_match.group(1))
+                    break
+                # Check for JavaScript-style comments (// filename: path/file.js)
+                filename_match = re.search(r'^\s*//\s*filename:\s*([a-zA-Z0-9_\/\\]+?\.[a-zA-Z0-9]+)', line)
+                if filename_match:
+                    filenames.append(filename_match.group(1))
+                    break
+            if filename_match:
                 continue
 
             filename_match = re.search(r'^\s*```[a-zA-Z]*\s*([a-zA-Z0-9_\/\\]+?\.[a-zA-Z0-9]+)\s*\n', block, re.MULTILINE)
