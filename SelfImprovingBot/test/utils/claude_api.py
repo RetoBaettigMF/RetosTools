@@ -1,8 +1,8 @@
 # filename: utils/claude_api.py
 import os
 import json
+import requests
 import inspect
-from anthropic import Anthropic
 from config import CLAUDE_MODEL, MAX_TOKENS
 from utils.commands import Commands
 
@@ -10,12 +10,12 @@ class ClaudeAPI:
     """Interface for communicating with the Claude API with function calling capabilities."""
     
     def __init__(self):
-        self.api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+        self.api_key = os.environ.get("CLAUDE_API_KEY", "")
+        self.api_url = os.environ.get("CLAUDE_API_URL", "https://api.anthropic.com/v1/messages")
         self.model = CLAUDE_MODEL
         self.max_tokens = MAX_TOKENS
         self.last_response = None
         self.available_tools = self._register_tools()
-        self.client = Anthropic(api_key=self.api_key)
         
     def _register_tools(self):
         """Register all tools from the Commands class."""
@@ -86,7 +86,7 @@ class ClaudeAPI:
             tool_def = {
                 "name": name,
                 "description": tool["description"],
-                "input_schema": {
+                "parameters": {
                     "type": "object",
                     "properties": properties
                 }
@@ -94,7 +94,7 @@ class ClaudeAPI:
             
             # Add required parameters if any
             if tool["required"]:
-                tool_def["input_schema"]["required"] = tool["required"]
+                tool_def["parameters"]["required"] = tool["required"]
             
             # Add to tools list
             tools.append(tool_def)
@@ -131,14 +131,21 @@ class ClaudeAPI:
             A dictionary containing Claude's response
         """
         try:
+            # Prepare the API request
+            headers = {
+                "x-api-key": self.api_key,
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json"
+            }
+            
             # Format the messages
             if messages:
                 message_list = messages
             else:
                 message_list = [{"role": "user", "content": prompt}]
             
-            # Create message parameters
-            params = {
+            # Create the request payload
+            payload = {
                 "model": self.model,
                 "system": system_prompt,
                 "messages": message_list,
@@ -147,33 +154,37 @@ class ClaudeAPI:
             
             # Add tools if requested
             if with_tools:
-                params["tools"] = self._format_tools_for_api()
+                payload["tools"] = self._format_tools_for_api()
             
-            # Send the request using the anthropic client with streaming
+            # Send the request
+            response = requests.post(
+                self.api_url,
+                headers=headers,
+                json=payload
+            )
+            
+            # Check for errors
+            response.raise_for_status()
+            response_data = response.json()
+            
+            # Extract the response text
             response_text = ""
             tool_calls = []
             
-            # Process the streaming response
-            with self.client.messages.stream(**params) as stream:
-                for text in stream.text_stream:
-                    response_text += text
-                
-                # Get the final message for tool calls
-                final_message = stream.get_final_message()
-                
-                # Extract tool calls from the final message
-                for content in final_message.content:
-                    if content.type == "tool_use":
-                        # Store tool use information
-                        tool_calls.append({
-                            "id": content.id,
-                            "name": content.name,
-                            "parameters": content.input
-                        })
+            for content in response_data.get("content", []):
+                if content["type"] == "text":
+                    response_text += content["text"]
+                elif content["type"] == "tool_use":
+                    # Store tool use information
+                    tool_calls.append({
+                        "id": content["id"],
+                        "name": content["name"],
+                        "parameters": content["input"]
+                    })
             
             # If there are tool calls, process them
             if tool_calls:
-                return self._process_tool_calls(final_message, tool_calls, system_prompt, message_list)
+                return self._process_tool_calls(response_data, tool_calls, system_prompt, message_list)
             
             # No tool calls, just return the response
             result = {
@@ -198,14 +209,10 @@ class ClaudeAPI:
         initial_text = ""
         tool_outputs = []
         
-        # If initial_response is a Message object, extract text from it
-        if hasattr(initial_response, 'content'):
-            for content in initial_response.content:
-                if content.type == "text":
-                    initial_text += content.text
-        else:
-            # If it's already the text from streaming
-            initial_text = initial_response
+        # Extract initial text response
+        for content in initial_response.get("content", []):
+            if content["type"] == "text":
+                initial_text += content["text"]
         
         # Process each tool call
         for tool_call in tool_calls:
@@ -224,67 +231,38 @@ class ClaudeAPI:
         # If there are tool outputs, send a follow-up request
         if tool_outputs:
             try:
-                # Create a new message list with the original messages plus tool outputs
-                updated_messages = messages.copy()
-                
-                # Add the assistant's response with tool calls
-                assistant_message = {
-                    "role": "assistant",
-                    "content": []
+                # Prepare headers
+                headers = {
+                    "x-api-key": self.api_key,
+                    "anthropic-version": "2023-06-01",
+                    "content-type": "application/json"
                 }
                 
-                # Add text content if available
-                if initial_text:
-                    assistant_message["content"].append({
-                        "type": "text",
-                        "text": initial_text
-                    })
-                
-                # Add tool calls
-                for tool_call in tool_calls:
-                    assistant_message["content"].append({
-                        "type": "tool_use",
-                        "id": tool_call["id"],
-                        "name": tool_call["name"],
-                        "input": tool_call["parameters"]
-                    })
-                
-                updated_messages.append(assistant_message)
-                
-                # Add tool outputs as user messages
-                for tool_output in tool_outputs:
-                    tool_result = json.loads(tool_output["output"])
-                    result_text = tool_result.get("result", str(tool_result))
-                    
-                    # Parse the tool result
-                    tool_result_json = json.loads(tool_output["output"])
-                    
-                    # Create the user message with tool result
-                    user_message = {
-                        "role": "user",
-                        "content": [
-                            {
-                                "type": "tool_result",
-                                "tool_use_id": tool_output["tool_call_id"],
-                                "content": tool_output["output"]  # Use the raw JSON string
-                            }
-                        ]
-                    }
-                    updated_messages.append(user_message)
-                
-                # Create follow-up parameters with the updated messages
-                follow_up_params = {
+                # Create follow-up payload
+                follow_up_payload = {
                     "model": self.model,
                     "system": system_prompt,
-                    "messages": updated_messages,
-                    "max_tokens": self.max_tokens
+                    "messages": messages,
+                    "max_tokens": self.max_tokens,
+                    "tool_outputs": tool_outputs
                 }
                 
-                # Use streaming API for the final response
+                # Send follow-up request
+                follow_up_response = requests.post(
+                    self.api_url,
+                    headers=headers,
+                    json=follow_up_payload
+                )
+                
+                # Check for errors
+                follow_up_response.raise_for_status()
+                follow_up_data = follow_up_response.json()
+                
+                # Extract follow-up response
                 follow_up_text = ""
-                with self.client.messages.stream(**follow_up_params) as stream:
-                    for text in stream.text_stream:
-                        follow_up_text += text
+                for content in follow_up_data.get("content", []):
+                    if content["type"] == "text":
+                        follow_up_text += content["text"]
                 
                 result = {
                     "thinking": "",
