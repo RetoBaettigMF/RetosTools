@@ -100,6 +100,55 @@ class SelfImprovingAssistant:
         """Generate a prompt with the current code."""
         current_code = self.code_manager.get_current_code()
         return f"This is your current code:\n```python\n{current_code}\n```\n"
+    
+    def read_command_from_file(self, command_input):
+        """
+        Read a command from a file.
+        
+        Args:
+            command_input (str): The command input that may contain a filename
+            
+        Returns:
+            str: The content of the file, or None if there was an error
+        """
+        # Parse the command to get the filename
+        parts = command_input.split(maxsplit=1)
+        filename = "next_command.txt"  # Default filename
+        
+        # If a filename was provided, use it instead
+        if len(parts) > 1:
+            filename = parts[1]
+        
+        try:
+            # Read the content from the file
+            with open(filename, 'r') as file:
+                content = file.read()
+            print(f"Read command from {filename}: {content}")
+            return content
+        except Exception as e:
+            print(f"Error reading from {filename}: {str(e)}")
+            return None
+            
+    def get_multiline_input(self):
+        """
+        Get multiline input from the user.
+        
+        The user can enter multiple lines of text until they enter the
+        termination sequence 'END' on a line by itself.
+        
+        Returns:
+            str: The multiline input as a single string
+        """
+        print("Enter multiline input (type 'END' on a line by itself to finish):")
+        lines = []
+        while True:
+            line = input("> ")
+            if line.strip() == "END":
+                break
+            lines.append(line)
+        
+        # Join the lines with newlines
+        return "\n".join(lines)
         
     def run(self, test_mode=False):
         """Main execution loop."""
@@ -114,7 +163,10 @@ class SelfImprovingAssistant:
             
         print(f"Reto's Self-Improving Assistant v{VERSION}\n")
         print("--------------------------------")
-        print("Type 'quit' to exit, 'implement' to force implementation of code\n")
+        print("Type 'quit' to exit, 'implement' to force implementation of code")
+        print("Special commands:")
+        print("  /multiline or /ml - Enter multiline input mode")
+        print("  /readcommand or /readcmd - Read command from a file\n")
         
         while True:
             # Get the current code to show to Claude
@@ -124,6 +176,19 @@ class SelfImprovingAssistant:
             user_input = input("Reto's comment: ")
             if user_input == "":
                 user_input = "Ok. Write the next version of yourself."
+            
+            # Handle multiline input
+            if user_input.lower() in ['/multiline', '/ml']:
+                user_input = self.get_multiline_input()
+                print(f"Received multiline input ({len(user_input.splitlines())} lines)")
+            
+            # Handle /readcommand or /readcmd
+            elif user_input.lower().startswith('/readcommand') or user_input.lower().startswith('/readcmd'):
+                file_content = self.read_command_from_file(user_input)
+                if file_content is not None:
+                    user_input = file_content
+                else:
+                    continue  # Skip this iteration and prompt for input again
             
             # Handle special commands
             if user_input.lower() in ['/quit', 'quit', 'exit', '/exit']:
