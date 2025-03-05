@@ -1,1 +1,243 @@
 If you change a file, you have to read the original version first, and then make the changes in a way that the depending modules still work after the change. also, you have to copy all the files to the test directory before testing, also the files that have not changed.
+In order to achieve that, add function calling to claude_api.py and enable claude to call the functions defined in commands.py
+Here are both files:
+```python utils/claude_api.py
+import os
+import datetime
+import re
+from config import TEST_DIR, VERSIONS_DIR
+from utils.commands import Commands
+
+class CodeManager:
+    def __init__(self):
+        # Ensure required directories exist
+        Commands.create_directory(TEST_DIR)
+        Commands.create_directory(VERSIONS_DIR)
+        
+    def backup_current_code(self):
+        """Create a backup of all Python files in the current directory."""
+        timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        backup_dir = os.path.join(VERSIONS_DIR, f"backup_{timestamp}")
+        Commands.create_directory(backup_dir)
+        
+        # Backup all Python files, including those in subdirectories
+        for root, dirs, files in os.walk('.'):
+            for file in files:
+                if file.endswith('.py'):
+                    source_path = os.path.join(root, file)
+                    # Create relative path in backup dir
+                    rel_path = os.path.relpath(source_path, '.')
+                    target_path = os.path.join(backup_dir, rel_path)
+                    Commands.copy_file(source_path, target_path)
+                    
+        return backup_dir
+        
+    def setup_test_environment(self):
+        """Prepare the test environment for testing new code."""
+        # Clear the test directory if it exists
+        if os.path.exists(TEST_DIR):
+            import shutil
+            shutil.rmtree(TEST_DIR)
+            
+        # Create fresh test directory
+        Commands.create_directory(TEST_DIR)
+        
+        return TEST_DIR
+        
+    def extract_code_from_response(self, response):
+        """Extract code blocks from Claude's response."""
+        if not isinstance(response, dict) or "response" not in response:
+            return {}
+            
+        text = response["response"]
+        code_files = {}
+        
+        # Pattern to match Python code blocks with filename indicators
+        # Looks for: ```python (or ```), then captures the code content
+        code_blocks = re.findall(r'```(?:python)?\s*\n(.*?)\n```', text, re.DOTALL)
+
+        filenames = []
+        for block in code_blocks:
+            # Look for filename indicators in each code block
+            filename_match = re.search(r'^\s*#\s*([a-zA-Z0-9_\/\\]+?\.[a-zA-Z0-9]+)', block, re.MULTILINE)
+            if filename_match:
+                filenames.append(filename_match.group(1))
+                continue
+
+            filename_match = re.search(r'^\s*```[a-zA-Z]*\s*([a-zA-Z0-9_\/\\]+?\.[a-zA-Z0-9]+)\s*\n', block, re.MULTILINE)
+            if filename_match:
+                filenames.append(filename_match.group(1))
+                continue            
+            else:
+                if (len(code_blocks) == 1):
+                    # If only one code block, assume it's main.py unless explicitly named
+                    filenames.append("main.py")
+                else:   
+                    filenames.append("generated_file_without_name.py")
+        
+        
+        for i, filename in enumerate(filenames):
+            code_files[filename] = code_blocks[i]
+        return code_files
+        
+    def deploy_to_test(self, code_files):
+        """Deploy code to the test environment for validation."""
+        # Set up a fresh test environment
+        self.setup_test_environment()
+        
+        # Deploy each file to the test directory
+        for filename, code in code_files.items():
+            # Handle subdirectories in the filename
+            file_path = os.path.join(TEST_DIR, filename)
+            Commands.write_file(file_path, code)
+            
+        return TEST_DIR
+        
+    def test_new_code(self):
+        """Run tests on the code in the test environment."""
+        # Run main.py in the test environment with a --test flag
+        test_main = os.path.join(TEST_DIR, "main.py")
+        if os.path.exists(test_main):
+            result = Commands.run_python_file(test_main, "--test")
+            return {"success": "Error:" not in result, "output": result}
+        else:
+            return {"success": False, "output": "main.py not found in test environment"}
+            
+    def deploy_to_production(self, code_files):
+        """Deploy code to production after backing up current code."""
+        # First backup the current code
+        backup_dir = self.backup_current_code()
+        
+        # Then deploy each file
+        for filename, code in code_files.items():
+            # Check if we need to create directories
+            if '/' in filename:
+                directory = os.path.dirname(filename)
+                Commands.create_directory(directory)
+                
+            # Write the new code to the file
+            Commands.write_file(filename, code)
+            
+        return {
+            "success": True, 
+            "message": f"Deployed {len(code_files)} files to production. Backup created at {backup_dir}"
+        }
+        
+    def get_current_code(self, file_path="main.py"):
+        """Get the contents of the specified file."""
+        return Commands.read_file(file_path)
+```
+and
+```python utils/commands.py
+import os
+import subprocess
+import shutil
+import json
+
+class Commands:
+    @staticmethod
+    def read_file(file_path):
+        """Read a file and return its contents."""
+        try:
+            with open(file_path, "r", encoding="utf-8") as file:
+                return file.read()
+        except Exception as e:
+            return f"Error reading file {file_path}: {str(e)}"
+        
+    @staticmethod
+    def write_file(file_path, content):
+        """Write content to a file."""
+        try:
+            # Create directories if they don't exist
+            os.makedirs(os.path.dirname(file_path) or '.', exist_ok=True)
+            
+            with open(file_path, "w", encoding="utf-8") as file:
+                file.write(content)
+            return f"Successfully wrote to {file_path}"
+        except Exception as e:
+            return f"Error writing to file {file_path}: {str(e)}"
+
+    @staticmethod
+    def append_file(file_path, content):
+        """Append content to a file."""
+        try:
+            # Create directories if they don't exist
+            os.makedirs(os.path.dirname(file_path) or '.', exist_ok=True)
+            
+            with open(file_path, "a", encoding="utf-8") as file:
+                file.write(content)
+            return f"Successfully appended to {file_path}"
+        except Exception as e:
+            return f"Error appending to file {file_path}: {str(e)}"
+
+    @staticmethod
+    def list_files(directory="."):
+        """List files in the specified directory."""
+        try:
+            return os.listdir(directory)
+        except Exception as e:
+            return f"Error listing files in {directory}: {str(e)}"
+
+    @staticmethod
+    def create_directory(directory_path):
+        """Create a directory if it doesn't exist."""
+        try:
+            os.makedirs(directory_path, exist_ok=True)
+            return f"Created directory: {directory_path}"
+        except Exception as e:
+            return f"Error creating directory {directory_path}: {str(e)}"
+
+    @staticmethod
+    def copy_file(source, destination):
+        """Copy a file from source to destination."""
+        try:
+            # Ensure destination directory exists
+            dest_dir = os.path.dirname(destination)
+            if dest_dir:
+                os.makedirs(dest_dir, exist_ok=True)
+                
+            shutil.copy2(source, destination)
+            return f"Copied {source} to {destination}"
+        except Exception as e:
+            return f"Error copying file: {str(e)}"
+            
+    @staticmethod
+    def backup_file(file_path, backup_dir, version=None):
+        """Create a backup of a file in the specified directory."""
+        try:
+            base_name = os.path.basename(file_path)
+            if version:
+                backup_path = os.path.join(backup_dir, f"{base_name}.{version}")
+            else:
+                import datetime
+                timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+                backup_path = os.path.join(backup_dir, f"{base_name}.{timestamp}")
+            
+            # Create the backup directory if it doesn't exist
+            os.makedirs(backup_dir, exist_ok=True)
+            
+            # Copy the file
+            shutil.copy2(file_path, backup_path)
+            return f"Backed up {file_path} to {backup_path}"
+        except Exception as e:
+            return f"Error backing up file: {str(e)}"
+
+    @staticmethod
+    def execute_command(command):
+        """Execute a shell command and return the output."""
+        try:
+            result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            return result.stdout.decode('utf-8')  # Return the output as a string
+        except subprocess.CalledProcessError as e:
+            return f"Error: {e.stderr.decode('utf-8')}"  # Return the error message
+            
+    @staticmethod
+    def run_python_file(file_path, args=""):
+        """Run a Python file and return the output."""
+        try:
+            command = f"python {file_path} {args}"
+            result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            return result.stdout.decode('utf-8')
+        except subprocess.CalledProcessError as e:
+            return f"Error running Python file: {e.stderr.decode('utf-8')}"
+```
